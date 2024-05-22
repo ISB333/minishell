@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/25 21:38:48 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/06 16:47:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+void	ft_putchar_fd(char c, int fd)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	write(fd, &c, 1);
 }

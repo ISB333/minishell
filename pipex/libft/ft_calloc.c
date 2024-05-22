@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/22 14:58:27 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/06 16:46:33 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	int		*arr;
+	size_t	overflowpro;
+
+	if (!nmemb || !size)
+		return (malloc(0));
+	overflowpro = size * nmemb;
+	if (overflowpro / nmemb != size)
+		return (NULL);
+	arr = malloc(overflowpro);
+	if (arr == NULL)
+		return (NULL);
+	ft_memset(arr, 0, nmemb * size);
+	return (arr);
 }

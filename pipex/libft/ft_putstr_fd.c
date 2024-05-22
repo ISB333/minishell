@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/25 21:47:48 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/06 16:48:16 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+void	ft_putstr_fd(char *s, int fd)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	if (s == NULL)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

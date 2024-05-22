@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/22 13:51:42 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/07 15:40:26 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h" 
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+char	*ft_strdup(const char *s)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	char	*str;
+	int		size;
+
+	size = ft_strlen(s) + 1;
+	str = malloc(size);
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, s, size);
+	return (str);
 }

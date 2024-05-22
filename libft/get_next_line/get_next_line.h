@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/11/06 21:13:37 by isb3              #+#    #+#             */
+/*   Updated: 2023/11/29 14:15:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
-int main()
-{
-	printf("%s\n", readline("ecris un truc mec"));
-}
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
+char	*ft_strdup(char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(const char *s, int c);
+
+#endif

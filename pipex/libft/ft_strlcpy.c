@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/18 11:54:50 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/06 16:49:03 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	size_t	src_len;
+
+	src_len = ft_strlen(src);
+	if (!size)
+		return (src_len);
+	while (*src && --size)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (src_len);
 }

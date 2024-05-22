@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 11:51:25 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/18 14:57:28 by adesille          #+#    #+#             */
+/*   Updated: 2023/11/06 16:47:48 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-	1. Heredoc
-	2. Pipex
-	3. Parsing
-	4. Error_management
-	5. Execute
-*/
-
-int main()
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	printf("%s\n", readline("ecris un truc mec"));
+	char	*destcpy;
+	char	*srccpy;
+
+	destcpy = (char *)dest;
+	srccpy = (char *)src;
+	if (destcpy == NULL && srccpy == NULL)
+		return (NULL);
+	while (n > 0)
+	{
+		*destcpy++ = *srccpy++;
+		n--;
+	}
+	return (dest);
 }
