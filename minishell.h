@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/22 12:52:15 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:20:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,14 @@
 # include <curses.h>
 # include "libft/libft.h"
 
+typedef	struct	s_prompt
+{
+	char	*logname;
+	char	*position;
+	char	*curr_dir;
+	char	*root_dir;
+}	t_prompt;	
+
+char	*get_prompt(char *env[]);
 
 #endif

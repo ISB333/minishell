@@ -3,24 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/22 12:59:15 by nkieffer         ###   ########.fr        #
+#    Updated: 2024/05/23 13:12:55 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -Werror -g3 -I. -lreadline
+CFLAGS += -Wall -Wextra -Werror -g3 -I. -lreadline -fsanitize=address
 CC = cc
 
 ######################## SOURCES ########################
 
-SRCS = main.c
+SRCS = main.c get_prompt.c
 
-OFLAGS += -Wall -Wextra -Werror -g3 -I.
+OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

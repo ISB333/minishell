@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2023/11/30 11:55:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:01:06 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 	int			linelen;
 	int			i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0) 
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	i = 0;
 	read_buff = malloc(BUFFER_SIZE + 1);

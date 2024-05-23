@@ -3,13 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 09:53:02 by adesille          #+#    #+#              #
-#    Updated: 2024/05/22 14:26:10 by nkieffer         ###   ########.fr        #
+#    Updated: 2024/05/23 11:17:32 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 NAME = libft.a
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -46,7 +48,8 @@ SRCS = ft_isalpha.c \
 	ft_putnbr_fd.c \
 	ft_strmapi.c \
 	ft_striteri.c \
-	ft_itoa.c
+	ft_itoa.c \
+	ft_strcmp.c
 
 SRCS_BONUS = ft_lstnew_bonus.c \
 	ft_lstadd_front_bonus.c \
@@ -66,10 +69,13 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 bonus : $(OBJS) $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+
+%.o : %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	rm -f $(OBJS) $(OBJS_BONUS)

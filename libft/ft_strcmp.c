@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 15:23:18 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/23 13:07:03 by adesille         ###   ########.fr       */
+/*   Created: 2023/10/19 14:27:47 by adesille          #+#    #+#             */
+/*   Updated: 2024/05/23 10:12:13 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	char	*str;
+	size_t	i;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	ft_strlcpy(str, s1, (ft_strlen(s1) + 1));
-	ft_strlcpy(&str[ft_strlen(s1)], s2, (ft_strlen(s2) + 1));
-	return (str);
+	i = 0;
+	if (!str1 || !str2)
+		return (-1);
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	if (!str1[i] && !str2[i])
+		return (0);
+	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
