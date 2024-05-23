@@ -3,25 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/22 11:55:41 by adesille         ###   ########.fr        #
+#    Updated: 2024/05/22 12:59:15 by nkieffer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -Werror -g3 -I.
+CFLAGS += -Wall -Wextra -Werror -g3 -I. -lreadline
 CC = cc
 
 ######################## SOURCES ########################
 
-SRCS := main.c
+SRCS = main.c
 
-OBJDIR := .obj
-OBJS := $(SRCS:%.c=$(OBJDIR)/%.o)
+OFLAGS += -Wall -Wextra -Werror -g3 -I.
+OBJ_DIR = .obj
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 ######################## LIBRARY ########################
 
@@ -30,26 +31,26 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 ######################## RULES ########################
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME) : $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(OBJDIR)/%.o: %.c
+$(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
 	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(OFLAGS) -c $< -o $@
 
-$(LIBFT):
+$(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR)
 
-clean:
-	rm -rf $(OBJDIR)
+clean :
+	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
-fclean: clean
+fclean : clean
 	rm -f $(NAME)
 
-re: fclean all
+re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY : all clean fclean re
