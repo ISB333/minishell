@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/23 13:01:06 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/25 09:12:15 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*get_line(int fd, char *stock_buff, char *read_buff)
 			return (free(read_buff), free(stock_buff), NULL);
 		read_buff[bytes_read] = '\0';
 		if (bytes_read > 0)
-			stock_buff = ft_strjoin(stock_buff, read_buff);
+			stock_buff = ft_gnl_strjoin(stock_buff, read_buff);
 		if (!ft_strlen(stock_buff))
 			return (free(read_buff), free(stock_buff), NULL);
 	}
