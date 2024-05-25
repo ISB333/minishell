@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/25 07:22:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/05/25 11:05:29 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,28 @@
 /*
 	1. Lexer
 		- Split each string
+			-> 1st word = cmd (except if < or >)
+			-> next = args (except if | or > etc..)
 		- Tokenize them
-			== e.g: result = (a + 42) * (b - 7)
-			    result (identifier)
-				= (operator)
-				( (left parenthesis)
-				a (identifier)
-				+ (operator)
-				42 (integer literal)
-				) (right parenthesis)
-				* (operator)
-				( (left parenthesis)
-				b (identifier)
-				- (operator)
-				7 (integer literal)
-				) (right parenthesis)
+		e.g:
+			if ("\n")
+				return (NEWLINE);
+			if (">")
+				return (GREAT).
+			if ("<")
+				return (LESS).
+			if (">>")
+				return (GREATGREAT).
+			if (">&")
+				return (GREATAMPERSAND).
+			if ("|")
+				return (PIPE).
+			if ("&")
+				return (AMPERSAND).
+		- Wildcards
+			- * matches every following characters
+			- ? matches one character
+			-> wildcards by default don't match hidden files, except if '.' is specified
 	2. Parser
 		- Arrange these tokens into an Abstract Syntax Tree
 		e.g:
@@ -43,8 +50,19 @@
 					├── Left: Identifier (b)
 					└── Right: Integer Literal (7)
 	
-	3. Error_management
+	3. Expander
 	4. Execute
+	5. loop or (exit , shutdown, reboot)
+	----------------------------------------------------------------------------
+	-- Special cases:
+	- cmd1; cmd2; etc..
+		-> execute and display each one
+		-> loop
+		-> conditional structure
+		-> grouping
+			e.g:
+			( ls; pwd; date ) > outputfile 
+	- 
 */
 
 int	main(int argc, char *argv[], char *env[])
