@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/25 11:05:29 by isb3             ###   ########.fr       */
+/*   Updated: 2024/05/27 13:36:32 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,15 @@ int	main(int argc, char *argv[], char *env[])
 	rl = NULL;
 	if (argc)
 	{
-		int i = 0;
-		while (env[i])
-			printf("%s\n", env[i++]);
 		while (1)
 		{
 			prompt = get_prompt(env);
 			if (!prompt)
 				return (printf("prompt error\n"), 1);
 			rl = readline(prompt);
-			printf("%s\n", rl);
-			// lexer();
+			add_history(rl);
+			// printf("%s\n", rl);
+			lexer(rl);
 			// parser();
 			free(prompt);
 			if (!ft_strcmp(rl, "exit\0"))

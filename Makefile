@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/23 13:12:55 by adesille         ###   ########.fr        #
+#    Updated: 2024/05/27 13:22:44 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = cc
 
 ######################## SOURCES ########################
 
-SRCS = main.c get_prompt.c
+SRCS = main.c get_prompt.c lexer.c tokenization.c
 
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj

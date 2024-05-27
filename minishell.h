@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/23 13:20:41 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:22:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ typedef	struct	s_prompt
 	char	*root_dir;
 }	t_prompt;	
 
+
+// typedef struct s_data
+// {
+// 	char **args;
+// 	char 
+// }	t_data;
+
+
 char	*get_prompt(char *env[]);
+int		lexer(char *str);
+char	**tokenizer(char const *s);
 
 #endif
