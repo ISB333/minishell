@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/13 10:16:45 by adesille          #+#    #+#              #
-#    Updated: 2024/04/21 10:58:18 by isb3             ###   ########.fr        #
+#    Updated: 2024/05/28 10:07:10 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = pipex
 DEPFLAGS = -MP -MD
-CFLAGS += -Wall -Wextra -Werror $(DEPFLAGS)
+CFLAGS += -Wall -Wextra -Werror $(DEPFLAGS) -g3
 CC = cc
 
 ######################## SOURCES ########################
