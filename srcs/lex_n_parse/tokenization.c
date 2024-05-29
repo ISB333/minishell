@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:40:51 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/28 14:59:58 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:08:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,6 @@
 	1- Put allocated memory in a struct
 	2- Create a switch function
 */
-
-int	is_del(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
-}
-
-int	is_sh_ope(char *s, int i)
-{
-	if (s[i] == '|')
-		return (1);
-	if ((s[i] == '<' && s[i + 1] != '<') || (s[i] == '>' && s[i + 1] != '>'))
-		return (1);
-	if ((s[i] == '<' && s[i + 1] == '<') || (s[i] == '>' && s[i + 1] == '>'))
-		return (2);
-	return (0);
-}
 
 static void	freemem(char **array, size_t j)
 {
@@ -104,12 +86,16 @@ int		strlen_space(char *s)
 	int	i;
 
 	len = 0;
-	i = 0;
+	i = -1;
 	while (s[len])
 		len++;
 	while (s[++i])
+	{
 		if (is_sh_ope(s, i))
 			len += 2;
+		if (is_sh_ope(s, i) == 2)
+			i++;
+	}
 	return (len + 1);
 }
 

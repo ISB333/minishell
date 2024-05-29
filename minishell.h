@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/28 11:59:03 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/29 09:59:24 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ typedef struct s_data
 char	*get_prompt(char *env[]);
 int		lexer(char *str);
 char	**tokenizer(char *s);
+
+int		is_sh_ope(char *s, int i);
+int		is_del(char c);
 
 #endif
