@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 09:59:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:42:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef	struct	s_prompt
 	char	*root_dir;
 }	t_prompt;	
 
-
 typedef struct s_data
 {
 	char	*cmd_path;
@@ -48,12 +47,14 @@ typedef struct s_data
 
 }	t_data;
 
-
 char	*get_prompt(char *env[]);
 int		lexer(char *str);
 char	**tokenizer(char *s);
 
 int		is_sh_ope(char *s, int i);
 int		is_del(char c);
+size_t	count_rows(char *s);
+char	*add_space(char *s, int i, int k);
+char	**splitter(char **array, char *s, size_t i);
 
 #endif

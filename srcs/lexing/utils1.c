@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenization.c                                     :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 12:40:51 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 10:08:21 by adesille         ###   ########.fr       */
+/*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
+/*   Updated: 2024/05/29 15:36:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-	-- IGNORE:
-	- ''
-	- ""
-	- not interpret ' or "" or or \ or ;
-	- {} or ()
-*/
-
-/*
-	-- TODO:
-	1- Put allocated memory in a struct
-	2- Create a switch function
-*/
-
-static void	freemem(char **array, size_t j)
+void	freemem(char **array, size_t j)
 {
 	while (j-- > 0)
 		free(array[j]);
 	free(array);
 }
 
-static size_t	count_rows(char *s)
+size_t	count_rows(char *s)
 {
 	size_t	i;
 	size_t	rows;
@@ -56,7 +42,7 @@ static size_t	count_rows(char *s)
 	return (rows);
 }
 
-static char	**splitter(char **array, char *s, size_t i)
+char	**splitter(char **array, char *s, size_t i)
 {
 	size_t	j;
 	size_t	k;
@@ -125,23 +111,4 @@ char	*add_space(char *s, int i, int k)
 			str[k++] = s[i++];
 	}
 	return (str[k] = '\0', str);
-}
-
-char	**tokenizer(char *s)
-{
-	char **array;
-	char *str = NULL;
-	size_t i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	str = add_space(s, 0, 0);
-	if (!str)
-		return (NULL);
-	array = (char **)malloc((count_rows(str) + 1) * sizeof(char *));
-	if (!array)
-		return (NULL);
-	array = splitter(array, str, i);
-	return (free(str), array);
 }

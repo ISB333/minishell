@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/29 10:35:13 by adesille         ###   ########.fr        #
+#    Updated: 2024/05/29 15:07:20 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ CC = cc
 
 SRCS = main.c \
 	./srcs/get_prompt.c \
-	./srcs/lex_n_parse/lexer.c \
-	./srcs/lex_n_parse/tokenization.c \
-	./srcs/lex_n_parse/is_sh.c
+	./srcs/lexing/lexer.c \
+	./srcs/lexing/tokenization.c \
+	./srcs/lexing/is_sh.c \
+	./srcs/lexing/utils1.c
 
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
