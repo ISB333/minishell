@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/27 13:36:32 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:23:09 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,25 @@ int	main(int argc, char *argv[], char *env[])
 	char	*rl;
 	char	*prompt;
 
+	catchBackslash();
+	catchC();
 	rl = NULL;
 	if (argc)
 	{
 		while (1)
 		{
-			prompt = get_prompt(env);
+			prompt = get_prompt(/*env*/);
 			if (!prompt)
 				return (printf("prompt error\n"), 1);
 			rl = readline(prompt);
+			free(prompt);
+			if (rl == NULL)
+				return (write(1, "exit", 4), 0);
 			add_history(rl);
-			// printf("%s\n", rl);
+			if (rl[0] != '\n')
+				printf("%s\n", rl);
 			lexer(rl);
 			// parser();
-			free(prompt);
 			if (!ft_strcmp(rl, "exit\0"))
 				return (free(rl), exit(EXIT_SUCCESS), 0);
 			free(rl);

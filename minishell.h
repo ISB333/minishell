@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/27 13:22:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:18:55 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ typedef	struct	s_prompt
 // }	t_data;
 
 
-char	*get_prompt(char *env[]);
+char	*get_prompt(/*char *env[]*/void);
 int		lexer(char *str);
 char	**tokenizer(char const *s);
+
+//sigHandler.c
+int	catchBackslash(void);
+int	catchC(void);
 
 #endif

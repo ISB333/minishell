@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/27 13:22:44 by adesille         ###   ########.fr        #
+#    Updated: 2024/05/29 15:15:30 by nkieffer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ CC = cc
 
 ######################## SOURCES ########################
 
-SRCS = main.c get_prompt.c lexer.c tokenization.c
+SRCS = main.c \
+	get_prompt.c \
+	lexer.c \
+	tokenization.c \
+	sigHandler.c
 
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
