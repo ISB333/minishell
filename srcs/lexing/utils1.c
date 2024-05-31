@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 15:36:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:39:16adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		strlen_space(char *s)
 	return (len + 1);
 }
 
-char	*add_space(char *s, int i, int k)
+char	*add_space(tok **new_str, char *s, int i, int k)
 {
 	char	*str;
 
@@ -110,5 +110,9 @@ char	*add_space(char *s, int i, int k)
 		else
 			str[k++] = s[i++];
 	}
-	return (str[k] = '\0', str);
+	str[k] = '\0';
+	free(s);
+	*new_str = str;
+	return (NULL);
+	// return (str[k] = '\0', str);
 }

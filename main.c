@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/28 13:45:37 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:30:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ int	main(int argc, char *argv[], char *env[])
 			free(prompt);
 			if (!ft_strcmp(rl, "exit\0"))
 				return (free(rl), exit(EXIT_SUCCESS), 0);
-			free(rl);
 		}
 	}
 	return (1);

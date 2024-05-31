@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:40:51 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 15:40:35 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:39:35 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 /*
 	-- IGNORE:
-	- ''
-	- ""
-	- not interpret ' or "" or or \ or ;
-	- {} or ()
+	1- "" && ''
+		- echo 'Hello, $USER'         # Outputs: Hello, $USER
+		- echo "Backslash: \n"       # Outputs: Backslash: \n
+
+	2- 
+		- echo "Hello, $USER"        # Outputs: Hello, John
+		- echo "Today is $(date)"    # Outputs: Today is [current date]
+		- echo 'It\'s a nice day'  # Incorrect: Causes error
+		- echo 'It'\''s a nice day'  # Correct: Outputs: It's a nice day
+
 */
 
-/*
-	-- TODO:
-	1- Put allocated memory in a struct
-	2- Create a switch function
-*/
 
-int	is_bad_char(char c)
+int	is_quotes(char c)
 {
-	if (c == 46 || c == 34)
+	if (c == 39 || c == 34)
 		return (1);
-	// if (c == "'")
-	// 	return (1);
-	// if (c == "'")
-	// 	return (1);
 	return (0);
 }
 
-char	*ignore_bad_char(char *s)
+char	*handle_quotes(char *s)
 {
 	char	*str;
 	int		i;
@@ -46,7 +43,8 @@ char	*ignore_bad_char(char *s)
 	i = -1;
 	bad = 0;
 	while (s[++i])
-		if (is_bad_char(s[i]))
+		if (is_quotes(s[i]))
+			// find_last_q();
 			bad++;
 	str = malloc(i - bad + 1);
 	if (!s)
@@ -56,7 +54,7 @@ char	*ignore_bad_char(char *s)
 	bad = 0;
 	while (s[i])
 	{
-		if (is_bad_char(s[i]))
+		if (is_quotes(s[i]))
 			i++;
 		str[bad++] = s[i++];
 	}
@@ -65,22 +63,22 @@ char	*ignore_bad_char(char *s)
 
 char	**tokenizer(char *s)
 {
-	char **array;
-	char *str = NULL;
+	char **array = NULL;
 	size_t i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	str = add_space(s, 0, 0);
-	if (!str)
-		return (NULL);
-	str = ignore_bad_char(str);
-	if (!str)
-		return (NULL);
-	array = (char **)malloc((count_rows(str) + 1) * sizeof(char *));
+	if (is_sh_ope(s, 0))
+		if (add_space(&s, 0, 0))
+			return (NULL);
+	// str = handle_quotes(str);
+	printf("%s\n", s);
+	// if (!str)
+	// 	return (NULL);
+	array = (char **)malloc((count_rows(s) + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	array = splitter(array, str, i);
-	return (free(str), array);
+	array = splitter(array, s, i);
+	return (array);
 }

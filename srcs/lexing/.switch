@@ -1,6 +1,8 @@
 -- IGNORE:
 	''
 	""
+
+-- Don't manage
 	not interpret ' or "" or or \ or ;
 	{} or ()
 
@@ -26,3 +28,13 @@
 |  $()      | Command Subst.    | Command substitution, runs the enclosed command and substitutes its output (modern syntax).      |
 |  ${}      | Parameter Exp.    | Expands to the value of a variable with more complex processing.                                 |
 ------------------------------------------------------------------------------------------------------------------------------------
+
+
+'bla'bl'a' shell ignore the quote inside
+'bla"bl"a' shell don't ignore the quote inside
+
+"bla"bl"a" shell ignore the quote inside
+"bla'bl'a" shell don't ignore the quote inside
+
+if (') find other (') if not add one at the end (except if del)
+same for (")
