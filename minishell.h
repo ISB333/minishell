@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/31 13:42:56 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/02 13:59:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@
 # include <curses.h>
 # include "libft/libft.h"
 
-typedef	struct	s_prompt
+typedef struct s_prompt
 {
 	char	*logname;
-	char	*position;
+	char	*pos;
 	char	*curr_dir;
 	char	*root_dir;
 }	t_prompt;	
@@ -48,13 +48,14 @@ typedef struct s_data
 }	t_data;
 
 char	*get_prompt(char *env[]);
-int		lexer(char *str);
-char	**tokenizer(char *s);
+char	**lexer(char *str);
 
-int		is_sh_ope(char *s, int i);
+int		is_sh_ope(char *s, int i, char token);
 int		is_del(char c);
+int		is_quotes(char *s, int i, char token);
+int		closing_quotes_pos(char *s, int i);
 size_t	count_rows(char *s);
-char	*add_space(char *s, int i, int k);
+int		add_space(char **s, int i, int k);
 char	**splitter(char **array, char *s, size_t i);
 
 #endif

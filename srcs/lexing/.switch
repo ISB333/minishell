@@ -1,15 +1,3 @@
--- IGNORE:
-	''
-	""
-
--- Don't manage
-	not interpret ' or "" or or \ or ;
-	{} or ()
-
--- ADD_SPACE:
-	|
-	< >
-	<< >>
  __________________________________________________________________________________________________________________________________
 | Character | Name              | Description                                                                                      |
 |-----------|-------------------|--------------------------------------------------------------------------------------------------|
@@ -18,15 +6,10 @@
 |  >>       | Append Output     | Redirects the output of a command to a file, appending to the file if it exists.                 |
 |  <        | Redirect Input    | Takes input for a command from a file.                                                           |
 |  <<       | Here Document     | Redirects multiple lines of input (until a specified delimiter is reached) to a command.         |
-|   ;       | Command Separator | Allows multiple commands to be executed sequentially.                                            |
-|  ()       | Subshell          | Runs commands in a subshell.                                                                     |
-|  {}       | Command Group     | Groups commands together, treated as a single command.                                           |
 |  ""       | Double Quotes     | Preserves the literal value of all characters within, except `$`, `` ` ``, and `\`.              |
 |  ''       | Single Quotes     | Preserves the literal value of all characters within.                                            |
 |   .       | Source            | Runs commands from a file in the current shell (`source` is an alternative built-in).            |
 |  $        | Variable          | Expands to the value of a variable.                                                              |
-|  $()      | Command Subst.    | Command substitution, runs the enclosed command and substitutes its output (modern syntax).      |
-|  ${}      | Parameter Exp.    | Expands to the value of a variable with more complex processing.                                 |
 ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -35,6 +18,3 @@
 
 "bla"bl"a" shell ignore the quote inside
 "bla'bl'a" shell don't ignore the quote inside
-
-if (') find other (') if not add one at the end (except if del)
-same for (")
