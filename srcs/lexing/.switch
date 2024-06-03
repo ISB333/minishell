@@ -14,7 +14,8 @@
 
 
 'bla'bl'a' shell ignore the quote inside
-'bla"bl"a' shell don't ignore the quote inside
-
 "bla"bl"a" shell ignore the quote inside
+(I think shell don't ignore but them but )
+
+'bla"bl"a' shell don't ignore the quote inside
 "bla'bl'a" shell don't ignore the quote inside

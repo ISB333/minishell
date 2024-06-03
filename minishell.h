@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/02 13:59:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/03 08:14:32 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int		is_sh_ope(char *s, int i, char token);
 int		is_del(char c);
 int		is_quotes(char *s, int i, char token);
 int		closing_quotes_pos(char *s, int i);
+int		is_dollar(char **arr, int i, char token);
+int		get_dollar(char **arr);
 size_t	count_rows(char *s);
 int		add_space(char **s, int i, int k);
 char	**splitter(char **array, char *s, size_t i);

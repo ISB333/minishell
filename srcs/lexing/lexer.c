@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/02 13:44:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/03 09:33:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ char	**lexer(char *s)
 	if (!tokens)
 		return (NULL);
 	tokens = splitter(tokens, s, i);
+	if (is_dollar(tokens, -1, '?'))
+		if (get_dollar(tokens))
+			return (NULL);
 	while (tokens[i])
 		printf("%s\n", tokens[i++]);
 	free_memory(tokens);

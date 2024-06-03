@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/02 13:58:07 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/03 09:45:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ char	**splitter(char **array, char *s, size_t i)
 				while (s[i] && !is_del(s[i]))
 					i++;
 			array[j] = ft_substr(s, k, i - k);
-			if (!array[j])
-				return (free_mem(array, j), NULL);
-			j++;
+			if (!array[j++])
+				return (free_mem(array, j - 1), NULL);
 		}
 	}
 	return (array[j] = NULL, array);

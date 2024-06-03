@@ -6,14 +6,14 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/02 11:49:45 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/03 09:27:56 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -Werror -g3 -I. -MP -MD -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -g3 -I. -lreadline -fsanitize=address
 CC = cc
 
 ######################## SOURCES ########################
@@ -22,6 +22,7 @@ SRCS = main.c \
 	./srcs/get_prompt.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh.c \
+	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
@@ -55,7 +56,6 @@ $(LIBFT) :
 clean :
 	rm -rf $(OBJ_DIR) $(DEPFILES)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-
 
 fclean : clean
 	rm -f $(NAME)
