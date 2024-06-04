@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/02 11:58:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/04 10:05:22 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,27 +99,26 @@
 		- 
 */
 
-int	main(int argc, char *argv[], char *env[])
+
+int	main()
 {
 	char	*rl;
 	char	*prompt;
 
-	rl = NULL;
-	if (argc)
+	add_previous_history();
+	while (1)
 	{
-		while (1)
-		{
-			prompt = get_prompt(env);
-			if (!prompt)
-				return (printf("prompt error\n"), 1);
-			rl = readline(prompt);
-			add_history(rl);
-			if (!ft_strcmp(rl, "exit\0"))
-				return (free(rl), exit(EXIT_SUCCESS), 0);
-			lexer(rl);
-			// // parser();
-			free(prompt);
-		}
+		prompt = get_prompt();
+		if (!prompt)
+			return (printf("prompt error\n"), 1);
+		rl = readline(prompt);
+		add_history(rl);
+		append_new_history(rl);
+		if (!ft_strcmp(rl, "exit\0"))
+			return (free(rl), exit(EXIT_SUCCESS), 0);
+		lexer(rl);
+		// // parser();
+		free(prompt);
 	}
 	return (1);
 }

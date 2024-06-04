@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/25 09:11:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/04 10:07:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char	*get_line(int fd, char *stock_buff, char *read_buff)
 	return (stock_buff);
 }
 
-char	*get_next_line(int fd)
+char	*gnhell(int fd)
 {
 	static char	*stock_buff;
 	char		*read_buff;
@@ -67,10 +67,10 @@ char	*get_next_line(int fd)
 	int			linelen;
 	int			i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
 	i = 0;
-	read_buff = malloc(BUFFER_SIZE + 1);
+	read_buff = malloc(100);
 	if (!read_buff)
 		return (NULL);
 	read_buff[0] = '\0';

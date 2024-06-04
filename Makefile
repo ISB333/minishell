@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/03 09:27:56 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/04 10:11:47 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ SRCS = main.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh.c \
 	./srcs/lexing/is_dollar.c \
-	./srcs/lexing/utils1.c
+	./srcs/lexing/utils1.c \
+	./srcs/history/gnl.c \
+	./srcs/history/gnl_utils.c \
+	./srcs/history/manage_history.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
 OFLAGS += -Wall -Wextra -g3 -I.
@@ -54,11 +57,11 @@ $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR)
 
 clean :
-	rm -rf $(OBJ_DIR) $(DEPFILES)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -rf $(OBJ_DIR) $(DEPFILES)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 

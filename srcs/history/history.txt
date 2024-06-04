@@ -1,0 +1,9 @@
+ls
+cat
+yo man
+exit
+test
+lol
+ca marche
+exit
+exit
