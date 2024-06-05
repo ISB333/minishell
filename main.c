@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/04 10:05:22 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/05 09:38:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,6 @@
 
 /*
 	1. Lexer
-		- Split each string
-			-> 1st word = cmd (except if < or >)
-			-> next = args (except if | or > etc..)
-		- Tokenize them
-		e.g:
-			if ("\n")
-				return (NEWLINE);
-			if (">")
-				return (GREAT).
-			if ("<")
-				return (LESS).
-			if (">>")
-				return (GREATGREAT).
-			if (">&")
-				return (GREATAMPERSAND).
-			if ("|")
-				return (PIPE).
-			if ("&")
-				return (AMPERSAND).
-		- Wildcards
-			- * matches every following characters
-			- ? matches one character
-			-> wildcards by default don't match hidden files, except if '.' is specified
 	2. Parser
 		- Arrange these tokens into an Abstract Syntax Tree
 		e.g:
@@ -85,14 +62,12 @@
 						├── Type: >
 						└── Target: sorted_files.txt
 	
-	3. Expander
-	4. Execute
-	5. loop or (exit , shutdown, reboot)
+	3. Execute
+	4. loop or (exit , shutdown, reboot)
+
 	----------------------------------------------------------------------------
 	-- Special cases:
 		- grouping
-			e.g:
-			( ls; pwd; date ) > outputfile 
 		- e'ch'o
 		- 'open quote (no need to manage this) 
 		- <infile
@@ -104,6 +79,7 @@ int	main()
 {
 	char	*rl;
 	char	*prompt;
+	t_ast	*ast;
 
 	add_previous_history();
 	while (1)
@@ -116,8 +92,7 @@ int	main()
 		append_new_history(rl);
 		if (!ft_strcmp(rl, "exit\0"))
 			return (free(rl), exit(EXIT_SUCCESS), 0);
-		lexer(rl);
-		// // parser();
+		parser(&ast, lexer(rl));
 		free(prompt);
 	}
 	return (1);

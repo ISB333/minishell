@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/03 09:33:48 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/05 11:00:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,7 @@
 
 */
 
-void	free_memory(char **array)
-{
-	int	j;
 
-	j = 0;
-	if (!array)
-		return ;
-	while (array[j])
-		j++;
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
-}
 
 char	**lexer(char *s)
 {
@@ -60,6 +48,5 @@ char	**lexer(char *s)
 			return (NULL);
 	while (tokens[i])
 		printf("%s\n", tokens[i++]);
-	free_memory(tokens);
-	return (free(s), NULL);
+	return (free(s), tokens);
 }

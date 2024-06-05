@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/04 10:11:47 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/05 10:18:48 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ CC = cc
 
 SRCS = main.c \
 	./srcs/get_prompt.c \
+	./srcs/history/gnl.c \
+	./srcs/history/gnl_utils.c \
+	./srcs/history/manage_history.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
-	./srcs/history/gnl.c \
-	./srcs/history/gnl_utils.c \
-	./srcs/history/manage_history.c
+	./srcs/parsing/parsing.c 
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
 OFLAGS += -Wall -Wextra -g3 -I.

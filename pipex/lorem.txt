@@ -1,1 +1,12 @@
-xfnfhn
+total 64
+drwxr-xr-x 2 ISB 2023_mulhouse    98 mai   28 10:10 0_obj
+-rw-r--r-- 1 ISB 2023_mulhouse    31 mai   23 11:04 .gitignore
+drwxr-xr-x 4 ISB 2023_mulhouse  4096 mai   28 10:07 libft
+-rw-r--r-- 1 ISB 2023_mulhouse     6 mai   23 11:04 lorem.txt
+-rw-r--r-- 1 ISB 2023_mulhouse  2238 mai   28 10:07 Makefile
+-rw-r--r-- 1 ISB 2023_mulhouse     5 juin   5 08:47 output.txt
+-rwxr-xr-x 1 ISB 2023_mulhouse 27328 mai   28 10:10 pipex
+-rw-r--r-- 1 ISB 2023_mulhouse  2638 mai   28 10:10 pipex.c
+-rw-r--r-- 1 ISB 2023_mulhouse  1705 mai   28 09:48 pipex.h
+-rw-r--r-- 1 ISB 2023_mulhouse  2567 mai   23 11:04 utils2.c
+-rw-r--r-- 1 ISB 2023_mulhouse  3157 mai   23 11:04 utils.c

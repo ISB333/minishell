@@ -7,3 +7,45 @@ lol
 ca marche
 exit
 exit
+bonjour
+exit
+bonjour
+exit
+< thisisatest
+exit
+< in |ls
+exit
+< in |ls
+exit
+< in |ls
+exit
+< in |ls
+exit
+EXIT
+exit
+< in |ls
+exit
+< in |ls
+exit
+< in |ls
+< in |ls
+< in |ls
+< in |ls
+exit
+< in |ls
+< in |ls
+< in |ls
+exit
+< in |ls
+exit
+< in |ls
+exit
+"yo"
+yo
+< yo
+< y"o" bla'bl'a
+< y"o" "bla'bl'a"
+< y"o" 'bla"bl"a'
+exit
+yo
+exit

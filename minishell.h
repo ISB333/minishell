@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/04 10:09:29 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/05 11:31:01 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,21 @@ typedef struct s_prompt
 	char	*root_dir;
 }	t_prompt;	
 
-typedef struct s_data
+typedef struct s_ast
 {
-	char	*cmd_path;
-	char	**args;
-	int		pipe;
-	int		infile;
-	int		outfile;
-
-}	t_data;
+	char			**cmd;
+	char			*cmd_path;
+	int				fd_in;
+	int				fd_out;
+	struct s_ast	*next;
+}	t_ast;
 
 char	*get_prompt();
+
+	/// History ///
+char	*gnhell(int fd);
+int		append_new_history(char *rl);
+int		add_previous_history();
 
 	/// Lexing ///
 char	**lexer(char *str);
@@ -62,9 +66,7 @@ size_t	count_rows(char *s);
 int		add_space(char **s, int i, int k);
 char	**splitter(char **array, char *s, size_t i);
 
-	/// History ///
-char	*gnhell(int fd);
-int		append_new_history(char *rl);
-int		add_previous_history();
+	/// Parsing ///
+int		parser(t_ast **ast, char **tokens);
 
 #endif
