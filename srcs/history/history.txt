@@ -49,3 +49,126 @@ yo
 exit
 yo
 exit
+"p"r"i"n"t" lol
+"p"r"i"n"t lol
+"p"r"i"n"t" lol
+exit
+YO YO YO
+EXIT
+exit
+"tE"t" dFS'fd'fds
+"t"E"t" dFS'fd'fds
+exit
+echo $USER
+echo blablablablabla$USER
+echo bl$USER
+echo bhgvygfvuggubjklhivjgvguvl$USER
+echo blablablablabla$USER
+echo bhgvygfvuggubjklhivjgvguvl$USER
+exit
+echo bhgvygfvuggubjklhivjgvguvl$USER
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvlUSER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfvuggubjklhivjgvguvl$USER
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv 'uggubjklhivjgvguvl$USER'
+exit
+echo bhgvygfv 'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exitexit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+exit
+echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo bhgvygfv'uggubjklhivjgvguvl$USERexit
+echo bhgvygfv'uggubjklhivjgvguvl$USERexit
+exit
+echo bhgvyg"fv'uggubjklhivjgvguvl$USERexit
+echo <bhgvyg"fv'uggubjklhivjgvguvl$USERexit
+echo <bhgvyg"fv'uggubjklhivjgvguvl$USERe|xit
+exit
+bla"bla
+bla'bla
+exit
+bla'bla
+exit
+bla'bla
+exit
+bla'bla
+exit
+bla'bla
+exit
+< in
+< in'hvsjbh
+exit
+< in'hvsjbh
+exit
+< in'hvsjbh
+exit
+< in'hvsjbh
+exit
+< in'hvsjbh
+exit
+< in'hvsjbh
+< in"hvsjbh
+exit
+< in"hvsjbh
+exit
+exit
+< in"hvsjbh
+exit
+< in"hvsjbh
+< inhvsjbh
+< inh'vsjbh
+exit
+< inhvsjbh'
+< inhvsjbh"
+exit
+yo "sfggyj" shfvbkj" fyfghksb" msfb'kuvbj'
+yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+exit
+yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+exit
+yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+exit
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj''''''''
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
+
+
+exit
+yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
+exit
+yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'''''''''
+yo "sfggyj" shfvbkj"" fyfghksb" msfb'ku vbj'''''''''
+exit

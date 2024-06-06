@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/05 11:31:01 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:35:15 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,19 @@ int		add_previous_history();
 char	**lexer(char *str);
 int		is_sh_ope(char *s, int i, char token);
 int		is_del(char c);
-int		is_quotes(char *s, int i, char token);
+int		quotes_manager(char **tokens);
+// int		is_quotes(char *s, int i, char token);
 int		closing_quotes_pos(char *s, int i);
-int		is_dollar(char **arr, int i, char token);
-int		get_dollar(char **arr);
+
 size_t	count_rows(char *s);
 int		add_space(char **s, int i, int k);
 char	**splitter(char **array, char *s, size_t i);
 
+int		is_dollar(char **arr, int i, char token, char pos);
+int		get_dollar(char **arr);
+
 	/// Parsing ///
 int		parser(t_ast **ast, char **tokens);
+void	free_memory(char **array);
 
 #endif

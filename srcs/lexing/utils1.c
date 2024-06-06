@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/03 09:45:31 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/06 13:05:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**splitter(char **array, char *s, size_t i)
 	size_t	k;
 
 	j = 0;
+	if (!array)
+		return (NULL);
 	while (s[i])
 	{
 		while (is_del(s[i]))
@@ -85,8 +87,8 @@ int	strlen_space(char *s)
 		if (is_sh_ope(s, i, 0) == 2)
 			i++;
 	}
-	if (is_quotes(s, 0, '?') == 34 || is_quotes(s, 0, '?') == 39)
-		len++;
+	// if (is_quotes(s, 0, '?') == 34 || is_quotes(s, 0, '?') == 39)
+	// 	len++;
 	return (len + 1);
 }
 
@@ -110,8 +112,8 @@ int	add_space(char **s, int i, int k)
 		else
 			str[k++] = (*s)[i++];
 	}
-	if (is_quotes(*s, 0, '?') == 34 || is_quotes(*s, 0, '?') == 39)
-		str[k++] = is_quotes(*s, 0, '?');
+	// if (is_quotes(*s, 0, '?') == 34 || is_quotes(*s, 0, '?') == 39)
+	// 	str[k++] = is_quotes(*s, 0, '?');
 	str[k] = '\0';
 	return (free(*s), *s = str, 0);
 }

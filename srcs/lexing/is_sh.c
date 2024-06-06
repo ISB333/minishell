@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sh.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:48:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/02 13:55:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/06 12:41:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,20 @@ int	find_closing_quote(char *s, int i, char c)
 	return (39);
 }
 
-int	is_quotes(char *s, int i, char token)
-{
-	if (token == '?')
-	{
-		i = -1;
-		while (s[++i])
-		{
-			if (s[i] == 34)
-				return (find_closing_quote(s, i, 34));
-			if (s[i] == 39)
-				return (find_closing_quote(s, i, 39));
-		}
-	}
-	else if (s[i] == 34 || s[i] == 39)
-		return (1);
-	return (0);
-}
+// int	is_quotes(char *s, int i, char token)
+// {
+// 	if (token == '?')
+// 	{
+// 		i = -1;
+// 		while (s[++i])
+// 		{
+// 			if (s[i] == 34)
+// 				return (find_closing_quote(s, i, 34));
+// 			if (s[i] == 39)
+// 				return (find_closing_quote(s, i, 39));
+// 		}
+// 	}
+// 	else if (s[i] == 34 || s[i] == 39)
+// 		return (1);
+// 	return (0);
+// }

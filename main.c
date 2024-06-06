@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/05 09:38:57 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:55:00 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int	main()
 		append_new_history(rl);
 		if (!ft_strcmp(rl, "exit\0"))
 			return (free(rl), exit(EXIT_SUCCESS), 0);
-		parser(&ast, lexer(rl));
+		if (parser(&ast, lexer(rl)))
+			return (free(prompt), 1);
 		free(prompt);
 	}
 	return (1);
