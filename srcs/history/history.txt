@@ -453,3 +453,9 @@ exit
 exit
 <<in blabla sdfhvs gsjfjh | test > out
 exit
+<<in 
+<<in blabla 
+<in blabla 
+cmd gdfj'
+cmd 
+exit
