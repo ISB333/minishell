@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 15:42:10 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:41:41 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ typedef struct s_data
 	int		pipe;
 	int		infile;
 	int		outfile;
-
 }	t_data;
 
-char	*get_prompt(char *env[]);
+int	ft_do_all();
+
+
+char	*get_prompt(void);
 int		lexer(char *str);
 char	**tokenizer(char *s);
 
@@ -56,5 +58,9 @@ int		is_del(char c);
 size_t	count_rows(char *s);
 char	*add_space(char *s, int i, int k);
 char	**splitter(char **array, char *s, size_t i);
+
+//sigHandler.c
+int	catchBackslash(void);
+int	catchC(void);
 
 #endif
