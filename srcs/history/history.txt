@@ -172,3 +172,284 @@ exit
 yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'''''''''
 yo "sfggyj" shfvbkj"" fyfghksb" msfb'ku vbj'''''''''
 exit
+yo "sfggyj" shfvbkj"" fyfghksb" msfb'ku vbj'''''''''
+cat hello" test" | cat hello "test"
+cat hello" test" | cat hello "test lol ahah"
+exit
+cat hello" test" | cat hello "test lol ahah"
+exit
+cat hello" test" | cat hello "test lol ahah"
+exit
+cat hello" test" | cat hello "test lol ahah"
+xeit
+cat hello" test" | cat hello "test lol ahah"
+exit
+xei
+xeit
+xeit
+exit
+cat hello" test" | cat hello "test lol ahah"
+exit
+cat hello" test" | cat hello "test lol a'hah"
+cat hello" test" | cat hello "test lo"l a'hah"
+cat hello" test" | cat hello "test lo"l a'h'ah"
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exi
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+xit
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+EXIT
+exir
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+eexit
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah"
+exit
+cat hello" test" | cat hello "test lo"'l ahah" > out < in
+exit
+cat hello" test" 
+exit
+cat hello" test" | cat hello "test lo"'l ahah"  > out < in
+cat hello" test" | cat hello "test lo"'l ahah">out<in
+cat hello" test" | cat hello "test lo"'l ahah">out<<in
+<in blabla| lol test
+exit
+<in blabla| lol test
+cat hello" test" | cat hello "test lo"'l ahah">out<<in
+exit
+cat hello" test" | cat hello "test lo"'l ahah">out<<in
+<in blabla| lol test
+exit
+<in blabla| lol test
+exit
+exit
+<in blabla| lol test
+exit
+<in blabla| lol test
+exit
+<in blabla| lol test
+<in blabla| lol test
+exi
+exit
+exi
+<in blabla| lol test
+exit
+<in blabla| lol test
+<in blabla| lol test
+exit
+<in blabla| lol test
+<in blabla| lol test
+exit
+<in blabla| lol test
+<in blabla| lol test
+<in blabla| lol test
+<in blabla| lol test
+exit
+<in blabla| lol test
+<in blabla test| lol test
+exit
+<in blabla test| lol test
+<in blabla test ahha | lol test ptdr
+<in blabla test ahha | lol test ptdr |
+<in blabla test ahha | lol test ptdr <
+<in blabla test ahha | lol test ptdr <<
+<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
+exit
+<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
+exit
+<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
+<in blabla test| lol test
+exit
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test
+<in blabla test| lol test lol
+<in blabla test| lol test >lol
+<in blabla test| lol test >             lol
+exit
+<in blabla test| lol test test
+<in blabla test| lol test test
+<in blabla test| lol test test
+<in blabla test| lol test test
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+<in blabla test| lol test test
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+<in blabla test| lol test test
+exit
+exit
+<in blabla test| lol test test
+<in blabla test| lol test test test
+<in blabla test                 | lol test test test
+<in blabla test   test              | lol test test test
+exit
+<in blabla test   test              | lol test test test
+<<in blabla test   test              | lol test test test
+<<in blabla test   test              | lol test test test > oiut
+<<in blabla test   test              | lol test test test >>oiut
+<<in blabla test   test              | lol test test test >>oiutexit
+exi
+exit
+<<in blabla test   test              | lol test test test >>oiutexit
+exit
+<<in blabla test   test              | lol test test test >>oiutexit
+exit
+<<in blabla test   test              | lol test test test >>oiutexit
+<<in blabla test   test              | lol test test test >>oiutexit
+<<in blabla test   test              | lol test test test >>out
+<<in blabla test   test              | lol test test test >out
+<<in blabla test   test              | lol test test test 
+<<in blabla test   test              | lol test test test 
+<<in blabla test   test              | lol test test test >out
+exit
+<<in blabla test   test              | lol test test test >out
+<<in blabla test   test              | lol test test test 
+<<in blabla test   test              | lol test test test >out
+exit
+<<in blabla test   test              | lol test test test >out
+<<in blabla test   test              | lol test test test >>out
+exit
+<<in blabla test   test              | lol test test test >>out
+exit
+<<in blabla test   test              | lol test test test >>out
+<<in blabla | test >out
+<<in blabla | test >out
+<<in blabla | test 
+exit
+<<in blabla | test 
+<<in blabla |
+exit
+<<in blabla | test >out
+<<in blabla | test >out
+exit
+<<in blabla | test >out
+<<in blabla | test 
+<<in blabla | test 
+<<in blabla | test >out
+exit
+<<in blabla | test >out
+<<in blabla | test >out
+<<in blabla | test 
+exit
+<<in blabla | test >out
+<<in blabla | test >out
+<<in blabla | test >out
+<<in blabla | test 
+exit
+<<in blabla | test 
+exit
+<<in blabla | test 
+<<in blabla | test > out
+<<in blabla | test > out
+<<in blabla | test 
+exit
+<<in blabla | test 
+<<in blabla | test 
+exit
+<<in blabla | test 
+<<in blabla | test 
+exit
+<<in blabla | test > out
+exit
+exit
+<<in blabla | test > out
+exit
+<<in blabla sdfhvs gsjfjh | test > out
+exit

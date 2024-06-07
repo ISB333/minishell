@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/06 13:05:52 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:50:25 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ void	free_mem(char **array, size_t j)
 	while (j-- > 0)
 		free(array[j]);
 	free(array);
+}
+
+int	is_redir(char *s, int i, char token)
+{
+
+	if (token == '?')
+	{
+		i = -1;
+		while (s[++i])
+			if (s[i] == '<' || s[i] == '>')
+				return (1);
+	}
+	else
+		if (s[i] == '<' || s[i] == '>')
+			return (1);
+	return (0);
 }
 
 size_t	count_rows(char *s)
@@ -30,16 +46,38 @@ size_t	count_rows(char *s)
 	{
 		while (is_del(s[i]))
 			i++;
-		if (s[i])
+		if (s[i] && !is_redir(s, i, 0))
+		{
 			rows++;
-		if (is_sh_ope(s, i, 0) == 2)
-			i += 2;
-		if (s[i] == 34 || s[i] == 39)
-			i = closing_quotes_pos(s, i);
-		else
 			while (s[i] && !is_del(s[i]))
 				i++;
+			while (is_del(s[i]))
+				i++;
+			if (!is_sh_ope(s, i, 0) && s[i])
+			{
+				rows++;
+				while (s[i] && !is_sh_ope(s, i, 0))
+					i++;
+			}
+		}
+		if (is_redir(s, i, 0))
+		{
+			while (!is_del(s[i]))
+				i++;
+			while (is_del(s[i]))
+				i++;
+			while (!is_del(s[i]) && s[i])
+				i++;
+			rows++;
+		}
+		else if (is_sh_ope(s, i, 0))
+		{
+			while (s[i] && is_sh_ope(s, i, 0))
+				i++;
+			rows++;
+		}
 	}
+	printf("%zu\n", rows);
 	return (rows);
 }
 
@@ -49,20 +87,44 @@ char	**splitter(char **array, char *s, size_t i)
 	size_t	k;
 
 	j = 0;
-	if (!array)
-		return (NULL);
 	while (s[i])
 	{
 		while (is_del(s[i]))
 			i++;
-		if (s[i])
+		if (s[i] && !is_redir(s, i, 0))
 		{
 			k = i;
-			if (s[i] == 34 || s[i] == 39)
-				i = closing_quotes_pos(s, i);
-			else
-				while (s[i] && !is_del(s[i]))
+			while (s[i] && !is_del(s[i]))
+				i++;
+			while (is_del(s[i]))
+				i++;
+			if (!is_sh_ope(s, i, 0) && s[i])
+			{
+				while (s[i] && !is_sh_ope(s, i, 0))
 					i++;
+			}
+			array[j] = ft_substr(s, k, i - k);
+			if (!array[j++])
+				return (free_mem(array, j - 1), NULL);
+		}
+		if (is_redir(s, i, 0))
+		{
+			k = i;
+			while (!is_del(s[i]))
+				i++;
+			while (is_del(s[i]))
+				i++;
+			while (!is_del(s[i]) && s[i])
+				i++;
+			array[j] = ft_substr(s, k, i - k);
+			if (!array[j++])
+				return (free_mem(array, j - 1), NULL);
+		}
+		else if (is_sh_ope(s, i, 0))
+		{
+			k = i;
+			while (s[i] && is_sh_ope(s, i, 0))
+				i++;
 			array[j] = ft_substr(s, k, i - k);
 			if (!array[j++])
 				return (free_mem(array, j - 1), NULL);
@@ -87,14 +149,13 @@ int	strlen_space(char *s)
 		if (is_sh_ope(s, i, 0) == 2)
 			i++;
 	}
-	// if (is_quotes(s, 0, '?') == 34 || is_quotes(s, 0, '?') == 39)
-	// 	len++;
 	return (len + 1);
 }
 
-int	add_space(char **s, int i, int k)
+int	add_space(char **s, int i)
 {
 	char	*str;
+	int k = 0;
 
 	str = malloc(strlen_space(*s));
 	if (!str)
@@ -112,8 +173,6 @@ int	add_space(char **s, int i, int k)
 		else
 			str[k++] = (*s)[i++];
 	}
-	// if (is_quotes(*s, 0, '?') == 34 || is_quotes(*s, 0, '?') == 39)
-	// 	str[k++] = is_quotes(*s, 0, '?');
 	str[k] = '\0';
 	return (free(*s), *s = str, 0);
 }

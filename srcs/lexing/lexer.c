@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/06 12:33:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:50:33 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,31 +95,42 @@ int	close_quotes(char **s)
 	return (0);
 }
 
+int	array_len(char **tokens)
+{
+	int i;
+
+	i = -1;
+	while (tokens[++i])
+		;
+	return (i);
+}
+
 char	**lexer(char *s)
 {
 	char	**tokens;
+	// char	**new_tokens;
 	size_t	i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	if (is_sh_ope(s, 0, '?'))
-		if (add_space(&s, 0, 0))
+		if (add_space(&s, 0))
 			return (free(s), NULL);
 	if (open_quotes(s))
 		if (close_quotes(&s))
 			return (free(s), NULL);
 	tokens = (char **)malloc((count_rows(s) + 1) * sizeof(char *));
-	tokens = splitter(tokens, s, i);
+	tokens = splitter(tokens, s, 0);
 	if (!tokens)
 		return (free(s), NULL);
-	if (quotes_manager(tokens))
-		return (free(s), free_memory(tokens), NULL);
+	i = 0;
+	while (tokens[i])
+		printf("%s\n", tokens[i++]);
+	// if (quotes_manager(tokens))
+	// 	return (free(s), free_memory(tokens), NULL);
 	// if (is_dollar(tokens, -1, '?', 0))
 	// 	if (get_dollar(tokens))
 	// 		return (free_memory(tokens), free(s), \
 	// 			printf("get_dollar error\n"), NULL);
-	while (tokens[i])
-		printf("%s\n", tokens[i++]);
 	return (free(s), tokens);
 }

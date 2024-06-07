@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/06 12:35:15 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:50:36 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ char	**lexer(char *str);
 int		is_sh_ope(char *s, int i, char token);
 int		is_del(char c);
 int		quotes_manager(char **tokens);
-// int		is_quotes(char *s, int i, char token);
+int		is_quotes(char *s, int i, char token);
 int		closing_quotes_pos(char *s, int i);
 
 size_t	count_rows(char *s);
-int		add_space(char **s, int i, int k);
+int		add_space(char **s, int i);
 char	**splitter(char **array, char *s, size_t i);
 
 int		is_dollar(char **arr, int i, char token, char pos);

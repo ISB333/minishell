@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/06 12:42:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:46:17 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ void	free_lst(t_ast **ast)
 }
 
 
-int	is_redir(char **tokens)
-{
-	int	i;
+// int	is_redir(char **tokens)
+// {
+// 	int	i;
 
-	i = -1;
-	while (tokens[++i])
-	{
-		if (tokens[i][0] == '<')
-			return ('<');
-		if (tokens[i][0] == '>')
-			return ('>');
-	}
-	return (0);
-}
+// 	i = -1;
+// 	while (tokens[++i])
+// 	{
+// 		if (tokens[i][0] == '<')
+// 			return ('<');
+// 		if (tokens[i][0] == '>')
+// 			return ('>');
+// 	}
+// 	return (0);
+// }
 
 int parser(t_ast **ast, char **tokens)
 {
