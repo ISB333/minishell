@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/30 14:10:49 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:13:10 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,11 @@ void	free_prompt_data(t_prompt *data)
 	free(data);
 }
 
-int	extract_pos(/*char *env[], */char **position)
+int	extract_pos(char **position)
 {
 	char	*trimm_path;
 	int		i;
 
-	// i = 0;
-	// while (env[i] && (!strstr(env[i], "SESSION_MANAGER=")))
-	// 	i++;
-	// if (!env[i])
-	// 	return (1);
 	trimm_path = ft_strtrim(getenv("SESSION_MANAGER"), "local/");
 	if (!trimm_path)
 		return (1);
@@ -74,7 +69,7 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	return (prompt);
 }
 
-int	init_prompt_data(/*char *env[], */t_prompt **data)
+int	init_prompt_data(t_prompt **data)
 {
 	int	start;
 	int	len;
@@ -85,7 +80,7 @@ int	init_prompt_data(/*char *env[], */t_prompt **data)
 	(*data)->curr_dir = getcwd(NULL, 0);
 	if (!(*data)->curr_dir)
 		return (1);
-	extract_pos(/*env, */&(*data)->position);
+	extract_pos(&(*data)->position);
 	(*data)->root_dir = ft_strnstr((*data)->curr_dir, (*data)->logname, ft_strlen((*data)->curr_dir));
 	if ((*data)->root_dir)
 	{
@@ -101,7 +96,7 @@ int	init_prompt_data(/*char *env[], */t_prompt **data)
 	return (0);
 }
 
-char	*get_prompt(/*char *env[]*/)
+char	*get_prompt(void)
 {
 	t_prompt	*data;
 	char		*prompt;
@@ -112,7 +107,7 @@ char	*get_prompt(/*char *env[]*/)
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->position = NULL;
-	if (init_prompt_data(/*env, */&data))
+	if (init_prompt_data(&data))
 		return (free_prompt_data(data), NULL);
 	if (!data->position)
 		data->position = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));

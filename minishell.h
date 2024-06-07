@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/30 14:18:55 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:30:17 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ typedef	struct	s_prompt
 // 	char 
 // }	t_data;
 
+int	ft_do_all();
 
-char	*get_prompt(/*char *env[]*/void);
+char	*get_prompt(void);
 int		lexer(char *str);
 char	**tokenizer(char const *s);
 

@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:51:58 by nkieffer          #+#    #+#             */
-/*   Updated: 2024/05/30 16:18:32 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:44:24 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,11 @@ static int	ifCtrlC(/*char *env[]*/)
 
 	write(1, "\n", 1);
 	rl_on_new_line();
-	// prompt = get_prompt(/*env*/);
+	ft_do_all();
+	// prompt = get_prompt();
 	// if (!prompt)
 	// 	return (printf("prompt error\n"), 1);
-	// rl = readline(prompt);
-	// add_history(rl);
-	// // printf("%s\n", rl);
-	// lexer(rl);
-	// // parser();
-	// free(prompt);
-	// if (!ft_strcmp(rl, "exit\0"))
-	// 	return (free(rl), exit(EXIT_SUCCESS), 0);
-	// free(rl);
-	return (1);
+	// return (1);
 }
 
 int	catchC()
