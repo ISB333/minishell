@@ -6,7 +6,7 @@
 #    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/05/29 15:15:30 by nkieffer         ###   ########.fr        #
+#    Updated: 2024/06/07 11:42:34 by nkieffer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,11 @@ CC = cc
 ######################## SOURCES ########################
 
 SRCS = main.c \
-	get_prompt.c \
-	lexer.c \
-	tokenization.c \
-	sigHandler.c
+	./srcs/get_prompt.c \
+	./srcs/lexing/lexer.c \
+	./srcs/lexing/tokenization.c \
+	./srcs/lexing/is_sh.c \
+	./srcs/lexing/utils1.c
 
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
@@ -32,6 +33,9 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
+# VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
+# 	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
 
 ######################## RULES ########################
 
@@ -51,6 +55,7 @@ $(LIBFT) :
 clean :
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) fclean
+
 
 fclean : clean
 	rm -f $(NAME)

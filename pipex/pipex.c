@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 11:23:30 by isb3              #+#    #+#             */
-/*   Updated: 2024/05/14 10:01:52 by adesille         ###   ########.fr       */
+/*   Updated: 2024/05/28 10:10:55 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,17 @@ int	main(int argc, char *argv[], char *env[])
 			return (ft_putstr_fd("malloc\n", 1), 1);
 		if (initializer(d, argv, env))
 			return (errno);
+		int i = -1;
+		int k = 0;
+		while (d->args[++i])
+		{
+			k = 0;
+			while (d->args[i][k])
+				printf("%s\n", d->args[i][k++]);
+		}
+		i = -1;
+		while (d->cmd_paths[++i])
+			printf("%s\n", d->cmd_paths[i]);
 		if (warlord_executor(d, env))
 			return (ff(d, errno, NULL), errno);
 		return (ff(d, 0, NULL), 0);

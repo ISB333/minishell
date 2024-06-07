@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:26:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/04/21 10:48:46 by isb3             ###   ########.fr       */
+/*   Updated: 2024/05/28 09:48:00 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <string.h>
 # include <stdio.h>
 
-# include <stdarg.h> /// ?????????? ///
+# include <stdarg.h>
 
 typedef struct s_data
 {

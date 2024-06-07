@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/31 16:44:22 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:43:13 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,63 @@
 	2. Parser
 		- Arrange these tokens into an Abstract Syntax Tree
 		e.g:
-			Assignment
-			├── Variable: result
-			└── Expression: Multiplication
-				├── Left: Addition
-				│   ├── Left: Identifier (a)
-				│   └── Right: Integer Literal (42)
-				└── Right: Subtraction
-					├── Left: Identifier (b)
-					└── Right: Integer Literal (7)
+		ls -l /home/user
+			Command
+				├── Name: ls
+				└── Arguments:
+					├── -l
+					└── /home/user
+
+		ls -l | grep 'myfile'
+			Pipeline
+			├── Command
+			│   ├── Name: ls
+			│   └── Arguments:
+			│       └── -l
+			└── Command
+				├── Name: grep
+				└── Arguments:
+					└── 'myfile'
+
+		echo "Hello, World!" > output.txt
+			Command
+			├── Name: echo
+			├── Arguments:
+			│   └── "Hello, World!"
+			└── Redirection
+				├── Type: >
+				└── Target: output.txt
+		
+		ls -l | grep 'myfile' | sort -r > sorted_files.txt
+			Pipeline
+				├── Command
+				│   ├── Name: ls
+				│   └── Arguments:
+				│       └── -l
+				├── Command
+				│   ├── Name: grep
+				│   └── Arguments:
+				│       └── 'myfile'
+				└── Command
+					├── Name: sort
+					├── Arguments:
+					│   └── -r
+					└── Redirection
+						├── Type: >
+						└── Target: sorted_files.txt
 	
 	3. Expander
 	4. Execute
 	5. loop or (exit , shutdown, reboot)
 	----------------------------------------------------------------------------
 	-- Special cases:
-	- cmd1; cmd2; etc..
-		-> execute and display each one
-		-> loop
-		-> conditional structure
-		-> grouping
+		- grouping
 			e.g:
 			( ls; pwd; date ) > outputfile 
-	- 
+		- e'ch'o
+		- 'open quote (no need to manage this) 
+		- <infile
+		- 
 */
 
 int	ft_do_all()

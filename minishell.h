@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/31 12:30:17 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:41:41 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,27 @@ typedef	struct	s_prompt
 	char	*root_dir;
 }	t_prompt;	
 
-
-// typedef struct s_data
-// {
-// 	char **args;
-// 	char 
-// }	t_data;
+typedef struct s_data
+{
+	char	*cmd_path;
+	char	**args;
+	int		pipe;
+	int		infile;
+	int		outfile;
+}	t_data;
 
 int	ft_do_all();
 
+
 char	*get_prompt(void);
 int		lexer(char *str);
-char	**tokenizer(char const *s);
+char	**tokenizer(char *s);
+
+int		is_sh_ope(char *s, int i);
+int		is_del(char c);
+size_t	count_rows(char *s);
+char	*add_space(char *s, int i, int k);
+char	**splitter(char **array, char *s, size_t i);
 
 //sigHandler.c
 int	catchBackslash(void);

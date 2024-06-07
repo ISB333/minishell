@@ -1,83 +1,106 @@
 {
-   <readline>
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+    ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+    ...
+   fun:prompt3
+   fun:prompt
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
    ...
    fun:readline
-   ...
+   fun:prompt3
+   fun:prompt
+   fun:main
 }
 {
-   <readline>
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:xmalloc
-   fun:add_history
    ...
+   obj:/usr/bin/ls
+   fun:(below main)
 }
 {
-   <readline>
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:xmalloc
    ...
-   fun:add_history
-   ...
+   obj:/usr/bin/ls
+   fun:(below main)
 }
+
 {
-   <readline>
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:calloc
    ...
    fun:readline
-   ...
+   fun:prompt3
+   fun:prompt
+   fun:main
 }
 {
-  <readline>
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:xmalloc
+   ...
+   fun:add_history
+   ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:realloc
    ...
    fun:readline
-   ...
 }
 {
-   <readline>
+   <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: definite
+   match-leak-kinds: reachable
    fun:malloc
-   fun:xmalloc
-   fun:readline_internal_teardown
+   ...
    fun:readline
-   fun:main
+   fun:prompt3
 }
 {
-   <history>
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:readline
+   fun:prompt3
+}
+{
+   <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:xmalloc
-   fun:add_history
-   fun:main
-}
-{
-   <ls>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   ...
-   obj:/usr/bin/ls
-   ...
-   fun:(below main)
-}
-{
-   <cat>
-   Memcheck:Leak
-   match-leak-kinds: reachable
    ...
    obj:/usr/bin/cat
-   ...
    fun:(below main)
 }

@@ -6,7 +6,7 @@
 /*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/28 13:50:45 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:43:38 by nkieffer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,16 @@ char	*get_cmd_path(char *arg, char *env[])
 */
 int	lexer(char *str)
 {
-	char	**tokens;
+	char	**tokens = NULL;
 	int		i;
 
 	i = 0;
 	tokens = tokenizer(str);
-	// // cmds_paths = malloc((i + 1) * sizeof(char *));
-	// // cmds_paths[i] = NULL;
-	// // i = 0;
-	// while (splitted[i])
-	// {
-	// 	cmd_path
-	// }
-	return (free_memory(tokens), 0);
+	// cmds_paths = malloc((i + 1) * sizeof(char *));
+	// cmds_paths[i] = NULL;
+	// i = 0;
+	while (tokens[i])
+		printf("%s\n", tokens[i++]);
+	free_memory(tokens);
+	return (0);
 }
