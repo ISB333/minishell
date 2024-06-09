@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/04 09:19:37 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/09 09:43:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	free_prompt_data(t_prompt *data)
 		free(data->root_dir);
 	if (data->pos)
 		free(data->pos);
+	if (data->name)
+		free(data->name);
 	free(data);
 }
 
@@ -69,25 +71,22 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	return (prompt);
 }
 
-int	init_prompt_data(t_prompt *data)
+int	init_prompt_data(t_prompt *data, int start, int len)
 {
-	int	start;
-	int	len;
-
-	start = 0;
-	len = 0;
-	data->logname = getenv("LOGNAME");
+	data->name = ft_substr(getenv("LOGNAME"), 0, ft_strlen(getenv("LOGNAME")));
+	if (!data->name)
+		data->name = ft_substr("\0", 0, 1);
 	data->curr_dir = getcwd(NULL, 0);
 	if (!data->curr_dir)
 		return (1);
 	extract_pos(&data->pos);
-	data->root_dir = ft_strnstr(data->curr_dir, data->logname, \
+	data->root_dir = ft_strnstr(data->curr_dir, data->name, \
 		ft_strlen(data->curr_dir));
 	if (data->root_dir)
 	{
 		start = ft_strlen(data->curr_dir) - ft_strlen(data->root_dir) + \
-			ft_strlen(data->logname);
-		len = ft_strlen(data->root_dir) - ft_strlen(data->logname);
+			ft_strlen(data->name);
+		len = ft_strlen(data->root_dir) - ft_strlen(data->name);
 		data->root_dir = ft_substr(data->curr_dir, start, len);
 		if (!data->root_dir)
 			return (1);
@@ -97,7 +96,7 @@ int	init_prompt_data(t_prompt *data)
 	return (0);
 }
 
-char	*get_prompt()
+char	*get_prompt(void)
 {
 	t_prompt	*data;
 	char		*prompt;
@@ -108,11 +107,13 @@ char	*get_prompt()
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
-	if (init_prompt_data(data))
+	if (init_prompt_data(data, 0, 0))
 		return (free_prompt_data(data), NULL);
-	if (!data->pos)
+	if (!data->pos && getenv("NAME"))
 		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
-	prompt = join_prompt(data->logname, data->pos, data->curr_dir);
+	else
+		data->pos = ft_substr("\0", 0, 1);
+	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)
 		return (free_prompt_data(data), NULL);
 	return (free_prompt_data(data), prompt);

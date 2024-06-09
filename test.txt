@@ -1,0 +1,18 @@
+echo "Hello, World!"
+echo "She said, 'Hello!'"
+echo 'Hello, World!'
+echo 'She said, "Hello!"'
+echo "He said, \"Hello!\""
+echo 'It\'s a beautiful day!'
+echo "It\'s a beautiful day!"
+echo "Hello, $name!"
+echo 'Hello, $name!'
+echo "Hello" 'World'
+echo "!@#$%^&*()_+"
+"echo '!@#$%^&*()_+'"
+echo "$(echo 'Hello, World!')"
+echo "$(echo "Hello, World!")"
+echo "$(echo 'Hello, World!')
+echo "$(echo "Hello, World!")
+echo "Hello, World!
+echo 'Hello, World!

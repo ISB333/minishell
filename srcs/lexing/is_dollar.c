@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/06 11:57:26 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/09 09:47:10 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	is_dollar(char **arr, int i, char token, char pos)
 	int	k;
 
 	if (token == '?')
+	{
 		while (arr[++i])
 		{
 			k = -1;
@@ -24,7 +25,9 @@ int	is_dollar(char **arr, int i, char token, char pos)
 				if (arr[i][k] == '$')
 					return (1);
 		}
+	}
 	if (token == 'p')
+	{
 		while (arr[++i])
 		{
 			k = -1;
@@ -36,6 +39,7 @@ int	is_dollar(char **arr, int i, char token, char pos)
 					return (k);
 			}
 		}
+	}
 	return (0);
 }
 
@@ -47,7 +51,6 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	int		k;
 
 	i = -1;
-	// printf("%s\n%s\n", new_str, str);
 	new_len = ft_strlen(str) + ft_strlen(new_str) - var_len + 2;
 	str_update = malloc(new_len);
 	if (!str_update)
@@ -59,7 +62,6 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 		str_update[i++] = new_str[k++];
 	while (str[i++])
 		str_update[i] = str[i];
-	// str_update[i++] = '"';
 	str_update[i] = '\0';
 	free(str);
 	return (str_update);

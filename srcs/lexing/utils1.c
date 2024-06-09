@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/07 13:50:25 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/09 09:41:23 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	free_mem(char **array, size_t j)
 
 int	is_redir(char *s, int i, char token)
 {
-
 	if (token == '?')
 	{
 		i = -1;
@@ -29,9 +28,8 @@ int	is_redir(char *s, int i, char token)
 			if (s[i] == '<' || s[i] == '>')
 				return (1);
 	}
-	else
-		if (s[i] == '<' || s[i] == '>')
-			return (1);
+	else if (s[i] == '<' || s[i] == '>')
+		return (1);
 	return (0);
 }
 
@@ -54,11 +52,8 @@ size_t	count_rows(char *s)
 			while (is_del(s[i]))
 				i++;
 			if (!is_sh_ope(s, i, 0) && s[i])
-			{
-				rows++;
 				while (s[i] && !is_sh_ope(s, i, 0))
 					i++;
-			}
 		}
 		if (is_redir(s, i, 0))
 		{
@@ -99,10 +94,8 @@ char	**splitter(char **array, char *s, size_t i)
 			while (is_del(s[i]))
 				i++;
 			if (!is_sh_ope(s, i, 0) && s[i])
-			{
 				while (s[i] && !is_sh_ope(s, i, 0))
 					i++;
-			}
 			array[j] = ft_substr(s, k, i - k);
 			if (!array[j++])
 				return (free_mem(array, j - 1), NULL);
@@ -155,8 +148,9 @@ int	strlen_space(char *s)
 int	add_space(char **s, int i)
 {
 	char	*str;
-	int k = 0;
+	int		k;
 
+	k = 0;
 	str = malloc(strlen_space(*s));
 	if (!str)
 		return (1);

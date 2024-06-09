@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/07 13:50:33 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/09 09:40:46 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 		-> $USER
 	- echo "$USER"
 		-> adesille
-	
-	- < l"or"e'm.'txt cat | sed "s/ISB/adesille/g" > o'u'tp"ut.t"xt 
+
+	- < l"or"e'm.'txt cat | sed "s/ISB/adesille/g" > o'u'tp"ut.t"xt
 		-> ignored
 	- echo "" 'bonjour 'c'a' 'va'
 		->  bonjour ca va
@@ -48,25 +48,22 @@
 int	open_quotes(char *s)
 {
 	int	i;
+	int	s_quote;
+	int	d_quote;
 
-	i = -1;
-	while (s[++i])
+	i = 0;
+	s_quote = 0;
+	d_quote = 0;
+	while (s[i])
 	{
-		if (s[i] == 34)
-		{
-			while (s[++i] != 34 && s[i])
-				;
-			if (!s[i])
-				return (1);
-		}
-		if (s[i] == 39)
-		{
-			while (s[++i] != 39 && s[i])
-				;
-			if (!s[i])
-				return (1);
-		}
+		if (s[i] == 34 && (i == 0 || s[i - 1] != '\\'))
+			d_quote = !d_quote;
+		else if (s[i] == 39 && (i == 0 || s[i - 1] != '\\'))
+			s_quote = !s_quote;
+		i++;
 	}
+	if (s_quote || d_quote)
+		return (1);
 	return (0);
 }
 
@@ -82,12 +79,12 @@ int	close_quotes(char **s)
 		if ((*s)[i] == 34)
 		{
 			new_str = ft_strjoin(*s, "\"");
-			break;
+			break ;
 		}
 		if ((*s)[i] == 39)
 		{
 			new_str = ft_strjoin(*s, "'");
-			break;
+			break ;
 		}
 	}
 	free(*s);
@@ -97,7 +94,7 @@ int	close_quotes(char **s)
 
 int	array_len(char **tokens)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (tokens[++i])
@@ -108,7 +105,6 @@ int	array_len(char **tokens)
 char	**lexer(char *s)
 {
 	char	**tokens;
-	// char	**new_tokens;
 	size_t	i;
 
 	if (!s)
@@ -117,8 +113,8 @@ char	**lexer(char *s)
 		if (add_space(&s, 0))
 			return (free(s), NULL);
 	if (open_quotes(s))
-		if (close_quotes(&s))
-			return (free(s), NULL);
+		return (printf("Brother, I will smash ur face. Close me dat quote!\n"),
+			NULL);
 	tokens = (char **)malloc((count_rows(s) + 1) * sizeof(char *));
 	tokens = splitter(tokens, s, 0);
 	if (!tokens)
@@ -130,7 +126,7 @@ char	**lexer(char *s)
 	// 	return (free(s), free_memory(tokens), NULL);
 	// if (is_dollar(tokens, -1, '?', 0))
 	// 	if (get_dollar(tokens))
-	// 		return (free_memory(tokens), free(s), \
+	// 		return (free_memory(tokens), free(s),
 	// 			printf("get_dollar error\n"), NULL);
 	return (free(s), tokens);
 }

@@ -459,3 +459,1112 @@ exit
 cmd gdfj'
 cmd 
 exit
+<<in blabla 
+exit
+exit
+exit
+exit
+exit
+env
+exit
+EXIT
+exit
+<<in blabla | test > out
+<< in blabla|test>out
+<< in blabla|||||test>out
+<< in blabla|||||test>>>out
+<< in blabla|||||test>><>out
+<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla  fg frg|||||test>>lol>out
+exit
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla  fg frg|||||test>>lol>out
+exit
+<y<< in blabla|||||test>>lol>out
+exit
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<< in blabla|||||test>><>out
+<y<< in blabla|||||test>>lol>out
+exit
+<y<< in blabla|||||test>>lol>out
+exit
+<<in blabla | test > out
+<< in blabla|test>out
+<< in blabla|||||test>out
+<< in blabla|||||test>>>out
+<< in blabla|||||test>><>out
+<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla|||||test>>lol>out
+<y<< in blabla  fg frg|||||test>>lol>out
+exit
+exit
+./test.sh
+exit
+echo "Hello, World!"
+echo 'Hello, World!'
+echo "She said, 'Hello!'"
+echo 'She said, "Hello!"'
+echo "He said, \"Hello!\""
+echo 'It\'s a beautiful day!'
+name=John
+echo "Hello, $name!"
+echo 'Hello, $name!'
+echo "Hello" 'World'
+echo "!@#$%^&*()_+"
+echo '!@#$%^&*()_+'
+echo "Hello, World!
+echo 'Hello, World!
+echo "$(echo 'Hello, World!')"
+echo "$(echo "Hello, World!")"
+exit
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+
+
+echo $(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "She said, 'Hello!'"
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo 'Hello, World!
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hell'o, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo "Hello, World!"
+
+echo "She s"aid, 'Hello!'"
+
+echo "Hello, World!"
+
+echo "She s"aid, 'Hello!'"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo 'Hello, World!
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo 'Hello, World!
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "Hello, World!
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+echo '!@#$%^&*()_+'
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo $(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo '$(echo 'Hello, World!')
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo '$(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo '$(echo 'Hello, World!')"
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo '$(echo 'Hello, World!')
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo "$(echo 'Hello, World!')
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo "$(echo 'Hello, World!')
+
