@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:48:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/07 08:08:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:39:15 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,20 @@
 int	is_del(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
+}
+
+int	is_redir(char *s, int i, char token)
+{
+	if (token == '?')
+	{
+		i = -1;
+		while (s[++i])
+			if (s[i] == '<' || s[i] == '>')
+				return (1);
+	}
+	else if (s[i] == '<' || s[i] == '>')
 		return (1);
 	return (0);
 }
@@ -90,16 +104,12 @@ int	is_quotes(char *s, int i, char token)
 {
 	if (token == '?')
 	{
-		i = -1;
-		while (s[++i])
-		{
-			if (s[i] == 34)
-				return (find_closing_quote(s, i, 34));
-			if (s[i] == 39)
-				return (find_closing_quote(s, i, 39));
-		}
+		token = s[i++];
+		while (s[i] && s[i] != token)
+			i++;
+		return (i);
 	}
-	else if (s[i] == 34 || s[i] == 39)
-		return (1);
+	if (s[i] == 34 || s[i] == 39)
+		return (printf("quote found = %c\n", s[i+2]), 1);
 	return (0);
 }

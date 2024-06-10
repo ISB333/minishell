@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/09 09:41:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/10 14:46:20 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,11 @@ void	free_mem(char **array, size_t j)
 	free(array);
 }
 
-int	is_redir(char *s, int i, char token)
-{
-	if (token == '?')
-	{
-		i = -1;
-		while (s[++i])
-			if (s[i] == '<' || s[i] == '>')
-				return (1);
-	}
-	else if (s[i] == '<' || s[i] == '>')
-		return (1);
-	return (0);
-}
-
 size_t	count_rows(char *s)
 {
 	size_t	i;
 	size_t	rows;
+	int		token;
 
 	rows = 0;
 	i = 0;
@@ -44,80 +31,57 @@ size_t	count_rows(char *s)
 	{
 		while (is_del(s[i]))
 			i++;
-		if (s[i] && !is_redir(s, i, 0))
+		if (s[i] == 34 || s[i] == 39)
 		{
+			token = s[i++];
 			rows++;
-			while (s[i] && !is_del(s[i]))
+			while (s[i] && s[i] != token)
 				i++;
-			while (is_del(s[i]))
-				i++;
-			if (!is_sh_ope(s, i, 0) && s[i])
-				while (s[i] && !is_sh_ope(s, i, 0))
-					i++;
+			i++;
 		}
-		if (is_redir(s, i, 0))
+		else if (s[i])
 		{
-			while (!is_del(s[i]))
-				i++;
-			while (is_del(s[i]))
-				i++;
-			while (!is_del(s[i]) && s[i])
-				i++;
 			rows++;
-		}
-		else if (is_sh_ope(s, i, 0))
-		{
-			while (s[i] && is_sh_ope(s, i, 0))
-				i++;
-			rows++;
+			while (s[++i] && !is_del(s[i]))
+				if (s[i] == 34 || s[i] == 39)
+					i = is_quotes(s, i, '?');
 		}
 	}
 	printf("%zu\n", rows);
 	return (rows);
 }
 
-char	**splitter(char **array, char *s, size_t i)
+char	**splitter(char **array, char *s)
 {
-	size_t	j;
-	size_t	k;
+	int	i;
+	int	k;
+	size_t j = 0;
+	int		token;
 
-	j = 0;
+	i = 0;
+	if (!array)
+		return (NULL);
 	while (s[i])
 	{
 		while (is_del(s[i]))
 			i++;
-		if (s[i] && !is_redir(s, i, 0))
+		if (s[i] == 34 || s[i] == 39)
 		{
 			k = i;
-			while (s[i] && !is_del(s[i]))
+			token = s[i++];
+			while (s[i] && s[i] != token)
 				i++;
-			while (is_del(s[i]))
-				i++;
-			if (!is_sh_ope(s, i, 0) && s[i])
-				while (s[i] && !is_sh_ope(s, i, 0))
-					i++;
+			i++;
 			array[j] = ft_substr(s, k, i - k);
 			if (!array[j++])
 				return (free_mem(array, j - 1), NULL);
 		}
-		if (is_redir(s, i, 0))
+		else if (s[i])
 		{
 			k = i;
-			while (!is_del(s[i]))
-				i++;
-			while (is_del(s[i]))
-				i++;
-			while (!is_del(s[i]) && s[i])
-				i++;
-			array[j] = ft_substr(s, k, i - k);
-			if (!array[j++])
-				return (free_mem(array, j - 1), NULL);
-		}
-		else if (is_sh_ope(s, i, 0))
-		{
-			k = i;
-			while (s[i] && is_sh_ope(s, i, 0))
-				i++;
+			while (s[++i] && !is_del(s[i]))
+				if (s[i] == 34 || s[i] == 39)
+					i = is_quotes(s, i, '?');
 			array[j] = ft_substr(s, k, i - k);
 			if (!array[j++])
 				return (free_mem(array, j - 1), NULL);
@@ -130,6 +94,7 @@ int	strlen_space(char *s)
 {
 	int	len;
 	int	i;
+	int	token;
 
 	len = 0;
 	i = -1;
@@ -137,6 +102,12 @@ int	strlen_space(char *s)
 		len++;
 	while (s[++i])
 	{
+		if (s[i] == 34 || s[i] == 39)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				i++;
+		}
 		if (is_sh_ope(s, i, 0))
 			len += 2;
 		if (is_sh_ope(s, i, 0) == 2)
@@ -145,17 +116,22 @@ int	strlen_space(char *s)
 	return (len + 1);
 }
 
-int	add_space(char **s, int i)
+int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
-	int		k;
 
-	k = 0;
 	str = malloc(strlen_space(*s));
 	if (!str)
 		return (1);
 	while ((*s)[i])
 	{
+		if ((*s)[i] == 34 || (*s)[i] == 39)
+		{
+			token = (*s)[i];
+			str[k++] = (*s)[i++];
+			while ((*s)[i] && (*s)[i] != token)
+				str[k++] = (*s)[i++];
+		}
 		if (is_sh_ope(*s, i, 0))
 		{
 			str[k++] = ' ';
@@ -167,6 +143,5 @@ int	add_space(char **s, int i)
 		else
 			str[k++] = (*s)[i++];
 	}
-	str[k] = '\0';
-	return (free(*s), *s = str, 0);
+	return (str[k] = '\0', free(*s), *s = str, 0);
 }

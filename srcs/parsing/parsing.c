@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/09 09:44:28 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/10 13:48:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_lst(t_ast **ast)
 
 int parser(t_ast **ast, char **tokens)
 {
-	// int	i;
+	int	i;
 
 	if (!tokens)
 		return (printf("lexing error\n"), 1);

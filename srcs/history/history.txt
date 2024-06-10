@@ -1568,3 +1568,414 @@ echo "$(echo "Hello, World!")"
 
 echo "$(echo 'Hello, World!')
 
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo "$(echo 'Hello, World!')
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+echo "$(echo 'Hello, World!')
+
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+'e"c''h''"o' "b"l'a'bl"a"
+
+'e"c''h'"'o' "b"l'a'bl"a" 
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+'e"c''h''"o' "b"l'a'bl"a"
+
+'e"c''h''o' "b"l'a'bl"a" 
+echo "Hello, World!"
+
+echo "She said, 'Hello!'"
+
+echo 'Hello, World!'
+
+echo 'She said, "Hello!"'
+
+echo "He said, \"Hello!\""
+
+echo 'It\'s a beautiful day!'
+
+echo "It\'s a beautiful day!"
+
+echo "Hello, $name!"
+
+echo 'Hello, $name!'
+
+echo "Hello" 'World'
+
+echo "!@#$%^&*()_+"
+
+"echo '!@#$%^&*()_+'"
+
+echo "$(echo 'Hello, World!')"
+
+echo "$(echo "Hello, World!")"
+
+'e"c''h''"o' "b"l'a'bl"a"
+
+'e"c''h''o' "b"l'a'bl"a" 
+
+echo "Hello, World!"
+
+echo "Hello, World!"
+echo "Hello, World!"
+echo "Hello, World!"
+echo "Hello, World!"
+<echo "Hello, World!"
+<echo "Hello, World!||"
+<echo "Hello, World!||"
+<echo "Hello, World!||"
+<echo "Hello, World!|<|"
+<echo "Hello, World!'|<|'"
+<echo "Hello, World"|<|""
+exit
+<echo "Hello, World"|<|""
+exit
+<echo "Hello, World"|<|""
+exit
+ext
+exit
+exit
+exit
+exit
+fg
+exit
+thtg
+exit
+exit
+<echo "Hello, World"|<|""
+<echo "Hel<|>lo, World"|<|""
+<echo "Hel<|>lo, World""|"<|""
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exi
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World""|"<|""exit
+exit
+<echo "Hel<|>lo, World"'|'<|""exit
+<echo "Hel<|>lo, World"'|'<|''exit
+<echo "Hel<|>lo, World""|"<|''exit
+exit
+<echo "Hel<|>lo, World""|"<|''exit
+exit
+<echo "Hel<|>lo, World""|"<|''exit
+<echo "Hel<|>lo, World""|"<|''exit
+exit
+<echo "Hel<|>lo, World""|"<|''exit
+<echo 'Hel<|>lo, World'"|"<|''exit
+<echo 'Hel<|>lo", "World'"|"<|''exit
+<echo 'Hel<|>lo,' 'World'"|"<|''exit
+<echo "He'l<'|>lo," 'World'"|"<|''exit
+exit
+<echo "He'l<'|>lo," "World<|''exit
+ls"
+<echo "He'l<'|>lo," "World<|''exit
+ls
+exit
+<echo "He'l<'|>lo," "World<|''exit
+<echo "He'l<'|>lo," "World<|''exit
+
+<ewhbfuvub  "usdhf "  "isdifjlk
+exit
+exit
+<ewhbfuvub  "usdhf "  "isdifjlk
+<ewhbfuvub  "usdhf "  "isdifjlk g
+<ewhbfuvub  "usdhf "  "isdifjlk g"
+<ewhbfuvub  "usdhf "  "isdifjlk g"
+ls
+<ewhbfuvub  "usdhf "  "isdifjlk g
+ls"
+exit
+<ewhbfuvub  "usdhf "  "isdifjlk g
+<ewhbfuvub  "usdhf "  "isdifjlk g"
+<ewhbfuvub  "usdhf "  "isdifj'lk g"
+exit
+EXIT
+exit
+<ewhbfuvub  "usdhf "  "isdifj'lk g"
+exit
+<ewhbfuvub  "usdhf "  "isdifj'lk g"
+exit
+<ewhbfuvub  "usdhf "  "isdifj'lk g"
+<ewhbfuvub  "usdhf "  "isdifj'lk g"'
+<ewhbfuvub  "usdh"f "  "isdifj'lk g"
+<ewhbfuvub  "usdh"f "  "isdifj'lk g"'
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+exit
+EXIT
+exit
+<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
+<ewhbfuvub  "usdh"f" "  "isdifj'lk 'g"
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+exit
+<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi"f" "  "isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi"f" "  " isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+exit
+<ewhbfuvub  "u'sdh tyi"f " isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi""f"" isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
+exit
+<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
+exit

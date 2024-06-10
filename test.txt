@@ -12,7 +12,6 @@ echo "!@#$%^&*()_+"
 "echo '!@#$%^&*()_+'"
 echo "$(echo 'Hello, World!')"
 echo "$(echo "Hello, World!")"
-echo "$(echo 'Hello, World!')
-echo "$(echo "Hello, World!")
-echo "Hello, World!
-echo 'Hello, World!
+'e"c''h''"o' "b"l'a'bl"a"
+'e"c''h''o' "b"l'a'bl"a" 
+	

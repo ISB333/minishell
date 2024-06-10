@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/09 07:08:38 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/10 13:40:42 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,13 @@ int	main()
 
 	add_previous_history();
 	int test = open("test.txt", O_RDWR | O_CREAT, 0644);
-	while ((rl = gnhell(test)) != NULL)
+	// while ((rl = gnhell(test)) != NULL)
+	while (1)
 	{
 		prompt = get_prompt();
 		if (!prompt)
 			return (printf("prompt error\n"), 1);
-		// rl = readline(prompt);
+		rl = readline(prompt);
 		free(prompt);
 		if (rl == NULL)
 			return (0);
@@ -96,7 +97,7 @@ int	main()
 		if (!ft_strcmp(rl, "exit\0"))
 			return (free(rl), exit(EXIT_SUCCESS), 0);
 		if (parser(&ast, lexer(rl)))
-			return (free(rl), 1);
+			return (1);
 	}
 	return (1);
 }

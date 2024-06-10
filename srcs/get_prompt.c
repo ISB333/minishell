@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/09 09:43:35 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/10 11:34:30 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	init_prompt_data(t_prompt *data, int start, int len)
 	data->curr_dir = getcwd(NULL, 0);
 	if (!data->curr_dir)
 		return (1);
-	extract_pos(&data->pos);
+	if (extract_pos(&data->pos) && getenv("NAME"))
+		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
+	else if(!data->pos)
+		data->pos = ft_substr("\0", 0, 1);
 	data->root_dir = ft_strnstr(data->curr_dir, data->name, \
 		ft_strlen(data->curr_dir));
 	if (data->root_dir)
@@ -109,10 +112,6 @@ char	*get_prompt(void)
 	data->pos = NULL;
 	if (init_prompt_data(data, 0, 0))
 		return (free_prompt_data(data), NULL);
-	if (!data->pos && getenv("NAME"))
-		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
-	else
-		data->pos = ft_substr("\0", 0, 1);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)
 		return (free_prompt_data(data), NULL);

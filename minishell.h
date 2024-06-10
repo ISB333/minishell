@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/09 09:42:37 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/10 12:43:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int		is_quotes(char *s, int i, char token);
 int		closing_quotes_pos(char *s, int i);
 
 size_t	count_rows(char *s);
-int		add_space(char **s, int i);
-char	**splitter(char **array, char *s, size_t i);
+int		add_space(char **s, int i, int k, int token);
+char	**splitter(char **array, char *s);
 
 int		is_dollar(char **arr, int i, char token, char pos);
 int		get_dollar(char **arr);
