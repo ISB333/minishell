@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:01:39 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:33:34 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ typedef struct s_ast
 	struct s_ast	*next;
 }	t_ast;
 
+
+int	ft_do_all();
+
+
+char	*get_prompt(void);
+
 char	*get_prompt();
 
 	/// History ///
@@ -65,7 +71,6 @@ int		add_previous_history();
 
 	/// Lexing ///
 char	**lexer(char *str);
-int		closing_quotes_pos(char *s, int i);
 
 int		count_rows(char *s, int rows);
 int		add_space(char **s, int i, int k, int token);
@@ -88,5 +93,9 @@ int		is_heredoc(char *s, int i, char token);
 	/// Parsing ///
 int		parser(t_ast **ast, char **tokens);
 void	free_memory(char **array);
+
+//sigHandler.c
+int	catchBackslash(void);
+int	catchC(void);
 
 #endif

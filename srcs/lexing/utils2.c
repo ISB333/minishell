@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:00:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:45:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	split_utils_quotes(t_split *i, char *s, char **array)
 	while (s[i->i] && s[i->i] != i->token)
 		i->i += 1;
 	i->i += 1;
-	if (!is_del(s[i->i]))
+	if (s[i->i] && !is_del(s[i->i]))
 		i->token = 1;
 	else
 	{

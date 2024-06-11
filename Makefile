@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/11 12:05:13 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/11 12:33:53 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS = main.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
 	./srcs/lexing/utils2.c \
-	./srcs/parsing/parsing.c 
+	./srcs/parsing/parsing.c \
+	./sigHandler.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
 OFLAGS += -Wall -Wextra -g3 -I.

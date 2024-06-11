@@ -2144,3 +2144,20 @@ echo "" test lol""'t e's''td
 echo "" test lol""'t e's ''td ""
 echo "" test lol""'t e's ''td "" ''
 exit
+echo "" test lol""'t e's ''td "" ''
+echo "" te'st' lol""'t e's ''td "" ''
+echo " te'st' lol" 't e's ''td "" ''
+echo " te'st lol" 't e's ''td "" ''
+
+
+exit
+echo " te'st lol" 't e's ''td "" 
+echo " te'st lol" 't e's ''td "" ''
+exit
+echo " te'st lol" 't e's ''td "" ''
+echo " te'st lol" 't e's ''td "" ''
+exit
+echo " te'st lol" 't e's ''td "" ''
+exit
+echo " te'st lol" 't e's ''td "" ''
+exit
