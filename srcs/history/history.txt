@@ -2104,3 +2104,43 @@ echo te |
 "stexisf ga daf g dt"
 "stexisf ga daf g dt" s a fg a 
 exit
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g'teat | <test3 cat
+exit
+echo ""test lol""test
+echo "" test lol""test
+exit
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+< test1 < test2 sed 's/lol/bla/g' | <test3 cat
+exit
+< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
+< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
+exit
+< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
+echo "" test lol""test
+exit
+echo "" test lol""test
+echo "" test lol""test
+echo "" test lol""test
+echo "" test lol""test
+echo "" test lol""test
+echo "" test lol""test
+exit
+echo "" test lol""test
+echo "" test lol""test
+exit
+echo "" test lol""test
+exit
+echo "" test lol""test
+echo "" test lol""testd
+echo "" test lol""'te's''td
+echo "" test lol"" 'te's''td
+echo "" test lol""'t e's''td
+echo "" test lol""'t e's ''td ""
+echo "" test lol""'t e's ''td "" ''
+exit

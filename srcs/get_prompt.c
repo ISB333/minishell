@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/10 11:34:30 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 10:55:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	init_prompt_data(t_prompt *data, int start, int len)
 		return (1);
 	if (extract_pos(&data->pos) && getenv("NAME"))
 		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
-	else if(!data->pos)
+	else if (!data->pos)
 		data->pos = ft_substr("\0", 0, 1);
 	data->root_dir = ft_strnstr(data->curr_dir, data->name, \
 		ft_strlen(data->curr_dir));

@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/11 09:19:41 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/11 12:05:13 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,11 @@ SRCS = main.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
 	./srcs/lexing/lexer.c \
-	./srcs/lexing/is_sh.c \
+	./srcs/lexing/is_sh1.c \
+	./srcs/lexing/is_sh2.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
+	./srcs/lexing/utils2.c \
 	./srcs/parsing/parsing.c 
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)

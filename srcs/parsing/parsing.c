@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/10 13:48:21 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 11:05:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,25 @@ int parser(t_ast **ast, char **tokens)
 
 	if (!tokens)
 		return (printf("lexing error\n"), 1);
-	// i = -1;
 	// *ast = malloc(sizeof(t_ast));
 	// if (!*ast)
 	// 	return (0);
-	// while (is_redir(tokens) == '<')
-	// {
-	// 	while (tokens[++i][0] != '<')
-	// 		;
-	// 	(*ast)->fd_in = open(tokens[i + 1], O_RDONLY);
-	// 	tokens[i][0] = '\0';
-	// 	tokens[i + 1][0] = '\0';
-	// 	(*ast)->next = NULL;
-	// }
-	// (*ast)->next = NULL;
-	// printf("\n");
 	// i = -1;
 	// while (tokens[++i])
-	// 	printf("%s\n", tokens[i]);
+	// {
+	// 	if (is_redir(tokens[i], 0, '?'))
+	// 		parse_redir(ast, tokens, i);
+	// 	else if (is_pipe(tokens[i], 0, '?'))
+	// 		parse_pipe(ast, tokens, i);
+	// 	else if (is_heredoc(tokens[i], 0, '?'))
+	// 		parse_heredoc(ast, tokens, i);
+	// 	else if (is_append(tokens[i], 0, '?'))
+	// 		parse_pipe(ast, tokens, i);
+	// 	else
+	// 		parse_cmd(ast, tokens, i);
+	// }
+	// printf("\n");
+	// i = -1;
 	free_memory(tokens);
 	// free_lst(ast);
 	return (0);

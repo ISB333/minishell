@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/10 12:43:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:01:39 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct s_prompt
 	char	*root_dir;
 }	t_prompt;	
 
+typedef	struct s_split
+{
+	int		i;
+	int		k;
+	size_t	j;
+	int		token;
+}	t_split;
+
+
 typedef struct s_ast
 {
 	char			**cmd;
@@ -56,18 +65,25 @@ int		add_previous_history();
 
 	/// Lexing ///
 char	**lexer(char *str);
-int		is_sh_ope(char *s, int i, char token);
-int		is_del(char c);
-int		quotes_manager(char **tokens);
-int		is_quotes(char *s, int i, char token);
 int		closing_quotes_pos(char *s, int i);
 
-size_t	count_rows(char *s);
+int		count_rows(char *s, int rows);
 int		add_space(char **s, int i, int k, int token);
 char	**splitter(char **array, char *s);
-
-int		is_dollar(char **arr, int i, char token, char pos);
+int		split_utils_char(t_split *i, char *s, char **array);
+int		split_utils_quotes(t_split *i, char *s, char **array);
+void	free_mem(char **array, size_t j);
 int		get_dollar(char **arr);
+
+		// is_??? //
+int		is_dollar(char **arr, int i, char token, char pos);
+int		is_sh_ope(char *s, int i, char token);
+int		is_del(char c);
+int		is_quotes(char *s, int i, char token);
+int		is_pipe(char *s, int i, char token);
+int		is_redir(char *s, int i, char token);
+int		is_append(char *s, int i, char token);
+int		is_heredoc(char *s, int i, char token);
 
 	/// Parsing ///
 int		parser(t_ast **ast, char **tokens);

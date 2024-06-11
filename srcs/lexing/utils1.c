@@ -6,112 +6,44 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 10:17:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:00:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_mem(char **array, size_t j)
+void	init_i(t_split **i)
 {
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
-}
-
-size_t	count_rows(char *s)
-{
-	size_t	i;
-	size_t	rows;
-	int		token;
-
-	rows = 0;
-	i = 0;
-	while (s[i])
-	{
-		while (is_del(s[i]))
-			i++;
-		if (s[i] == 34 || s[i] == 39)
-		{
-			token = s[i++];
-			rows++;
-			while (s[i] && s[i] != token)
-				i++;
-			i++;
-			if (!is_del(s[i]) && s[i])
-				token = 1;
-		}
-		else if (s[i])
-		{
-			if (token == 1)
-				token = 0;
-			else
-				rows++;
-			while (s[++i] && !is_del(s[i]) && s[i] != '\n')
-				if (s[i] == 34 || s[i] == 39)
-					i = is_quotes(s, i, '?');
-			if (s[i] == '\n')
-				rows++;
-		}
-	}
-	// printf("%zu\n", rows);
-	return (rows);
+	(*i)->i = 0;
+	(*i)->j = 0;
+	(*i)->k = 0;
+	(*i)->token = 0;
 }
 
 char	**splitter(char **array, char *s)
 {
-	int	i;
-	int	k;
-	size_t j = 0;
-	int		token;
+	t_split	*i;
 
-	i = 0;
 	if (!array)
 		return (NULL);
-	while (s[i])
+	i = malloc(sizeof(t_split));
+	if (!i)
+		return (NULL);
+	init_i(&i);
+	while (s[i->i])
 	{
-		while (is_del(s[i]))
-			i++;
-		if (s[i] == 34 || s[i] == 39)
+		while (is_del(s[i->i]))
+			i->i++;
+		if (s[i->i] == 34 || s[i->i] == 39)
 		{
-			k = i;
-			token = s[i++];
-			while (s[i] && s[i] != token)
-				i++;
-			i++;
-			if (!is_del(s[i]) && s[i])
-				token = 1;
-			else
-			{
-				array[j] = ft_substr(s, k, i - k);
-				if (!array[j++])
-					return (free_mem(array, j - 1), NULL);
-			}
+			if (split_utils_quotes(i, s, array))
+				return (NULL);
 		}
-		if (s[i])
-		{
-			if (token == 1)
-				token = 0;
-			else
-				k = i;
-			while (s[++i] && !is_del(s[i]) && s[i] != '\n')
-			{
-				if (s[i] == 34 || s[i] == 39)
-					i = is_quotes(s, i, '?');
-			}
-			array[j] = ft_substr(s, k, i - k);
-			if (!array[j++])
-				return (free_mem(array, j - 1), NULL);
-			if (s[i] == '\n')
-			{
-				array[j] = ft_substr("\n", 0, 2);
-				if (!array[j++])
-					return (free_mem(array, j - 1), NULL);
-				i++;
-			}
-		}
+		else if (s[i->i])
+			if (split_utils_char(i, s, array))
+				return (NULL);
 	}
-	return (array[j] = NULL, array);
+	return (array[i->j] = NULL, free(i), array);
 }
 
 int	strlen_space(char *s)

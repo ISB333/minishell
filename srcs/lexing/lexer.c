@@ -6,48 +6,16 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 10:00:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:03:34 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-	- cmd {args}
-	- redir cmd {args}
-	- cmd {args} (redir || pipe)
-
-	===============================================
-	if (quotes)
-		go_to_closing_quotes();
-			join();
-
-
-	==>
-		split_quotes_n_join();
-		e.g:
-			'ec'"'h'o' b"l'a'bl"a" test
-			==
-				ec'h'o' blabla (first arg)
-
-		while(s)
-			if(quotes)
-				rows++;
-				forward_to_closing_quotes();
-			if(del)
-				rows++;
-				while(del) --->>>> if multiple del == 1space
-				forward
-
-
-	==> if newline outside quotes
-		what is after is considered a command
-*/
-
 int	open_quotes(char *s)
 {
 	int	i;
-	int k;
+	int	k;
 	int	token;
 
 	i = 0;
@@ -81,7 +49,7 @@ int	array_len(char **tokens)
 
 char	**lexer(char *s)
 {
-	char	**tokens = NULL;
+	char	**tokens;
 	size_t	i;
 
 	if (!s)
@@ -89,11 +57,11 @@ char	**lexer(char *s)
 	if (is_sh_ope(s, 0, '?'))
 		if (add_space(&s, 0, 0, 0))
 			return (free(s), NULL);
-	// printf("%s\n", s);
 	if (open_quotes(s))
-		return (free(s), printf("Brother, I will smash ur face. Close me dat quote!\n"),
-			NULL);
-	tokens = (char **)malloc((count_rows(s) + 1) * sizeof(char *));
+		return (free(s), \
+			printf("Brother, I will smash ur face. Close me dat quote!\n"), \
+				NULL);
+	tokens = (char **)malloc((count_rows(s, 0) + 1) * sizeof(char *));
 	tokens = splitter(tokens, s);
 	if (!tokens)
 		return (free(s), NULL);
