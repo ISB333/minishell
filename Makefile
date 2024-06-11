@@ -3,28 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/07 11:42:34 by nkieffer         ###   ########.fr        #
+#    Updated: 2024/06/11 12:33:53 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -Werror -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
 CC = cc
 
 ######################## SOURCES ########################
 
 SRCS = main.c \
 	./srcs/get_prompt.c \
+	./srcs/history/gnl.c \
+	./srcs/history/gnl_utils.c \
+	./srcs/history/manage_history.c \
 	./srcs/lexing/lexer.c \
-	./srcs/lexing/tokenization.c \
-	./srcs/lexing/is_sh.c \
-	./srcs/lexing/utils1.c
+	./srcs/lexing/is_sh1.c \
+	./srcs/lexing/is_sh2.c \
+	./srcs/lexing/is_dollar.c \
+	./srcs/lexing/utils1.c \
+	./srcs/lexing/utils2.c \
+	./srcs/parsing/parsing.c \
+	./sigHandler.c
 
+DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -53,13 +61,14 @@ $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR)
 
 clean :
-	rm -rf $(OBJ_DIR)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-
+	@rm -rf $(OBJ_DIR) $(DEPFILES)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
+
+-include $(DEPFILES)
 
 .PHONY : all clean fclean re

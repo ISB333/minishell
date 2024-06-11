@@ -6,70 +6,51 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/05/29 15:36:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:00:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	freemem(char **array, size_t j)
+void	init_i(t_split **i)
 {
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
+	(*i)->i = 0;
+	(*i)->j = 0;
+	(*i)->k = 0;
+	(*i)->token = 0;
 }
 
-size_t	count_rows(char *s)
+char	**splitter(char **array, char *s)
 {
-	size_t	i;
-	size_t	rows;
+	t_split	*i;
 
-	rows = 0;
-	i = 0;
-	while (s[i])
+	if (!array)
+		return (NULL);
+	i = malloc(sizeof(t_split));
+	if (!i)
+		return (NULL);
+	init_i(&i);
+	while (s[i->i])
 	{
-		while (is_del(s[i]))
-			i++;
-		if (is_sh_ope(s, i))
-			rows++;
-		else if (s[i] && (is_sh_ope(s, i) != 1 || is_sh_ope(s, i) != 2))
-			rows++;
-		if (is_sh_ope(s, i) == 2)
-			i += 2;
-		while (s[i] && !is_del(s[i]))
-			i++;
-	}
-	return (rows);
-}
-
-char	**splitter(char **array, char *s, size_t i)
-{
-	size_t	j;
-	size_t	k;
-
-	j = 0;
-	while (s[i])
-	{
-		while (is_del(s[i]))
-			i++;
-		if (s[i])
+		while (is_del(s[i->i]))
+			i->i++;
+		if (s[i->i] == 34 || s[i->i] == 39)
 		{
-			k = i;
-			while (s[i] && !is_del(s[i]))
-				i++;
-			array[j] = ft_substr(s, k, i - k);
-			if (!array[j])
-				return (freemem(array, j), NULL);
-			j++;
+			if (split_utils_quotes(i, s, array))
+				return (NULL);
 		}
+		else if (s[i->i])
+			if (split_utils_char(i, s, array))
+				return (NULL);
 	}
-	return (array[j] = NULL, array);
+	return (array[i->j] = NULL, free(i), array);
 }
 
-int		strlen_space(char *s)
+int	strlen_space(char *s)
 {
 	int	len;
 	int	i;
+	int	token;
 
 	len = 0;
 	i = -1;
@@ -77,38 +58,46 @@ int		strlen_space(char *s)
 		len++;
 	while (s[++i])
 	{
-		if (is_sh_ope(s, i))
+		if (s[i] == 34 || s[i] == 39)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				i++;
+		}
+		if (is_sh_ope(s, i, 0))
 			len += 2;
-		if (is_sh_ope(s, i) == 2)
+		if (is_sh_ope(s, i, 0) == 2)
 			i++;
 	}
 	return (len + 1);
 }
 
-char	*add_space(char *s, int i, int k)
+int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
 
-	str = malloc(strlen_space(s));
+	str = malloc(strlen_space(*s));
 	if (!str)
-		return (NULL);
-	while (s[i])
+		return (1);
+	while ((*s)[i])
 	{
-		if (is_sh_ope(s, i) == 2)
+		if ((*s)[i] == 34 || (*s)[i] == 39)
 		{
-			str[k++] = ' ';
-			str[k++] = s[i++];
-			str[k++] = s[i++];
-			str[k++] = ' ';
+			token = (*s)[i];
+			str[k++] = (*s)[i++];
+			while ((*s)[i] && (*s)[i] != token)
+				str[k++] = (*s)[i++];
 		}
-		else if (is_sh_ope(s, i))
+		if (is_sh_ope(*s, i, 0))
 		{
 			str[k++] = ' ';
-			str[k++] = s[i++];
+			str[k++] = (*s)[i++];
+			if (is_sh_ope(*s, i - 1, 0) == 2)
+				str[k++] = (*s)[i++];
 			str[k++] = ' ';
 		}
 		else
-			str[k++] = s[i++];
+			str[k++] = (*s)[i++];
 	}
-	return (str[k] = '\0', str);
+	return (str[k] = '\0', free(*s), *s = str, 0);
 }

@@ -1,0 +1,6 @@
+total 64
+drwxr-xr-x 2 adesille 2023_mulhouse    98 mai   28 10:10 0_obj
+-rw-r--r-- 1 adesille 2023_mulhouse    31 mai   23 11:04 .gitignore
+drwxr-xr-x 4 adesille 2023_mulhouse  4096 mai   28 10:07 libft
+-rw-r--r-- 1 adesille 2023_mulhouse     6 mai   23 11:04 lorem.txt
+-rw-r--r-- 1 adesille 2023_mulhousho "

@@ -1,10 +1,1 @@
-0_obj
-libft
-lorem.txt
-Makefile
-output.txt
-pipex
-pipex.c
-pipex.h
-utils2.c
-utils.c
+test test dskbj

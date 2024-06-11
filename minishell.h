@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/07 11:41:41 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:33:34 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include <fcntl.h>
 # include <sys/stat.h>
 # include <unistd.h>
 # include <dirent.h>
@@ -29,35 +30,69 @@
 # include <curses.h>
 # include "libft/libft.h"
 
-typedef	struct	s_prompt
+typedef struct s_prompt
 {
-	char	*logname;
-	char	*position;
+	char	*name;
+	char	*pos;
 	char	*curr_dir;
 	char	*root_dir;
 }	t_prompt;	
 
-typedef struct s_data
+typedef	struct s_split
 {
-	char	*cmd_path;
-	char	**args;
-	int		pipe;
-	int		infile;
-	int		outfile;
-}	t_data;
+	int		i;
+	int		k;
+	size_t	j;
+	int		token;
+}	t_split;
+
+
+typedef struct s_ast
+{
+	char			**cmd;
+	char			*cmd_path;
+	int				fd_in;
+	int				fd_out;
+	struct s_ast	*next;
+}	t_ast;
+
 
 int	ft_do_all();
 
 
 char	*get_prompt(void);
-int		lexer(char *str);
-char	**tokenizer(char *s);
 
-int		is_sh_ope(char *s, int i);
+char	*get_prompt();
+
+	/// History ///
+char	*gnhell(int fd);
+int		append_new_history(char *rl);
+int		add_previous_history();
+
+	/// Lexing ///
+char	**lexer(char *str);
+
+int		count_rows(char *s, int rows);
+int		add_space(char **s, int i, int k, int token);
+char	**splitter(char **array, char *s);
+int		split_utils_char(t_split *i, char *s, char **array);
+int		split_utils_quotes(t_split *i, char *s, char **array);
+void	free_mem(char **array, size_t j);
+int		get_dollar(char **arr);
+
+		// is_??? //
+int		is_dollar(char **arr, int i, char token, char pos);
+int		is_sh_ope(char *s, int i, char token);
 int		is_del(char c);
-size_t	count_rows(char *s);
-char	*add_space(char *s, int i, int k);
-char	**splitter(char **array, char *s, size_t i);
+int		is_quotes(char *s, int i, char token);
+int		is_pipe(char *s, int i, char token);
+int		is_redir(char *s, int i, char token);
+int		is_append(char *s, int i, char token);
+int		is_heredoc(char *s, int i, char token);
+
+	/// Parsing ///
+int		parser(t_ast **ast, char **tokens);
+void	free_memory(char **array);
 
 //sigHandler.c
 int	catchBackslash(void);
