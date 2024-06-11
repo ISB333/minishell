@@ -6,14 +6,14 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/06 12:39:39 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/11 09:19:41 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
 CC = cc
 
 ######################## SOURCES ########################
@@ -25,7 +25,6 @@ SRCS = main.c \
 	./srcs/history/manage_history.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh.c \
-	./srcs/lexing/quotes_manager.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
 	./srcs/parsing/parsing.c 

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/10 14:35:01 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 10:00:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,53 +43,6 @@
 	==> if newline outside quotes
 		what is after is considered a command
 */
-
-// int	open_quotes(char *s)
-// {
-// 	int	i;
-// 	int	s_quote;
-// 	int	d_quote;
-
-// 	i = 0;
-// 	s_quote = 0;
-// 	d_quote = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] == 34 && (i == 0 || s[i - 1] != '\\'))
-// 			d_quote = !d_quote;
-// 		else if (s[i] == 39 && (i == 0 || s[i - 1] != '\\'))
-// 			s_quote = !s_quote;
-// 		i++;
-// 	}
-// 	if (s_quote || d_quote)
-// 		return (1);
-// 	return (0);
-// }
-
-// int	close_quotes(char **s)
-// {
-// 	char	*new_str;
-// 	int		i;
-
-// 	i = -1;
-// 	new_str = NULL;
-// 	while ((*s)[++i])
-// 	{
-// 		if ((*s)[i] == 34)
-// 		{
-// 			new_str = ft_strjoin(*s, "\"");
-// 			break ;
-// 		}
-// 		if ((*s)[i] == 39)
-// 		{
-// 			new_str = ft_strjoin(*s, "'");
-// 			break ;
-// 		}
-// 	}
-// 	free(*s);
-// 	*s = new_str;
-// 	return (0);
-// }
 
 int	open_quotes(char *s)
 {
@@ -136,7 +89,7 @@ char	**lexer(char *s)
 	if (is_sh_ope(s, 0, '?'))
 		if (add_space(&s, 0, 0, 0))
 			return (free(s), NULL);
-	printf("%s\n", s);
+	// printf("%s\n", s);
 	if (open_quotes(s))
 		return (free(s), printf("Brother, I will smash ur face. Close me dat quote!\n"),
 			NULL);
@@ -146,6 +99,6 @@ char	**lexer(char *s)
 		return (free(s), NULL);
 	i = -1;
 	while (tokens[++i])
-		printf("%s\n", tokens[i]);
+		printf("%zu = %s\n", i, tokens[i]);
 	return (free(s), tokens);
 }

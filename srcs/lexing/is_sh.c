@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:48:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/10 14:39:15 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/11 10:15:04 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_del(char c)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
+	if (c == ' ' || c == '\t')
 		return (1);
 	return (0);
 }
@@ -110,6 +110,6 @@ int	is_quotes(char *s, int i, char token)
 		return (i);
 	}
 	if (s[i] == 34 || s[i] == 39)
-		return (printf("quote found = %c\n", s[i+2]), 1);
+		return (1);
 	return (0);
 }
