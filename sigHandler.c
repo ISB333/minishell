@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sigHandler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkieffer <nkieffer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:51:58 by nkieffer          #+#    #+#             */
-/*   Updated: 2024/05/31 16:44:24 by nkieffer         ###   ########.fr       */
+/*   Updated: 2024/06/12 08:03:11 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ifCtrlC(/*char *env[]*/)
 	// prompt = get_prompt();
 	// if (!prompt)
 	// 	return (printf("prompt error\n"), 1);
-	// return (1);
+	return (1);
 }
 
 int	catchC()

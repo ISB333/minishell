@@ -2161,3 +2161,209 @@ echo " te'st lol" 't e's ''td "" ''
 exit
 echo " te'st lol" 't e's ''td "" ''
 exit
+echo " te'st lol" 't e's ''td "" ''
+< in cmd arg cmd arg | cmd arg > out
+exit
+exit
+< in cmd arg cmd arg | cmd arg > out
+exit
+< in cmd arg cmd arg | cmd arg > out
+<in cmd arg cmd arg|cmd arg>out
+<in cmd arg cmd a'rg'|cmd "arg">out
+exit
+<<in cmd arg cmd arg|cmd arg>>out
+exit
+<<in cmd arg arg>>out
+<in cmd arg arg>out
+<in cmd arg arg>out
+<in cmd arg arg>out
+<in cmd arg arg>out
+<in cmd arg arg>out
+exit
+<in cmd arg arg>out
+exit
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+<in <in cmd arg arg>out <in >out
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+exit
+<in <in cmd arg arg>out <in >out
+<in <in cmd arg arg>out <in >out >out
+exit
+<in <in cmd arg arg>out <in >out >out
+exit
+exit
+<in <in cmd arg arg
+exit
+<in <in cmd arg arg
+exit
+<in <in cmd arg arg
+exit
+<in <in cmd arg arg
+exit
+<in <in cmd arg arg
+<in <in cmd arg arg > out
+exit
+<in <in cmd arg arg > out
+exit
+<in <in cmd arg arg > out
+exit
+<in <in cmd arg arg > out
+<in <in cmd arg arg > out
+<in <in cmd arg arg > out
+<in <in cmd arg arg > out
+exit
+<in <in cmd arg arg > out
+<in <in cmd arg arg > out
+<in <in cmd arg arg >> out
+exit
+<in <in cmd arg arg >> out
+<in <in cmd arg arg << out
+exit
+<in <in cmd arg arg << out
+exit
+<in <in cmd arg arg << out
+exit
+<in <in cmd arg arg << out
+<in <in cmd arg arg << out > out
+<in <in cmd arg arg << del > out >out
+exit
+<in <in cmd arg arg << del > out >out
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+exit
+lol
+exit
+exit
+exit
+hbfgk
+exit
+exitexit
+exiexitt
+exit
+exiexitt
+<in <in cmd arg arg << del > out > out
+exit
+exiexitt
+exiexitt
+exiexitt
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+<in <in cmd arg arg << del > out > out
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+exit
+<in <in cmd arg arg << del > out > out
+exit
+exit
+<in <in cmd arg arg << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+exit
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+exit
+<in <in cmd arg arg 
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg 
+exit
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+<in <in cmd arg arg | << del > out > out
+
+<in <in cmd argarg | << del > out > out
+<in <in cmd argarg | <q
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+exit
+<in <in cmd arg | << del > out > out
+exit
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del > out > out
+exit
+<in <in cmd arg | << del > out > out
+exit
+<in <in cmd arg | << del > out > out
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit
+<in <in cmd arg 
+<in <in cmd arg 
+<in <in cmd arg 
+exit
+exeit
+exit
+<in <in cmd arg 
+exit
+<in <in cmd arg 
+exit
+<in <in cmd arg | << del cmd arg > out > out
+exit

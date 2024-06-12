@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/11 12:33:53 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/12 08:01:13 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
 CC = cc
 
 ######################## SOURCES ########################
@@ -26,6 +26,7 @@ SRCS = main.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh1.c \
 	./srcs/lexing/is_sh2.c \
+	./srcs/lexing/is_sh_in_arr.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
 	./srcs/lexing/utils2.c \

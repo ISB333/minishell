@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:33:34 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:17:50 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,20 @@ typedef	struct s_split
 	int		token;
 }	t_split;
 
-
 typedef struct s_ast
 {
 	char			**cmd;
 	char			*cmd_path;
-	int				fd_in;
-	int				fd_out;
+	int				*fd_in;
+	int				*fd_out;
+	int				pipe;
+	int				*fd_append;
+	char			*heredoc;
 	struct s_ast	*next;
 }	t_ast;
 
-
 int	ft_do_all();
-
-
 char	*get_prompt(void);
-
-char	*get_prompt();
 
 	/// History ///
 char	*gnhell(int fd);
@@ -70,7 +67,7 @@ int		append_new_history(char *rl);
 int		add_previous_history();
 
 	/// Lexing ///
-char	**lexer(char *str);
+char	***lexer(char *str);
 
 int		count_rows(char *s, int rows);
 int		add_space(char **s, int i, int k, int token);
@@ -89,9 +86,11 @@ int		is_pipe(char *s, int i, char token);
 int		is_redir(char *s, int i, char token);
 int		is_append(char *s, int i, char token);
 int		is_heredoc(char *s, int i, char token);
+int		is_pipe_in_arr(char **array);
+int		is_redir_in_arr(char **array);
 
 	/// Parsing ///
-int		parser(t_ast **ast, char **tokens);
+int		parser(t_ast **ast, char ***tokens);
 void	free_memory(char **array);
 
 //sigHandler.c

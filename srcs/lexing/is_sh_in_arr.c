@@ -1,36 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sh2.c                                           :+:      :+:    :+:   */
+/*   is_sh_in_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:04:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/12 09:06:54 by isb3             ###   ########.fr       */
+/*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
+/*   Updated: 2024/06/12 10:43:39 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_del(char c)
+int	is_pipe_in_arr(char **array)
 {
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (0);
+	int	i;
+	int k;
+	int	n;
+	
+	i = -1;
+	n = 0;
+	while(array[++i])
+	{
+		k = -1;
+		while (array[i][++k])
+		{
+			if (array[i][k] == '|')
+				n++;
+		}
+	}
+	return (n);
 }
 
-int	is_redir(char *s, int i, char token)
+int	is_redir_in_arr(char **array)
 {
-	if (token == '?')
+	int	i;
+	
+	i = -1;
+	while(array[++i])
 	{
-		i = -1;
-		while (s[++i])
-			if (s[i] == '<' || s[i] == '>')
-				return (1);
+		if (array[i][0] == '<' && array[i][1] != '<')
+			return (1);
+		if (array[i][0] == '>' && array[i][1] != '>')
+			return (2);
 	}
-	if (s[i] == '<' && s[i + 1] != '<')
-		return (1);
-	else if (s[i] == '>' && s[i + 1] != '>')
-		return (2);
 	return (0);
 }
