@@ -259,7 +259,7 @@ void	print_lst(t_ast *ast)
 		if (ast->cmd)
 			while (ast->cmd[++i])
 				printf("%s\n", ast->cmd[i]);
-		printf("heredoc del = %s\n", ast->heredoc);
+		printf("\nheredoc = %s\n", ast->heredoc);
 		if (ast->fd_in)
 		{
 			i = -1;
