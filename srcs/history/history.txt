@@ -2372,3 +2372,17 @@ exit
 exit
 <in <in cmd arg | << del cmd arg > out | cat > out
 exit
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat >' 'ou't' ''
+<in <in cmd arg | << del cmd arg > out | cat >" "out
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+exit

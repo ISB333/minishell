@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:45:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:22:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	count_rows(char *s, int rows)
 			i++;
 		if (s[i] == 34 || s[i] == 39)
 			i = count_utils_quotes(&rows, &token, s, i);
-		else if (s[i])
+		if (s[i])
 		{
 			if (token == 1)
 				token = 0;
@@ -73,7 +73,7 @@ int	split_utils_quotes(t_split *i, char *s, char **array)
 	{
 		array[i->j] = ft_substr(s, i->k, i->i - i->k);
 		if (!array[i->j++])
-			return (1);
+			return (free_mem(array, i->j - 1), 1);
 	}
 	return (0);
 }

@@ -56,19 +56,19 @@ void	free_lst(t_ast **ast)
 		}
 		if (current->heredoc)
 			free(current->heredoc);
-		if (current->fd_in[0])
+		if (current->fd_in)
 		{
 			i = -1;
 			while (current->fd_in[++i])
 				close(current->fd_in[i]);
 		}
-		if (current->fd_out[0])
+		if (current->fd_out)
 		{
 			i = -1;
 			while (current->fd_out[++i])
 				close(current->fd_out[i]);
 		}
-		if (current->fd_append[0])
+		if (current->fd_append)
 		{
 			i = -1;
 			while (current->fd_append[++i])
