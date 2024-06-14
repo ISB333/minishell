@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/12 11:31:14 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/14 10:22:00 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ char	***lexer(char *s)
 	tokens = splitter(tokens, s);
 	if (!tokens)
 		return (free(s), NULL);
+	if (is_dollar(tokens, 0, '?', 0))
+		if (get_dollar(tokens))
+			return (free(s), free_memory(tokens), NULL);
 	i = -1;
 	while (tokens[++i])
 		printf("%zu = %s\n", i, tokens[i]);

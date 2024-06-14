@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/13 11:22:00 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/14 09:45:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ int	count_utils_quotes(int *rows, int *token, char *s, int i)
 		*token = 1;
 	return (i);
 }
+int	count_utils_char(int *rows, int *token, char *s, int i)
+{
+	if (*token == 1)
+		*token = 0;
+	else
+		*rows += 1;
+	while (s[++i] && !is_del(s[i]) && s[i] != '\n')
+		if (s[i] == 34 || s[i] == 39)
+			i = is_quotes(s, i, '?');
+	if (s[i] == '\n')
+		*rows += 1;
+	return (i);
+}
 
 int	count_rows(char *s, int rows)
 {
@@ -42,19 +55,13 @@ int	count_rows(char *s, int rows)
 		while (is_del(s[i]))
 			i++;
 		if (s[i] == 34 || s[i] == 39)
-			i = count_utils_quotes(&rows, &token, s, i);
-		if (s[i])
 		{
+			i = count_utils_quotes(&rows, &token, s, i);
 			if (token == 1)
-				token = 0;
-			else
-				rows++;
-			while (s[++i] && !is_del(s[i]) && s[i] != '\n')
-				if (s[i] == 34 || s[i] == 39)
-					i = is_quotes(s, i, '?');
-			if (s[i] == '\n')
-				rows++;
+				i = count_utils_char(&rows, &token, s, i);
 		}
+		else if (s[i])
+			i = count_utils_char(&rows, &token, s, i);
 	}
 	printf("%d\n", rows);
 	return (rows);

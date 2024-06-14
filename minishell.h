@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/12 11:17:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/14 08:38:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		is_append(char *s, int i, char token);
 int		is_heredoc(char *s, int i, char token);
 int		is_pipe_in_arr(char **array);
 int		is_redir_in_arr(char **array);
+int		is_there_quotes_in_da_shit(char *s);
 
 	/// Parsing ///
 int		parser(t_ast **ast, char ***tokens);

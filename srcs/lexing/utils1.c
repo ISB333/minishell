@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/13 11:21:08 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/14 09:40:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ char	**splitter(char **array, char *s)
 		{
 			if (split_utils_quotes(i, s, array))
 				return (NULL);
+			if (i->token == 1)
+				if (split_utils_char(i, s, array))
+					return (NULL);
 		}
-		if (s[i->i])
+		else if (s[i->i])
 			if (split_utils_char(i, s, array))
 				return (NULL);
 	}

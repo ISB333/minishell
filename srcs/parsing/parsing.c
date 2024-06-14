@@ -83,8 +83,67 @@ void	free_lst(t_ast **ast)
 	}
 }
 
+int	strlen_minus_quotes(char *s, int token, int len)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == 34)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				i++;
+			i++;
+			len += 2;
+		}
+		if (s[i] == 34)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				i++;
+			i++;
+			len += 2;
+		}
+		else
+			i++;
+	}
+	return (i - len);
+}
+
+char	*quotes_destroyer(char	*s, int i, int k, int token)
+{
+	char *new_s;
+
+	new_s = malloc(strlen_minus_quotes(s, 0, 0) + 1);
+	if (!new_s)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] == 34)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				new_s[k++] = s[i++];
+			i++;
+		}
+		if (s[i] == 39)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				new_s[k++] = s[i++];
+			i++;
+		}
+		else
+				new_s[k++] = s[i++];
+	}
+	return (new_s[k] = '\0', new_s);
+}
+
 int	parse_redir(t_ast **ast, char **tokens)
 {
+	char *fd;
 	int	k;
 	int	j;
 	int	i;
@@ -96,17 +155,29 @@ int	parse_redir(t_ast **ast, char **tokens)
 	{
 		if (is_redir(tokens[i], 0, 0) == 1)
 		{
-			(*ast)->fd_in[++k] = open(tokens[i + 1], O_RDONLY);
+			if (is_there_quotes_in_da_shit(tokens[i + 1]))
+				fd = quotes_destroyer(tokens[i + 1], 0, 0, 0);
+			else
+				fd = ft_substr(tokens[i + 1], 0, ft_strlen(tokens[i + 1]));
+			(*ast)->fd_in[++k] = open(fd, O_RDONLY);
 			if (!(*ast)->fd_in[k])
 				return (1);
 			i += 2;
+			// printf("fd_redir = %s\n", fd);
+			free(fd);
 		}
 		else if (is_redir(tokens[i], 0, 0) == 2)
 		{
-			(*ast)->fd_out[++j] = open(tokens[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+			if (is_there_quotes_in_da_shit(tokens[i + 1]))
+				fd = quotes_destroyer(tokens[i + 1], 0, 0, 0);
+			else
+				fd = ft_substr(tokens[i + 1], 0, ft_strlen(tokens[i + 1]));
+			(*ast)->fd_out[++j] = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			if (!(*ast)->fd_out[j])
 				return (1);
 			i += 2;
+			// printf("fd_redir = %s\n", fd);
+			free(fd);
 		}
 		else
 			i++;
@@ -118,28 +189,45 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 {
 	int	k;
 	int	j;
+	int len;
 
 	k = *i;
-	while (tokens[*i] && !is_sh_ope(tokens[*i], 0, 0))
-		(*i)++;
-	(*ast)->cmd = malloc((*i - k + 1) * sizeof(char *));
+	len = 0;
+	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0))
+	{
+		if (is_redir(tokens[*i], 0 , 0))
+			(*i) += 2;
+		else
+			(*i)++;
+		len++;
+	}
+	(*ast)->cmd = malloc((len + 1) * sizeof(char *));
 	if (!(*ast)->cmd)
 		return (1);
-	(*ast)->cmd[*i - k] = NULL;
 	j = -1;
-	while (k < *i)
+	while (tokens[k] && !is_pipe(tokens[k], 0, 0))
 	{
-		(*ast)->cmd[++j] = ft_substr(tokens[k], 0, ft_strlen(tokens[k]));
-		if (!(*ast)->cmd)
+		if (is_redir(tokens[k], 0, 0))
+			k += 2;
+		if (is_there_quotes_in_da_shit(tokens[k]))
+			(*ast)->cmd[++j] = quotes_destroyer(tokens[k], 0, 0, 0);
+		else if (!is_pipe(tokens[k], 0, 0))
+			(*ast)->cmd[++j] = ft_substr(tokens[k], 0, ft_strlen(tokens[k]));
+		if (!(*ast)->cmd[j])
 			return (1);
+		// printf("\ncmd = %s\n", (*ast)->cmd[j]);
 		k++;
 	}
+	(*ast)->cmd[++j] = NULL;
 	return (0);
 }
 
 int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 {
-	(*ast)->heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
+		(*ast)->heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
+	else
+		(*ast)->heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	if (!(*ast)->heredoc)
 		return (1);
 	*i += 2;
@@ -148,19 +236,26 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 
 int	parse_append(t_ast **ast, char **tokens)
 {
+	char *fd;
 	int	i;
 	int	k;
 
 	i = -1;
-	i = 0;
+	k = 0;
 	while (tokens[++i])
 	{
 		if (is_append(tokens[i], 0, 0))
 		{
-			(*ast)->fd_append[++k] = open(tokens[i + 1], O_WRONLY | O_APPEND, 0644);
+			if (is_there_quotes_in_da_shit(tokens[i + 1]))
+				fd = quotes_destroyer(tokens[i + 1], 0, 0, 0);
+			else
+				fd = ft_substr(tokens[i + 1], 0, ft_strlen(tokens[i + 1]));
+			printf("fd_append = %s\n", fd);
+			(*ast)->fd_append[++k] = open(fd, O_WRONLY | O_APPEND, 0644);
 			if (!(*ast)->fd_append)
 				return (1);
 			i += 2;
+			free(fd);
 		}
 		else
 			i++;
@@ -333,11 +428,14 @@ int	add_node(t_ast **ast, char **tokens)
 	return (0);
 }
 
+       #include <curses.h>
+       #include <term.h>
 int	parser(t_ast **ast, char ***array)
 {
 	int	i;
 	if (!array)
 		return (printf("lexing error\n"), 1);
+	printf("\n\n");
 	i = -1;
 	while (array[++i])
 		add_node(ast, array[i]);
@@ -349,7 +447,9 @@ int	parser(t_ast **ast, char ***array)
 	while (array[++i])
 	{
 		k = -1;
-		printf("\narray n°%d:\n", i + 1);
+		printf("\033[0;36m");
+		printf("\n\narray n°%d:\n", i + 1);
+		printf("\033[0;37m");
 		while (array[i][++k])
 			printf("%s\n", array[i][k]);
 	}

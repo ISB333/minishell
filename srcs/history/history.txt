@@ -2386,3 +2386,136 @@ exit
 <in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
 <in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
 exit
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in cmd arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <in "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+exit
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+exit
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+exit
+exit
+<in <"in" "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"i"n "cmd" arg | << del cmd arg > out | cat ">' 'ou"'t' ''
+<in <"i"n "cmd" arg | << 'de'l cmd arg > out | cat ">' 'ou"'t' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > out | cat ">' 'ou"'t' ''
+exit
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > out | cat ">' 'ou"'t' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > out | cat ">' 'ou"'t' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat ">' 'ou"'t' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat ">' 'ou"'t' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat ">' 'ou"'t' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat ">' 'ou"'t' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+exit
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat test
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat 
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat ''
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat 
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat 
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat 
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat 
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat \
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat \
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat \
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat \
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' ''| cat \
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | cat >' 'ou't' 'j'| cat \
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| c'a't \
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| c'a't \
+q
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla $USER"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER"
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER"
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER"
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USERtest"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+exit
+ echo "blabla$USER test"
+ echo 'blabla$USER test'
+ echo "blabla$USER test"
+exit
+ echo "blabla$USER test"
+exit
+ echo "blabla$USER test"
+ echo "blabla$USERtest"
+ echo 'blabla$USER test'
+ echo 'blabla'"$USER test"
+exit
+ echo 'blabla'"$USER test"
+ echo 'blabla'"$USER test"
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+EXIR
+exit
+<< del
+lol
+exit
+ls -la
+echo $USER
+echo "$USER"
+echo "$SESSION_MANAGER"
+exit
+echo $SESSION_MANAGER
+echo '$SESSION_MANAGER'
+echo $SESSION_MANAGER
+echo $USER
+echo $USER
+echo $SESSION_MANAGER
+echo $USER
+echo $SESSION_MANAGER
+echo $USER
+exit
+echo $USER
+exit
+echo $USER
+exit
+echo $USER
+echo "$USER"
+exit
+echo "$USER"
+exit
+echo "$USER"
+echo $USER
+echo '$USER'
+exit
+echo '$USER'
+echo $USER
+exit
