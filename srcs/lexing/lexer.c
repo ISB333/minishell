@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/14 10:22:00 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/15 07:23:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	array_len(char **tokens)
 
 int	len_to_pipe(char **tokens, int i)
 {
-	int k;
-	
+	int	k;
+
 	k = 0;
 	if (!tokens[i])
 		return (0);
@@ -62,7 +62,7 @@ int	len_to_pipe(char **tokens, int i)
 	return (k);
 }
 
-char ***split_array(char ***array, char **tokens)
+char	***split_array(char ***array, char **tokens)
 {
 	int	i;
 	int	k;
@@ -72,7 +72,7 @@ char ***split_array(char ***array, char **tokens)
 	k = 0;
 	i = 0;
 	len = is_pipe_in_arr(tokens);
-	array = malloc((len + 2)  * sizeof(char **));
+	array = malloc((len + 2) * sizeof(char **));
 	if (!array)
 		return (NULL);
 	array[len + 1] = NULL;
@@ -89,7 +89,6 @@ char ***split_array(char ***array, char **tokens)
 			array[k][j++] = ft_substr(tokens[i], 0, ft_strlen(tokens[i]));
 			i++;
 		}
-		// ++i;
 		array[k][j++] = ft_substr(tokens[i], 0, ft_strlen(tokens[i]));
 		if (!tokens[++i])
 			return (array[++k] = NULL, array);
@@ -111,9 +110,8 @@ char	***lexer(char *s)
 		if (add_space(&s, 0, 0, 0))
 			return (free(s), NULL);
 	if (open_quotes(s))
-		return (free(s), \
-			printf("Brother, I will smash ur face. Close me dat quote!\n"), \
-				NULL);
+		return (free(s), printf("Brother, \
+				I will smash ur face. Close me dat quote!\n"), NULL);
 	tokens = (char **)malloc((count_rows(s, 0) + 1) * sizeof(char *));
 	tokens = splitter(tokens, s);
 	if (!tokens)
@@ -130,13 +128,13 @@ char	***lexer(char *s)
 	{
 		array = malloc(2 * sizeof(char **));
 		if (!array)
-			return(NULL);
+			return (NULL);
 		array[0] = malloc((i + 1) * sizeof(char *));
 		if (!array[0])
 			return (free(array), NULL);
 		array[0][i] = NULL;
 		i = -1;
-		while(tokens[++i])
+		while (tokens[++i])
 			array[0][i] = ft_substr(tokens[i], 0, ft_strlen(tokens[i]));
 		array[1] = NULL;
 	}

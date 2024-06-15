@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/14 12:52:03 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/15 06:45:38 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ int	is_dollar_in_double_quotes(char *s, int k)
 	int	i;
 	int	token1;
 	int	token2;
-	int	start;
 
 	i = k;
-	start = k;
 	while (s[--i] && s[i] != 34 && s[i] != 39)
 		;
 	if (s[i] == 34 || s[i] == 39)

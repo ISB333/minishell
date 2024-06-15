@@ -2519,3 +2519,30 @@ exit
 echo '$USER'
 echo $USER
 exit
+echo $USER
+echo $USER
+exit
+echo $USER
+exit
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+<in ls -la | cat > lol
+exit
+<in ls -la | cat > lol
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in ls -la | cat > lol
+exit
+<in ls -la | cat > lol
+<in ls -la -lA | cat > lol
+<in ls -la -lAt  t t t t t | cat > lol
+<in ls -la | <<lol cat > lol
+exit

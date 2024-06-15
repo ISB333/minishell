@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/12 08:16:05by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/15 07:30:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,18 @@
 	3. if is_redirection, open file, else stdin/stdout
 
 	! / If multiple heredoc no pipes, only the last is took,
-	!	else first del then 2nd del etc.. /
+	!	else first del then 2nd del etc..
+			? ---> Test more cuz da shit is weird
 
+	! If multiple infiles or outfiles only the last infile/outfile is taken,
+	! 	but still create the multiple outfile, and send an error message
+	!	 		if file exist (except for append):
+	!		- bash: out1: cannot overwrite existing file
+	========================================================
+	TODO 1:	Norme
+	TODO 2:	Protect Malloc + Error cases
+	TODO 3:	Correct for cases of multi redirection
+	TODO 4:	Heredoc 
 */
 
 void	free_memory(char **array)
@@ -53,6 +63,8 @@ void	free_lst(t_ast **ast)
 			while (i-- > 0)
 				free(current->cmd[i]);
 			free(current->cmd);
+			if (current->cmd_path)
+				free(current->cmd_path);
 		}
 		if (current->heredoc)
 			free(current->heredoc);
@@ -112,9 +124,9 @@ int	strlen_minus_quotes(char *s, int token, int len)
 	return (i - len);
 }
 
-char	*quotes_destroyer(char	*s, int i, int k, int token)
+char	*quotes_destroyer(char *s, int i, int k, int token)
 {
-	char *new_s;
+	char	*new_s;
 
 	new_s = malloc(strlen_minus_quotes(s, 0, 0) + 1);
 	if (!new_s)
@@ -136,17 +148,17 @@ char	*quotes_destroyer(char	*s, int i, int k, int token)
 			i++;
 		}
 		else
-				new_s[k++] = s[i++];
+			new_s[k++] = s[i++];
 	}
 	return (new_s[k] = '\0', new_s);
 }
 
 int	parse_redir(t_ast **ast, char **tokens)
 {
-	char *fd;
-	int	k;
-	int	j;
-	int	i;
+	char	*fd;
+	int		k;
+	int		j;
+	int		i;
 
 	i = 0;
 	k = -1;
@@ -189,17 +201,19 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 {
 	int	k;
 	int	j;
-	int len;
+	int	len;
 
 	k = *i;
 	len = 0;
 	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0))
 	{
-		if (is_redir(tokens[*i], 0 , 0))
+		if (is_redir(tokens[*i], 0, 0))
 			(*i) += 2;
 		else
+		{
 			(*i)++;
-		len++;
+			len++;
+		}
 	}
 	(*ast)->cmd = malloc((len + 1) * sizeof(char *));
 	if (!(*ast)->cmd)
@@ -209,14 +223,16 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 	{
 		if (is_redir(tokens[k], 0, 0))
 			k += 2;
-		if (is_there_quotes_in_da_shit(tokens[k]))
-			(*ast)->cmd[++j] = quotes_destroyer(tokens[k], 0, 0, 0);
+		else if (is_there_quotes_in_da_shit(tokens[k]) && tokens[k])
+			(*ast)->cmd[++j] = quotes_destroyer(tokens[k++], 0, 0, 0);
 		else if (!is_pipe(tokens[k], 0, 0))
+		{
 			(*ast)->cmd[++j] = ft_substr(tokens[k], 0, ft_strlen(tokens[k]));
+			k++;
+		}
 		if (!(*ast)->cmd[j])
 			return (1);
 		// printf("\ncmd = %s\n", (*ast)->cmd[j]);
-		k++;
 	}
 	(*ast)->cmd[++j] = NULL;
 	return (0);
@@ -227,7 +243,8 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		(*ast)->heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
-		(*ast)->heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+		(*ast)->heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i
+					+ 1]));
 	if (!(*ast)->heredoc)
 		return (1);
 	*i += 2;
@@ -236,9 +253,9 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 
 int	parse_append(t_ast **ast, char **tokens)
 {
-	char *fd;
-	int	i;
-	int	k;
+	char	*fd;
+	int		i;
+	int		k;
 
 	i = -1;
 	k = 0;
@@ -326,9 +343,6 @@ int	allocate_fds(t_ast **ast, char **tokens, int i, int in_len)
 		else
 			i++;
 	}
-	// printf("before allocate in_len = %d\n", in_len);
-	// printf("before allocate out_len = %d\n", out_len);
-	// printf("before allocate app_len = %d\n", app_len);
 	(*ast)->fd_in = malloc((in_len + 1) * sizeof(int));
 	(*ast)->fd_out = malloc((out_len + 1) * sizeof(int));
 	(*ast)->fd_append = malloc((app_len + 1) * sizeof(int));
@@ -343,8 +357,9 @@ int	allocate_fds(t_ast **ast, char **tokens, int i, int in_len)
 void	print_lst(t_ast *ast)
 {
 	int	i;
-	int n = 1;
+	int	n;
 
+	n = 1;
 	while (ast)
 	{
 		printf("\033[0;33m");
@@ -352,8 +367,11 @@ void	print_lst(t_ast *ast)
 		printf("\033[0;37m");
 		i = -1;
 		if (ast->cmd)
+		{
 			while (ast->cmd[++i])
 				printf("%s\n", ast->cmd[i]);
+			printf("cmd_path = %s\n", ast->cmd_path);
+		}
 		printf("\nheredoc = %s\n", ast->heredoc);
 		if (ast->fd_in)
 		{
@@ -390,16 +408,57 @@ void	init_lst(t_ast **ast)
 	(*ast)->fd_out = 0;
 	(*ast)->fd_append = 0;
 	(*ast)->pipe = 0;
-	// (*ast)->next = NULL;
 }
 
 t_ast	*return_tail(t_ast *ast)
 {
 	if (!ast)
-		return(NULL);
-	while(ast->next)
+		return (NULL);
+	while (ast->next)
 		ast = ast->next;
 	return (ast);
+}
+
+char	**extract_path(void)
+{
+	char	**path;
+	char	*trimm_path;
+
+	trimm_path = getenv("PATH");
+	if (!trimm_path)
+		return (NULL);
+	path = ft_split(trimm_path, ':');
+	if (!path)
+		return (NULL);
+	return (path);
+}
+
+int	cmd_path_init(t_ast *ast)
+{
+	char	**path;
+	char	*cmd;
+	char	*test_path;
+	int		i;
+
+	path = extract_path();
+	if (!path)
+		return (printf("path not existing\n"), 1);
+	i = -1;
+	cmd = ft_strjoin("/", ast->cmd[0]);
+	if (!cmd)
+		return (free_memory(path), 1);
+	while (path[++i])
+	{
+		test_path = ft_strjoin(path[i], cmd);
+		if (!access(test_path, R_OK))
+		{
+			ast->cmd_path = test_path;
+			return (free(cmd), free_memory(path), 0);
+		}
+		free(test_path);
+	}
+	return (free(cmd), free_memory(path), printf("%s: notexisting\n",
+			ast->cmd[0]), 1);
 }
 
 int	add_node(t_ast **ast, char **tokens)
@@ -407,8 +466,6 @@ int	add_node(t_ast **ast, char **tokens)
 	t_ast	*new_node;
 	t_ast	*last_node;
 
-	// if (!ast)
-	// 	return (0);
 	new_node = malloc(sizeof(t_ast));
 	if (!new_node)
 		return (-1);
@@ -417,7 +474,10 @@ int	add_node(t_ast **ast, char **tokens)
 	if (is_redir_in_arr(tokens))
 		if (allocate_fds(&new_node, tokens, 0, 0))
 			return (free_memory(tokens), free_lst(ast), 1);
-	lst_parse(&new_node, tokens);
+	if (lst_parse(&new_node, tokens))
+		return (free_memory(tokens), free_lst(ast), 1);
+	if (cmd_path_init(new_node))
+		return (free_memory(tokens), free_lst(ast), 1);
 	if (!*ast)
 		*ast = new_node;
 	else
@@ -428,19 +488,20 @@ int	add_node(t_ast **ast, char **tokens)
 	return (0);
 }
 
-       #include <curses.h>
-       #include <term.h>
 int	parser(t_ast **ast, char ***array)
 {
 	int	i;
+	int	k;
+
 	if (!array)
 		return (printf("lexing error\n"), 1);
 	printf("\n\n");
 	i = -1;
 	while (array[++i])
-		add_node(ast, array[i]);
+		if (add_node(ast, array[i]))
+			return (printf("parsing error\n"));
 	i = -1;
-	int	k = -1;
+	k = -1;
 	printf("\033[0;34m");
 	printf("\n============= ARRAY =============\n\n");
 	printf("\033[0;37m");
