@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/15 07:23:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/17 09:15:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	free_mem(char **array, size_t j)
-{
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
-}
 
 int	count_utils_quotes(int *rows, int *token, char *s, int i)
 {

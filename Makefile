@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/12 08:01:13 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/17 11:52:26 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,12 @@ SRCS = main.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
 	./srcs/lexing/utils2.c \
+	./srcs/lexing/utils3.c \
 	./srcs/parsing/parsing.c \
+	./srcs/parsing/parse_utils1.c \
+	./srcs/parsing/parse_utils2.c \
+	./srcs/parsing/parse_utils3.c \
+	./srcs/parsing/parse_utils4.c \
 	./sigHandler.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)

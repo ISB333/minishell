@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/14 09:40:37 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/17 09:05:43 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,15 @@ int	strlen_space(char *s)
 	return (len + 1);
 }
 
+void	add_space_utils(char **s, char *str, int *i, int *k)
+{
+	str[(*k)++] = ' ';
+	str[(*k)++] = (*s)[(*i)++];
+	if (is_sh_ope(*s, *i - 1, 0) == 2)
+		str[(*k)++] = (*s)[(*i)++];
+	str[(*k)++] = ' ';
+}
+
 int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
@@ -92,13 +101,7 @@ int	add_space(char **s, int i, int k, int token)
 				str[k++] = (*s)[i++];
 		}
 		if (is_sh_ope(*s, i, 0))
-		{
-			str[k++] = ' ';
-			str[k++] = (*s)[i++];
-			if (is_sh_ope(*s, i - 1, 0) == 2)
-				str[k++] = (*s)[i++];
-			str[k++] = ' ';
-		}
+			add_space_utils(s, str, &i, &k);
 		else
 			str[k++] = (*s)[i++];
 	}

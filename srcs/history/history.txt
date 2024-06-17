@@ -2546,3 +2546,62 @@ exit
 <in ls -la -lAt  t t t t t | cat > lol
 <in ls -la | <<lol cat > lol
 exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+<in ls -la -lAt  t t t t t | cat > lol
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol|
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+exit
+<in ls -la | <<lol cat > lol
+<in ls -la | <<lol cat > lol| cat >lol | t
+<in ls -la | <<lol cat > lol| cat >lol | t
+<in ls -la | <<lol cat > lol| cat >lol | 
+<in ls -la | <<lol cat > lol| cat >lol | 
+<in ls -la | <<lol cat > lol| cat >lol | 
+<in ls -la | <<lol cat > lol| cat >lol | 
+<in ls -la | <<lol cat > lol| cat >lol | 
+exit
+<in ls -la |
+<in ls -la |
+<in ls -la |
+<in ls -la |
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+exit
