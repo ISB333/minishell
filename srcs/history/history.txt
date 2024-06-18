@@ -2642,3 +2642,32 @@ exit
 <in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
 <in ls -la | <<lol cat > lol| cat >lol
 <in ls -la | <<lol cat > lol| cat >lol
+/home/isb3/42_Projects/7_minishell/minishell/srcs/parsing/parse_utils3.c
+cat
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<Makefile ls -la | <<lol cat > lol| cat >lol
+exit
+<Makefile ls -la | <<lol cat > lol| cat >lol
+exit
+<Makefile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit

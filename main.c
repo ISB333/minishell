@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/12 11:12:47 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/18 11:19:56 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,22 @@ void	history(char *rl)
 	append_new_history(rl);
 }
 
-int	ft_do_all()
+int	main()
 {
 	t_ast	*ast;
 	char	*rl;
-
-	ast = NULL;
-	if (prompt(&rl))
-		return (1);
-	history(rl);
-	if (!ft_strcmp(rl, "exit\0"))
-		return (free(rl), 0);
-	if (parser(&ast, lexer(rl)))
-		return (1);
-	return (-1);
-}
-
-int	main()
-{
-	int	to_do;
 
 	// catchBackslash();
 	// catchC();
 	// rl = NULL;
 	while (1)
 	{
-		to_do = ft_do_all();
-		if (to_do == 0)
-			return (exit(EXIT_SUCCESS), 0);
-		if (to_do == 1)
-			return (exit(EXIT_FAILURE), 1);
+		ast = NULL;
+		if (prompt(&rl))
+			return (1);
+		history(rl);
+		if (!ft_strcmp(rl, "exit\0"))
+			return (free(rl), 0);
+		parser(&ast, lexer(rl));
 	}
 }

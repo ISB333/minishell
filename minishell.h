@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:38:39 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/18 11:24:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # include <termcap.h>
 # include <curses.h>
 # include "libft/libft.h"
+
+# define RED "\033[0;31m"
+# define DEF "\033[0m"
 
 typedef struct s_prompt
 {

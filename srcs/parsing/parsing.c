@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:57:10 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/18 11:25:25 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	printer(char ***array)
 		while (array[i][++k])
 			printf("%s\n", array[i][k]);
 	}
+	printf("\033[0m\n");
 }
 
 int	lst_parse(t_ast **ast, char **tokens)
@@ -159,11 +160,11 @@ int	add_node(t_ast **ast, char **tokens)
 	}
 	if (is_redir_in_arr(tokens))
 		if (allocate_fds(&new_node, tokens))
-			return (free_memory(tokens), free_lst(ast), 1);
+			return (1);
 	if (lst_parse(&new_node, tokens))
-		return (free_memory(tokens), ff('F'), free_lst(ast), 1);
+		return (1);
 	if (cmd_path_init(new_node))
-		return (free_memory(tokens), free_lst(ast), 1);
+		return (1);
 	return (0);
 }
 
@@ -172,13 +173,13 @@ int	parser(t_ast **ast, char ***array)
 	int	i;
 
 	if (!array)
-		return (printf("lexing error\n"), 1);
+		return (printf("%slexing error%s\n", RED, DEF), 1);
 	printf("\n\n");
 	i = -1;
 	printer(array);
 	while (array[++i])
 		if (add_node(ast, array[i]))
-			return (printf("parsing error\n"));
+			printf("%sparsing error%s\n", RED, DEF);
 	i = -1;
 	while (array[++i])
 		free_memory(array[i]);
@@ -188,7 +189,7 @@ int	parser(t_ast **ast, char ***array)
 	printf("\033[0;37m");
 	print_lst(*ast);
 	printf("\033[0m");
-	ff('S');
+	// ff('S');
 	free_lst(ast);
 	return (0);
 }

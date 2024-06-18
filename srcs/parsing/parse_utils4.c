@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:35:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:14:28 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/18 11:14:55 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,15 @@ void	free_lst(t_ast **ast)
 	current = *ast;
 	while (current)
 	{
-		// if (current->cmd)
-		// {
-		// 	if (current->cmd_path)
-		// 		free(current->cmd_path);
-		// }
-		// if (current->heredoc)
-		// 	free(current->heredoc);
-		// free_fds(current);
+		if (current->cmd)
+		{
+			free_cmd(current->cmd);
+			if (current->cmd_path)
+				free(current->cmd_path);
+		}
+		if (current->heredoc)
+			free(current->heredoc);
+		free_fds(current);
 		next = current->next;
 		free(current);
 		current = next;

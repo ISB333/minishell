@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:55:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/18 11:27:16 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *k, int *i)
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	(*ast)->fd_in[++(*k)] = open(fd, O_RDONLY);
 	if ((*ast)->fd_in[*k] == -1)
-		return (free(fd), printf("error while opening infile\n"), 1);
+		return (free(fd), printf("%serror while opening infile%s\n", RED, DEF), 1);
 	if ((*ast)->fd_in[*k] == 2)
-		return (free(fd), printf("infile doesn't exist'\n"), 1);
+		return (free(fd), printf("%sinfile doesn't exist%s\n", RED, DEF), 1);
 	// printf("fd_redir = %s\n", fd);
 	*i += 2;
 	free(fd);
@@ -62,12 +62,12 @@ int	parse_redir(t_ast **ast, char **tokens)
 		if (is_redir(tokens[i], 0, 0) == 1)
 		{
 			if (parse_redir_utils1(ast, tokens, &k, &i))
-				return (printf("fd_in error\n"), 1);
+				return (printf("%sfd_in error%s\n", RED, DEF), 1);
 		}
 		else if (is_redir(tokens[i], 0, 0) == 2)
 		{
 			if (parse_redir_utils2(ast, tokens, &j, &i))
-				return (printf("fd_out error\n"), 1);
+				return (printf("%sfd_out error%s\n", RED, DEF), 1);
 		}
 		else
 			i++;

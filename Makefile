@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/18 10:45:32 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/18 11:14:31 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ $(NAME) : $(OBJS) $(LIBFT)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
-	@if [ ! -f .obj/*.o ]; then \
+	@if [ ! -d .obj ]; then \
 	    echo "$(RED)\nCompiling minishell files...$(DEFAULT)"; \
 	fi
 	@$(CC) $(OFLAGS) -c $< -o $@
