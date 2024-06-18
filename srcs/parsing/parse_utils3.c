@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 11:54:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:55:33 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int	allocate_fds(t_ast **ast, char **tokens)
 	(*ast)->fd_in = malloc((in_len + 1) * sizeof(int));
 	(*ast)->fd_out = malloc((out_len + 1) * sizeof(int));
 	(*ast)->fd_append = malloc((app_len + 1) * sizeof(int));
+	// (*ast)->fd_in = mem_manager((in_len + 1) * sizeof(int), INT_ARR, 'A');
+	// (*ast)->fd_out = mem_manager((out_len + 1) * sizeof(int), INT_ARR, 'A');
+	// (*ast)->fd_append = mem_manager((app_len + 1) * sizeof(int), INT_ARR, 'A');
 	if (!(*ast)->fd_in || !(*ast)->fd_out || !(*ast)->fd_append)
 		return (1);
 	(*ast)->fd_in[in_len] = 0;

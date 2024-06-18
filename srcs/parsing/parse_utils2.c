@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 11:53:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:55:23 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *k, int *i)
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	(*ast)->fd_in[++(*k)] = open(fd, O_RDONLY);
-	if (!(*ast)->fd_in[*k])
-		return (1);
+	if ((*ast)->fd_in[*k] == -1)
+		return (free(fd), printf("error while opening infile\n"), 1);
+	if ((*ast)->fd_in[*k] == 2)
+		return (free(fd), printf("infile doesn't exist'\n"), 1);
 	// printf("fd_redir = %s\n", fd);
 	*i += 2;
 	free(fd);
@@ -80,6 +82,7 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 
 	k = *i;
 	(*ast)->cmd = malloc((strlen_cmd(tokens, i) + 1) * sizeof(char *));
+	// (*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), INT_ARR, 'A');
 	if (!(*ast)->cmd)
 		return (1);
 	j = -1;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/17 11:52:26 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/18 10:45:32 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,17 @@ NAME = minishell
 CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
 CC = cc
 
+DEFAULT = \033[0;39m
+BLUE = \033[0;34m
+GREEN = \033[0;32m
+RED = \033[31;1m
+WHITE = \033[0;37m
+
 ######################## SOURCES ########################
 
 SRCS = main.c \
 	./srcs/get_prompt.c \
+	./srcs/memory_manager.c \
 	./srcs/history/gnl.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
@@ -56,19 +63,26 @@ LIBFT = $(LIBFT_DIR)/libft.a
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT)
+	@echo "$(GREEN)\n$@ is ready !$(DEFAULT)\n"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
-	@echo "Compiling $<..."
+	@if [ ! -f .obj/*.o ]; then \
+	    echo "$(RED)\nCompiling minishell files...$(DEFAULT)"; \
+	fi
 	@$(CC) $(OFLAGS) -c $< -o $@
 
 $(LIBFT) :
-	@$(MAKE) -C $(LIBFT_DIR)
+	@if [ ! -f $(LIBFT)/*.o ]; then \
+	    echo "$(BLUE)\nCompiling libft files...$(DEFAULT)"; \
+	fi
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
+	@echo "$(WHITE)\nEvery files are cleaned$(DEFAULT)"
 
 fclean : clean
 	@rm -f $(NAME)

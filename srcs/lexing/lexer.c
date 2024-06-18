@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 12:12:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:32:39 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 	int	j;
 
 	len = len_to_pipe(tokens, *i);
+	// printf("len = %d\n", len);
 	array[*k] = malloc((len + 1) * sizeof(char *));
 	if (!array[*k])
 		return (1);
@@ -63,6 +64,7 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 	int	len;
 
 	len = is_pipe_in_arr(tokens);
+	printf("len = %d\n", len);
 	array = malloc((len + 2) * sizeof(char **));
 	if (!array)
 		return (NULL);
@@ -72,9 +74,9 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 		if (split_array_utils(array, tokens, &i, &k))
 			return (printf("split_array error\n"), NULL);
 		if (!tokens[++i])
-			return (array[++k] = NULL, array);
+			return (array);
 	}
-	return (NULL);
+	return (printf("looooooooooooooooooooool\n"), NULL);
 }
 
 int	lexer_utils(char ***array, char **tokens)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 12:14:10 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:57:10 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,13 +150,6 @@ int	add_node(t_ast **ast, char **tokens)
 		return (-1);
 	new_node->next = NULL;
 	init_lst(&new_node);
-	if (is_redir_in_arr(tokens))
-		if (allocate_fds(&new_node, tokens))
-			return (free_memory(tokens), free_lst(ast), 1);
-	if (lst_parse(&new_node, tokens))
-		return (free_memory(tokens), free_lst(ast), 1);
-	if (cmd_path_init(new_node))
-		return (free_memory(tokens), free_lst(ast), 1);
 	if (!*ast)
 		*ast = new_node;
 	else
@@ -164,6 +157,13 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
+	if (is_redir_in_arr(tokens))
+		if (allocate_fds(&new_node, tokens))
+			return (free_memory(tokens), free_lst(ast), 1);
+	if (lst_parse(&new_node, tokens))
+		return (free_memory(tokens), ff('F'), free_lst(ast), 1);
+	if (cmd_path_init(new_node))
+		return (free_memory(tokens), free_lst(ast), 1);
 	return (0);
 }
 
@@ -180,14 +180,15 @@ int	parser(t_ast **ast, char ***array)
 		if (add_node(ast, array[i]))
 			return (printf("parsing error\n"));
 	i = -1;
-	// while (array[++i])
-	// 	free_memory(array[i]);
-	// free(array);
+	while (array[++i])
+		free_memory(array[i]);
+	free(array);
 	printf("\033[0;33m");
 	printf("\n============= LINKED_LIST =============\n\n");
 	printf("\033[0;37m");
 	print_lst(*ast);
 	printf("\033[0m");
+	ff('S');
 	free_lst(ast);
 	return (0);
 }

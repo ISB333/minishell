@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 09:05:43 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:13:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ char	**splitter(char **array, char *s)
 		if (s[i->i] == 34 || s[i->i] == 39)
 		{
 			if (split_utils_quotes(i, s, array))
-				return (NULL);
+				return (free(i), NULL);
 			if (i->token == 1)
 				if (split_utils_char(i, s, array))
-					return (NULL);
+					return (free(i), NULL);
 		}
 		else if (s[i->i])
 			if (split_utils_char(i, s, array))
-				return (NULL);
+				return (free(i), NULL);
 	}
 	return (array[i->j] = NULL, free(i), array);
 }

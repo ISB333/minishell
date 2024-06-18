@@ -2605,3 +2605,40 @@ exit
 <in ls -la | <<lol cat > lol| cat >lol
 <in ls -la | <<lol cat > lol| cat >lol
 exit
+<in ls -la | <<lol cat > lol| cat >lol
+exit
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+exit
+exit
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol
+<in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
+<in ls -la | <<lol cat > lol| cat >lol
+<in ls -la | <<lol cat > lol| cat >lol

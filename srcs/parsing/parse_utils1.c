@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 08:14:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:47:29 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	cmd_path_init(t_ast *ast)
 		}
 		free(test_path);
 	}
+	free(ast->cmd_path);
 	return (free(cmd), free_memory(path), printf("%s: notexisting\n",
 			ast->cmd[0]), 1);
 }

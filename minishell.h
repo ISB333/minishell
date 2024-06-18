@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 12:12:20 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:38:39 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,22 @@ typedef struct s_ast
 	char			*heredoc;
 	struct s_ast	*next;
 }	t_ast;
+
+typedef enum {
+	ARR_ARR,
+	ARRAY,
+	STRING,
+    INT_ARR,
+	NONE
+} ptrType;
+
+
+typedef struct s_memman
+{
+    void 	*ptr;
+	ptrType	type;
+    struct s_memman *next;
+} t_memman;
 
 int		ft_do_all();
 char	*get_prompt(void);
@@ -115,6 +131,8 @@ int		allocate_fds(t_ast **ast, char **tokens);
 int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);
+void	*mem_manager(size_t size, ptrType type, int token);
+void	*ff(int token);
 
 //sigHandler.c
 int	catchBackslash(void);
