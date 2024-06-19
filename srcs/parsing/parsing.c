@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 11:25:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 10:37:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
 	! If open pipe, shell open an heredoc like waiting for a command
 
 	========================================================
-	TODO 1:	Norme
-	TODO 2:	Protect Malloc
+	TODO 2:	Protect malloc
 		--> <in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
 			== parsing_error + leaks
 	TODO 3: Error Management
@@ -44,6 +43,8 @@ void	print_lst(t_ast *ast)
 	int	n;
 
 	n = 1;
+	if (!ast)
+		return ;
 	while (ast)
 	{
 		printf("\033[0;33m");
@@ -57,27 +58,6 @@ void	print_lst(t_ast *ast)
 			printf("cmd_path = %s\n", ast->cmd_path);
 		}
 		printf("\nheredoc = %s\n", ast->heredoc);
-		if (ast->fd_in)
-		{
-			i = -1;
-			while (ast->fd_in[++i])
-				;
-			printf("\nfd_in len = %d\n", i);
-		}
-		if (ast->fd_out)
-		{
-			i = -1;
-			while (ast->fd_out[++i])
-				;
-			printf("fd_out len = %d\n", i);
-		}
-		if (ast->fd_append)
-		{
-			i = -1;
-			while (ast->fd_append[++i])
-				;
-			printf("fd_append len = %d\n", i);
-		}
 		ast = ast->next;
 		n++;
 	}
@@ -117,11 +97,12 @@ int	lst_parse(t_ast **ast, char **tokens)
 		;
 	while (i < p)
 	*/
-	if (is_redir(tokens[i], 0, '?'))
+	if (is_redir_in_arr(tokens))
 		if (parse_redir(ast, tokens))
 			return (1);
-	if (is_append(tokens[i], 0, '?'))
-		parse_append(ast, tokens);
+	if (is_append_in_arr(tokens))
+		if (parse_append(ast, tokens))
+			return (1);
 	while (tokens[i])
 	{
 		if (is_redir(tokens[i], 0, 0))
@@ -129,14 +110,18 @@ int	lst_parse(t_ast **ast, char **tokens)
 		else if (is_append(tokens[i], 0, 0))
 			i += 2;
 		else if (is_heredoc(tokens[i], 0, 0))
-			parse_heredoc(ast, tokens, &i);
+		{
+			if (parse_heredoc(ast, tokens, &i))
+				return (1);
+		}
 		else if (is_pipe(tokens[i], 0, 0))
 		{
 			(*ast)->pipe = 1;
 			i++;
 		}
 		else
-			parse_cmd(ast, tokens, &i);
+			if (parse_cmd(ast, tokens, &i))
+				return (1);
 	}
 	return (0);
 }
@@ -158,9 +143,6 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	if (is_redir_in_arr(tokens))
-		if (allocate_fds(&new_node, tokens))
-			return (1);
 	if (lst_parse(&new_node, tokens))
 		return (1);
 	if (cmd_path_init(new_node))
@@ -179,7 +161,14 @@ int	parser(t_ast **ast, char ***array)
 	printer(array);
 	while (array[++i])
 		if (add_node(ast, array[i]))
+		{
+			i = -1;
 			printf("%sparsing error%s\n", RED, DEF);
+			while (array[++i])
+				free_memory(array[i]);
+			free(array);
+			return (free_lst(ast), 1);
+		}
 	i = -1;
 	while (array[++i])
 		free_memory(array[i]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:47:29 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 09:02:26 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	init_lst(t_ast **ast)
 
 t_ast	*return_tail(t_ast *ast)
 {
-	if (!ast)
-		return (NULL);
-	while (ast->next)
+	if (!ast->next)
+		return (ast);
+	while (ast && ast->next)
 		ast = ast->next;
 	return (ast);
 }

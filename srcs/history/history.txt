@@ -2671,3 +2671,69 @@ exit
 exit
 <Mfile ls -la | <<lol cat > lol| cat >lol
 exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol<Mfile ls -la | <<lol cat > lol| cat >lol
+<Mfile ls -la | <<lol cat > lol| cat >lol<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+<Mfile ls -la | <<lol cat > lol| cat >lol<Mfile ls -la | <<lol cat > lol| cat >lol<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+exit<Mfile ls -la | <<lol cat > lol| cat >lol3
+EXIT
+ls -la < Makefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Mkefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Mkefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Mkefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Mkefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Mkefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+las -la < Makefile | <<lol cat > lol1 >lol2 | cat >lol >lol2
+ls -la < Makefile | <<lol ct > lol1 >lol2 | cat >lol >lol2
+ls -la < Makefile | <<lol cat < ll1 >lol2 | cat >lol >lol2
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell
+/home/adesille/Desktop/minishell/minishell/minishell

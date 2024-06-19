@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/18 11:14:31 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/19 09:58:43 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
 CC = cc
 
 DEFAULT = \033[0;39m
@@ -55,8 +55,8 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-# VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
-# 	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
+VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
+	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
 
 ######################## RULES ########################
 
@@ -78,6 +78,9 @@ $(LIBFT) :
 	    echo "$(BLUE)\nCompiling libft files...$(DEFAULT)"; \
 	fi
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
+
+val :
+	@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --trace-children=yes --suppressions=valgrind.supp --quiet ./minishell
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)

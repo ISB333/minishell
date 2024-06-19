@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/17 12:12:05 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/19 09:33:35 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ int	is_redir_in_arr(char **array)
 			return (1);
 		if (array[i][0] == '>' && array[i][1] != '>')
 			return (2);
+	}
+	return (0);
+}
+
+int	is_append_in_arr(char **array)
+{
+	int	i;
+
+	i = -1;
+	if (!array)
+		return (0);
+	while (array[++i])
+	{
+		if (array[i][0] == '>' && array[i][1] == '>')
+			return (1);
 	}
 	return (0);
 }

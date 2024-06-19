@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 09:55:33 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 09:00:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,6 @@ void	fds_len(char **tokens, int *out_len, int *app_len, int *in_len)
 		else
 			i++;
 	}
-}
-
-int	allocate_fds(t_ast **ast, char **tokens)
-{
-	int	in_len;
-	int	out_len;
-	int	app_len;
-
-	in_len = 0;
-	out_len = 0;
-	app_len = 0;
-	fds_len(tokens, &in_len, &out_len, &app_len);
-	(*ast)->fd_in = malloc((in_len + 1) * sizeof(int));
-	(*ast)->fd_out = malloc((out_len + 1) * sizeof(int));
-	(*ast)->fd_append = malloc((app_len + 1) * sizeof(int));
-	// (*ast)->fd_in = mem_manager((in_len + 1) * sizeof(int), INT_ARR, 'A');
-	// (*ast)->fd_out = mem_manager((out_len + 1) * sizeof(int), INT_ARR, 'A');
-	// (*ast)->fd_append = mem_manager((app_len + 1) * sizeof(int), INT_ARR, 'A');
-	if (!(*ast)->fd_in || !(*ast)->fd_out || !(*ast)->fd_append)
-		return (1);
-	(*ast)->fd_in[in_len] = 0;
-	(*ast)->fd_out[out_len] = 0;
-	(*ast)->fd_append[app_len] = 0;
-	return (0);
 }
 
 int	strlen_minus_quotes(char *s, int token, int len)

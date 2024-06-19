@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 11:24:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 09:48:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef struct s_ast
 {
 	char			**cmd;
 	char			*cmd_path;
-	int				*fd_in;
-	int				*fd_out;
+	int				fd_in;
+	int				fd_out;
 	int				pipe;
-	int				*fd_append;
+	int				fd_append;
 	char			*heredoc;
 	struct s_ast	*next;
 }	t_ast;
@@ -77,7 +77,7 @@ typedef struct s_memman
     struct s_memman *next;
 } t_memman;
 
-int		ft_do_all();
+
 char	*get_prompt(void);
 
 	/// History ///
@@ -101,6 +101,7 @@ int		is_append(char *s, int i, char token);
 int		is_heredoc(char *s, int i, char token);
 int		is_pipe_in_arr(char **array);
 int		is_redir_in_arr(char **array);
+int		is_append_in_arr(char **array);
 int		is_there_quotes_in_da_shit(char *s);
 
 		// utils //
@@ -130,7 +131,6 @@ int		parse_append(t_ast **ast, char **tokens);
 
 char	*quotes_destroyer(char *s, int i, int k, int token);
 int		strlen_minus_quotes(char *s, int token, int len);
-int		allocate_fds(t_ast **ast, char **tokens);
 int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);

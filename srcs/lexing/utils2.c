@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 09:15:19 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/19 08:49:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	count_rows(char *s, int rows)
 	int	token;
 
 	i = 0;
+	token = 0;
 	while (s[i])
 	{
 		while (is_del(s[i]))

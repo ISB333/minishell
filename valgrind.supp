@@ -13,7 +13,6 @@
    match-leak-kinds: reachable
    fun:realloc
     ...
-   fun:prompt3
    fun:prompt
    fun:main
 }
@@ -23,7 +22,6 @@
    match-leak-kinds: reachable
    fun:malloc
    ...
-   fun:readline
    fun:prompt3
    fun:prompt
    fun:main
@@ -103,4 +101,36 @@
    ...
    obj:/usr/bin/cat
    fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   ...
+   fun:add_previous_history
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:add_previous_history
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:readline
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   ...
+   fun:readline
 }

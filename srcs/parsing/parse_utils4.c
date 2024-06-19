@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:35:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 11:14:55 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 09:42:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,13 @@ void	free_cmd(char **arr)
 	free(arr);
 }
 
-void	free_fds(t_ast *current)
-{
-	int	i;
-
-	if (current->fd_in)
-	{
-		i = -1;
-		while (current->fd_in[++i])
-			close(current->fd_in[i]);
-	}
-	if (current->fd_out)
-	{
-		i = -1;
-		while (current->fd_out[++i])
-			close(current->fd_out[i]);
-	}
-	if (current->fd_append)
-	{
-		i = -1;
-		while (current->fd_append[++i])
-			close(current->fd_append[i]);
-	}
-	free(current->fd_in);
-	free(current->fd_out);
-	free(current->fd_append);
-}
-
 void	free_lst(t_ast **ast)
 {
 	t_ast	*current;
 	t_ast	*next;
 
+	if (!ast || !*ast)
+		return ;
 	current = *ast;
 	while (current)
 	{
@@ -67,11 +42,17 @@ void	free_lst(t_ast **ast)
 		}
 		if (current->heredoc)
 			free(current->heredoc);
-		free_fds(current);
+		if (current->fd_in)
+			close(current->fd_in);
+		if (current->fd_out)
+			close(current->fd_out);
+		if (current->fd_append)
+			close(current->fd_append);
 		next = current->next;
 		free(current);
 		current = next;
 	}
+	*ast = NULL;
 }
 
 int	parse_append(t_ast **ast, char **tokens)
@@ -91,9 +72,11 @@ int	parse_append(t_ast **ast, char **tokens)
 			else
 				fd = ft_substr(tokens[i + 1], 0, ft_strlen(tokens[i + 1]));
 			printf("fd_append = %s\n", fd);
-			(*ast)->fd_append[++k] = open(fd, O_WRONLY | O_APPEND, 0644);
-			if (!(*ast)->fd_append)
-				return (1);
+			if ((*ast)->fd_append)
+				close((*ast)->fd_append);
+			(*ast)->fd_append = open(fd, O_WRONLY | O_APPEND, 0644);
+			if ((*ast)->fd_append == -1)
+				return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
 			i += 2;
 			free(fd);
 		}

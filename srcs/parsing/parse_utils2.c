@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/18 11:27:16 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/19 10:36:06 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	parse_redir_utils2(t_ast **ast, char **tokens, int *j, int *i)
+int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 {
 	char	*fd;
 
@@ -20,16 +20,19 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *j, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	(*ast)->fd_out[++(*j)] = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (!(*ast)->fd_out[*j])
-		return (1);
+	if ((*ast)->fd_out)
+		close((*ast)->fd_out);
+	printf("fd_out = %s\n", fd);
+	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if ((*ast)->fd_out == -1)
+		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
 	*i += 2;
 	// printf("fd_redir = %s\n", fd);
 	free(fd);
 	return (0);
 }
 
-int	parse_redir_utils1(t_ast **ast, char **tokens, int *k, int *i)
+int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 {
 	char	*fd;
 
@@ -37,11 +40,14 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *k, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	(*ast)->fd_in[++(*k)] = open(fd, O_RDONLY);
-	if ((*ast)->fd_in[*k] == -1)
-		return (free(fd), printf("%serror while opening infile%s\n", RED, DEF), 1);
-	if ((*ast)->fd_in[*k] == 2)
-		return (free(fd), printf("%sinfile doesn't exist%s\n", RED, DEF), 1);
+	if ((*ast)->fd_in)
+		close((*ast)->fd_in);
+	printf("fd_in = %s\n", fd);
+	(*ast)->fd_in = open(fd, O_RDONLY);
+	if ((*ast)->fd_in == -1)
+		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
+	if ((*ast)->fd_in == 2)
+		return (printf("%s%s: No such file or directory%s\n", RED, fd, DEF), free(fd), 1);
 	// printf("fd_redir = %s\n", fd);
 	*i += 2;
 	free(fd);
@@ -50,23 +56,19 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *k, int *i)
 
 int	parse_redir(t_ast **ast, char **tokens)
 {
-	int		k;
-	int		j;
 	int		i;
 
 	i = 0;
-	k = -1;
-	j = -1;
 	while (tokens[i])
 	{
 		if (is_redir(tokens[i], 0, 0) == 1)
 		{
-			if (parse_redir_utils1(ast, tokens, &k, &i))
+			if (parse_redir_utils1(ast, tokens, &i))
 				return (printf("%sfd_in error%s\n", RED, DEF), 1);
 		}
 		else if (is_redir(tokens[i], 0, 0) == 2)
 		{
-			if (parse_redir_utils2(ast, tokens, &j, &i))
+			if (parse_redir_utils2(ast, tokens, &i))
 				return (printf("%sfd_out error%s\n", RED, DEF), 1);
 		}
 		else
@@ -113,7 +115,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 		(*ast)->heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i
 					+ 1]));
 	if (!(*ast)->heredoc)
-		return (1);
+		return (printf("heredoc error"), 1);
 	*i += 2;
 	return (0);
 }
