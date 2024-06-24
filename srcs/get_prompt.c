@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:38:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	extract_pos(char **position)
 	*position = ft_substr(trimm_path, 0, i);
 	if (!*position)
 		return (free(trimm_path), 1);
-	return (free(trimm_path), 0);
+	return (0);
+	// return (free(trimm_path), 0);
 }
 
 char	*join_prompt(char *logname, char *position, char *curr_dir)
@@ -53,7 +54,7 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	k = -1;
 	full_size = ft_strlen(logname) + ft_strlen(position) + \
 		ft_strlen(curr_dir) + 5;
-	prompt = malloc(full_size);
+	prompt = mem_manager(full_size, STRING, 'A');
 	if (!prompt)
 		return (NULL);
 	while (logname[++i])
@@ -93,7 +94,7 @@ int	init_prompt_data(t_prompt *data, int start, int len)
 		data->root_dir = ft_substr(data->curr_dir, start, len);
 		if (!data->root_dir)
 			return (1);
-		free(data->curr_dir);
+		// free(data->curr_dir);
 		data->curr_dir = ft_strjoin("~", data->root_dir);
 	}
 	return (0);
@@ -104,16 +105,19 @@ char	*get_prompt(void)
 	t_prompt	*data;
 	char		*prompt;
 
-	data = malloc(sizeof(t_prompt));
+	data = mem_manager(sizeof(t_prompt), NONE, 'A');
 	if (!data)
 		return (NULL);
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
 	if (init_prompt_data(data, 0, 0))
-		return (free_prompt_data(data), NULL);
+		return (NULL);
+		// return (free_prompt_data(data), NULL);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)
-		return (free_prompt_data(data), NULL);
-	return (free_prompt_data(data), prompt);
+		return (NULL);
+		// return (free_prompt_data(data), NULL);
+	return (prompt);
+	// return (free_prompt_data(data), prompt);
 }

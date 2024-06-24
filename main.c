@@ -6,13 +6,15 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:27:29 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:19:48 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // ! if  there's a NEWLINE outside of quotes, command after are not linked to those above, EXCEPTED if there's a pipe at the EOL ! //
+// ! if "echo -nnnnnnnnnnnnnnnnnnnn" || "echo -n-n-n-n-n-n-n-n-n" count as 1 
+// ! if exit +100 return code will be 100 (not if multiple +)
 
 int	prompt(char **rl)
 {
@@ -27,7 +29,7 @@ int	prompt(char **rl)
 	if (*rl == NULL)
 	// printf("\033[0;37m");
 		return (1);
-	free(prompt);
+	// free(prompt);
 	return (0);
 }
 
@@ -49,6 +51,9 @@ int	main()
 	// catchC();
 	// rl = NULL;
 	// while (1)
+	// {
+	static int i = 0;
+	// while(i++ < 250)
 	// {
 		int fd = open("test.txt", O_RDONLY);
 		ast = NULL;

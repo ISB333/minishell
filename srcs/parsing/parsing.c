@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 12:08:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	! If open pipe, shell open an heredoc like waiting for a command
 
 	========================================================
-	TODO 2:	Protect malloc
+	TODO 2:	Protect mem_manager
 		--> <in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
 			== parsing_error + leaks
 	TODO 3: Error Management
@@ -164,21 +164,17 @@ int	parser(t_ast **ast, char ***array)
 		{
 			i = -1;
 			printf("%sparsing error%s\n", RED, DEF);
-			while (array[++i])
-				free_memory(array[i]);
-			free(array);
+			mem_manager(0, NONE, 'C');
 			return (free_lst(ast), 1);
 		}
 	i = -1;
-	while (array[++i])
-		free_memory(array[i]);
-	free(array);
 	printf("\033[0;33m");
 	printf("\n============= LINKED_LIST =============\n\n");
 	printf("\033[0;37m");
 	print_lst(*ast);
 	printf("\033[0m");
-	// ff('S');
+	mem_manager(0, NONE, 'P');
+	mem_manager(0, NONE, 'C');
 	free_lst(ast);
 	return (0);
 }

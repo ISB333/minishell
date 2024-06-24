@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/11 09:20:41 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:02:07 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	add_previous_history(void)
 		if (!line)
 			return (free(line), close(history), 0);
 		line_trimmed = ft_strtrim(line, "\n");
-		free(line);
+		// free(line);
 		add_history(line_trimmed);
-		free(line_trimmed);
+		// free(line_trimmed);
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:35:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 08:47:31 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 10:41:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	free_lst(t_ast **ast)
 	current = *ast;
 	while (current)
 	{
-		if (current->cmd)
-		{
-			free_cmd(current->cmd);
-			if (current->cmd_path)
-				free(current->cmd_path);
-		}
-		if (current->heredoc)
-			free(current->heredoc);
+		// if (current->cmd)
+		// {
+		// 	free_cmd(current->cmd);
+		// 	if (current->cmd_path)
+		// 		free(current->cmd_path);
+		// }
+		// if (current->heredoc)
+		// 	free(current->heredoc);
 		if (current->fd_in)
 			close(current->fd_in);
 		if (current->fd_out)
@@ -74,9 +74,10 @@ int	parse_append(t_ast **ast, char **tokens)
 				close((*ast)->fd_append);
 			(*ast)->fd_append = open(fd, O_WRONLY | O_APPEND, 0644);
 			if ((*ast)->fd_append == -1)
-				return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
+				return (printf("%serror while opening: %s%s\n", RED, fd, DEF), 1);
+				// return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
 			i += 2;
-			free(fd);
+			// free(fd);
 		}
 		else
 			i++;

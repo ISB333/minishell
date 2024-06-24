@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:08:39 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_memman
 {
     void 	*ptr;
 	ptrType	type;
+	size_t	size;
     struct s_memman *next;
 } t_memman;
 
@@ -116,10 +117,10 @@ int		array_len(char **tokens);
 
 	/// Parsing ///
 int		parser(t_ast **ast, char ***tokens);
-void	free_memory(char **array);
+// void	free_memory(char **array);
 
 		// utils //
-void	free_memory(char **array);
+// void	free_memory(char **array);
 void	init_lst(t_ast **ast);
 t_ast	*return_tail(t_ast *ast);
 int		cmd_path_init(t_ast *ast);
@@ -134,9 +135,9 @@ int		strlen_minus_quotes(char *s, int token, int len);
 int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);
-void	*malloc(size_t size);
+// void	*m_malloc(size_t size);
 void	*mem_manager(size_t size, ptrType type, int token);
-void	*ff(int token);
+void	*ff(t_memman *mem_list, int token);
 
 //sigHandler.c
 int	catchBackslash(void);

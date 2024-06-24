@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:41:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	printf("fd_out = %s\n", fd);
 	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if ((*ast)->fd_out == -1)
-		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
+		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), 1);
+		// return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
 	*i += 2;
 	// printf("fd_redir = %s\n", fd);
-	free(fd);
+	// free(fd);
 	return (0);
 }
 
@@ -45,12 +46,14 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	printf("fd_in = %s\n", fd);
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
-		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
+		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), 1);
+		// return (printf("%serror while opening: %s%s\n", RED, fd, DEF), free(fd), 1);
 	if ((*ast)->fd_in == 2)
-		return (printf("%s%s: No such file or directory%s\n", RED, fd, DEF), free(fd), 1);
+		return (printf("%s%s: No such file or directory%s\n", RED, fd, DEF), 1);
+		// return (printf("%s%s: No such file or directory%s\n", RED, fd, DEF), free(fd), 1);
 	// printf("fd_redir = %s\n", fd);
 	*i += 2;
-	free(fd);
+	// free(fd);
 	return (0);
 }
 
@@ -83,7 +86,7 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 	int	j;
 
 	k = *i;
-	(*ast)->cmd = malloc((strlen_cmd(tokens, i) + 1) * sizeof(char *));
+	(*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), STRING, 'A');
 	// (*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), INT_ARR, 'A');
 	if (!(*ast)->cmd)
 		return (1);

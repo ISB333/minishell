@@ -6,25 +6,25 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:58:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:03:03 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_memory(char **array)
-{
-	int	j;
+// void	free_memory(char **array)
+// {
+// 	int	j;
 
-	j = 0;
-	if (!*array)
-		return ;
-	while (array[j])
-		j++;
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
-}
+// 	j = 0;
+// 	if (!*array)
+// 		return ;
+// 	while (array[j])
+// 		j++;
+// 	while (j-- > 0)
+// 		free(array[j]);
+// 	free(array);
+// }
 
 void	init_lst(t_ast **ast)
 {
@@ -73,18 +73,21 @@ int	cmd_path_init(t_ast *ast)
 	i = -1;
 	cmd = ft_strjoin("/", ast->cmd[0]);
 	if (!cmd)
-		return (free_memory(path), 1);
+		return (1);
+		// return (free_memory(path), 1);
 	while (path[++i])
 	{
 		test_path = ft_strjoin(path[i], cmd);
 		if (!access(test_path, R_OK))
 		{
 			ast->cmd_path = test_path;
-			return (free(cmd), free_memory(path), 0);
+			return (0);
+			// return (free(cmd), free_memory(path), 0);
 		}
-		free(test_path);
+		// free(test_path);
 	}
-	free(ast->cmd_path);
-	return (free(cmd), free_memory(path), printf("%s: notexisting\n",
-			ast->cmd[0]), 1);
+	// free(ast->cmd_path);
+	return (printf("%s: notexisting\n",	ast->cmd[0]), 1);
+	// return (free(cmd), free_memory(path), printf("%s: notexisting\n",
+	// 		ast->cmd[0]), 1);
 }

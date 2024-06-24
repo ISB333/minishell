@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 11:43:42 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	**splitter(char **array, char *s)
 
 	i = malloc(sizeof(t_split));
 	if (!i)
-		return (free(array), NULL);
+		return (NULL);
+		// return (free(array), NULL);
 	init_i(&i);
 	while (s[i->i])
 	{
@@ -86,7 +87,7 @@ int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
 
-	str = malloc(strlen_space(*s));
+	str = mem_manager(strlen_space(*s), STRING, 'A');
 	if (!str)
 		return (1);
 	while ((*s)[i])
@@ -103,5 +104,6 @@ int	add_space(char **s, int i, int k, int token)
 		else
 			str[k++] = (*s)[i++];
 	}
-	return (str[k] = '\0', free(*s), *s = str, 0);
+	return (str[k] = '\0', *s = str, 0);
+	// return (str[k] = '\0', free(*s), *s = str, 0);
 }
