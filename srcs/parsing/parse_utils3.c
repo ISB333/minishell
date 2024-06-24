@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 09:00:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 {
 	char	*new_s;
 
-	new_s = malloc(strlen_minus_quotes(s, 0, 0) + 1);
+	new_s = m_malloc(strlen_minus_quotes(s, 0, 0) + 1);
 	if (!new_s)
 		return (NULL);
 	while (s[i])

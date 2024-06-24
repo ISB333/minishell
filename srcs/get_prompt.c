@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 07:52:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	k = -1;
 	full_size = ft_strlen(logname) + ft_strlen(position) + \
 		ft_strlen(curr_dir) + 5;
-	prompt = malloc(full_size);
+	prompt = m_malloc(full_size);
 	if (!prompt)
 		return (NULL);
 	while (logname[++i])
@@ -104,7 +104,7 @@ char	*get_prompt(void)
 	t_prompt	*data;
 	char		*prompt;
 
-	data = malloc(sizeof(t_prompt));
+	data = m_malloc(sizeof(t_prompt));
 	if (!data)
 		return (NULL);
 	data->curr_dir = NULL;

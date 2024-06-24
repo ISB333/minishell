@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 09:48:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:28:27 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int		strlen_minus_quotes(char *s, int token, int len);
 int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);
+void	*m_malloc(size_t size);
 void	*mem_manager(size_t size, ptrType type, int token);
 void	*ff(int token);
 

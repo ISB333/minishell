@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:35:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 09:42:21 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:47:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ int	parse_append(t_ast **ast, char **tokens)
 {
 	char	*fd;
 	int		i;
-	int		k;
 
-	i = -1;
-	k = 0;
-	while (tokens[++i])
+	i = 0;
+	while (tokens[i])
 	{
 		if (is_append(tokens[i], 0, 0))
 		{

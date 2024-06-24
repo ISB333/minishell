@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:51:42 by adesille          #+#    #+#             */
-/*   Updated: 2023/11/07 15:40:26 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s)
 	int		size;
 
 	size = ft_strlen(s) + 1;
-	str = malloc(size);
+	str = m_malloc(size);
 	if (str == NULL)
 		return (NULL);
 	ft_strlcpy(str, s, size);

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/19 09:58:43 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/21 08:25:36 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
 CC = cc
 
 DEFAULT = \033[0;39m

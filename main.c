@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 09:42:36 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/21 08:52:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	prompt(char **rl)
 
 void	history(char *rl)
 {
-	add_history(rl);
+	// add_history(rl);
 	if (rl[0] != '\n')
 		printf("%s\n", rl);
-	add_history(rl);
-	append_new_history(rl);
+	// add_history(rl);
+	// append_new_history(rl);
 }
 
 int	main()
