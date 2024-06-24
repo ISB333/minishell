@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 	int	j;
 
 	k = *i;
-	(*ast)->cmd = m_malloc((strlen_cmd(tokens, i) + 1) * sizeof(char *));
+	(*ast)->cmd = malloc((strlen_cmd(tokens, i) + 1) * sizeof(char *));
 	// (*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), INT_ARR, 'A');
 	if (!(*ast)->cmd)
 		return (1);

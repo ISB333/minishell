@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	! If open pipe, shell open an heredoc like waiting for a command
 
 	========================================================
-	TODO 2:	Protect m_malloc
+	TODO 2:	Protect malloc
 		--> <in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
 			== parsing_error + leaks
 	TODO 3: Error Management
@@ -131,7 +131,7 @@ int	add_node(t_ast **ast, char **tokens)
 	t_ast	*new_node;
 	t_ast	*last_node;
 
-	new_node = m_malloc(sizeof(t_ast));
+	new_node = malloc(sizeof(t_ast));
 	if (!new_node)
 		return (-1);
 	new_node->next = NULL;
@@ -158,7 +158,7 @@ int	parser(t_ast **ast, char ***array)
 		return (printf("%slexing error%s\n", RED, DEF), 1);
 	printf("\n\n");
 	i = -1;
-	printer(array);
+	// printer(array);
 	while (array[++i])
 		if (add_node(ast, array[i]))
 		{

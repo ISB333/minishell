@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 09:00:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**splitter(char **array, char *s)
 {
 	t_split	*i;
 
-	i = m_malloc(sizeof(t_split));
+	i = malloc(sizeof(t_split));
 	if (!i)
 		return (free(array), NULL);
 	init_i(&i);
@@ -86,7 +86,7 @@ int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
 
-	str = m_malloc(strlen_space(*s));
+	str = malloc(strlen_space(*s));
 	if (!str)
 		return (1);
 	while ((*s)[i])

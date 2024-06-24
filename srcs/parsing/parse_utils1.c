@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 09:02:26 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/24 08:58:18 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_memory(char **array)
 	int	j;
 
 	j = 0;
-	if (!array)
+	if (!*array)
 		return ;
 	while (array[j])
 		j++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 08:52:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:27:29 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ int	main()
 	// rl = NULL;
 	// while (1)
 	// {
-		// int fd = open("test.txt", O_RDONLY);
+		int fd = open("test.txt", O_RDONLY);
 		ast = NULL;
-		// rl = gnhell(fd);
-		if (prompt(&rl))
-			return (1);
-		history(rl);
+		rl = gnhell(fd);
+		// if (prompt(&rl))
+		// 	return (1);
+		// history(rl);
 		if (!ft_strcmp(rl, "exit\0"))
 			return (free(rl), 0);
 		parser(&ast, lexer(rl));
+		close(fd);
 	// }
 }

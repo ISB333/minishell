@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	i = 0;
 	j = -1;
 	new_len = ft_strlen(str) + ft_strlen(new_str) - var_len + 1;
-	str_update = m_malloc(new_len);
+	str_update = malloc(new_len);
 	if (!str_update)
 		return (NULL);
 	while (str[++j] != '$')

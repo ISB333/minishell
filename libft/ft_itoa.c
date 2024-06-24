@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 22:11:00 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 08:27:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:29:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*ft_putnbr_pos(int n, int digitlen)
 	int		trueend;
 	char	*numbers;
 
-	numbers = m_malloc(digitlen + 1);
+	numbers = malloc(digitlen + 1);
 	if (numbers == NULL)
 		return (NULL);
 	end = digitlen - 1;
@@ -56,7 +56,7 @@ static char	*ft_putnbr_neg(int n, int digitlen)
 	int		trueend;
 	char	*numbers;
 
-	numbers = m_malloc(digitlen + 1);
+	numbers = malloc(digitlen + 1);
 	if (numbers == NULL)
 		return (NULL);
 	end = digitlen - 1;

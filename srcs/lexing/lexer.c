@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/21 09:19:44 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/24 08:58:45 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_array_of_array(char ***arr)
+void	free_array_of_array(char ***arr, int len)
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	while (arr[--i])
-		free_memory(arr[i]);
+	while (--len > 0)
+		free_memory(arr[len]);
 	free(arr);
 }
 
@@ -45,10 +40,11 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 {
 	int	len;
 	int	j;
+	static int x = 0;
 
 	len = len_to_pipe(tokens, *i);
 	printf("len_split_array_utils = %d\n", len);
-	array[*k] = m_malloc((len + 1) * sizeof(char *));
+	array[*k] = malloc((len + 1) * sizeof(char *));
 	if (!array[*k])
 		return (free(array), 1);
 	array[*k][len] = NULL;
@@ -57,15 +53,18 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 	{
 		array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
 		if (!array[*k][j])
-			return (free_array_of_array(array), 1);
+			return (1);
 		j++;
 		(*i)++;
 	}
 	if (tokens[*i])
 	{
-		array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
+		if (++x == 1)
+			array[*k][j]= NULL;
+		else
+			array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
 		if (!array[*k][j])
-			return (free_array_of_array(array), 1);
+			return (1);
 	}
 	(*k)++;
 	return (0);
@@ -77,14 +76,14 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 
 	len = is_pipe_in_arr(tokens);
 	printf("len_split_array = %d\n", len);
-	array = m_malloc((len + 2) * sizeof(char **));
+	array = malloc((len + 2) * sizeof(char **));
 	if (!array)
 		return (NULL);
 	array[len + 1] = NULL;
 	while (tokens[i])
 	{
 		if (split_array_utils(array, tokens, &i, &k))
-			return (printf("split_array error\n"), NULL);
+			return (printf("split_array error\n"), free_array_of_array(array, k), NULL);
 		if (!tokens[i])
 			return (array);
 		else if (tokens[i][0] == '|')
@@ -99,10 +98,10 @@ int	lexer_utils(char ****array, char **tokens)
 	int	i;
 
 	len = array_len(tokens);
-	*array = m_malloc(2 * sizeof(char **));
+	*array = malloc(2 * sizeof(char **));
 	if (!*array)
 		return (1);
-	(*array)[0] = m_malloc((len + 1) * sizeof(char *));
+	(*array)[0] = malloc((len + 1) * sizeof(char *));
 	if (!(*array)[0])
 		return (free(array), 1);
 	(*array)[0][len] = NULL;
@@ -130,7 +129,7 @@ char	***lexer(char *s)
 		return (free(s), printf("Brother, \
 			I will smash ur face. Close me dat quote!\n"), NULL);
 	len = count_rows(s, 0);
-	tokens = m_malloc((len + 1) * sizeof(char *));
+	tokens = malloc((len + 1) * sizeof(char *));
 	if (!tokens)
 		return (free(s), NULL);
 	tokens[len] = NULL;
