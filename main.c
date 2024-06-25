@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 10:19:48 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:39:01 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@
 int	prompt(char **rl)
 {
 	char	*prompt;
+	char	*s;
 
 	add_previous_history();
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
-	// printf("\033[0;34m");
-	*rl = readline(prompt);
-	if (*rl == NULL)
-	// printf("\033[0;37m");
-		return (1);
-	// free(prompt);
+	s = readline(prompt);
+	if (!ft_strlen(s))
+		return (free(s), 1);
+	*rl = ft_strdup(s);
+	free(s);
 	return (0);
 }
 
 void	history(char *rl)
 {
-	// add_history(rl);
+	add_history(rl);
 	if (rl[0] != '\n')
 		printf("%s\n", rl);
-	// add_history(rl);
-	// append_new_history(rl);
+	add_history(rl);
+	append_new_history(rl);
 }
 
 int	main()
@@ -49,21 +49,22 @@ int	main()
 
 	// catchBackslash();
 	// catchC();
-	// rl = NULL;
-	// while (1)
-	// {
-	static int i = 0;
+	while (1)
+	{
+	// static int i = 0;
 	// while(i++ < 250)
 	// {
-		int fd = open("test.txt", O_RDONLY);
+		// int fd = open("test.txt", O_RDONLY);
 		ast = NULL;
-		rl = gnhell(fd);
-		// if (prompt(&rl))
-		// 	return (1);
-		// history(rl);
-		if (!ft_strcmp(rl, "exit\0"))
-			return (free(rl), 0);
-		parser(&ast, lexer(rl));
-		close(fd);
-	// }
+		// rl = gnhell(fd);
+		if (!prompt(&rl))
+		{
+			history(rl);
+			if (!ft_strcmp(rl, "exit\0"))
+				return (mem_manager(0, 'S'), 0);
+			parser(&ast, lexer(rl));
+		}
+		// close(fd);
+		mem_manager(0, 'C');
+	}
 }

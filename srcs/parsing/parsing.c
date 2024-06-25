@@ -6,17 +6,13 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 12:08:05 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:50:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-	1. allocate cmd with args
-	2. find cmd_path
-	3. if is_redirection, open file, else stdin/stdout
-
 	! / If multiple heredoc no pipes, only the last is took,
 	!	else first del then 2nd del etc..
 			? ---> Test more cuz da shit is weird
@@ -29,12 +25,9 @@
 	! If open pipe, shell open an heredoc like waiting for a command
 
 	========================================================
-	TODO 2:	Protect mem_manager
-		--> <in <"i"n "cmd" arg | << d'e'l cmd arg > o"u"'t' | c"at" >' 'ou't' 'j'| echo "blabla$USER test"
-			== parsing_error + leaks
-	TODO 3: Error Management
-	TODO 4:	Correct for cases of multi redirection
-	TODO 5:	Heredoc
+	TODO 1: Error Management
+	TODO 2: NEWLINE
+	TODO 3:	Heredoc
 */
 
 void	print_lst(t_ast *ast)
@@ -158,23 +151,17 @@ int	parser(t_ast **ast, char ***array)
 		return (printf("%slexing error%s\n", RED, DEF), 1);
 	printf("\n\n");
 	i = -1;
-	// printer(array);
 	while (array[++i])
 		if (add_node(ast, array[i]))
 		{
-			i = -1;
 			printf("%sparsing error%s\n", RED, DEF);
-			mem_manager(0, NONE, 'C');
 			return (free_lst(ast), 1);
 		}
-	i = -1;
 	printf("\033[0;33m");
 	printf("\n============= LINKED_LIST =============\n\n");
 	printf("\033[0;37m");
 	print_lst(*ast);
 	printf("\033[0m");
-	mem_manager(0, NONE, 'P');
-	mem_manager(0, NONE, 'C');
 	free_lst(ast);
 	return (0);
 }

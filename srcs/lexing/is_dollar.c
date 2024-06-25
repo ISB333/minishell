@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/24 10:42:40 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:43:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	i = 0;
 	j = -1;
 	new_len = ft_strlen(str) + ft_strlen(new_str) - var_len + 1;
-	str_update = mem_manager(new_len, STRING, 'A');
+	str_update = mem_manager(new_len, 'A');
 	if (!str_update)
 		return (NULL);
 	while (str[++j] != '$')
@@ -72,7 +72,6 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	while (str[j])
 		str_update[i++] = str[++j];
 	str_update[i] = '\0';
-	// free(str);
 	return (str_update);
 }
 
@@ -126,8 +125,7 @@ int	get_dollar(char **arr)
 	env_var = ft_substr(arr[i], k + 1, j - k - 1);
 	new_str = getenv(env_var);
 	if (!new_str)
-		return (free(env_var), 1);
+		return (1);
 	arr[i] = join_new_str(arr[i], new_str, j - k);
 	return (0);
-	// return (free(env_var), 0);
 }

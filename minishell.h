@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 10:08:39 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:18:29 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,9 @@ typedef struct s_ast
 	struct s_ast	*next;
 }	t_ast;
 
-typedef enum {
-	ARR_ARR,
-	ARRAY,
-	STRING,
-    INT_ARR,
-	NONE
-} ptrType;
-
-
 typedef struct s_memman
 {
     void 	*ptr;
-	ptrType	type;
 	size_t	size;
     struct s_memman *next;
 } t_memman;
@@ -136,7 +126,7 @@ int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);
 // void	*m_malloc(size_t size);
-void	*mem_manager(size_t size, ptrType type, int token);
+void	*mem_manager(size_t size, int token);
 void	*ff(t_memman *mem_list, int token);
 
 //sigHandler.c

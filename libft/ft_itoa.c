@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 22:11:00 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 10:12:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:19:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*ft_putnbr_pos(int n, int digitlen)
 	int		trueend;
 	char	*numbers;
 
-	numbers = mem_manager(digitlen + 1, NONE, 'A');
+	numbers = mem_manager(digitlen + 1, 'A');
 	if (numbers == NULL)
 		return (NULL);
 	end = digitlen - 1;
@@ -56,7 +56,7 @@ static char	*ft_putnbr_neg(int n, int digitlen)
 	int		trueend;
 	char	*numbers;
 
-	numbers = mem_manager(digitlen + 1, NONE, 'A');
+	numbers = mem_manager(digitlen + 1, 'A');
 	if (numbers == NULL)
 		return (NULL);
 	end = digitlen - 1;

@@ -1,1 +1,87 @@
 ls -la < Makefile | <<lol cat > lol1 >>lol2
+yoman
+yoman
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+yoman
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+cat -e
+
+cat
+lol
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+EXIT
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+et
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+et
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2ex
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+b add_previous_history
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+EXIT
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+exit
+exit
+q
+
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+
+
+
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+
+exit
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+vgj
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 10:15:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:43:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*strchr_n_split(char *stock_buff)
 		;
 	if (stock_buff[i] == '\0')
 		return (ft_gnl_strdup(stock_buff));
-	line = mem_manager(i + 1, STRING, 'A');
+	line = mem_manager(i + 1, 'A');
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -41,23 +41,20 @@ static char	*strchr_n_split(char *stock_buff)
 
 static char	*get_line(int fd, char *stock_buff, char *read_buff)
 {
-	int		bytes_read;
+	int	bytes_read;
 
 	bytes_read = 1;
 	while (!ft_strchr(read_buff, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, read_buff, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return(NULL);
-			// return (free(read_buff), free(stock_buff), NULL);
+			return (NULL);
 		read_buff[bytes_read] = '\0';
 		if (bytes_read)
 			stock_buff = ft_gnl_strjoin(stock_buff, read_buff);
 		if (!ft_strlen(stock_buff))
-			return(NULL);
-			// return (free(read_buff), free(stock_buff), NULL);
+			return (NULL);
 	}
-	// free(read_buff);
 	return (stock_buff);
 }
 
@@ -72,7 +69,7 @@ char	*gnhell(int fd)
 	if (fd < 0)
 		return (NULL);
 	i = 0;
-	read_buff = mem_manager(100, STRING, 'A');
+	read_buff = mem_manager(100, 'A');
 	if (!read_buff)
 		return (NULL);
 	read_buff[0] = '\0';

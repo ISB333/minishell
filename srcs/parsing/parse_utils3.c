@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/24 10:06:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 07:21:03 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 {
 	char	*new_s;
 
-	new_s = mem_manager(strlen_minus_quotes(s, 0, 0) + 1, STRING, 'A');
+	new_s = mem_manager(strlen_minus_quotes(s, 0, 0) + 1, 'A');
 	if (!new_s)
 		return (NULL);
 	while (s[i])
