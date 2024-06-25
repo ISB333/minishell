@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:08:46 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:19:23 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:02:33 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	size_t	i;
+	size_t	rows;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	array = (char **)mem_manager((ft_del_rows(s, c) + 1) * sizeof(char *), 'A');
+	rows = ft_del_rows(s, c) + 1;
+	array = (char **)mem_manager(rows * sizeof(char *), 0, 'A');
 	if (!array)
 		return (NULL);
 	array = ft_cut(array, s, c, i);

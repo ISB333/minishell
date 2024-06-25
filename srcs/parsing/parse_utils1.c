@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:45:58 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 08:45:51 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	cmd_path_init(t_ast *ast)
 
 	path = extract_path();
 	if (!path)
-		return (printf("path not existing\n"), 1);
+		return (printf("minihell: path not existing\n"), 1);
 	i = -1;
 	cmd = ft_strjoin("/", ast->cmd[0]);
 	if (!cmd)
@@ -69,5 +69,5 @@ int	cmd_path_init(t_ast *ast)
 			return (0);
 		}
 	}
-	return (printf("%s: notexisting\n", ast->cmd[0]), 1);
+	return (printf("%s: command not found\n", ast->cmd[0]), 1);
 }

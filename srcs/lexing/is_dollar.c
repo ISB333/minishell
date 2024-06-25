@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/25 07:43:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:03:38 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	i = 0;
 	j = -1;
 	new_len = ft_strlen(str) + ft_strlen(new_str) - var_len + 1;
-	str_update = mem_manager(new_len, 'A');
+	str_update = mem_manager(new_len, 0, 'A');
 	if (!str_update)
 		return (NULL);
 	while (str[++j] != '$')

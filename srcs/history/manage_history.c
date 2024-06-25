@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/25 07:41:40 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:19:02 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int	add_previous_history(void)
 	history = open("./srcs/history/history.txt", O_RDWR | O_CREAT, 0644);
 	if (!history)
 		return (perror("Error opening file"), EXIT_FAILURE);
+	mem_manager(sizeof(int), history, 'O');
 	while (1)
 	{
 		line = gnhell(history);
 		if (!line)
-			return (free(line), close(history), 0);
+			return (0);
 		line_trimmed = ft_strtrim(line, "\n");
 		add_history(line_trimmed);
 	}

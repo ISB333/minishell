@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:11:08 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:43:35 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:03:16 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_gnl_strdup(char *s)
 	if (!s)
 		return (NULL);
 	size = ft_strlen(s) + 1;
-	str = mem_manager(size, 'A');
+	str = mem_manager(size, 0, 'A');
 	if (str == NULL)
 	{
 		free(s);
@@ -60,8 +60,10 @@ char	*ft_gnl_strdup(char *s)
 char	*ft_gnl_strjoin(char *s1, char *s2)
 {
 	char	*str;
+	int		len;
 
-	str = mem_manager((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char), 'A');
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = mem_manager(len * sizeof(char), 0, 'A');
 	if (str == NULL)
 	{
 		free(s1);

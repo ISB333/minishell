@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:39:01 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:53:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	prompt(char **rl)
 	char	*prompt;
 	char	*s;
 
+	s = NULL;
+	prompt = NULL;
 	add_previous_history();
 	prompt = get_prompt();
 	if (!prompt)
@@ -44,27 +46,22 @@ void	history(char *rl)
 
 int	main()
 {
-	t_ast	*ast;
-	char	*rl;
 
 	// catchBackslash();
 	// catchC();
 	while (1)
 	{
-	// static int i = 0;
-	// while(i++ < 250)
-	// {
-		// int fd = open("test.txt", O_RDONLY);
+		t_ast	*ast;
+		char	*rl;
+		rl = NULL;
 		ast = NULL;
-		// rl = gnhell(fd);
 		if (!prompt(&rl))
 		{
 			history(rl);
 			if (!ft_strcmp(rl, "exit\0"))
-				return (mem_manager(0, 'S'), 0);
+				return (mem_manager(0, 0, 'S'), 0);
 			parser(&ast, lexer(rl));
 		}
-		// close(fd);
-		mem_manager(0, 'C');
+		mem_manager(0, 0, 'C');
 	}
 }

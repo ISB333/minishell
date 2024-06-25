@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:45:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:04:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
 
-	str = mem_manager(strlen_space(*s), 'A');
+	str = mem_manager(strlen_space(*s), 0, 'A');
 	if (!str)
 		return (1);
 	while ((*s)[i])

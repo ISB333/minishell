@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:19:52 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:03:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	k = -1;
 	full_size = ft_strlen(logname) + ft_strlen(position) + \
 		ft_strlen(curr_dir) + 5;
-	prompt = mem_manager(full_size, 'A');
+	prompt = mem_manager(full_size, 0, 'A');
 	if (!prompt)
 		return (NULL);
 	while (logname[++i])
@@ -104,7 +104,7 @@ char	*get_prompt(void)
 	t_prompt	*data;
 	char		*prompt;
 
-	data = mem_manager(sizeof(t_prompt), 'A');
+	data = mem_manager(sizeof(t_prompt), 0, 'A');
 	if (!data)
 		return (NULL);
 	data->curr_dir = NULL;

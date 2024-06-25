@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:50:05 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:05:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 	TODO 1: Error Management
 	TODO 2: NEWLINE
 	TODO 3:	Heredoc
+	
+	TODO ?: If PATH given, try to execute it
 */
 
 void	print_lst(t_ast *ast)

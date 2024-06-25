@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 08:49:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 08:14:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	count_rows(char *s, int rows)
 		else if (s[i])
 			i = count_utils_char(&rows, &token, s, i);
 	}
-	printf("%d\n", rows);
 	return (rows);
 }
 
@@ -75,7 +74,7 @@ int	split_utils_quotes(t_split *i, char *s, char **array)
 	{
 		array[i->j] = ft_substr(s, i->k, i->i - i->k);
 		if (!array[i->j++])
-			return (free_mem(array, i->j - 1), 1);
+			return (1);
 	}
 	return (0);
 }
@@ -94,12 +93,12 @@ int	split_utils_char(t_split *i, char *s, char **array)
 	}
 	array[i->j] = ft_substr(s, i->k, i->i - i->k);
 	if (!array[i->j++])
-		return (free_mem(array, i->j - 1), 1);
+		return (1);
 	if (s[i->i] == '\n')
 	{
 		array[i->j] = ft_substr("\n", 0, 2);
 		if (!array[i->j++])
-			return (free_mem(array, i->j - 1), 1);
+			return (1);
 		i->i++;
 	}
 	return (0);

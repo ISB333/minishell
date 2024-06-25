@@ -6,18 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/17 09:30:23 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 08:11:58 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	free_mem(char **array, size_t j)
-{
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
-}
 
 int	open_quotes(char *s)
 {

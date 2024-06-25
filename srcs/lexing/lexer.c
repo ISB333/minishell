@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:44:56 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:04:04 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 {
 	int			len;
 	int			j;
-	static int	x = 0;
 
 	len = len_to_pipe(tokens, *i);
-	printf("len_split_array_utils = %d\n", len);
-	array[*k] = mem_manager((len + 1) * sizeof(char *), 'A');
+	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 'A');
 	if (!array[*k])
 		return (1);
 	array[*k][len] = NULL;
@@ -65,8 +63,7 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 	int	len;
 
 	len = is_pipe_in_arr(tokens);
-	printf("len_split_array = %d\n", len);
-	array = mem_manager((len + 2) * sizeof(char **), 'A');
+	array = mem_manager((len + 2) * sizeof(char **), 0, 'A');
 	if (!array)
 		return (NULL);
 	array[len + 1] = NULL;
@@ -79,7 +76,7 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 		else if (tokens[i][0] == '|')
 			i++;
 	}
-	return (printf("looooooooooooooooooooool\n"), NULL);
+	return (NULL);
 }
 
 int	lexer_utils(char ****array, char **tokens)
@@ -88,10 +85,10 @@ int	lexer_utils(char ****array, char **tokens)
 	int	i;
 
 	len = array_len(tokens);
-	*array = mem_manager(2 * sizeof(char **), 'A');
+	*array = mem_manager(2 * sizeof(char **), 0, 'A');
 	if (!*array)
 		return (1);
-	(*array)[0] = mem_manager((len + 1) * sizeof(char *), 'A');
+	(*array)[0] = mem_manager((len + 1) * sizeof(char *), 0, 'A');
 	if (!(*array)[0])
 		return (free(array), 1);
 	(*array)[0][len] = NULL;
@@ -106,7 +103,6 @@ char	***lexer(char *s)
 {
 	char	**tokens;
 	char	***array;
-	size_t	i;
 	int		len;
 
 	array = NULL;
@@ -119,7 +115,7 @@ char	***lexer(char *s)
 		return (printf("Brother, I will smash ur face. Close me dat quote!\n"),
 			NULL);
 	len = count_rows(s, 0);
-	tokens = mem_manager((len + 1) * sizeof(char *), 'A');
+	tokens = mem_manager((len + 1) * sizeof(char *), 0, 'A');
 	if (!tokens)
 		return (NULL);
 	tokens[len] = NULL;
@@ -129,9 +125,6 @@ char	***lexer(char *s)
 	if (is_dollar(tokens, 0, '?', 0))
 		if (get_dollar(tokens))
 			return (NULL);
-	i = -1;
-	while (tokens[++i])
-		printf("%zu = %s\n", i, tokens[i]);
 	if (is_pipe_in_arr(tokens))
 		array = split_array(array, tokens, 0, 0);
 	else if (lexer_utils(&array, tokens))

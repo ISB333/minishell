@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:43:21 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 10:03:27 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*strchr_n_split(char *stock_buff)
 		;
 	if (stock_buff[i] == '\0')
 		return (ft_gnl_strdup(stock_buff));
-	line = mem_manager(i + 1, 'A');
+	line = mem_manager(i + 1, 0, 'A');
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -69,7 +69,7 @@ char	*gnhell(int fd)
 	if (fd < 0)
 		return (NULL);
 	i = 0;
-	read_buff = mem_manager(100, 'A');
+	read_buff = mem_manager(100, 0, 'A');
 	if (!read_buff)
 		return (NULL);
 	read_buff[0] = '\0';

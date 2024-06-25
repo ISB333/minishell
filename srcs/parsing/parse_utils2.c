@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:46:31 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/25 11:07:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	printf("fd_out = %s\n", fd);
 	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if ((*ast)->fd_out == -1)
-		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), 1);
+		return (printf("minihell: error while opening: %s\n", fd), 1);
 	*i += 2;
 	return (0);
 }
@@ -43,9 +43,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	printf("fd_in = %s\n", fd);
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
-		return (printf("%serror while opening: %s%s\n", RED, fd, DEF), 1);
-	if ((*ast)->fd_in == 2)
-		return (printf("%s%s: No such file or directory%s\n", RED, fd, DEF), 1);
+		return (printf("minihell: %s: No such file or directory\n", fd), 1);
 	*i += 2;
 	return (0);
 }
@@ -60,12 +58,12 @@ int	parse_redir(t_ast **ast, char **tokens)
 		if (is_redir(tokens[i], 0, 0) == 1)
 		{
 			if (parse_redir_utils1(ast, tokens, &i))
-				return (printf("%sfd_in error%s\n", RED, DEF), 1);
+				return (1);
 		}
 		else if (is_redir(tokens[i], 0, 0) == 2)
 		{
 			if (parse_redir_utils2(ast, tokens, &i))
-				return (printf("%sfd_out error%s\n", RED, DEF), 1);
+				return (1);
 		}
 		else
 			i++;
@@ -79,8 +77,8 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i)
 	int	j;
 
 	k = *i;
-	(*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *),
-			'A');
+	(*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), \
+			0, 'A');
 	if (!(*ast)->cmd)
 		return (1);
 	j = -1;
