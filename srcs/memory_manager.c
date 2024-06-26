@@ -6,34 +6,37 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/25 10:21:04 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 07:46:40 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// void *m_malloc(size_t size)
-// {
-//     static int i = 0;
-//     void *ptr;
-
-// 	if (i++ > 80 && i % 2 == 1)
-// 		return (NULL);
-//     ptr = malloc(size);
-//     if (!ptr) {
-//         fprintf(stderr, "Memory allocation failed\n");
-//         exit(EXIT_FAILURE);
-//     }
-//     return (ptr);
-// }
-
-void	err(char *msg, int errno)
+void *m_malloc(size_t size)
 {
-	if (errno)
-		strerror(errno);
+    static int i = 0;
+    void *ptr;
+
+	// printf("malloc n %d\n", ++i);
+	// if (i++ > 300 && i % 2 == 1)
+	// 	return (NULL);
+    ptr = malloc(size);
+    if (!ptr) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    return (ptr);
 }
 
-void	*ff(t_memman *mem_list, int token)
+void	quit(char *msg, int return_code)
+{
+	mem_manager(0, 0, 'C');
+	if (msg)
+		printf("%s\n", msg);
+	exit(return_code);
+}
+
+void	*ff(t_memman *mem_list)
 {
 	t_memman	*temp;
 
@@ -50,14 +53,10 @@ void	*ff(t_memman *mem_list, int token)
 		}
 		free(temp);
 	}
-	if (!token)
-		exit(EXIT_SUCCESS);
-	if (token == 1)
-		exit(EXIT_FAILURE);
 	return (NULL);
 }
 
-void	init_new_node(t_memman *new_node, t_memman **mem_list, void *ptr, int token)
+void	init_node(t_memman *new_node, t_memman **mem_list, void *ptr, int token)
 {
 	t_memman	*last_node;
 
@@ -87,16 +86,16 @@ void	*allocate(t_memman **mem_list, size_t size, int token)
 	if (!ptr)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
-		mem_manager(0, 0, 'F');
+		quit(NULL, 1);
 	}
 	new_node = malloc(sizeof(t_memman));
 	if (!new_node)
 	{
 		fprintf(stderr, "Memory manager new node allocation failed\n");
 		free(ptr);
-		mem_manager(0, 0, 'F');
+		quit(NULL, 1);
 	}
-	init_new_node(new_node, mem_list, ptr, token);
+	init_node(new_node, mem_list, ptr, token);
 	return (ptr);
 }
 
@@ -113,13 +112,9 @@ void	*mem_manager(size_t size, int fd, int token)
 		*fd_ptr = fd;
 		return (NULL);
 	}
-	if (token == 'S')
-		return (ff(mem_list, EXIT_SUCCESS));
-	if (token == 'F')
-		return (ff(mem_list, EXIT_FAILURE));
 	if (token == 'C')
 	{
-		ff(mem_list, -1);
+		ff(mem_list);
 		mem_list = NULL;
 		return (NULL);
 	}

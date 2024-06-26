@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/24 08:15:15 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/26 06:47:53 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ $(NAME) : $(OBJS) $(LIBFT)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
-	@if [ ! -d .obj ]; then \
+	@if [ ! -d .obj/srcs ]; then \
 	    echo "$(RED)\nCompiling minishell files...$(DEFAULT)"; \
 	fi
 	@$(CC) $(OFLAGS) -c $< -o $@

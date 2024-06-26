@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 10:06:42 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:38:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <termios.h>
 # include <termcap.h>
 # include <curses.h>
+# include <errno.h>
 # include "libft/libft.h"
 
 # define RED "\033[0;31m"
@@ -57,6 +58,7 @@ typedef struct s_ast
 	int				fd_out;
 	int				pipe;
 	int				fd_append;
+	int				new_line;
 	char			*heredoc;
 	struct s_ast	*next;
 }	t_ast;
@@ -84,8 +86,7 @@ int		add_previous_history();
 
 	/// Lexing ///
 char	***lexer(char *str);
-
-int		get_dollar(char **arr);
+void	get_dollar(char **arr);
 
 		// is_??? //
 int		is_dollar(char **arr, int i, char token, char pos);
@@ -96,7 +97,9 @@ int		is_pipe(char *s, int i, char token);
 int		is_redir(char *s, int i, char token);
 int		is_append(char *s, int i, char token);
 int		is_heredoc(char *s, int i, char token);
+int		is_new_line(char **tokens, int i);
 int		is_pipe_in_arr(char **array);
+int		is_new_line_in_arr(char **array);
 int		is_redir_in_arr(char **array);
 int		is_append_in_arr(char **array);
 int		is_there_quotes_in_da_shit(char *s);
@@ -107,16 +110,13 @@ char	**splitter(char **array, char *s);
 int		count_rows(char *s, int rows);
 int		split_utils_char(t_split *i, char *s, char **array);
 int		split_utils_quotes(t_split *i, char *s, char **array);
-void	free_mem(char **array, size_t j);
 int		open_quotes(char *s);
 int		array_len(char **tokens);
 
 	/// Parsing ///
 int		parser(t_ast **ast, char ***tokens);
-// void	free_memory(char **array);
 
 		// utils //
-// void	free_memory(char **array);
 void	init_lst(t_ast **ast);
 t_ast	*return_tail(t_ast *ast);
 int		cmd_path_init(t_ast *ast);
@@ -127,13 +127,13 @@ int		parse_heredoc(t_ast **ast, char **tokens, int *i);
 int		parse_append(t_ast **ast, char **tokens);
 
 char	*quotes_destroyer(char *s, int i, int k, int token);
-int		strlen_minus_quotes(char *s, int token, int len);
+int		strlen_minus_quotes(char *s, int token, int len, int i);
 int		strlen_cmd(char **tokens, int *i);
 
 void	free_lst(t_ast **ast);
-// void	*m_malloc(size_t size);
 void	*mem_manager(size_t size, int fd, int token);
-void	*ff(t_memman *mem_list, int token);
+void	*ff(t_memman *mem_list);
+void	quit(char *msg, int return_code);
 
 //sigHandler.c
 int	catchBackslash(void);

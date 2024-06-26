@@ -1,226 +1,359 @@
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
 exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
 exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 > lol 2 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 > lol2 
+ls -la < Makefile | <<lol cat > lol1 >>lol2
 exit
-ls -la < Makefile | <<lol cat > lol1 > lol2 
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
+exit
+ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
+exit
+echo "$USDER"
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+echo "$USER test"
+exit
+echo "$USER test"
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+exit
+echo "$U""SER test"
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+echo "$U""SER test"
+echo "$USER"" test"
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+echo "$USER"" test"
+exit
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+echo "$USER"" test"
+echo "$USDER"
+exit
+echo "$USDER"
+echo "$USER"" test"
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+echo "$USER test"
+exit
+echo "$USER test"
+exit
+echo "$USER test"
+echo " test"
+echo "$USER test"
+exit
+echo " test"
+exit
+echo "$USER test"
+exit
+echo "$USER test"
+echo "$USER test"
+echo " test"
+exit
+echo " test"
+exit
+echo " test"
+echo "$USER test"
+exit
+echo "$USER test"
+exit
+exit
+echo "$USER test"
+echo "$US'ER test"
+exit
+echo "$US'ER test"
+exit
+echo "$US'ER test"
+echo "$US'ER test"
+exit
+echo "$US'ER test"
+exit
+echo "$US'ER test"
+exit
+echo "$USER test"
+echo "$US""ER test"
+exit
+echo "$USER test"
+echo "$US'ER test"
+echo "$USER test"
+echo "$USER"
+echo $USER
+exit
+echo $USER
+exit
+echo $USER
+exit
+echo $USER
+echo $USER
+exit
+echo $USER
+echo $USER
+echo $USER
+exit
+echo "$US""ER test"
+exit
+echo $USER
+echo "$USER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$USER test"
+echo "$US'ER test"
+echo "$US"ER test"
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+b splitter
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "hbwn"bhjhbf
+q
+exit
+echo "$US""ER test"
+echo "$US"""
+echo "$US"
+exit
+echo "$US""ER test"
+q
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "hbwn"bhjhbf
+exit
+echo "hbwn"bhjhbf
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+echo "$US""ER test"
+echo "$US""ER test"
+exit
+exit
+echo "$US""ER test"
+exit
+echo "hbwn"bhjhbf
+echo "$USER test"
+echo "$USE'R test"
+echo "$'USE'R test"
+echo "$""USER test"
+exit
+echo "$""USER test"
+echo "$'USE'R test"
+exit
+echo "$""USER test"
+echo "$USER test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+echo "$USER' test"
+exit
+echo "$USER' test"
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$""USER test"
+echo "$USER' test"
+echo "$USER" """test"
+exit
+echo "$USER" """test"
+exit
+echo "$USER" """test"
+exit
+echo "$USER" """test"
+exit
+echo "$USER' test"
+exit
+echo "$USE'R' test"
+echo "$USDER test"
+echo "$USDER" "test"
+echo "$USDER""test"
+exit
+echo "$USER test" | cat ls
+exit
+echo "$USER test" | cat ls
+echo "$USER test" | cat ls
+exit
+echo "$USER test" | cat ls 
+ cat
+echo "$USER test" | cat ls 
+echo "$USER test" | cat ls 
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls -la
+exit
+echo "$USER test" | cat -e
+ls -la
+exit
+echo "$USER test" | cat -e
+ls -la
+exit
+echo "$USER test" | cat -e
+ls -la
+exit
+echo "$USER test" | cat -e
+ls -la
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+exit
+echo "$USER test" | cat -e
+exit
+echo "$USER test" | cat -e
+exit
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+exit
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e |
+ls
 exit

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:35:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 07:46:45 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 07:43:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	parse_append(t_ast **ast, char **tokens)
 			if ((*ast)->fd_append == -1)
 				return (printf("%serror while opening: %s%s\n", RED, fd, DEF),
 					1);
+			mem_manager(sizeof(int), (*ast)->fd_append, 'O');
 			i += 2;
 		}
 		else

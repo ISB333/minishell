@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 10:53:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 08:13:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main()
 		{
 			history(rl);
 			if (!ft_strcmp(rl, "exit\0"))
-				return (mem_manager(0, 0, 'S'), 0);
+				return (quit(NULL, 0), 0);
 			parser(&ast, lexer(rl));
 		}
 		mem_manager(0, 0, 'C');

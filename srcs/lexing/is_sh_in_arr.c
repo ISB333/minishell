@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/19 09:33:35 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:18:36 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ int	is_pipe_in_arr(char **array)
 		while (array[i][++k])
 		{
 			if (array[i][k] == '|')
+				n++;
+		}
+	}
+	return (n);
+}
+
+int	is_new_line_in_arr(char **array)
+{
+	int	i;
+	int	k;
+	int	n;
+
+	i = -1;
+	n = 0;
+	while (array[++i])
+	{
+		k = -1;
+		while (array[i][++k])
+		{
+			if (array[i][k] == '\n' && array[i - 1][0] != '|')
 				n++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/25 10:03:38 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:07:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,37 +56,33 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 	int		j;
 
 	i = 0;
-	j = -1;
-	new_len = ft_strlen(str) + ft_strlen(new_str) - var_len + 1;
+	j = 0;
+	new_len = ft_strlen(str) - var_len + ft_strlen(new_str) + 1;
 	str_update = mem_manager(new_len, 0, 'A');
-	if (!str_update)
-		return (NULL);
-	while (str[++j] != '$')
-		str_update[i++] = str[j];
+	while (str[j] != '$')
+		str_update[i++] = str[j++];
 	k = 0;
-	printf("i = %d\n", i);
 	while (new_str[k])
 		str_update[i++] = new_str[k++];
-	while (str[j] && !is_del(str[++j]))
-		;
+	while (str[j] && !is_del(str[j]) && str[j] != 39 && str[j] != 34)
+		j++;
 	while (str[j])
-		str_update[i++] = str[++j];
+		str_update[i++] = str[j++];
 	str_update[i] = '\0';
 	return (str_update);
 }
 
-int	is_dollar_in_double_quotes(char *s, int k, int i)
+int	is_dollar_in_double_quotes(char *s, int k, int i, int token1)
 {
-	int	token1;
 	int	token2;
 
-	i = k;
-	while (s[--i] && s[i] != 34 && s[i] != 39)
-		;
+	token2 = 0;
+	while (s[i] && s[i] != 34 && s[i] != 39)
+		i--;
 	if (s[i] == 34 || s[i] == 39)
 		token1 = s[i];
-	while (s[++k] && s[k] != 34 && s[k] != 39)
-		;
+	while (s[k] && s[k] != 34 && s[k] != 39)
+		k++;
 	if (s[k] == 34 || s[k] == 39)
 		token2 = s[k];
 	if (token1 && token2)
@@ -104,7 +100,7 @@ int	is_dollar_in_double_quotes(char *s, int k, int i)
 	return (1);
 }
 
-int	get_dollar(char **arr)
+void	get_dollar(char **arr)
 {
 	char	*env_var;
 	char	*new_str;
@@ -114,18 +110,16 @@ int	get_dollar(char **arr)
 
 	i = is_dollar(arr, -1, 'p', 'i');
 	k = is_dollar(arr, -1, 'p', 'k');
-	if (!is_dollar_in_double_quotes(arr[i], k, 0))
-		return (0);
+	if(k)
+		if (!is_dollar_in_double_quotes(arr[i], k, k, 0))
+			return ;
 	j = k;
 	while (!is_del(arr[i][j]) && arr[i][j] && arr[i][j] != 34
 		&& arr[i][j] != 39)
 		j++;
-	if (arr[i][j - 1] == 34)
-		j--;
 	env_var = ft_substr(arr[i], k + 1, j - k - 1);
 	new_str = getenv(env_var);
 	if (!new_str)
-		return (1);
+		new_str = ft_strdup("\0");
 	arr[i] = join_new_str(arr[i], new_str, j - k);
-	return (0);
 }

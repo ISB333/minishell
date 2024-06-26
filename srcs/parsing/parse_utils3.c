@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 10:04:20 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:55:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,8 @@ void	fds_len(char **tokens, int *out_len, int *app_len, int *in_len)
 	}
 }
 
-int	strlen_minus_quotes(char *s, int token, int len)
+int	strlen_minus_quotes(char *s, int token, int len, int i)
 {
-	int	i;
-
-	i = 0;
 	while (s[i])
 	{
 		if (s[i] == 34)
@@ -51,15 +48,17 @@ int	strlen_minus_quotes(char *s, int token, int len)
 			token = s[i++];
 			while (s[i] && s[i] != token)
 				i++;
-			i++;
+			if (s[i] == token)
+				i++;
 			len += 2;
 		}
-		if (s[i] == 34)
+		else if (s[i] == 34)
 		{
 			token = s[i++];
 			while (s[i] && s[i] != token)
 				i++;
-			i++;
+			if (s[i] == token)
+				i++;
 			len += 2;
 		}
 		else
@@ -72,9 +71,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 {
 	char	*new_s;
 
-	new_s = mem_manager(strlen_minus_quotes(s, 0, 0) + 1, 0, 'A');
-	if (!new_s)
-		return (NULL);
+	new_s = mem_manager(strlen_minus_quotes(s, 0, 0, 0) + 1, 0, 'A');
 	while (s[i])
 	{
 		if (s[i] == 34)
@@ -84,7 +81,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 				new_s[k++] = s[i++];
 			i++;
 		}
-		if (s[i] == 39)
+		else if (s[i] == 39)
 		{
 			token = s[i++];
 			while (s[i] && s[i] != token)
@@ -102,7 +99,7 @@ int	strlen_cmd(char **tokens, int *i)
 	int	len;
 
 	len = 0;
-	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0))
+	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0) && !is_new_line(tokens, *i))
 	{
 		if (is_redir(tokens[*i], 0, 0))
 			(*i) += 2;
