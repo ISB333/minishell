@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 11:38:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/26 12:27:28 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct s_memman
 	size_t	size;
     struct s_memman *next;
 } t_memman;
-
 
 char	*get_prompt(void);
 
