@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 10:34:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 08:28:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	count_rows(char *s, int rows)
 		if (s[i] == 34 || s[i] == 39)
 		{
 			rows++;
-			while(s[i] == 34 || s[i] == 39)
+			while (s[i] == 34 || s[i] == 39)
 				i = count_utils_quotes(&token, s, i);
 			if (token == 1)
 				i = count_utils_char(&rows, &token, s, i);

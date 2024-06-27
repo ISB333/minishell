@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 11:42:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:37:13 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	init_lst(t_ast **ast)
 {
 	(*ast)->cmd = NULL;
 	(*ast)->cmd_path = NULL;
-	(*ast)->heredoc = NULL;
+	(*ast)->error = NULL;
 	(*ast)->fd_in = 0;
 	(*ast)->fd_out = 0;
-	(*ast)->fd_append = 0;
+	(*ast)->append = 0;
+	(*ast)->infile = 0;
+	(*ast)->outfile = 0;
 	(*ast)->pipe = 0;
 	(*ast)->new_line = 0;
 }
@@ -52,6 +54,8 @@ int	cmd_path_init(t_ast *ast)
 	char	*test_path;
 	int		i;
 
+	if (ast->cmd == NULL)
+		return (0);
 	path = extract_path();
 	if (!path)
 		return (printf("minihell: path not existing\n"), 1);

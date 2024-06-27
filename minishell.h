@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 12:27:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:25:02 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,19 @@ typedef struct s_ast
 {
 	char			**cmd;
 	char			*cmd_path;
+	char 			**heredoc;
 	int				fd_in;
 	int				fd_out;
 	int				pipe;
-	int				fd_append;
+	int				append;
 	int				new_line;
-	char			*heredoc;
+	int				infile;
+	int				outfile;
+	char			*error;
 	struct s_ast	*next;
 }	t_ast;
 
-typedef enum {
+typedef enum e_types {
 	FD,
 	NONE
 } ptrType;
@@ -72,9 +75,14 @@ typedef struct s_memman
 {
     void 	*ptr;
 	ptrType type;
-	size_t	size;
     struct s_memman *next;
 } t_memman;
+
+typedef struct s_heredoc
+{
+	char *s;
+	struct s_heredoc *next;
+} t_heredoc;
 
 char	*get_prompt(void);
 
@@ -101,6 +109,7 @@ int		is_pipe_in_arr(char **array);
 int		is_new_line_in_arr(char **array);
 int		is_redir_in_arr(char **array);
 int		is_append_in_arr(char **array);
+int		is_heredoc_in_arr(char **array);
 int		is_there_quotes_in_da_shit(char *s);
 
 		// utils //
@@ -120,16 +129,15 @@ void	init_lst(t_ast **ast);
 t_ast	*return_tail(t_ast *ast);
 int		cmd_path_init(t_ast *ast);
 
-int		parse_redir(t_ast **ast, char **tokens);
-int		parse_cmd(t_ast **ast, char **tokens, int *i);
+int		parse_redir(t_ast **ast, char **tokens, int i);
+int		parse_cmd(t_ast **ast, char **tokens, int *i, int j);
 int		parse_heredoc(t_ast **ast, char **tokens, int *i);
-int		parse_append(t_ast **ast, char **tokens);
+int		parse_append(t_ast **ast, char **tokens, int *i);
 
 char	*quotes_destroyer(char *s, int i, int k, int token);
 int		strlen_minus_quotes(char *s, int token, int len, int i);
 int		strlen_cmd(char **tokens, int *i);
 
-void	free_lst(t_ast **ast);
 void	*mem_manager(size_t size, int fd, int token);
 void	*ff(t_memman *mem_list);
 void	quit(char *msg, int return_code);

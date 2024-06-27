@@ -1,0 +1,30 @@
+	- heredoc > cmd > else
+	- If infile the redirection depends on the order
+		--> SAME for outfile and append (and outfile before append are clear)
+
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ dfgdfgdfg <lol
+	bash: lol: Permission denied
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ dfgdfgdfg <lol >out
+	bash: lol: Permission denied
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ dfgdfgdfg > out <lol
+	bash: lol: Permission denied
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ << del <lo
+	> nhjhj
+	> 
+	> del
+	bash: lo: No such file or directory
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ << del <lo | << del2
+	> sdfsdf
+	> sdfsd
+	> del
+	> sdfsdf
+	> ewrwr
+	> del2
+	bash: lo: No such file or directory
+	adesille@k0r3p12:~/Desktop/minishell/minishell$ << del <lo | << del2 cat
+	> ggg
+	> del
+	> khvdvjhd
+	> del2
+	bash: lo: No such file or directory
+	khvdvjhd

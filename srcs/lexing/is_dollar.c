@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/26 11:07:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 08:29:32 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	get_dollar(char **arr)
 
 	i = is_dollar(arr, -1, 'p', 'i');
 	k = is_dollar(arr, -1, 'p', 'k');
-	if(k)
+	if (k)
 		if (!is_dollar_in_double_quotes(arr[i], k, k, 0))
 			return ;
 	j = k;

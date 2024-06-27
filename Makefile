@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/26 06:47:53 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/27 12:34:31 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ SRCS = main.c \
 	./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils2.c \
 	./srcs/parsing/parse_utils3.c \
-	./srcs/parsing/parse_utils4.c \
 	./sigHandler.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)

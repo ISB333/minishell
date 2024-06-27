@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 11:53:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 08:31:34 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	len_to_del(char **tokens, int i)
 
 int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 {
-	int			len;
-	int			j;
+	int	len;
+	int	j;
 
 	len = len_to_del(tokens, *i);
 	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 'A');
@@ -108,17 +108,9 @@ char	***lexer(char *s)
 	tokens = splitter(tokens, s);
 	if (is_dollar(tokens, 0, '?', 0))
 		get_dollar(tokens);
-	int i = 0;
-	// printf("before split: \n");
-	// while(tokens[i])
-	// 	printf("%s\n", tokens[i++]);
 	if (is_pipe_in_arr(tokens) || is_new_line_in_arr(tokens))
 		array = split_array(array, tokens, 0, 0);
 	else if (lexer_utils(&array, tokens))
 		return (NULL);
-	i = 0;
-	printf("after split: \n");
-	while(tokens[i])
-		printf("%s", tokens[i++]);
 	return (array);
 }

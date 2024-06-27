@@ -357,3 +357,163 @@ exit
 echo "$USER test" | cat -e |
 ls
 exit
+echo "$USER test" | cat -e |
+exit
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e | ls
+exit
+exit
+echo "$USER test" | cat -e | ls
+exit
+echo "$USER test" | cat -e | ls
+exit
+<< del 
+<< del cat
+<< del cat
+<< del cat
+c
+<< del cat
+<< del cat
+q
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+b update_buff
+q
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+q
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat | <<del2 test
+exit
+<< del cat | <<del2 test
+exit
+<< del cat | <<del2 test >> app
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+<lol cat >> apend
+<lol cat >> apend
+<lol cat >> apend
+exit
+<lol cat >> apend
+<lol cat >> apend | cat -e
+> test <lol cat >> apend | cat -e
+q
+exit
+exit
+> test <lol cat >> apend | cat -e
+exit
+> test <lol cat >> apend | cat -e
+exit
+> test <lol cat >> apend | cat -e
+> test cat >> apend <lol | cat -e
+> test cat >> apend <lol | cat -e
+> test cat >> app <lol | cat -e
+exit
+> test cat >> app <lol | cat -e
+exit
+< lol <<del cat
+exit
+< lol <<del cat
+< lol <<del cat
+<<del cat
+<<del cat
+<<del cat
+exit
+<<del cat
+<<del cat
+<<del cat
+exit
+<<del cat
+exit
+<<del cat
+q
+exit
+<<del cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit

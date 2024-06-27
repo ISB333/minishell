@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/26 11:18:36 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:31:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	is_redir_in_arr(char **array)
 		return (0);
 	while (array[++i])
 	{
-		if (array[i][0] == '<' && array[i][1] != '<')
+		if (array[i][0] == '<')
 			return (1);
-		if (array[i][0] == '>' && array[i][1] != '>')
+		if (array[i][0] == '>')
 			return (2);
 	}
 	return (0);
@@ -79,6 +79,21 @@ int	is_append_in_arr(char **array)
 	while (array[++i])
 	{
 		if (array[i][0] == '>' && array[i][1] == '>')
+			return (1);
+	}
+	return (0);
+}
+
+int	is_heredoc_in_arr(char **array)
+{
+	int	i;
+
+	i = -1;
+	if (!array)
+		return (0);
+	while (array[++i])
+	{
+		if (array[i][0] == '<' && array[i][1] == '<')
 			return (1);
 	}
 	return (0);

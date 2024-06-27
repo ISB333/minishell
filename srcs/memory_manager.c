@@ -6,27 +6,28 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/26 07:46:40 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:56:17 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void *m_malloc(size_t size)
-{
-    static int i = 0;
-    void *ptr;
+// void	*m_malloc(size_t size)
+// {
+// 	static int	i = 0;
+// 	void		*ptr;
 
-	// printf("malloc n %d\n", ++i);
-	// if (i++ > 300 && i % 2 == 1)
-	// 	return (NULL);
-    ptr = malloc(size);
-    if (!ptr) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
-    return (ptr);
-}
+// 	// printf("malloc n %d\n", ++i);
+// 	// if (i++ > 300 && i % 2 == 1)
+// 	// 	return (NULL);
+// 	ptr = malloc(size);
+// 	if (!ptr)
+// 	{
+// 		fprintf(stderr, "Memory allocation failed\n");
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	return (ptr);
+// }
 
 void	quit(char *msg, int return_code)
 {

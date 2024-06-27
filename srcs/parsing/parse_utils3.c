@@ -6,38 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 11:55:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:35:29 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	fds_len(char **tokens, int *out_len, int *app_len, int *in_len)
-{
-	int	i;
-
-	i = 0;
-	while (tokens[i] && tokens[i][0] != '|')
-	{
-		if (is_redir(tokens[i], 0, 0) == 1)
-		{
-			i++;
-			(*in_len)++;
-		}
-		if (is_redir(tokens[i], 0, 0) == 2)
-		{
-			i++;
-			(*out_len)++;
-		}
-		if (is_append(tokens[i], 0, 0))
-		{
-			i += 2;
-			(*app_len)++;
-		}
-		else
-			i++;
-	}
-}
 
 int	strlen_minus_quotes(char *s, int token, int len, int i)
 {
@@ -110,4 +83,22 @@ int	strlen_cmd(char **tokens, int *i)
 		}
 	}
 	return (len);
+}
+
+int	parse_append(t_ast **ast, char **tokens, int *i)
+{
+	char	*fd;
+
+	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
+		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
+	else
+		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	printf("fd_append = %s\n", fd);
+	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if ((*ast)->fd_out == -1)
+		return (printf(RED"error while opening: %s\n"DEF, fd), 1);
+	(*ast)->append = 1;
+	mem_manager(sizeof(int), (*ast)->fd_out, 'O');
+	*i += 2;
+	return (0);
 }
