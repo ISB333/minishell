@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:48:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/19 06:30:29 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:34:38 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_append(char *s, int i, char token)
 			if (s[i] == '>' || s[i + 1] == '>')
 				return (1);
 	}
-	else if (s[i + 1] && s[i] == '>' && s[i + 1] == '>')
+	else if (s[i] && s[i + 1] && s[i] == '>' && s[i + 1] == '>')
 		return (1);
 	return (0);
 }

@@ -6,34 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/27 13:37:13 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 10:51:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	init_lst(t_ast **ast)
-{
-	(*ast)->cmd = NULL;
-	(*ast)->cmd_path = NULL;
-	(*ast)->error = NULL;
-	(*ast)->fd_in = 0;
-	(*ast)->fd_out = 0;
-	(*ast)->append = 0;
-	(*ast)->infile = 0;
-	(*ast)->outfile = 0;
-	(*ast)->pipe = 0;
-	(*ast)->new_line = 0;
-}
-
-t_ast	*return_tail(t_ast *ast)
-{
-	if (!ast->next)
-		return (ast);
-	while (ast && ast->next)
-		ast = ast->next;
-	return (ast);
-}
 
 char	**extract_path(void)
 {
@@ -47,19 +24,20 @@ char	**extract_path(void)
 	return (path);
 }
 
-int	cmd_path_init(t_ast *ast)
+int	cmd_path_init(t_ast *ast, int i)
 {
 	char	**path;
 	char	*cmd;
 	char	*test_path;
-	int		i;
 
-	if (ast->cmd == NULL)
+	if (ast->cmd == NULL || !ft_strcmp(ast->cmd[0], "exit"))
 		return (0);
 	path = extract_path();
 	if (!path)
-		return (printf("minihell: path not existing\n"), 1);
-	i = -1;
+	{
+		ast->error = error_init("command not found", ast->cmd[0]);
+		return (ast->cmd = NULL, error_code = 127, 127);
+	}
 	cmd = ft_strjoin("/", ast->cmd[0]);
 	while (path[++i])
 	{
@@ -70,5 +48,74 @@ int	cmd_path_init(t_ast *ast)
 			return (0);
 		}
 	}
-	return (printf("%s: command not found\n", ast->cmd[0]), 1);
+	ast->error = error_init("command not found", ast->cmd[0]);
+	return (ast->cmd = NULL, error_code = 127, 127);
+}
+
+void	add_node_hd(t_heredoc **hd, char *s)
+{
+	t_heredoc	*new_node;
+	t_heredoc	*last_node;
+
+	new_node = mem_manager(sizeof(t_heredoc), 0, 'A');
+	new_node->s = ft_strdup(s);
+	new_node->next = NULL;
+	if (!*hd)
+		*hd = new_node;
+	else
+	{
+		last_node = *hd;
+		while (last_node->next)
+			last_node = last_node->next;
+		last_node->next = new_node;
+	}
+}
+
+void	add_to_ast(t_ast **ast, t_heredoc *hd)
+{
+	int			len;
+	t_heredoc	*hd_len;
+
+	len = 0;
+	hd_len = hd;
+	while (hd_len)
+	{
+		len++;
+		hd_len = hd_len->next;
+	}
+	(*ast)->heredoc = mem_manager((len + 1) * sizeof(char *), 0, 'A');
+	(*ast)->heredoc[len] = NULL;
+	len = 0;
+	while (hd)
+	{
+		(*ast)->heredoc[len++] = ft_strdup(hd->s);
+		hd = hd->next;
+	}
+}
+
+int	parse_heredoc(t_ast **ast, char **tokens, int *i)
+{
+	char		*s;
+	char		*heredoc;
+	t_heredoc	*hd;
+
+	hd = NULL;
+	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
+		heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
+	else
+		heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	while (1)
+	{
+		s = readline("> ");
+		if (!ft_strcmp(s, heredoc))
+		{
+			free(s);
+			break ;
+		}
+		add_node_hd(&hd, s);
+		free(s);
+	}
+	add_to_ast(ast, hd);
+	*i += 2;
+	return (0);
 }

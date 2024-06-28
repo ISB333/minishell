@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/27 12:34:31 by adesille         ###   ########.fr        #
+#    Updated: 2024/06/28 10:53:35 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 val :
-	@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --trace-children=yes --suppressions=valgrind.supp --quiet ./minishell
+# @$(VALGRIND)
+	@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --suppressions=valgrind.supp --quiet ./minishell
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
@@ -93,4 +94,4 @@ re : fclean all
 
 -include $(DEPFILES)
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re val

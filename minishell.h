@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/27 14:25:02 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:58:36 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define RED "\033[0;31m"
 # define DEF "\033[0m"
+
+extern int error_code;
 
 typedef struct s_prompt
 {
@@ -84,6 +86,12 @@ typedef struct s_heredoc
 	struct s_heredoc *next;
 } t_heredoc;
 
+typedef struct s_open_pipe
+{
+	char **arr;
+	struct s_open_pipe *next;
+} t_open_pipe;
+
 char	*get_prompt(void);
 
 	/// History ///
@@ -110,6 +118,7 @@ int		is_new_line_in_arr(char **array);
 int		is_redir_in_arr(char **array);
 int		is_append_in_arr(char **array);
 int		is_heredoc_in_arr(char **array);
+int		is_open_pipe_in_arr(char **array);
 int		is_there_quotes_in_da_shit(char *s);
 
 		// utils //
@@ -127,7 +136,7 @@ int		parser(t_ast **ast, char ***tokens);
 		// utils //
 void	init_lst(t_ast **ast);
 t_ast	*return_tail(t_ast *ast);
-int		cmd_path_init(t_ast *ast);
+int		cmd_path_init(t_ast *ast, int i);
 
 int		parse_redir(t_ast **ast, char **tokens, int i);
 int		parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -140,7 +149,8 @@ int		strlen_cmd(char **tokens, int *i);
 
 void	*mem_manager(size_t size, int fd, int token);
 void	*ff(t_memman *mem_list);
-void	quit(char *msg, int return_code);
+int		error(char *msg, char *file, int return_code);
+char	*error_init(char *msg, char *file);
 
 //sigHandler.c
 int	catchBackslash(void);

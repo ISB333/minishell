@@ -6,11 +6,13 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 08:13:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:00:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	error_code = 0;
 
 // ! if  there's a NEWLINE outside of quotes, command after are not linked to those above, EXCEPTED if there's a pipe at the EOL ! //
 // ! if "echo -nnnnnnnnnnnnnnnnnnnn" || "echo -n-n-n-n-n-n-n-n-n" count as 1 
@@ -58,8 +60,6 @@ int	main()
 		if (!prompt(&rl))
 		{
 			history(rl);
-			if (!ft_strcmp(rl, "exit\0"))
-				return (quit(NULL, 0), 0);
 			parser(&ast, lexer(rl));
 		}
 		mem_manager(0, 0, 'C');

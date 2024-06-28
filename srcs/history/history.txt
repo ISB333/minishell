@@ -517,3 +517,165 @@ exit
 exit
 <<del << del2 << del5 cat
 exit
+<<del << del2 << del5 cat
+<<del << del2 cat | << del3 ls << del4 || << del5
+exit
+<<del << del2 cat | << del3 ls << del4 || << del5
+exit
+cat
+exit
+< lol cat
+exit
+< lol cat
+< lol catexit
+'exit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+cat > out
+exit
+cat > out
+exit
+ct > out
+ct > out2
+ct > out2
+exit
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+exit
+ct > out2
+exit
+ct > out2
+exit
+exit200
+exit
+exit
+exit
+exit
+exit
+exit 200
+exit
+exit 200
+exit
+exit
+exit
+exit
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+cat | exit 200
+cat | exit 20
+exit 20
+exit 250
+cat | exit 200
+exit 300
+exit 300 5
+echo $?
+exit
+exit
+exit
+exit
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+ct
+exit
+ct
+exit
+ct
+ct
+ct
+exit
+ct
+exit
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+c
+cat |
+y
+cat |
+cat |
+cat |
+exit
+cat |
+cat |
+cat |
+exit
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+exit
+cat |

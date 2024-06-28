@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/27 14:00:06 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:28:15 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,25 @@
 
 	! If multiple infiles or outfiles only the last infile/outfile is taken,
 	! 	but still create the multiple outfile, and send an error message
-	!	 		if file exist (except for append):
+	!				if file exist (except for append):
 	!		- bash: out1: cannot overwrite existing file
 
 	! If open pipe, shell open an heredoc like waiting for a command
 
 	========================================================
+	TODO 0: Open pipe
+		- Call Lexer from Parser
+			-> If open_pipe
+				-> while (1)
+					- lexer()
+					- add_node()
+					if(!open_pipe)
+						break
+				return(new_array);
 	TODO 1: List every returns code possible & set them with exit(*return code*)
 	TODO 2: If a path is given, try to execute it
 
+	TODO ?: man
 */
 
 void	print_lst(t_ast *ast)
@@ -72,6 +82,8 @@ void	print_lst(t_ast *ast)
 		ast = ast->next;
 		n++;
 	}
+	if (error_code)
+		printf("error_code = %d\n", error_code);
 }
 
 void	printer(char ***array)
@@ -96,11 +108,11 @@ void	printer(char ***array)
 	printf("\033[0m\n");
 }
 
-void	lst_parse(t_ast **ast, char **tokens, int i)
+int	lst_parse(t_ast **ast, char **tokens, int i)
 {
 	if (is_redir_in_arr(tokens))
 		if (parse_redir(ast, tokens, 0))
-			return ;
+			return (1);
 	while (tokens[i])
 	{
 		if (is_redir(tokens[i], 0, 0))
@@ -122,6 +134,7 @@ void	lst_parse(t_ast **ast, char **tokens, int i)
 		else
 			parse_cmd(ast, tokens, &i, -1);
 	}
+	return (0);
 }
 
 int	add_node(t_ast **ast, char **tokens)
@@ -139,9 +152,51 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	lst_parse(&new_node, tokens, 0);
-	cmd_path_init(new_node);
+	if (lst_parse(&new_node, tokens, 0))
+		return (1);
+	cmd_path_init(new_node, -1);
 	return (0);
+}
+
+void	exit_check_utils(t_ast *ast)
+{
+	int	code;
+
+	while (ast->next)
+		ast = ast->next;
+	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+	{
+		code = ft_atoi(ast->cmd[1]);
+		if (ast->cmd[1])
+			return (mem_manager(0, 0, 'C'), exit(code));
+		return (mem_manager(0, 0, 'C'), exit(EXIT_SUCCESS));
+	}
+}
+
+void	exit_check(t_ast *ast)
+{
+	int	code;
+
+	if (!ast->next)
+	{
+		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+		{
+			if (ast->cmd[1])
+			{
+				code = ft_atoi(ast->cmd[1]);
+				if (code > 255)
+					code -= 256;
+				if (!ast->cmd[2])
+					return (mem_manager(0, 0, 'C'), exit(code));
+				else
+					error("too many arguments", "exit", 1);
+			}
+			else
+				return (mem_manager(0, 0, 'C'), exit(EXIT_SUCCESS));
+		}
+	}
+	else
+		exit_check_utils(ast);
 }
 
 int	parser(t_ast **ast, char ***array)
@@ -155,10 +210,8 @@ int	parser(t_ast **ast, char ***array)
 	i = -1;
 	while (array[++i])
 		if (add_node(ast, array[i]))
-		{
-			printf("%sparsing error%s\n", RED, DEF);
 			return (1);
-		}
+	exit_check(*ast);
 	printf("\033[0;33m");
 	printf("\n============= LINKED_LIST =============\n\n");
 	printf("\033[0;37m");

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/27 11:56:17 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:13:56 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,34 @@
 // 	return (ptr);
 // }
 
-void	quit(char *msg, int return_code)
+char	*error_init(char *msg, char *file)
 {
-	mem_manager(0, 0, 'C');
+	char *s;
+
+	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
+	return (ft_strjoin(s, msg));
+}
+
+int	error(char *msg, char *file, int return_code)
+{
 	if (msg)
-		printf("%s\n", msg);
-	exit(return_code);
+	{
+		write(2, "minihell: ", ft_strlen("minihell: "));
+		if (file)
+		{
+			write(2, file, ft_strlen(file));
+			write(2, ": ", 2);
+		}
+		write(2, msg, ft_strlen(msg));
+		write(2, "\n", 1);
+	}
+	if (return_code)
+	{
+		error_code = return_code;
+		printf("error_code = %d\n", error_code);
+		return (return_code);
+	}
+	return (1);
 }
 
 void	*ff(t_memman *mem_list)
@@ -87,14 +109,16 @@ void	*allocate(t_memman **mem_list, size_t size, int token)
 	if (!ptr)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
-		quit(NULL, 1);
+		mem_manager(0, 0, 'C');
+		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(t_memman));
 	if (!new_node)
 	{
 		fprintf(stderr, "Memory manager new node allocation failed\n");
 		free(ptr);
-		quit(NULL, 1);
+		mem_manager(0, 0, 'C');
+		exit(EXIT_FAILURE);
 	}
 	init_node(new_node, mem_list, ptr, token);
 	return (ptr);

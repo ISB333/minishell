@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/27 13:35:29 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 10:30:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,26 @@ int	strlen_cmd(char **tokens, int *i)
 	return (len);
 }
 
-int	parse_append(t_ast **ast, char **tokens, int *i)
+t_ast	*return_tail(t_ast *ast)
 {
-	char	*fd;
+	if (!ast->next)
+		return (ast);
+	while (ast && ast->next)
+		ast = ast->next;
+	return (ast);
+}
 
-	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
-		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
-	else
-		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	printf("fd_append = %s\n", fd);
-	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
-	if ((*ast)->fd_out == -1)
-		return (printf(RED"error while opening: %s\n"DEF, fd), 1);
-	(*ast)->append = 1;
-	mem_manager(sizeof(int), (*ast)->fd_out, 'O');
-	*i += 2;
-	return (0);
+void	init_lst(t_ast **ast)
+{
+	(*ast)->cmd = NULL;
+	(*ast)->cmd_path = NULL;
+	(*ast)->error = NULL;
+	(*ast)->heredoc = NULL;
+	(*ast)->fd_in = 0;
+	(*ast)->fd_out = 0;
+	(*ast)->append = 0;
+	(*ast)->infile = 0;
+	(*ast)->outfile = 0;
+	(*ast)->pipe = 0;
+	(*ast)->new_line = 0;
 }
