@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 10:35:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:24:55 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if ((*ast)->fd_out)
+		mem_manager(0, (*ast)->fd_out, 'N');
+	(*ast)->fd_out = open(fd, O_RDONLY | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
+	(*ast)->outfile = 1;
 	mem_manager(sizeof(int), (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
@@ -54,18 +57,21 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	if ((*ast)->fd_in)
+		mem_manager(0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
 	{
 		init_lst(ast);
 		return (error(strerror(errno), fd, 1));
 	}
+	(*ast)->infile = 1;
 	mem_manager(sizeof(int), (*ast)->fd_in, 'O');
 	*i += 2;
 	return (0);
 }
 
-int	parse_redir(t_ast **ast, char **tokens, int i)
+int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 {
 	while (tokens[i])
 	{
@@ -82,7 +88,7 @@ int	parse_redir(t_ast **ast, char **tokens, int i)
 		else if (is_append(tokens[i], 0, 0))
 			parse_append(ast, tokens, &i);
 		else if (is_heredoc(tokens[i], 0, 0))
-			parse_heredoc(ast, tokens, &i);
+			parse_heredoc(ast, tokens, &i, n);
 		else
 			i++;
 	}
@@ -94,8 +100,7 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i, int j)
 	int	k;
 
 	k = *i;
-	(*ast)->cmd = mem_manager((strlen_cmd(tokens, i) + 1) * sizeof(char *), 0,
-			'A');
+	(*ast)->cmd = mem_manager((cmdlen(tokens, i) + 1) * sizeof(char *), 0, 'A');
 	if (!(*ast)->cmd)
 		return (1);
 	while (tokens[k] && !is_pipe(tokens[k], 0, 0) && !is_new_line(tokens, k))
@@ -103,6 +108,8 @@ int	parse_cmd(t_ast **ast, char **tokens, int *i, int j)
 		if (is_redir(tokens[k], 0, 0))
 			k += 2;
 		else if (is_append(tokens[k], 0, 0))
+			k += 2;
+		else if (is_heredoc(tokens[k], 0, 0))
 			k += 2;
 		else if (is_there_quotes_in_da_shit(tokens[k]) && tokens[k])
 			(*ast)->cmd[++j] = quotes_destroyer(tokens[k++], 0, 0, 0);

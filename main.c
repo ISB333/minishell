@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 11:00:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 09:49:15 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main()
 		if (!prompt(&rl))
 		{
 			history(rl);
-			parser(&ast, lexer(rl));
+			parser(&ast, rl);
 		}
 		mem_manager(0, 0, 'C');
 	}

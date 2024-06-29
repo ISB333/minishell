@@ -679,3 +679,230 @@ cat |
 cat |
 exit
 cat |
+cat | ls
+exit
+cat | ls
+exit
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+exit
+cat | 
+cat | 
+exit
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+exit
+cat | 
+exit
+< in1 <in2 cat 
+exit
+< in1 <in2 cat 
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exxit
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+MAKE
+EXIT
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+d
+d
+d
+d
+d
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del > returns.txt
+exit
+< in1 <in2 cat <<del > returns.txt
+exit
+< in1 <in2 cat <<del > returns.txt
+exit
+< in1 <in2 cat <<del > returns.txt
+exit
+< in1 <in2 cat <<del > returns.txt
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+exot
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 < reutrns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del 
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del 
+exit
+< in1 < reutrns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del  < returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+exit
+cat | 
+exit
+<<del |
+exit
+cat |
+exit
+cat |
+exit
+cat |
+exit
+cat |
+cat |
+<<del |
+exit
+<<del |
+exit
+<<del | << del2 cat
+exit
+<<del | << del2 cat
+<<del | << del2 cat
+cat |
+a
+q
+q
+exit
+cat |
+d
+ed
+exit
+<< del |
+<< del |
+<< del |
+exit
+<< del |
+exit
+<< del |
+exit
+<< del |
+exit
+<<del
+<<del |
+<<del |
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit
+<<del |
+<<del |
+<<del |
+<<del |
+q
+exit
+<<del |
+<<del |
+<<del |
+exit
+<<del |
+exit
+<<del |
+c
+c
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit
+<<del |
+exit

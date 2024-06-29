@@ -3,47 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 12:28:15 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 09:51:06by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-	! / If multiple heredoc no pipes, only the last is took,
-	!	else first del then 2nd del etc..
-			? ---> Test more cuz da shit is weird
-
-	! If multiple infiles or outfiles only the last infile/outfile is taken,
-	! 	but still create the multiple outfile, and send an error message
-	!				if file exist (except for append):
-	!		- bash: out1: cannot overwrite existing file
-
-	! If open pipe, shell open an heredoc like waiting for a command
-
 	========================================================
-	TODO 0: Open pipe
-		- Call Lexer from Parser
-			-> If open_pipe
-				-> while (1)
-					- lexer()
-					- add_node()
-					if(!open_pipe)
-						break
-				return(new_array);
-	TODO 1: List every returns code possible & set them with exit(*return code*)
-	TODO 2: If a path is given, try to execute it
+	TODO : free ptr given
+	TODO : List every returns code possible & set them with exit(*return code*)
+	TODO : If a path is given, try to execute it
 
 	TODO ?: man
+	TODO ?: error code change at next prompt
+	TODO ?: Clear Heredoc
 */
 
 void	print_lst(t_ast *ast)
 {
-	int	i;
-	int	n;
+	int		i;
+	int		n;
+	char	buffer[10000];
+	int		bytes;
+	char	buff[10000];
+	int		byte;
 
 	n = 1;
 	if (!ast)
@@ -60,23 +47,33 @@ void	print_lst(t_ast *ast)
 				printf("%s\n", ast->cmd[i]);
 			printf("cmd_path = %s\n", ast->cmd_path);
 		}
-		if (ast->infile)
+		if (ast->fd_in)
+		{
 			printf("INFILE\n");
-		if (ast->outfile)
+			bytes = read(ast->fd_in, buffer, 10000);
+			buffer[bytes] = '\0';
+			printf("%s\n", buffer);
+		}
+		if (ast->fd_out)
+		{
 			printf("OUTFILE\n");
+			byte = read(ast->fd_out, buff, 10000);
+			buff[byte] = '\0';
+			printf("%s\n", buff);
+		}
 		if (ast->append)
 			printf("APPEND\n");
 		if (ast->pipe)
 			printf("PIPE\n");
 		if (ast->new_line)
 			printf("NEWLINE\n");
-		i = -1;
-		if (ast->heredoc)
-		{
-			printf("HEREDOC:\n");
-			while (ast->heredoc[++i])
-				printf("%s\n", ast->heredoc[i]);
-		}
+		// i = -1;
+		// if (ast->heredoc)
+		// {
+		// 	printf("HEREDOC:\n");
+		// 	while (ast->heredoc[++i])
+		// 		printf("%s\n", ast->heredoc[i]);
+		// }
 		if (ast->error)
 			printf("%s\n", ast->error);
 		ast = ast->next;
@@ -108,10 +105,10 @@ void	printer(char ***array)
 	printf("\033[0m\n");
 }
 
-int	lst_parse(t_ast **ast, char **tokens, int i)
+int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 {
 	if (is_redir_in_arr(tokens))
-		if (parse_redir(ast, tokens, 0))
+		if (parse_redir(ast, tokens, 0, n))
 			return (1);
 	while (tokens[i])
 	{
@@ -139,9 +136,11 @@ int	lst_parse(t_ast **ast, char **tokens, int i)
 
 int	add_node(t_ast **ast, char **tokens)
 {
-	t_ast	*new_node;
-	t_ast	*last_node;
+	static int	n = 0;
+	t_ast		*new_node;
+	t_ast		*last_node;
 
+	n++;
 	new_node = mem_manager(sizeof(t_ast), 0, 'A');
 	new_node->next = NULL;
 	init_lst(&new_node);
@@ -152,7 +151,7 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	if (lst_parse(&new_node, tokens, 0))
+	if (lst_parse(&new_node, tokens, 0, n))
 		return (1);
 	cmd_path_init(new_node, -1);
 	return (0);
@@ -199,18 +198,32 @@ void	exit_check(t_ast *ast)
 		exit_check_utils(ast);
 }
 
-int	parser(t_ast **ast, char ***array)
+int	parser(t_ast **ast, char *s)
 {
-	int	i;
+	char	**tokens;
+	char	***array;
+	int		i;
 
-	if (!array)
-		return (printf("%slexing error%s\n", RED, DEF), 1);
+	if (!s)
+		return (printf("%sempty input%s\n", RED, DEF), 1);
+	while (1)
+	{
+		i = -1;
+		tokens = lexer(s);
+		if (is_pipe_in_arr(tokens) || is_new_line_in_arr(tokens))
+			array = split_array(array, tokens, 0, 0);
+		else
+			lexer_utils(&array, tokens);
+		while (array[++i])
+			if (add_node(ast, array[i]))
+				return (1);
+		if (is_open_pipe_in_arr(tokens))
+			s = open_pipe_manager();
+		else
+			break;
+	}
 	printf("\n\n");
 	printer(array);
-	i = -1;
-	while (array[++i])
-		if (add_node(ast, array[i]))
-			return (1);
 	exit_check(*ast);
 	printf("\033[0;33m");
 	printf("\n============= LINKED_LIST =============\n\n");

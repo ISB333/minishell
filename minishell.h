@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 11:58:36 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:24:46 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,15 @@ typedef struct s_ast
 {
 	char			**cmd;
 	char			*cmd_path;
-	char 			**heredoc;
 	int				fd_in;
 	int				fd_out;
 	int				pipe;
-	int				append;
 	int				new_line;
+
+	int				append;
 	int				infile;
 	int				outfile;
+	int				heredoc;
 	char			*error;
 	struct s_ast	*next;
 }	t_ast;
@@ -86,12 +87,6 @@ typedef struct s_heredoc
 	struct s_heredoc *next;
 } t_heredoc;
 
-typedef struct s_open_pipe
-{
-	char **arr;
-	struct s_open_pipe *next;
-} t_open_pipe;
-
 char	*get_prompt(void);
 
 	/// History ///
@@ -100,8 +95,10 @@ int		append_new_history(char *rl);
 int		add_previous_history();
 
 	/// Lexing ///
-char	***lexer(char *str);
+char	**lexer(char *str);
 void	get_dollar(char **arr);
+char	***split_array(char ***array, char **tokens, int i, int k);
+int		lexer_utils(char ****array, char **tokens);
 
 		// is_??? //
 int		is_dollar(char **arr, int i, char token, char pos);
@@ -118,6 +115,7 @@ int		is_new_line_in_arr(char **array);
 int		is_redir_in_arr(char **array);
 int		is_append_in_arr(char **array);
 int		is_heredoc_in_arr(char **array);
+int		is_open_pipe_in_arr_arr(char ***array);
 int		is_open_pipe_in_arr(char **array);
 int		is_there_quotes_in_da_shit(char *s);
 
@@ -129,23 +127,24 @@ int		split_utils_char(t_split *i, char *s, char **array);
 int		split_utils_quotes(t_split *i, char *s, char **array);
 int		open_quotes(char *s);
 int		array_len(char **tokens);
+char	*open_pipe_manager(void);
 
 	/// Parsing ///
-int		parser(t_ast **ast, char ***tokens);
+int		parser(t_ast **ast, char *s);
 
 		// utils //
 void	init_lst(t_ast **ast);
 t_ast	*return_tail(t_ast *ast);
 int		cmd_path_init(t_ast *ast, int i);
 
-int		parse_redir(t_ast **ast, char **tokens, int i);
+int		parse_redir(t_ast **ast, char **tokens, int i, int n);
 int		parse_cmd(t_ast **ast, char **tokens, int *i, int j);
-int		parse_heredoc(t_ast **ast, char **tokens, int *i);
+int		parse_heredoc(t_ast **ast, char **tokens, int *i, int n);
 int		parse_append(t_ast **ast, char **tokens, int *i);
 
 char	*quotes_destroyer(char *s, int i, int k, int token);
 int		strlen_minus_quotes(char *s, int token, int len, int i);
-int		strlen_cmd(char **tokens, int *i);
+int		cmdlen(char **tokens, int *i);
 
 void	*mem_manager(size_t size, int fd, int token);
 void	*ff(t_memman *mem_list);

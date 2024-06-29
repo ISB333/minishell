@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 10:30:10 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 09:03:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 	return (new_s[k] = '\0', new_s);
 }
 
-int	strlen_cmd(char **tokens, int *i)
+int	cmdlen(char **tokens, int *i)
 {
 	int	len;
 
@@ -99,7 +99,7 @@ void	init_lst(t_ast **ast)
 	(*ast)->cmd = NULL;
 	(*ast)->cmd_path = NULL;
 	(*ast)->error = NULL;
-	(*ast)->heredoc = NULL;
+	(*ast)->heredoc = 0;
 	(*ast)->fd_in = 0;
 	(*ast)->fd_out = 0;
 	(*ast)->append = 0;

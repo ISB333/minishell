@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/28 10:51:52 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:30:16 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,39 +71,46 @@ void	add_node_hd(t_heredoc **hd, char *s)
 	}
 }
 
-void	add_to_ast(t_ast **ast, t_heredoc *hd)
+void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 {
-	int			len;
-	t_heredoc	*hd_len;
+	char	*path;
+	int		fd;
 
-	len = 0;
-	hd_len = hd;
-	while (hd_len)
-	{
-		len++;
-		hd_len = hd_len->next;
-	}
-	(*ast)->heredoc = mem_manager((len + 1) * sizeof(char *), 0, 'A');
-	(*ast)->heredoc[len] = NULL;
-	len = 0;
+	path = ft_strjoin(ft_strdup("./srcs/parsing/heredoc/hd"), ft_itoa(n));
+	fd = open(path, O_RDWR | O_CREAT
+			| O_TRUNC | O_APPEND, 0644);
+	if (!fd)
+		return (perror("Error opening file"));
+	mem_manager(sizeof(int), fd, 'O');
 	while (hd)
 	{
-		(*ast)->heredoc[len++] = ft_strdup(hd->s);
+		ft_putstr_fd(hd->s, fd);
+		if (hd->next)
+			ft_putstr_fd("\n", fd);
 		hd = hd->next;
 	}
+	(*ast)->heredoc = 1;
+	if ((*ast)->fd_in)
+		mem_manager(0, (*ast)->fd_in, 'N');
+	(*ast)->fd_in = open(path, O_RDONLY, 0644);
+	if (!(*ast)->fd_in)
+		return (perror("Error opening file"));
+	mem_manager(sizeof(int), (*ast)->fd_in, 'O');
 }
 
-int	parse_heredoc(t_ast **ast, char **tokens, int *i)
+int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 {
 	char		*s;
 	char		*heredoc;
 	t_heredoc	*hd;
 
+	printf("HEREDOC\n");
 	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	printf("DEL = %s\n", heredoc);
 	while (1)
 	{
 		s = readline("> ");
@@ -115,7 +122,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i)
 		add_node_hd(&hd, s);
 		free(s);
 	}
-	add_to_ast(ast, hd);
+	add_to_ast(ast, hd, n);
 	*i += 2;
 	return (0);
 }

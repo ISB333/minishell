@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/28 12:13:56 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 08:32:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 char	*error_init(char *msg, char *file)
 {
-	char *s;
+	char	*s;
 
 	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
 	return (ft_strjoin(s, msg));
@@ -124,6 +124,32 @@ void	*allocate(t_memman **mem_list, size_t size, int token)
 	return (ptr);
 }
 
+void	close_fd(t_memman *mem_list, int fd)
+{
+	t_memman	*mem_temp;
+	t_memman	*prev;
+
+	mem_temp = mem_list;
+	prev = NULL;
+	while (mem_temp)
+	{
+		if (*(int *)mem_temp->ptr == fd)
+		{
+			close(*(int *)mem_temp->ptr);
+			free(mem_temp->ptr);
+			if (prev)
+				prev->next = mem_temp->next;
+			else
+				mem_list = mem_temp->next;
+			free(mem_temp);
+			printf("CLEAR\n");
+			break ;
+		}
+		prev = mem_temp;
+		mem_temp = mem_temp->next;
+	}
+}
+
 void	*mem_manager(size_t size, int fd, int token)
 {
 	static t_memman	*mem_list = NULL;
@@ -137,6 +163,8 @@ void	*mem_manager(size_t size, int fd, int token)
 		*fd_ptr = fd;
 		return (NULL);
 	}
+	if (token == 'N')
+		close_fd(mem_list, fd);
 	if (token == 'C')
 	{
 		ff(mem_list);

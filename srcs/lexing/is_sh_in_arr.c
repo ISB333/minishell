@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sh_in_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/28 11:21:20 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:10:13 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_pipe_in_arr(char **array)
 		k = -1;
 		while (array[i][++k])
 		{
-			if (array[i][k] == '|')
+			if (array[i][k] == '|' && array[i + 1])
 				n++;
 		}
 	}
@@ -95,6 +95,25 @@ int	is_heredoc_in_arr(char **array)
 	{
 		if (array[i][0] == '<' && array[i][1] == '<')
 			return (1);
+	}
+	return (0);
+}
+
+int	is_open_pipe_in_arr_arr(char ***array)
+{
+	int	i;
+	int	k;
+
+	k = -1;
+	i = -1;
+	if (!array)
+		return (0);
+	while (array[++i])
+	{
+		k = -1;
+		while (array[i][++k])
+			if (array[i][k][0] == '|' && !array[i + 1])
+				return (1);
 	}
 	return (0);
 }
