@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 08:11:41 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 08:24:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	printf("fd_append = %s\n", fd);
-	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	(*ast)->fd_out = open(fd, O_RDONLY | O_CREAT | O_APPEND, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
 	(*ast)->append = 1;

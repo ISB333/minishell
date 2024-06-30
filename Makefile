@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/29 06:37:48 by isb3             ###   ########.fr        #
+#    Updated: 2024/06/30 08:19:13 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,19 +62,18 @@ VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT)
-	@echo "$(GREEN)\n$@ is ready !$(DEFAULT)\n"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
 	@if [ ! -d .obj/srcs ]; then \
-	    echo "$(RED)\nCompiling minishell files...$(DEFAULT)"; \
+	    echo "$(WHITE)\nCompiling minishell files...$(DEFAULT)"; \
 	fi
 	@$(CC) $(OFLAGS) -c $< -o $@
 
 $(LIBFT) :
 	@if [ ! -f $(LIBFT)/*.o ]; then \
-	    echo "$(BLUE)\nCompiling libft files...$(DEFAULT)"; \
+	    echo "$(RED)\nCompiling libft files...$(DEFAULT)\n"; \
 	fi
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
@@ -85,7 +84,7 @@ val :
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
 	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
-	@echo "$(WHITE)\nEvery files are cleaned$(DEFAULT)"
+	@echo "$(BLUE)\nEvery files are cleaned$(DEFAULT)"
 
 fclean : clean
 	@rm -f $(NAME)

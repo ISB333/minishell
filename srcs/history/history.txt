@@ -937,3 +937,14 @@ exit
 cat -e | <in1 ls -la|echo<<del |
 cat -e | <in1 ls -la|echo<<del |
 exit
+exit
+cat -e | <in1 ls -la|echo<<del |exi
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat
+cat >> app1 >>app2 <<app3
+cat >> app0 >>app2 >>app1 
+exit
+cat >> app0 >>app2 >>app1 
+cat >> app0 >>app2 >>app1 
+exit

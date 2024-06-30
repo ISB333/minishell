@@ -13,13 +13,14 @@
 #include "minishell.h"
 
 /*
+	! TODO : Change > & >> to WRONLY 
 	========================================================
 	TODO : List every returns code possible & set them with exit(*return code*)
 	TODO : If a path is given, try to execute it
 
-	TODO ?: man
+	TODO ?: maN
 	TODO ?: error code change at next prompt
-	TODO ?: Clear Heredoc
+
 */
 
 void	print_lst(t_ast *ast)
@@ -66,13 +67,6 @@ void	print_lst(t_ast *ast)
 			printf("PIPE\n");
 		if (ast->new_line)
 			printf("NEWLINE\n");
-		// i = -1;
-		// if (ast->heredoc)
-		// {
-		// 	printf("HEREDOC:\n");
-		// 	while (ast->heredoc[++i])
-		// 		printf("%s\n", ast->heredoc[i]);
-		// }
 		if (ast->error)
 			printf("%s\n", ast->error);
 		ast = ast->next;
