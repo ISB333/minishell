@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:29:10 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 09:41:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 	int	len;
 
 	len = is_pipe_in_arr(tokens) + is_new_line_in_arr(tokens);
+	printf("len = %d\n", len);
 	array = mem_manager((len + 2) * sizeof(char **), 0, 0, 'A');
 	array[len + 1] = NULL;
 	while (tokens[i])

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 09:13:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 09:30:58 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	check_if_directory(t_ast *ast)
 		dir = ft_strdup(ast->cmd[0]);
 		ast->cmd = mem_manager((3 * sizeof(char *)), 0, 0, 'A');
 		ast->cmd[0] = ft_strdup("cd");
-		ast->cmd[1] = dir;
-		return (ast->cmd[2] = NULL, 0);
+		return (ast->cmd[1] = dir, ast->cmd[2] = NULL, error_code = 0, 0);
 	}
 	else if (!access(ast->cmd[0], R_OK) && ast->cmd[1])
 	{
@@ -51,6 +50,7 @@ int	check_if_directory(t_ast *ast)
 		ast->error = error_init("command not found", ast->cmd[0]);
 		return (ast->cmd = NULL, error_code = 127, 127);
 	}
+	return (0);
 }
 
 int	cmd_path_init(t_ast *ast, int i)
@@ -71,6 +71,7 @@ int	cmd_path_init(t_ast *ast, int i)
 		if (!access(test_path, R_OK))
 		{
 			ast->cmd_path = test_path;
+			error_code = 0;
 			return (0);
 		}
 	}

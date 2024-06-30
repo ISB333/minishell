@@ -984,3 +984,58 @@ exit
 exit
 man ks
 exit
+echo lol | cat | <in ls
+exit
+echo lol | cat | <in ls <lol
+echo lol | cat | <lol
+echo lol | cat | >lol
+echo lol | cat | >>lol
+echo lol | cat | >lol
+exit
+echo lol | cat | >>lol
+exit
+echo lol | cat 
+cat
+cat
+
+
+
+cat
+echo lol | cat | 
+
+
+ls
+echo lol | cat 
+
+
+ls
+exit
+echo lol | cat 
+
+
+ls
+exit
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+exit
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+exit
+echo lol | cat 
+
+
+
+
+
+ls
+exit
+< lol
+exit

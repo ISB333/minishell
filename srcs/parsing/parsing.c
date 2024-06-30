@@ -16,8 +16,9 @@
 	! TODO : Change > & >> to WRONLY 
 	========================================================
 	TODO : List every returns code possible & set them with exit(*return code*)
+		TODO : error code change at next prompt
 
-	TODO ?: error code change at next prompt
+	TODO : LIST subtilities for le N
 */
 
 void	print_lst(t_ast *ast)
@@ -95,6 +96,47 @@ void	printer(char ***array)
 	printf("\033[0m\n");
 }
 
+void	exit_check_utils(t_ast *ast)
+{
+	int	code;
+
+	while (ast->next)
+		ast = ast->next;
+	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+	{
+		code = ft_atoi(ast->cmd[1]);
+		if (ast->cmd[1])
+			return (mem_manager(0, 0, 0, 'C'), exit(code));
+		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
+	}
+}
+
+void	exit_check(t_ast *ast)
+{
+	int	code;
+
+	if (!ast->next)
+	{
+		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+		{
+			if (ast->cmd[1])
+			{
+				code = ft_atoi(ast->cmd[1]);
+				if (code > 255)
+					code -= 256;
+				if (!ast->cmd[2])
+					return (mem_manager(0, 0, 0, 'C'), exit(code));
+				else
+					error("too many arguments", "exit", 1);
+			}
+			else
+				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
+		}
+	}
+	else
+		exit_check_utils(ast);
+}
+
 int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 {
 	if (is_redir_in_arr(tokens))
@@ -145,47 +187,6 @@ int	add_node(t_ast **ast, char **tokens)
 		return (1);
 	cmd_path_init(new_node, -1);
 	return (0);
-}
-
-void	exit_check_utils(t_ast *ast)
-{
-	int	code;
-
-	while (ast->next)
-		ast = ast->next;
-	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
-	{
-		code = ft_atoi(ast->cmd[1]);
-		if (ast->cmd[1])
-			return (mem_manager(0, 0, 0, 'C'), exit(code));
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
-	}
-}
-
-void	exit_check(t_ast *ast)
-{
-	int	code;
-
-	if (!ast->next)
-	{
-		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
-		{
-			if (ast->cmd[1])
-			{
-				code = ft_atoi(ast->cmd[1]);
-				if (code > 255)
-					code -= 256;
-				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 0, 'C'), exit(code));
-				else
-					error("too many arguments", "exit", 1);
-			}
-			else
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
-		}
-	}
-	else
-		exit_check_utils(ast);
 }
 
 int	parser(t_ast **ast, char *s)

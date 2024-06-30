@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/27 08:28:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:47:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	count_utils_char(int *rows, int *token, char *s, int i)
 			i = is_quotes(s, i, '?');
 	}
 	if (s[i] == '\n')
+	{
+		i++;
 		*rows += 1;
+	}
 	return (i);
 }
 

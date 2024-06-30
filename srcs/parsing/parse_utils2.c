@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 08:24:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 09:37:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 				return (1);
 		}
 		else if (is_append(tokens[i], 0, 0))
-			parse_append(ast, tokens, &i);
+		{
+			if (parse_append(ast, tokens, &i))
+				return (1);
+		}
 		else if (is_heredoc(tokens[i], 0, 0))
 			parse_heredoc(ast, tokens, &i, n);
 		else
