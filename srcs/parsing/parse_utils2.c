@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 10:24:55 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 08:11:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
 	(*ast)->append = 1;
-	mem_manager(sizeof(int), (*ast)->fd_out, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
 }
@@ -39,12 +39,12 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	if ((*ast)->fd_out)
-		mem_manager(0, (*ast)->fd_out, 'N');
+		mem_manager(0, 0, (*ast)->fd_out, 'N');
 	(*ast)->fd_out = open(fd, O_RDONLY | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
 	(*ast)->outfile = 1;
-	mem_manager(sizeof(int), (*ast)->fd_out, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
 }
@@ -58,7 +58,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	if ((*ast)->fd_in)
-		mem_manager(0, (*ast)->fd_in, 'N');
+		mem_manager(0, 0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
 	{
@@ -66,7 +66,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 		return (error(strerror(errno), fd, 1));
 	}
 	(*ast)->infile = 1;
-	mem_manager(sizeof(int), (*ast)->fd_in, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
 	*i += 2;
 	return (0);
 }
@@ -95,27 +95,27 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 	return (0);
 }
 
-int	parse_cmd(t_ast **ast, char **tokens, int *i, int j)
+int	parse_cmd(t_ast **ast, char **tok, int *i, int j)
 {
 	int	k;
 
 	k = *i;
-	(*ast)->cmd = mem_manager((cmdlen(tokens, i) + 1) * sizeof(char *), 0, 'A');
+	(*ast)->cmd = mem_manager((cmdlen(tok, i) + 1) * sizeof(char *), 0, 0, 'A');
 	if (!(*ast)->cmd)
 		return (1);
-	while (tokens[k] && !is_pipe(tokens[k], 0, 0) && !is_new_line(tokens, k))
+	while (tok[k] && !is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
 	{
-		if (is_redir(tokens[k], 0, 0))
+		if (is_redir(tok[k], 0, 0))
 			k += 2;
-		else if (is_append(tokens[k], 0, 0))
+		else if (is_append(tok[k], 0, 0))
 			k += 2;
-		else if (is_heredoc(tokens[k], 0, 0))
+		else if (is_heredoc(tok[k], 0, 0))
 			k += 2;
-		else if (is_there_quotes_in_da_shit(tokens[k]) && tokens[k])
-			(*ast)->cmd[++j] = quotes_destroyer(tokens[k++], 0, 0, 0);
-		else if (!is_pipe(tokens[k], 0, 0) && !is_new_line(tokens, k))
+		else if (is_there_quotes_in_da_shit(tok[k]) && tok[k])
+			(*ast)->cmd[++j] = quotes_destroyer(tok[k++], 0, 0, 0);
+		else if (!is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
 		{
-			(*ast)->cmd[++j] = ft_substr(tokens[k], 0, ft_strlen(tokens[k]));
+			(*ast)->cmd[++j] = ft_substr(tok[k], 0, ft_strlen(tok[k]));
 			k++;
 		}
 		if (!(*ast)->cmd[j])

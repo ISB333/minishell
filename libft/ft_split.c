@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:08:46 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/25 10:02:33 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:35:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	rows = ft_del_rows(s, c) + 1;
-	array = (char **)mem_manager(rows * sizeof(char *), 0, 'A');
+	array = (char **)mem_manager(rows * sizeof(char *), 0, 0, 'A');
 	if (!array)
 		return (NULL);
 	array = ft_cut(array, s, c, i);

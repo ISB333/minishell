@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:11:08 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 07:04:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:27:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_gnl_strdup(char *s)
 	if (!s)
 		return (NULL);
 	size = ft_strlen(s) + 1;
-	str = mem_manager(size, 0, 'A');
+	str = mem_manager(size, 0, 0, 'A');
 	ft_gnl_strlcpy(str, s, size);
 	return (str);
 }
@@ -58,7 +58,7 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	int		len;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = mem_manager(len * sizeof(char), 0, 'A');
+	str = mem_manager(len * sizeof(char), 0, 0, 'A');
 	ft_gnl_strlcpy(str, s1, (ft_strlen(s1) + 1));
 	ft_gnl_strlcpy(&str[ft_strlen(s1)], s2, (ft_strlen(s2) + 1));
 	return (str);

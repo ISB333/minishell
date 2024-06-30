@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 10:30:16 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 07:31:21 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	add_node_hd(t_heredoc **hd, char *s)
 	t_heredoc	*new_node;
 	t_heredoc	*last_node;
 
-	new_node = mem_manager(sizeof(t_heredoc), 0, 'A');
+	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
 	new_node->s = ft_strdup(s);
 	new_node->next = NULL;
 	if (!*hd)
@@ -81,7 +81,7 @@ void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 			| O_TRUNC | O_APPEND, 0644);
 	if (!fd)
 		return (perror("Error opening file"));
-	mem_manager(sizeof(int), fd, 'O');
+	mem_manager(sizeof(int), 0, fd, 'O');
 	while (hd)
 	{
 		ft_putstr_fd(hd->s, fd);
@@ -91,11 +91,11 @@ void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	}
 	(*ast)->heredoc = 1;
 	if ((*ast)->fd_in)
-		mem_manager(0, (*ast)->fd_in, 'N');
+		mem_manager(0, 0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(path, O_RDONLY, 0644);
 	if (!(*ast)->fd_in)
 		return (perror("Error opening file"));
-	mem_manager(sizeof(int), (*ast)->fd_in, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
 }
 
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)

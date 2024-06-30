@@ -906,3 +906,34 @@ exit
 exit
 <<del |
 exit
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
+exit
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
+exit
+cat -e | <in 1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e 
+exit
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+de
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
+exit

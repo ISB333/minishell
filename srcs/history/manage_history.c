@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/29 07:10:58 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 07:28:34 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	add_previous_history(void)
 	history = open("./srcs/history/history.txt", O_RDWR | O_CREAT, 0644);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
-	mem_manager(sizeof(int), history, 'O');
+	mem_manager(sizeof(int), 0, history, 'O');
 	while (1)
 	{
 		line = gnhell(history);

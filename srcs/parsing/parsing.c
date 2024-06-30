@@ -14,7 +14,6 @@
 
 /*
 	========================================================
-	TODO : free ptr given
 	TODO : List every returns code possible & set them with exit(*return code*)
 	TODO : If a path is given, try to execute it
 
@@ -141,7 +140,7 @@ int	add_node(t_ast **ast, char **tokens)
 	t_ast		*last_node;
 
 	n++;
-	new_node = mem_manager(sizeof(t_ast), 0, 'A');
+	new_node = mem_manager(sizeof(t_ast), 0, 0, 'A');
 	new_node->next = NULL;
 	init_lst(&new_node);
 	if (!*ast)
@@ -167,8 +166,8 @@ void	exit_check_utils(t_ast *ast)
 	{
 		code = ft_atoi(ast->cmd[1]);
 		if (ast->cmd[1])
-			return (mem_manager(0, 0, 'C'), exit(code));
-		return (mem_manager(0, 0, 'C'), exit(EXIT_SUCCESS));
+			return (mem_manager(0, 0, 0, 'C'), exit(code));
+		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
 	}
 }
 
@@ -186,12 +185,12 @@ void	exit_check(t_ast *ast)
 				if (code > 255)
 					code -= 256;
 				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 'C'), exit(code));
+					return (mem_manager(0, 0, 0, 'C'), exit(code));
 				else
 					error("too many arguments", "exit", 1);
 			}
 			else
-				return (mem_manager(0, 0, 'C'), exit(EXIT_SUCCESS));
+				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
 		}
 	}
 	else

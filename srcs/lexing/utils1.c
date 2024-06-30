@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/26 06:53:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:29:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	add_space(char **s, int i, int k, int token)
 {
 	char	*str;
 
-	str = mem_manager(strlen_space(*s), 0, 'A');
+	str = mem_manager(strlen_space(*s), 0, 0, 'A');
 	if (!str)
 		return (1);
 	while ((*s)[i])

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 10:15:16 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 07:27:33 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	k = -1;
 	full_size = ft_strlen(logname) + ft_strlen(position)
 		+ ft_strlen(curr_dir) + 5;
-	prompt = mem_manager(full_size, 0, 'A');
+	prompt = mem_manager(full_size, 0, 0, 'A');
 	if (!prompt)
 		return (NULL);
 	while (logname[++i])
@@ -104,7 +104,7 @@ char	*get_prompt(void)
 	t_prompt	*data;
 	char		*prompt;
 
-	data = mem_manager(sizeof(t_prompt), 0, 'A');
+	data = mem_manager(sizeof(t_prompt), 0, 0, 'A');
 	if (!data)
 		return (NULL);
 	data->curr_dir = NULL;

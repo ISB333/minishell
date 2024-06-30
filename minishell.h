@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 10:24:46 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 07:41:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token);
 int		strlen_minus_quotes(char *s, int token, int len, int i);
 int		cmdlen(char **tokens, int *i);
 
-void	*mem_manager(size_t size, int fd, int token);
+void	*mem_manager(size_t size, void *ptr, int fd, int token);
 void	*ff(t_memman *mem_list);
 int		error(char *msg, char *file, int return_code);
 char	*error_init(char *msg, char *file);
