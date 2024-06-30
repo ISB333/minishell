@@ -16,11 +16,8 @@
 	! TODO : Change > & >> to WRONLY 
 	========================================================
 	TODO : List every returns code possible & set them with exit(*return code*)
-	TODO : If a path is given, try to execute it
 
-	TODO ?: maN
 	TODO ?: error code change at next prompt
-
 */
 
 void	print_lst(t_ast *ast)

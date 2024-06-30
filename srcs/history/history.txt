@@ -948,3 +948,39 @@ exit
 cat >> app0 >>app2 >>app1 
 cat >> app0 >>app2 >>app1 
 exit
+/home/isb3/42_Projects/7_minishell/minishell/main.c
+~/42_Projects/7_minishell/minishell
+exit
+~/42_Projects/7_minishell/minishell
+srcs
+srcs/e
+srr
+exit
+srr
+srcs/e
+srcs/e sexit
+exit
+srcs/ sexit
+srcs/ 
+srcs/s
+cat
+ca
+ca srcs
+srcs/s hj
+exit
+srcs/
+srcs/s hj
+exit
+srcs/s hj
+exit
+srcs/s hj
+srcs/
+exit
+srcs/
+make
+exit
+srcs/
+exit
+exit
+man ks
+exit

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:31:21 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 09:13:27 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,35 @@ char	**extract_path(void)
 	return (path);
 }
 
+int	check_if_directory(t_ast *ast)
+{
+	char	*dir;
+
+	if (!ast->cmd[1] && !access(ast->cmd[0], R_OK))
+	{
+		dir = ft_strdup(ast->cmd[0]);
+		ast->cmd = mem_manager((3 * sizeof(char *)), 0, 0, 'A');
+		ast->cmd[0] = ft_strdup("cd");
+		ast->cmd[1] = dir;
+		return (ast->cmd[2] = NULL, 0);
+	}
+	else if (!access(ast->cmd[0], R_OK) && ast->cmd[1])
+	{
+		ast->error = error_init("Too many arguments", "cd");
+		return (ast->cmd = NULL, error_code = 1, 1);
+	}
+	else if (is_path(ast->cmd[0]))
+	{
+		ast->error = error_init("No such file or directory", ast->cmd[0]);
+		return (ast->cmd = NULL, error_code = 127, 127);
+	}
+	else
+	{
+		ast->error = error_init("command not found", ast->cmd[0]);
+		return (ast->cmd = NULL, error_code = 127, 127);
+	}
+}
+
 int	cmd_path_init(t_ast *ast, int i)
 {
 	char	**path;
@@ -34,10 +63,7 @@ int	cmd_path_init(t_ast *ast, int i)
 		return (0);
 	path = extract_path();
 	if (!path)
-	{
-		ast->error = error_init("command not found", ast->cmd[0]);
-		return (ast->cmd = NULL, error_code = 127, 127);
-	}
+		return (check_if_directory(ast));
 	cmd = ft_strjoin("/", ast->cmd[0]);
 	while (path[++i])
 	{
@@ -48,8 +74,7 @@ int	cmd_path_init(t_ast *ast, int i)
 			return (0);
 		}
 	}
-	ast->error = error_init("command not found", ast->cmd[0]);
-	return (ast->cmd = NULL, error_code = 127, 127);
+	return (check_if_directory(ast));
 }
 
 void	add_node_hd(t_heredoc **hd, char *s)

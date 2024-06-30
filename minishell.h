@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:41:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 08:52:01 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		is_redir(char *s, int i, char token);
 int		is_append(char *s, int i, char token);
 int		is_heredoc(char *s, int i, char token);
 int		is_new_line(char **tokens, int i);
+int		is_path(char *s);
 int		is_pipe_in_arr(char **array);
 int		is_new_line_in_arr(char **array);
 int		is_redir_in_arr(char **array);
