@@ -38,3 +38,14 @@
     128 + 29 = 157: SIGIO - I/O now possible.
     128 + 30 = 158: SIGPWR - Power failure restart.
     128 + 31 = 159: SIGSYS - Bad system call.
+
+    ------------------------------------------------------------------------------------------------------------------------
+
+    - Si il y a plusieurs infile/outfile, uniquement le dernier est pris en compte 
+    (valable pour heredoc et append)
+
+    - Si heredoc wrong_cmd | wrong_cmd | cmd 
+        -> les messages d'erreurs sont afficher après l'execution des commandes
+        -> return_code = 0 (même si la dernière commande est "echo $?")
+
+    - Si il y a une erreur d'infile/outfile, le processus s'arrête

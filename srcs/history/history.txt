@@ -1,2163 +1,1178 @@
-ls
-cat
-yo man
+ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+ls -la < Makefile | <<lol cat > lol1 >>lol2
 exit
-test
-lol
-ca marche
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile | <<lol cat > lol1 >>lol2
+exit
+ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
+exit
+ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
+exit
+echo "$USDER"
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+exit
+echo "$USDER test"
+echo "$USER test"
+exit
+echo "$USER test"
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+exit
+echo "$U""SER test"
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+echo "$U""SER test"
+echo "$USER"" test"
+echo "$USER' test"
+exit
+echo "$USER' test"
+exit
+echo "$USER' test"
+echo "$USER"" test"
+exit
+echo "$U'SER test"
+exit
+echo "$U'SER test"
+echo "$USER"" test"
+echo "$USDER"
+exit
+echo "$USDER"
+echo "$USER"" test"
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+exit
+echo "$USER"" test"
+echo "$USER test"
+exit
+echo "$USER test"
+exit
+echo "$USER test"
+echo " test"
+echo "$USER test"
+exit
+echo " test"
+exit
+echo "$USER test"
+exit
+echo "$USER test"
+echo "$USER test"
+echo " test"
+exit
+echo " test"
+exit
+echo " test"
+echo "$USER test"
+exit
+echo "$USER test"
 exit
 exit
-bonjour
+echo "$USER test"
+echo "$US'ER test"
 exit
-bonjour
+echo "$US'ER test"
 exit
-< thisisatest
+echo "$US'ER test"
+echo "$US'ER test"
 exit
-< in |ls
+echo "$US'ER test"
 exit
-< in |ls
+echo "$US'ER test"
 exit
-< in |ls
+echo "$USER test"
+echo "$US""ER test"
 exit
-< in |ls
-exit
-EXIT
-exit
-< in |ls
-exit
-< in |ls
-exit
-< in |ls
-< in |ls
-< in |ls
-< in |ls
-exit
-< in |ls
-< in |ls
-< in |ls
-exit
-< in |ls
-exit
-< in |ls
-exit
-"yo"
-yo
-< yo
-< y"o" bla'bl'a
-< y"o" "bla'bl'a"
-< y"o" 'bla"bl"a'
-exit
-yo
-exit
-"p"r"i"n"t" lol
-"p"r"i"n"t lol
-"p"r"i"n"t" lol
-exit
-YO YO YO
-EXIT
-exit
-"tE"t" dFS'fd'fds
-"t"E"t" dFS'fd'fds
+echo "$USER test"
+echo "$US'ER test"
+echo "$USER test"
+echo "$USER"
+echo $USER
 exit
 echo $USER
-echo blablablablabla$USER
-echo bl$USER
-echo bhgvygfvuggubjklhivjgvguvl$USER
-echo blablablablabla$USER
-echo bhgvygfvuggubjklhivjgvguvl$USER
 exit
-echo bhgvygfvuggubjklhivjgvguvl$USER
+echo $USER
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvlUSER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfvuggubjklhivjgvguvl$USER
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv 'uggubjklhivjgvguvl$USER'
+echo $USER
+echo $USER
 exit
-echo bhgvygfv 'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo $USER
+echo $USER
+echo $USER
 exit
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo $USER
+echo "$USER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
+echo "$USER test"
+echo "$US'ER test"
+echo "$US"ER test"
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exitexit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+b splitter
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "hbwn"bhjhbf
+q
 exit
-echo bhgvygfv'uggubjklhivjgvguvl$USER'exit
-echo bhgvygfv'uggubjklhivjgvguvl$USERexit
-echo bhgvygfv'uggubjklhivjgvguvl$USERexit
+echo "$US""ER test"
+echo "$US"""
+echo "$US"
 exit
-echo bhgvyg"fv'uggubjklhivjgvguvl$USERexit
-echo <bhgvyg"fv'uggubjklhivjgvguvl$USERexit
-echo <bhgvyg"fv'uggubjklhivjgvguvl$USERe|xit
+echo "$US""ER test"
+q
 exit
-bla"bla
-bla'bla
+echo "$US""ER test"
 exit
-bla'bla
+echo "$US""ER test"
+echo "hbwn"bhjhbf
 exit
-bla'bla
+echo "hbwn"bhjhbf
 exit
-bla'bla
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
 exit
-bla'bla
+echo "$US""ER test"
 exit
-< in
-< in'hvsjbh
+echo "$US""ER test"
 exit
-< in'hvsjbh
+echo "$US""ER test"
 exit
-< in'hvsjbh
+echo "$US""ER test"
+echo "$US""ER test"
+echo "$US""ER test"
 exit
-< in'hvsjbh
+echo "$US""ER test"
+echo "$US""ER test"
 exit
-< in'hvsjbh
+echo "$US""ER test"
+echo "$US""ER test"
 exit
-< in'hvsjbh
-< in"hvsjbh
-exit
-< in"hvsjbh
+echo "$US""ER test"
+echo "$US""ER test"
 exit
 exit
-< in"hvsjbh
+echo "$US""ER test"
 exit
-< in"hvsjbh
-< inhvsjbh
-< inh'vsjbh
+echo "hbwn"bhjhbf
+echo "$USER test"
+echo "$USE'R test"
+echo "$'USE'R test"
+echo "$""USER test"
 exit
-< inhvsjbh'
-< inhvsjbh"
+echo "$""USER test"
+echo "$'USE'R test"
 exit
-yo "sfggyj" shfvbkj" fyfghksb" msfb'kuvbj'
-yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+echo "$""USER test"
+echo "$USER test"
 exit
-yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+echo "$USER' test"
 exit
-yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'
+echo "$USER' test"
+echo "$USER' test"
 exit
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj''''''''
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
-
-
+echo "$USER' test"
 exit
-yo "sfggyj" shfvbkj " fyfghksb" msfb'ku vbj'''''''''
+echo "$USER' test"
 exit
-yo "sfggyj" shfvbkj" fyfghksb" msfb'ku vbj'''''''''
-yo "sfggyj" shfvbkj"" fyfghksb" msfb'ku vbj'''''''''
+echo "$USER' test"
 exit
-yo "sfggyj" shfvbkj"" fyfghksb" msfb'ku vbj'''''''''
-cat hello" test" | cat hello "test"
-cat hello" test" | cat hello "test lol ahah"
+echo "$USER' test"
 exit
-cat hello" test" | cat hello "test lol ahah"
+echo "$USER' test"
+echo "$USER' test"
 exit
-cat hello" test" | cat hello "test lol ahah"
+echo "$USER' test"
+echo "$USER' test"
 exit
-cat hello" test" | cat hello "test lol ahah"
-xeit
-cat hello" test" | cat hello "test lol ahah"
+echo "$USER' test"
 exit
-xei
-xeit
-xeit
+echo "$""USER test"
+echo "$USER' test"
+echo "$USER" """test"
 exit
-cat hello" test" | cat hello "test lol ahah"
+echo "$USER" """test"
 exit
-cat hello" test" | cat hello "test lol a'hah"
-cat hello" test" | cat hello "test lo"l a'hah"
-cat hello" test" | cat hello "test lo"l a'h'ah"
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER" """test"
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER" """test"
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER' test"
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USE'R' test"
+echo "$USDER test"
+echo "$USDER" "test"
+echo "$USDER""test"
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-exi
+echo "$USER test" | cat ls
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat ls
+echo "$USER test" | cat ls
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat ls 
+ cat
+echo "$USER test" | cat ls 
+echo "$USER test" | cat ls 
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+ls -la
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls -la
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls -la
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls -la
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls -la
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls -la
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-xit
+echo "$USER test" | cat -e
+ls
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+exit
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e
+ls
+exit
+echo "$USER test" | cat -e |
+ls
+exit
+echo "$USER test" | cat -e |
+exit
+echo "$USER test" | cat -e
+echo "$USER test" | cat -e | ls
+exit
+exit
+echo "$USER test" | cat -e | ls
+exit
+echo "$USER test" | cat -e | ls
+exit
+<< del 
+<< del cat
+<< del cat
+<< del cat
+c
+<< del cat
+<< del cat
+q
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+b update_buff
+q
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+q
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat | <<del2 test
+exit
+<< del cat | <<del2 test
+exit
+<< del cat | <<del2 test >> app
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+cat >> apend
+exit
+<lol cat >> apend
+<lol cat >> apend
+<lol cat >> apend
+exit
+<lol cat >> apend
+<lol cat >> apend | cat -e
+> test <lol cat >> apend | cat -e
+q
+exit
+exit
+> test <lol cat >> apend | cat -e
+exit
+> test <lol cat >> apend | cat -e
+exit
+> test <lol cat >> apend | cat -e
+> test cat >> apend <lol | cat -e
+> test cat >> apend <lol | cat -e
+> test cat >> app <lol | cat -e
+exit
+> test cat >> app <lol | cat -e
+exit
+< lol <<del cat
+exit
+< lol <<del cat
+< lol <<del cat
+<<del cat
+<<del cat
+<<del cat
+exit
+<<del cat
+<<del cat
+<<del cat
+exit
+<<del cat
+exit
+<<del cat
+q
+exit
+<<del cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+exit
+<<del << del2 << del5 cat
+<<del << del2 cat | << del3 ls << del4 || << del5
+exit
+<<del << del2 cat | << del3 ls << del4 || << del5
+exit
+cat
+exit
+< lol cat
+exit
+< lol cat
+< lol catexit
+'exit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< lol catexit
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+< out cat
+exit
+cat > out
+exit
+cat > out
+exit
+ct > out
+ct > out2
+ct > out2
+exit
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+ct > out2
+exit
+ct > out2
+exit
+ct > out2
+exit
+exit200
+exit
+exit
+exit
+exit
+exit
+exit 200
+exit
+exit 200
+exit
+exit
+exit
+exit
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+exit 200
+cat | exit 200
+cat | exit 20
+exit 20
+exit 250
+cat | exit 200
+exit 300
+exit 300 5
+echo $?
+exit
+exit
+exit
+exit
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+exit 300 
+ct
+exit
+ct
+exit
+ct
+ct
+ct
+exit
+ct
+exit
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+c
+cat |
+y
+cat |
+cat |
+cat |
+exit
+cat |
+cat |
+cat |
+exit
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+cat |
+cat |
+exit
+cat |
+cat |
+cat |
+cat |
+exit
+cat |
+cat | ls
+exit
+cat | ls
+exit
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+exit
+cat | 
+cat | 
+exit
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+cat | 
+exit
+cat | 
+exit
+< in1 <in2 cat 
+exit
+< in1 <in2 cat 
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exxit
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del
+< in1 <in2 cat <<del
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+exit
+< in1 <in2 cat <<del < returns.txt
+MAKE
 EXIT
-exir
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-eexit
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+< in1 <in2 cat <<del < returns.txt
 exit
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+d
+d
+d
+d
+d
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
-cat hello" test" | cat hello "test lo"'l ahah"
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"
+< in1 <in2 cat <<del < returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah" > out < in
+< in1 <in2 cat <<del > returns.txt
 exit
-cat hello" test" 
+< in1 <in2 cat <<del > returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah"  > out < in
-cat hello" test" | cat hello "test lo"'l ahah">out<in
-cat hello" test" | cat hello "test lo"'l ahah">out<<in
-<in blabla| lol test
+< in1 <in2 cat <<del > returns.txt
 exit
-<in blabla| lol test
-cat hello" test" | cat hello "test lo"'l ahah">out<<in
+< in1 <in2 cat <<del > returns.txt
 exit
-cat hello" test" | cat hello "test lo"'l ahah">out<<in
-<in blabla| lol test
+< in1 <in2 cat <<del > returns.txt
+< in1 <in2 cat <<del < returns.txt
 exit
-<in blabla| lol test
+< in1 <in2 cat <<del < returns.txt
 exit
+< in1 <in2 cat <<del < returns.txt
 exit
-<in blabla| lol test
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+exot
 exit
-<in blabla| lol test
+< in1 <in2 cat <<del < returns.txt
 exit
-<in blabla| lol test
-<in blabla| lol test
-exi
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
 exit
-exi
-<in blabla| lol test
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
+< in1 < reutrns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del 
+< in1 <in2 cat <<del < returns.txt
 exit
-<in blabla| lol test
-<in blabla| lol test
+< in1 <in2 cat <<del < returns.txt
+< in1 <in2 cat <<del < returns.txt
 exit
-<in blabla| lol test
-<in blabla| lol test
+< in1 < returns.txt <in2 cat <<del 
 exit
-<in blabla| lol test
-<in blabla| lol test
-<in blabla| lol test
-<in blabla| lol test
+< in1 < reutrns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del 
+< in1 < returns.txt <in2 cat <<del  < returns.txt
 exit
-<in blabla| lol test
-<in blabla test| lol test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test
-<in blabla test ahha | lol test ptdr
-<in blabla test ahha | lol test ptdr |
-<in blabla test ahha | lol test ptdr <
-<in blabla test ahha | lol test ptdr <<
-<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test ahha | lol test ptdr jhsddkshgshgi gfdg efh hsf sh hi kjf
-<in blabla test| lol test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test
-<in blabla test| lol test lol
-<in blabla test| lol test >lol
-<in blabla test| lol test >             lol
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
-<in blabla test| lol test test
-<in blabla test| lol test test
-<in blabla test| lol test test
-<in blabla test| lol test test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
-<in blabla test| lol test test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
+< in1 < returns.txt <in2 cat <<del  > returns.txt
 exit
-<in blabla test| lol test test
+cat | 
 exit
-<in blabla test| lol test test
+<<del |
 exit
-<in blabla test| lol test test
-<in blabla test| lol test test
-<in blabla test| lol test test
+cat |
 exit
-<in blabla test| lol test test
-<in blabla test| lol test test
+cat |
 exit
-<in blabla test| lol test test
+cat |
 exit
-<in blabla test| lol test test
+cat |
+cat |
+<<del |
 exit
+<<del |
 exit
-<in blabla test| lol test test
-<in blabla test| lol test test test
-<in blabla test                 | lol test test test
-<in blabla test   test              | lol test test test
+<<del | << del2 cat
 exit
-<in blabla test   test              | lol test test test
-<<in blabla test   test              | lol test test test
-<<in blabla test   test              | lol test test test > oiut
-<<in blabla test   test              | lol test test test >>oiut
-<<in blabla test   test              | lol test test test >>oiutexit
-exi
+<<del | << del2 cat
+<<del | << del2 cat
+cat |
+a
+q
+q
 exit
-<<in blabla test   test              | lol test test test >>oiutexit
+cat |
+d
+ed
 exit
-<<in blabla test   test              | lol test test test >>oiutexit
+<< del |
+<< del |
+<< del |
 exit
-<<in blabla test   test              | lol test test test >>oiutexit
-<<in blabla test   test              | lol test test test >>oiutexit
-<<in blabla test   test              | lol test test test >>out
-<<in blabla test   test              | lol test test test >out
-<<in blabla test   test              | lol test test test 
-<<in blabla test   test              | lol test test test 
-<<in blabla test   test              | lol test test test >out
+<< del |
 exit
-<<in blabla test   test              | lol test test test >out
-<<in blabla test   test              | lol test test test 
-<<in blabla test   test              | lol test test test >out
+<< del |
 exit
-<<in blabla test   test              | lol test test test >out
-<<in blabla test   test              | lol test test test >>out
+<< del |
 exit
-<<in blabla test   test              | lol test test test >>out
+<<del
+<<del |
+<<del |
+<<del |
 exit
-<<in blabla test   test              | lol test test test >>out
-<<in blabla | test >out
-<<in blabla | test >out
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test 
-<<in blabla |
+<<del |
 exit
-<<in blabla | test >out
-<<in blabla | test >out
+<<del |
+<<del |
+<<del |
+<<del |
+q
 exit
-<<in blabla | test >out
-<<in blabla | test 
-<<in blabla | test 
-<<in blabla | test >out
+<<del |
+<<del |
+<<del |
 exit
-<<in blabla | test >out
-<<in blabla | test >out
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test >out
-<<in blabla | test >out
-<<in blabla | test >out
-<<in blabla | test 
+<<del |
+c
+c
+<<del |
 exit
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test 
-<<in blabla | test > out
-<<in blabla | test > out
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test 
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test 
-<<in blabla | test 
+<<del |
 exit
-<<in blabla | test > out
+<<del |
 exit
+<<del |
 exit
-<<in blabla | test > out
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
 exit
-<<in blabla sdfhvs gsjfjh | test > out
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
+cat -e | ls -la|echo<<del |
 exit
-<<in 
-<<in blabla 
-<in blabla 
-cmd gdfj'
-cmd 
+cat -e | <in 1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
 exit
-<<in blabla 
+cat -e 
 exit
+cat -e | <in1 ls -la|echo<<del |
 exit
+cat -e | <in1 ls -la|echo<<del |
 exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
 exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
 exit
+cat -e | <in1 ls -la|echo<<del |
+de
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat -e | <in1 ls -la|echo<<del |
+exit
+exit
+cat -e | <in1 ls -la|echo<<del |exi
+exit
+cat -e | <in1 ls -la|echo<<del |
+cat
+cat >> app1 >>app2 <<app3
+cat >> app0 >>app2 >>app1 
+exit
+cat >> app0 >>app2 >>app1 
+cat >> app0 >>app2 >>app1 
+exit
+/home/isb3/42_Projects/7_minishell/minishell/main.c
+~/42_Projects/7_minishell/minishell
+exit
+~/42_Projects/7_minishell/minishell
+srcs
+srcs/e
+srr
+exit
+srr
+srcs/e
+srcs/e sexit
+exit
+srcs/ sexit
+srcs/ 
+srcs/s
+cat
+ca
+ca srcs
+srcs/s hj
+exit
+srcs/
+srcs/s hj
+exit
+srcs/s hj
+exit
+srcs/s hj
+srcs/
+exit
+srcs/
+make
+exit
+srcs/
+exit
+exit
+man ks
+exit
+echo lol | cat | <in ls
+exit
+echo lol | cat | <in ls <lol
+echo lol | cat | <lol
+echo lol | cat | >lol
+echo lol | cat | >>lol
+echo lol | cat | >lol
+exit
+echo lol | cat | >>lol
+exit
+echo lol | cat 
+cat
+cat
+
+
+
+cat
+echo lol | cat | 
+
+
+ls
+echo lol | cat 
+
+
+ls
+exit
+echo lol | cat 
+
+
+ls
+exit
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+exit
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+echo lol | cat 
+ls
+exit
+echo lol | cat 
+
+
+
+
+
+ls
+exit
+< lol
+exit
+echo lol | cat |
+exit
+echo lol | cat |
+exit
+echo lol | cat |
+exit
+<<del cat
+exit
+exit +200
+exit ++200
+exit
+exit 
+exit fs
+exit fs
+exit fs
+exit fs
+exit
+exit 200
+exit 300
+exit -300
+exit -200
+exit -200
+exit 3200
+exit 3200
+exit 3200
+exit 300
+exit -300
+exit -200
+echo < lol
+echo < Makefile
+exit
+echo < Makefile <lol <main.c
+echo < Makefile  <main.c
+echo < Makefile  <main.c |
+d
+d
+ded
+de
+de
+ef
+echo
+exit
+exit
+exit
+exit
+exit 200
+echo lol
+export
 env
+unset
+cd
+pwd
+e
+echo $?
 exit
-EXIT
+echo $?
 exit
-<<in blabla | test > out
-<< in blabla|test>out
-<< in blabla|||||test>out
-<< in blabla|||||test>>>out
-<< in blabla|||||test>><>out
-<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla  fg frg|||||test>>lol>out
+cd | echo $?
+cd | echo " test $?"
 exit
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla  fg frg|||||test>>lol>out
+echo $?
 exit
-<y<< in blabla|||||test>>lol>out
 exit
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<< in blabla|||||test>><>out
-<y<< in blabla|||||test>>lol>out
+echo $?
+q
 exit
-<y<< in blabla|||||test>>lol>out
+echo $?
+echo "blabaldjk $?"
+echo "blabaldjk $? dsv sv"
 exit
-<<in blabla | test > out
-<< in blabla|test>out
-<< in blabla|||||test>out
-<< in blabla|||||test>>>out
-<< in blabla|||||test>><>out
-<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla|||||test>>lol>out
-<y<< in blabla  fg frg|||||test>>lol>out
+echo "blabaldjk $? dsv sv"
+echo $?
+d
+echo $?
+echo $?
+echo $?
+echo $?
 exit
+echo $?
+echo d
+d
+echo $?
+lol | echo $?
+echo $? | cat
+echo $? | ct
+echo $? | cat
 exit
-./test.sh
+echo $? | cat
+echo $? | ct
+echo $? | cat
 exit
-echo "Hello, World!"
-echo 'Hello, World!'
-echo "She said, 'Hello!'"
-echo 'She said, "Hello!"'
-echo "He said, \"Hello!\""
-echo 'It\'s a beautiful day!'
-name=John
-echo "Hello, $name!"
-echo 'Hello, $name!'
-echo "Hello" 'World'
-echo "!@#$%^&*()_+"
-echo '!@#$%^&*()_+'
-echo "Hello, World!
-echo 'Hello, World!
-echo "$(echo 'Hello, World!')"
-echo "$(echo "Hello, World!")"
-exit
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-
-
-echo $(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "She said, 'Hello!'"
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo 'Hello, World!
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hell'o, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo "Hello, World!"
-
-echo "She s"aid, 'Hello!'"
-
-echo "Hello, World!"
-
-echo "She s"aid, 'Hello!'"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo 'Hello, World!
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo 'Hello, World!
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "Hello, World!
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-echo '!@#$%^&*()_+'
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo $(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo '$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
 
-"echo '!@#$%^&*()_+'"
+D
 
-echo "$(echo 'Hello, World!')"
 
-echo "$(echo "Hello, World!")"
 
-echo '$(echo 'Hello, World!')"
 
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo '$(echo 'Hello, World!')"
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo '$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo "$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo "$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo "$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-echo "$(echo 'Hello, World!')
-
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-'e"c''h''"o' "b"l'a'bl"a"
-
-'e"c''h'"'o' "b"l'a'bl"a" 
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
-
-echo "He said, \"Hello!\""
-
-echo 'It\'s a beautiful day!'
-
-echo "It\'s a beautiful day!"
-
-echo "Hello, $name!"
-
-echo 'Hello, $name!'
-
-echo "Hello" 'World'
-
-echo "!@#$%^&*()_+"
-
-"echo '!@#$%^&*()_+'"
-
-echo "$(echo 'Hello, World!')"
-
-echo "$(echo "Hello, World!")"
-
-'e"c''h''"o' "b"l'a'bl"a"
-
-'e"c''h''o' "b"l'a'bl"a" 
-echo "Hello, World!"
-
-echo "She said, 'Hello!'"
-
-echo 'Hello, World!'
-
-echo 'She said, "Hello!"'
+[200~
+~
+exit
 
-echo "He said, \"Hello!\""
 
-echo 'It\'s a beautiful day!'
 
-echo "It\'s a beautiful day!"
 
-echo "Hello, $name!"
+exit
 
-echo 'Hello, $name!'
 
-echo "Hello" 'World'
 
-echo "!@#$%^&*()_+"
 
-"echo '!@#$%^&*()_+'"
 
-echo "$(echo 'Hello, World!')"
 
-echo "$(echo "Hello, World!")"
 
-'e"c''h''"o' "b"l'a'bl"a"
 
-'e"c''h''o' "b"l'a'bl"a" 
 
-echo "Hello, World!"
 
-echo "Hello, World!"
-echo "Hello, World!"
-echo "Hello, World!"
-echo "Hello, World!"
-<echo "Hello, World!"
-<echo "Hello, World!||"
-<echo "Hello, World!||"
-<echo "Hello, World!||"
-<echo "Hello, World!|<|"
-<echo "Hello, World!'|<|'"
-<echo "Hello, World"|<|""
-exit
-<echo "Hello, World"|<|""
-exit
-<echo "Hello, World"|<|""
-exit
-ext
-exit
-exit
-exit
-exit
-fg
-exit
-thtg
-exit
-exit
-<echo "Hello, World"|<|""
-<echo "Hel<|>lo, World"|<|""
-<echo "Hel<|>lo, World""|"<|""
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
 
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exi
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World""|"<|""exit
-exit
-<echo "Hel<|>lo, World"'|'<|""exit
-<echo "Hel<|>lo, World"'|'<|''exit
-<echo "Hel<|>lo, World""|"<|''exit
-exit
-<echo "Hel<|>lo, World""|"<|''exit
-exit
-<echo "Hel<|>lo, World""|"<|''exit
-<echo "Hel<|>lo, World""|"<|''exit
-exit
-<echo "Hel<|>lo, World""|"<|''exit
-<echo 'Hel<|>lo, World'"|"<|''exit
-<echo 'Hel<|>lo", "World'"|"<|''exit
-<echo 'Hel<|>lo,' 'World'"|"<|''exit
-<echo "He'l<'|>lo," 'World'"|"<|''exit
-exit
-<echo "He'l<'|>lo," "World<|''exit
-ls"
-<echo "He'l<'|>lo," "World<|''exit
-ls
-exit
-<echo "He'l<'|>lo," "World<|''exit
-<echo "He'l<'|>lo," "World<|''exit
 
-<ewhbfuvub  "usdhf "  "isdifjlk
-exit
-exit
-<ewhbfuvub  "usdhf "  "isdifjlk
-<ewhbfuvub  "usdhf "  "isdifjlk g
-<ewhbfuvub  "usdhf "  "isdifjlk g"
-<ewhbfuvub  "usdhf "  "isdifjlk g"
-ls
-<ewhbfuvub  "usdhf "  "isdifjlk g
-ls"
-exit
-<ewhbfuvub  "usdhf "  "isdifjlk g
-<ewhbfuvub  "usdhf "  "isdifjlk g"
-<ewhbfuvub  "usdhf "  "isdifj'lk g"
-exit
-EXIT
-exit
-<ewhbfuvub  "usdhf "  "isdifj'lk g"
-exit
-<ewhbfuvub  "usdhf "  "isdifj'lk g"
-exit
-<ewhbfuvub  "usdhf "  "isdifj'lk g"
-<ewhbfuvub  "usdhf "  "isdifj'lk g"'
-<ewhbfuvub  "usdh"f "  "isdifj'lk g"
-<ewhbfuvub  "usdh"f "  "isdifj'lk g"'
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
 
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-exit
-EXIT
-exit
-<ewhbfuvub  "usdh"f "  "isdifj'lk 'g"
-<ewhbfuvub  "usdh"f" "  "isdifj'lk 'g"
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-exit
-<ewhbfuvub  "usdh tyi"f" "  "isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi"f" "  "isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi"f" "  " isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-exit
-<ewhbfuvub  "u'sdh tyi"f " isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi""f"" isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
-exit
-<ewhbfuvub  "u'sdh tyi"f" isdifj'lk 'g"f
-<ewhbfuvub  "u'sdh tyi"lolf" isdifj'lk 'g"f
-exit
-<ewhbfuvub  "u'sdh tyi"lolf" isdifj'lk 'g"f
-exit
-<ewhbfuvub  "u'sdh tyi"lolf" isdifj'lk 'g"f
-exit
-<ewhbfuvub  us"dh t"yi"lolf" isdifj'lk 'g"f
-<ewhbfuvub  us"dh t"yi"lolf" isdifj'lk 'gf
-exit
-<ewhbfuvub  us"dh t"yi"lolf" isdifj'lk 'gf
-exit
-<ewhbfuvub  us"dh t"yi"lolf" isdifj'lk 'gf
-exit
-<ewhbfuvub  us"dh t"yi"lolf" isdifj'lk 'gf
-<ewhbfuvub  us"dh' 't"yi"lolf" isdifj'lk 'gf
-<in e"ch"o lol shi"t ur a bitch"
-<in e"ch"o lol shi"t ur 'a 'bitch"
-<in e"ch"o lol s'hi"t ur a bitch"'
-<in e"ch"o lol s'hi"t ur 'a 'bitch"'
-<in e"cho l"ol s'hi"t ur 'a 'bitch"'
-exit
-<in e"cho l"ol s'hi"t ur 'a 'bitch"'
-exit
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' | PTDR 
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR 
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha << gang
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha << gang<<<<<<<<<<<<
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha << gang<<<<<<<<<<<<<
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha << gang<<<<<<<<<<<<< 
-exit
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' || PTDR  >> ahahaha << gang<<<<<<<<<<<<< 
-exit
-exit
-<in e"cho l"ol s'hi"t ur 'a 'bitch"' 
-|| PTDR  >> ahahaha << gang<<<<<<<<<<<<< 
-<in e"cho l"ol test 
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in e"cho l"ol test 
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in e"cho l"ol test
-|| PTDR
-<in ""e"cho l"ol test
-|| PTDR
-EXIT
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol test
-exit
-<in ""e"cho l"ol"" test
-<in ""e"cho l"ol""t test
-<in ""e"cho l"ol""t test""
-<in ""e"cho l"ol""t t'e'st""
-<in ""e"cho l"ol""t t'e'st""''
-<in ""e"cho l"ol""t ''t'e'st""''
-exit
-<in e"cho l"ol test 
-ptdr
-exit
-<in e"cho l"ol test 
-<in e"cho l"ol
- test 
-exit
-<in e"cho l"ol
-test
-exit
-<in e"cho l"ol
-test
-exit
-<in e"cho l"ol
-test
-exit
-<in e"cho l"ol
-test
-exit
-test
-<in e"cho l"ol
-test
-exit
 
-test
-exit
-<in e"cho l"ol
-test
 
-<in e"cho l"ol
-test
 
 
 
-<in e"cho l"ol
-test
-exit
-<in e"ch
-o l"ol
-echo te
-st
-echo te |
-"stexit
-<in e"ch
-"stexisf ga daf g dt"
-"stexisf ga daf g dt" s a fg a 
+							         					
 exit
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g'teat | <test3 cat
 exit
-echo ""test lol""test
-echo "" test lol""test
 exit
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-< test1 < test2 sed 's/lol/bla/g' | <test3 cat
-exit
-< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
-< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
-exit
-< test1 < te"s"t2""sed 's/lol/bla/g' | <test3 cat
-echo "" test lol""test
-exit
-echo "" test lol""test
-echo "" test lol""test
-echo "" test lol""test
-echo "" test lol""test
-echo "" test lol""test
-echo "" test lol""test
-exit
-echo "" test lol""test
-echo "" test lol""test
-exit
-echo "" test lol""test
-exit
-echo "" test lol""test
-echo "" test lol""testd
-echo "" test lol""'te's''td
-echo "" test lol"" 'te's''td
-echo "" test lol""'t e's''td
-echo "" test lol""'t e's ''td ""
-echo "" test lol""'t e's ''td "" ''
-exit
-echo "" test lol""'t e's ''td "" ''
-echo "" te'st' lol""'t e's ''td "" ''
-echo " te'st' lol" 't e's ''td "" ''
-echo " te'st lol" 't e's ''td "" ''
-
-
 exit
-echo " te'st lol" 't e's ''td "" 
-echo " te'st lol" 't e's ''td "" ''
 exit
-echo " te'st lol" 't e's ''td "" ''
-echo " te'st lol" 't e's ''td "" ''
+ls -la | echo lol | 
 exit
-echo " te'st lol" 't e's ''td "" ''
+ls -la | echo lol | 
 exit
-echo " te'st lol" 't e's ''td "" ''
+ls -la | echo lol | 
+d
+d
 exit

@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils3.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
+/*   Updated: 2024/06/29 09:56:29 by isb3             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+int	open_quotes(char *s)
+{
+	int	i;
+	int	token;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == 34 || s[i] == 39)
+		{
+			token = s[i++];
+			while (s[i] && s[i] != token)
+				i++;
+			if (!s[i])
+				return (1);
+			i++;
+		}
+		else
+			i++;
+	}
+	return (0);
+}
+
+int	array_len(char **tokens)
+{
+	int	i;
+
+	i = 0;
+	while (tokens[i])
+		i++;
+	return (i);
+}
+
+char	*open_pipe_manager(void)
+{
+	char		*s;
+	char		*str;
+
+	printf("OPEN PIPE\n");
+	while (1)
+	{
+		s = readline("> ");
+		str = ft_strdup(s);
+		free(s);
+		if (str)
+		{
+			return (str);
+		}
+	}
+	return (NULL);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:58:27 by adesille          #+#    #+#             */
-/*   Updated: 2023/11/06 16:46:33 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:34:32 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	overflowpro;
 
 	if (!nmemb || !size)
-		return (malloc(0));
+		return (mem_manager(0, 0, 0, 'A'));
 	overflowpro = size * nmemb;
 	if (overflowpro / nmemb != size)
 		return (NULL);
-	arr = malloc(overflowpro);
+	arr = mem_manager(overflowpro, 0, 0, 'A');
 	if (arr == NULL)
 		return (NULL);
 	ft_memset(arr, 0, nmemb * size);

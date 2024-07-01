@@ -3,31 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 11:59:36 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:45:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:47:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_mem(char **array, size_t j)
+int	count_utils_quotes(int *token, char *s, int i)
 {
-	while (j-- > 0)
-		free(array[j]);
-	free(array);
+	*token = s[i];
+	while (s[++i] && s[i] != *token)
+		;
+	if (s[i])
+		i++;
+	else if (!is_del(s[i]) && s[i])
+		*token = 1;
+	return (i);
 }
 
-int	count_utils_quotes(int *rows, int *token, char *s, int i)
+int	count_utils_char(int *rows, int *token, char *s, int i)
 {
-	*token = s[i++];
-	*rows += 1;
-	while (s[i] && s[i] != *token)
+	if (*token == 1)
+		*token = 0;
+	else
+		*rows += 1;
+	while (s[i] && !is_del(s[i]) && s[i] != '\n')
+	{
 		i++;
-	i++;
-	if (!is_del(s[i]) && s[i])
-		*token = 1;
+		if (s[i] == 34 || s[i] == 39)
+			i = is_quotes(s, i, '?');
+	}
+	if (s[i] == '\n')
+	{
+		i++;
+		*rows += 1;
+	}
 	return (i);
 }
 
@@ -37,26 +50,22 @@ int	count_rows(char *s, int rows)
 	int	token;
 
 	i = 0;
+	token = 0;
 	while (s[i])
 	{
 		while (is_del(s[i]))
 			i++;
 		if (s[i] == 34 || s[i] == 39)
-			i = count_utils_quotes(&rows, &token, s, i);
-		else if (s[i])
 		{
+			rows++;
+			while (s[i] == 34 || s[i] == 39)
+				i = count_utils_quotes(&token, s, i);
 			if (token == 1)
-				token = 0;
-			else
-				rows++;
-			while (s[++i] && !is_del(s[i]) && s[i] != '\n')
-				if (s[i] == 34 || s[i] == 39)
-					i = is_quotes(s, i, '?');
-			if (s[i] == '\n')
-				rows++;
+				i = count_utils_char(&rows, &token, s, i);
 		}
+		else if (s[i])
+			i = count_utils_char(&rows, &token, s, i);
 	}
-	printf("%d\n", rows);
 	return (rows);
 }
 
@@ -71,9 +80,7 @@ int	split_utils_quotes(t_split *i, char *s, char **array)
 		i->token = 1;
 	else
 	{
-		array[i->j] = ft_substr(s, i->k, i->i - i->k);
-		if (!array[i->j++])
-			return (1);
+		array[i->j++] = ft_substr(s, i->k, i->i - i->k);
 	}
 	return (0);
 }
@@ -90,14 +97,10 @@ int	split_utils_char(t_split *i, char *s, char **array)
 			i->i = is_quotes(s, i->i, '?');
 		i->i++;
 	}
-	array[i->j] = ft_substr(s, i->k, i->i - i->k);
-	if (!array[i->j++])
-		return (free_mem(array, i->j - 1), 1);
+	array[i->j++] = ft_substr(s, i->k, i->i - i->k);
 	if (s[i->i] == '\n')
 	{
-		array[i->j] = ft_substr("\n", 0, 2);
-		if (!array[i->j++])
-			return (free_mem(array, i->j - 1), 1);
+		array[i->j++] = ft_substr("\n", 0, 2);
 		i->i++;
 	}
 	return (0);

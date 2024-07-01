@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:48:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:06:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/28 09:34:38 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_append(char *s, int i, char token)
 			if (s[i] == '>' || s[i + 1] == '>')
 				return (1);
 	}
-	else if (s[i] == '>' || s[i + 1] == '>')
+	else if (s[i] && s[i + 1] && s[i] == '>' && s[i + 1] == '>')
 		return (1);
 	return (0);
 }
@@ -35,7 +35,7 @@ int	is_heredoc(char *s, int i, char token)
 			if (s[i] == '<' || s[i + 1] == '<')
 				return (1);
 	}
-	else if (s[i] == '<' || s[i + 1] == '<')
+	else if (s[i] == '<' && s[i + 1] == '<')
 		return (1);
 	return (0);
 }
@@ -47,10 +47,10 @@ int	is_pipe(char *s, int i, char token)
 		i = -1;
 		while (s[++i])
 		{
-			if (s[i] == '|')
-				return (1);
 			if (s[i] == '|' || s[i + 1] == '|')
 				return (2);
+			if (s[i] == '|')
+				return (1);
 		}
 	}
 	else if (s[i] == '|' && s[i + 1] == '|')

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:08:46 by adesille          #+#    #+#             */
-/*   Updated: 2023/11/05 18:27:51 by isb3             ###   ########.fr       */
+/*   Updated: 2024/06/30 07:35:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	size_t	i;
+	size_t	rows;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	array = (char **)malloc((ft_del_rows(s, c) + 1) * sizeof(char *));
+	rows = ft_del_rows(s, c) + 1;
+	array = (char **)mem_manager(rows * sizeof(char *), 0, 0, 'A');
 	if (!array)
 		return (NULL);
 	array = ft_cut(array, s, c, i);

@@ -3,70 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:30:56 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:41:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	open_quotes(char *s)
+int	len_to_del(char **tokens, int i)
 {
-	int	i;
 	int	k;
-	int	token;
 
-	i = 0;
 	k = 0;
-	while (s[i])
+	if (!tokens[i])
+		return (0);
+	while (tokens[i] && tokens[i][0] != '|' && tokens[i][0] != '\n')
 	{
-		if (s[i] == 34 || s[i] == 39)
-		{
-			token = s[i++];
-			while (s[i] && s[i] != token)
-				i++;
-			if (!s[i])
-				return (1);
-			i++;
-		}
-		else
-			i++;
+		i++;
+		k++;
 	}
+	if (tokens[i] && (tokens[i][0] == '|' || tokens[i][0] == '\n'))
+		k++;
+	return (k);
+}
+
+int	split_array_utils(char ***array, char **tokens, int *i, int *k)
+{
+	int	len;
+	int	j;
+
+	len = len_to_del(tokens, *i);
+	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	array[*k][len] = NULL;
+	j = 0;
+	while (tokens[*i] && tokens[*i][0] != '|' && !is_new_line(tokens, *i))
+	{
+		array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
+		j++;
+		(*i)++;
+	}
+	if (tokens[*i])
+	{
+		array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
+	}
+	(*k)++;
 	return (0);
 }
 
-int	array_len(char **tokens)
+char	***split_array(char ***array, char **tokens, int i, int k)
 {
+	int	len;
+
+	len = is_pipe_in_arr(tokens) + is_new_line_in_arr(tokens);
+	printf("len = %d\n", len);
+	array = mem_manager((len + 2) * sizeof(char **), 0, 0, 'A');
+	array[len + 1] = NULL;
+	while (tokens[i])
+	{
+		if (split_array_utils(array, tokens, &i, &k))
+			return (printf("split_array error\n"), NULL);
+		if (!tokens[i])
+			return (array);
+		else if (tokens[i][0] == '|' || tokens[i][0] == '\n')
+			i++;
+	}
+	return (array);
+}
+
+int	lexer_utils(char ****array, char **tokens)
+{
+	int	len;
 	int	i;
 
+	len = array_len(tokens);
+	*array = mem_manager(2 * sizeof(char **), 0, 0, 'A');
+	(*array)[0] = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	(*array)[0][len] = NULL;
 	i = -1;
 	while (tokens[++i])
-		;
-	return (i);
+		(*array)[0][i] = ft_substr(tokens[i], 0, ft_strlen(tokens[i]));
+	(*array)[1] = NULL;
+	return (0);
 }
 
 char	**lexer(char *s)
 {
 	char	**tokens;
-	size_t	i;
+	int		len;
 
-	if (!s)
+	if (!s || !ft_strlen(s))
 		return (NULL);
 	if (is_sh_ope(s, 0, '?'))
 		if (add_space(&s, 0, 0, 0))
-			return (free(s), NULL);
+			return (NULL);
 	if (open_quotes(s))
-		return (free(s), \
-			printf("Brother, I will smash ur face. Close me dat quote!\n"), \
-				NULL);
-	tokens = (char **)malloc((count_rows(s, 0) + 1) * sizeof(char *));
+		return (printf("Brother, I will smash ur face. Close me dat quote!\n"),
+			NULL);
+	len = count_rows(s, 0);
+	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	tokens[len] = NULL;
 	tokens = splitter(tokens, s);
-	if (!tokens)
-		return (free(s), NULL);
-	i = -1;
-	while (tokens[++i])
-		printf("%zu = %s\n", i, tokens[i]);
-	return (free(s), tokens);
+	if (is_dollar(tokens, 0, '?', 0))
+		get_dollar(tokens);
+	return (tokens);
 }

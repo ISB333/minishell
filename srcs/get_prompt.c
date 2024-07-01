@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/11 12:32:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/06/30 07:27:33 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	extract_pos(char **position)
 	*position = ft_substr(trimm_path, 0, i);
 	if (!*position)
 		return (free(trimm_path), 1);
-	return (free(trimm_path), 0);
+	return (0);
 }
 
 char	*join_prompt(char *logname, char *position, char *curr_dir)
@@ -51,9 +51,9 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 
 	i = -1;
 	k = -1;
-	full_size = ft_strlen(logname) + ft_strlen(position) + \
-		ft_strlen(curr_dir) + 5;
-	prompt = malloc(full_size);
+	full_size = ft_strlen(logname) + ft_strlen(position)
+		+ ft_strlen(curr_dir) + 5;
+	prompt = mem_manager(full_size, 0, 0, 'A');
 	if (!prompt)
 		return (NULL);
 	while (logname[++i])
@@ -71,29 +71,29 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 	return (prompt);
 }
 
-int	init_prompt_data(t_prompt *data, int start, int len)
+int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 {
 	data->name = ft_substr(getenv("LOGNAME"), 0, ft_strlen(getenv("LOGNAME")));
 	if (!data->name)
 		data->name = ft_substr("\0", 0, 1);
-	data->curr_dir = getcwd(NULL, 0);
-	if (!data->curr_dir)
+	if (!dir)
 		return (1);
+	data->curr_dir = ft_strdup(dir);
+	free(dir);
 	if (extract_pos(&data->pos) && getenv("NAME"))
 		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
 	else if (!data->pos)
 		data->pos = ft_substr("\0", 0, 1);
-	data->root_dir = ft_strnstr(data->curr_dir, data->name, \
-		ft_strlen(data->curr_dir));
+	data->root_dir = ft_strnstr(data->curr_dir, data->name,
+			ft_strlen(data->curr_dir));
 	if (data->root_dir)
 	{
-		start = ft_strlen(data->curr_dir) - ft_strlen(data->root_dir) + \
-			ft_strlen(data->name);
+		start = ft_strlen(data->curr_dir) - ft_strlen(data->root_dir)
+			+ ft_strlen(data->name);
 		len = ft_strlen(data->root_dir) - ft_strlen(data->name);
 		data->root_dir = ft_substr(data->curr_dir, start, len);
 		if (!data->root_dir)
 			return (1);
-		free(data->curr_dir);
 		data->curr_dir = ft_strjoin("~", data->root_dir);
 	}
 	return (0);
@@ -104,16 +104,16 @@ char	*get_prompt(void)
 	t_prompt	*data;
 	char		*prompt;
 
-	data = malloc(sizeof(t_prompt));
+	data = mem_manager(sizeof(t_prompt), 0, 0, 'A');
 	if (!data)
 		return (NULL);
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
-	if (init_prompt_data(data, 0, 0))
-		return (free_prompt_data(data), NULL);
+	if (init_prompt_data(data, 0, 0, getcwd(NULL, 0)))
+		return (NULL);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)
-		return (free_prompt_data(data), NULL);
-	return (free_prompt_data(data), prompt);
+		return (NULL);
+	return (prompt);
 }
