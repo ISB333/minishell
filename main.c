@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:26:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/01 13:07:56 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	error_code = 0;
-
-// ! if  there's a NEWLINE outside of quotes, command after are not linked to those above, EXCEPTED if there's a pipe at the EOL ! //
-// ! if "echo -nnnnnnnnnnnnnnnnnnnn" || "echo -n-n-n-n-n-n-n-n-n" count as 1 
-// ! if exit +100 return code will be 100 (not if multiple +)
+int		g_error_code = 0;
 
 int	prompt(char **rl)
 {
@@ -46,15 +42,15 @@ void	history(char *rl)
 	append_new_history(rl);
 }
 
-int	main()
+int	main(void)
 {
+	t_ast	*ast;
+	char	*rl;
 
 	// catchBackslash();
 	// catchC();
 	while (1)
 	{
-		t_ast	*ast;
-		char	*rl;
 		rl = NULL;
 		ast = NULL;
 		if (!prompt(&rl))

@@ -3,22 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 09:51:06by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/01 13:32:13 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-	! TODO : Change > & >> to WRONLY 
-	========================================================
-	TODO : List every returns code possible & set them with exit(*return code*)
-		TODO : error code change at next prompt
-
-*/
+// ! TODO : Change > & >> to WRONLY 
 
 void	print_lst(t_ast *ast)
 {
@@ -32,6 +26,9 @@ void	print_lst(t_ast *ast)
 	n = 1;
 	if (!ast)
 		return ;
+	printf("\033[0;33m");
+	printf("\n============= LINKED_LIST =============\n\n");
+	printf("\033[0;37m");
 	while (ast)
 	{
 		printf("\033[0;33m");
@@ -69,8 +66,9 @@ void	print_lst(t_ast *ast)
 		ast = ast->next;
 		n++;
 	}
-	if (error_code)
-		printf("error_code = %d\n", error_code);
+	if (g_error_code)
+		printf("error_code = %d\n", g_error_code);
+	printf("\033[0m");
 }
 
 void	printer(char ***array)
@@ -105,7 +103,11 @@ void	exit_check_utils(t_ast *ast)
 	{
 		code = ft_atoi(ast->cmd[1]);
 		if (ast->cmd[1])
+		{
+			if (format_check(ast->cmd[1], &code))
+				return (mem_manager(0, 0, 0, 'C'), exit(2));
 			return (mem_manager(0, 0, 0, 'C'), exit(code));
+		}
 		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
 	}
 }
@@ -121,8 +123,8 @@ void	exit_check(t_ast *ast)
 			if (ast->cmd[1])
 			{
 				code = ft_atoi(ast->cmd[1]);
-				if (code > 255)
-					code -= 256;
+				if (format_check(ast->cmd[1], &code))
+					return (mem_manager(0, 0, 0, 'C'), exit(2));
 				if (!ast->cmd[2])
 					return (mem_manager(0, 0, 0, 'C'), exit(code));
 				else
@@ -194,8 +196,8 @@ int	parser(t_ast **ast, char *s)
 	char	***array;
 	int		i;
 
-	if (!s)
-		return (printf("%sempty input%s\n", RED, DEF), 1);
+	if (is_only_del(s))
+		return (0);
 	while (1)
 	{
 		i = -1;
@@ -210,15 +212,9 @@ int	parser(t_ast **ast, char *s)
 		if (is_open_pipe_in_arr(tokens))
 			s = open_pipe_manager();
 		else
-			break;
+			break ;
 	}
-	printf("\n\n");
-	printer(array);
 	exit_check(*ast);
-	printf("\033[0;33m");
-	printf("\n============= LINKED_LIST =============\n\n");
-	printf("\033[0;37m");
 	print_lst(*ast);
-	printf("\033[0m");
 	return (0);
 }

@@ -1039,3 +1039,140 @@ ls
 exit
 < lol
 exit
+echo lol | cat |
+exit
+echo lol | cat |
+exit
+echo lol | cat |
+exit
+<<del cat
+exit
+exit +200
+exit ++200
+exit
+exit 
+exit fs
+exit fs
+exit fs
+exit fs
+exit
+exit 200
+exit 300
+exit -300
+exit -200
+exit -200
+exit 3200
+exit 3200
+exit 3200
+exit 300
+exit -300
+exit -200
+echo < lol
+echo < Makefile
+exit
+echo < Makefile <lol <main.c
+echo < Makefile  <main.c
+echo < Makefile  <main.c |
+d
+d
+ded
+de
+de
+ef
+echo
+exit
+exit
+exit
+exit
+exit 200
+echo lol
+export
+env
+unset
+cd
+pwd
+e
+echo $?
+exit
+echo $?
+exit
+cd | echo $?
+cd | echo " test $?"
+exit
+echo $?
+exit
+exit
+echo $?
+q
+exit
+echo $?
+echo "blabaldjk $?"
+echo "blabaldjk $? dsv sv"
+exit
+echo "blabaldjk $? dsv sv"
+echo $?
+d
+echo $?
+echo $?
+echo $?
+echo $?
+exit
+echo $?
+echo d
+d
+echo $?
+lol | echo $?
+echo $? | cat
+echo $? | ct
+echo $? | cat
+exit
+echo $? | cat
+echo $? | ct
+echo $? | cat
+exit
+
+D
+
+
+
+
+[200~
+~
+exit
+
+
+
+
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							         					
+exit
+exit
+exit
+exit
+exit
+ls -la | echo lol | 
+exit
+ls -la | echo lol | 
+exit
+ls -la | echo lol | 
+d
+d
+exit

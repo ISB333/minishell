@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:28:01 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/01 13:06:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*gnhell(int fd)
 	if (fd < 0)
 		return (NULL);
 	i = 0;
-	read_buff = mem_manager(100, 0, 0, 'A');
+	read_buff = mem_manager(BUFFER_SIZE + 1, 0, 0, 'A');
 	read_buff[0] = '\0';
 	stock_buff = get_line(fd, stock_buff, read_buff);
 	if (!stock_buff)

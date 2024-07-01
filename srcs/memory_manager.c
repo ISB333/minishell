@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/30 08:10:11 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/01 10:37:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,65 +28,6 @@
 // 	}
 // 	return (ptr);
 // }
-
-char	*error_init(char *msg, char *file)
-{
-	char	*s;
-
-	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
-	return (ft_strjoin(s, msg));
-}
-
-int	error(char *msg, char *file, int return_code)
-{
-	if (msg)
-	{
-		write(2, "minihell: ", ft_strlen("minihell: "));
-		if (file)
-		{
-			write(2, file, ft_strlen(file));
-			write(2, ": ", 2);
-		}
-		write(2, msg, ft_strlen(msg));
-		write(2, "\n", 1);
-	}
-	if (return_code)
-	{
-		error_code = return_code;
-		printf("error_code = %d\n", error_code);
-		return (return_code);
-	}
-	return (1);
-}
-
-void	*ff(t_memman *mem_list)
-{
-	static char	heredoc[26] = "./srcs/parsing/heredoc/hd0";
-	t_memman	*temp;
-	int			i;
-
-	while (mem_list)
-	{
-		temp = mem_list;
-		mem_list = mem_list->next;
-		if (temp->type == FD)
-			close(*(int *)temp->ptr);
-		if (temp->ptr)
-		{
-			free(temp->ptr);
-			temp->ptr = NULL;
-		}
-		free(temp);
-	}
-	i = -1;
-	while (++i < 50)
-	{
-		heredoc[25] = i + '0';
-		if (!access(heredoc, R_OK))
-			unlink(heredoc);
-	}
-	return (NULL);
-}
 
 void	init_node(t_memman *new_node, t_memman **mem_list, void *ptr, int token)
 {

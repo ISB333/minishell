@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/06/30 08:19:13 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/01 10:34:33 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
 CC = cc 
 
 DEFAULT = \033[0;39m
@@ -27,13 +27,15 @@ WHITE = \033[0;37m
 SRCS = main.c \
 	./srcs/get_prompt.c \
 	./srcs/memory_manager.c \
+	./srcs/utils.c \
 	./srcs/history/gnl.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
 	./srcs/lexing/lexer.c \
 	./srcs/lexing/is_sh1.c \
 	./srcs/lexing/is_sh2.c \
-	./srcs/lexing/is_sh_in_arr.c \
+	./srcs/lexing/is_sh_in_arr1.c \
+	./srcs/lexing/is_sh_in_arr2.c \
 	./srcs/lexing/is_dollar.c \
 	./srcs/lexing/utils1.c \
 	./srcs/lexing/utils2.c \
