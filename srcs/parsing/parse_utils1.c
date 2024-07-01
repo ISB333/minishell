@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 12:58:04 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:54:13 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 int	check_if_directory(t_ast *ast)
 {
-	char	*dir;
+	struct stat	path_stat;
 
-	if (!ast->cmd[1] && !access(ast->cmd[0], R_OK))
-	{
-		dir = ft_strdup(ast->cmd[0]);
-		ast->cmd = mem_manager((3 * sizeof(char *)), 0, 0, 'A');
-		ast->cmd[0] = ft_strdup("cd");
-		return (ast->cmd[1] = dir, ast->cmd[2] = NULL, g_error_code = 0, 0);
-	}
-	else if (!access(ast->cmd[0], R_OK) && ast->cmd[1])
-	{
-		ast->error = error_init("Too many arguments", "cd");
-		return (ast->cmd = NULL, g_error_code = 1, 1);
-	}
-	else if (is_path(ast->cmd[0]))
+	if (stat(ast->cmd[0], &path_stat) != 0 && access(ast->cmd[0], OK))
 	{
 		ast->error = error_init("No such file or directory", ast->cmd[0]);
 		return (ast->cmd = NULL, g_error_code = 127, 127);
+	}
+	if (ast->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
+	{
+		ast->error = error_init("Is a directory", ast->cmd[0]);
+		return (ast->cmd = NULL, g_error_code = 126, 126);
+	}
+	if (access(ast->cmd[0], R_OK) || access(ast->cmd[0], X_OK))
+	{
+		ast->error = error_init("Permission denied", ast->cmd[0]);
+		return (ast->cmd = NULL, g_error_code = 1, 1);
 	}
 	else
 	{
@@ -51,7 +49,10 @@ int	cmd_path_init(t_ast *ast, int i)
 		return (0);
 	path = extract_path();
 	if (!path)
-		return (check_if_directory(ast));
+	{
+		ast->error = error_init("No such file or directory", ast->cmd[0]);
+		return (ast->cmd = NULL, g_error_code = 127, 127);
+	}
 	cmd = ft_strjoin("/", ast->cmd[0]);
 	while (path[++i])
 	{
@@ -60,7 +61,7 @@ int	cmd_path_init(t_ast *ast, int i)
 		{
 			ast->cmd_path = test_path;
 			g_error_code = 0;
-			return (0);
+			return (g_error_code = 0, 0);
 		}
 	}
 	return (check_if_directory(ast));
@@ -91,8 +92,7 @@ void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	int		fd;
 
 	path = ft_strjoin(ft_strdup("./srcs/parsing/hd"), ft_itoa(n));
-	fd = open(path, O_RDWR | O_CREAT
-			| O_TRUNC | O_APPEND, 0644);
+	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
 	if (!fd)
 		return (perror("Error opening file"));
 	mem_manager(sizeof(int), 0, fd, 'O');

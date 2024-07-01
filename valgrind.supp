@@ -80,7 +80,7 @@
    match-leak-kinds: reachable
    fun:realloc
    ...
-   fun:add_previous_history
+   fun:add_history
 }
 {
    <insert_a_suppression_name_here>
@@ -88,7 +88,7 @@
    match-leak-kinds: reachable
    fun:calloc
    ...
-   fun:add_previous_history
+   fun:add_history
 }
 {
    <insert_a_suppression_name_here>
