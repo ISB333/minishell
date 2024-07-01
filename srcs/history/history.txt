@@ -1176,3 +1176,66 @@ ls -la | echo lol |
 d
 d
 exit
+exit
+./minishell
+./minishell
+./lol
+exit
+./lol
+./ibhg
+srcs e
+ed ee
+wd
+wd ed
+srcs ef
+exit
+./lol
+./lol
+exit
+./lol
+./lol
+exit
+./lol
+exit
+./lol
+exit
+./lol
+./lol
+./lol
+./lol
+exit
+./lol
+exit
+./lol
+exit
+srcs
+./srcs
+./srcs
+./lol
+ct
+exit
+./lol
+exit
+./lol
+./sdf
+exit
+./sdf
+exit
+./sdf
+srcs
+./srcs
+/srcs
+exit
+./srcs
+exit
+./srcs
+exit
+./srcs
+/srcs
+srcs
+exit
+srcs
+exit
+cat
+echo $?
+exit
