@@ -18,7 +18,6 @@
 	TODO : List every returns code possible & set them with exit(*return code*)
 		TODO : error code change at next prompt
 
-	TODO : LIST subtilities for le N
 */
 
 void	print_lst(t_ast *ast)
