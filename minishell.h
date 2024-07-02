@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 13:16:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:55:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int						array_len(char **tokens);
 char					*open_pipe_manager(void);
 
 /// Parsing ///
-int						parser(t_ast **ast, char *s);
+int						parser(t_ast **ast, char *s, int i);
 
 // utils //
 void					init_lst(t_ast **ast);
