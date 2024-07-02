@@ -49,3 +49,8 @@
         -> return_code = 0 (même si la dernière commande est "echo $?")
 
     - Si il y a une erreur d'infile/outfile, le processus s'arrête
+
+
+	-- Fonctions qui peut t'etre utile:
+	- is_builtin (return 1 si la str est un builtin)
+	- error (return "minihell: " + file (if file) + msg d'erreur)

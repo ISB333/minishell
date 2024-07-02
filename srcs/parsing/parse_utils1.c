@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 14:54:13 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 08:41:34 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ void	add_node_hd(t_heredoc **hd, char *s)
 	}
 }
 
-void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
+int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 {
 	char	*path;
 	int		fd;
 
 	path = ft_strjoin(ft_strdup("./srcs/parsing/hd"), ft_itoa(n));
 	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
-	if (!fd)
-		return (perror("Error opening file"));
+	if (fd == -1)
+		return (error(strerror(errno), path, 1));
 	mem_manager(sizeof(int), 0, fd, 'O');
 	while (hd)
 	{
@@ -107,9 +107,10 @@ void	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	if ((*ast)->fd_in)
 		mem_manager(0, 0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(path, O_RDONLY, 0644);
-	if (!(*ast)->fd_in)
-		return (perror("Error opening file"));
+	if ((*ast)->fd_in == -1)
+		return (error(strerror(errno), path, 1));
 	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
+	return (0);
 }
 
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
@@ -124,7 +125,6 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 		heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	printf("DEL = %s\n", heredoc);
 	while (1)
 	{
 		s = readline("> ");
