@@ -1254,3 +1254,91 @@ exit
 << 'de'l
 << 'd"e'l
 exit
+< <
+< Makefile | |
+< Makefile | |
+exit
+< Makefile | |
+< Makefile | |
+< Makefile | |
+exit
+< Makefile | |
+exit
+< Makefile | |
+< Makefile | >>
+< Makefile | <<
+< Makefile | <
+< Makefile | >
+< >> Makefile | >
+exit
+< >> Makefile | >
+exit
+< >> Makefile | >
+< > Makefile | >
+exit
+< Makle | ls -la
+exit
+< Makle | ls -la
+< Makle lol | ls -la
+< Makefile lol | ls -la
+cat  | <mkefile ls -la
+cat  | <mkefile ls -la
+exit
+cat  | <mkefile ls -la
+exit
+cat  | <mkefile ls -la
+exit
+cat  | <mkefile ls -la
+cat  | <mkefile ls -la
+cat  | <mkefile ls -la
+cat  | <mkefile ls -la
+cat  | < <mkefile ls -la
+cat   < <mkefile ls -la
+| cat   < <mkefile ls -la
+exit
+exit
+| cat   < <mkefile ls -la
+cat   < <mkefile ls -la
+cat    <mkefile | < ls -la
+cat    <mkefile | < <ls -la
+cat    <mkefile | ls -la < >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >e
+exit
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la | >
+cat    <mkefile | ls -la > >
+cat    <mkefile | ls -la > 
+cat    <mkefile | ls -la >>
+cat    <mkefile | ls -la<<
+cat    <mkefile | ls -la |
+exit
+cat    <mkefile | ls -la |
+cat    <mkefile | ls -la |
+cat    <mkefile | ls -la <
+cat    <makefile | ls -la <
+cat    <makefile | ls -la <
+cat    <makefile | ls -la <
+cat    <makefile | ls -la <
+exit
+cat    <makefile | ls -la <
+cat    <makefile | ls -la |
+d
+d
+cat    <makefile | ls -la |
+exit
+cat    <makefile | ls -la |
+exit
+cat    <makefile | ls -la |
+cat    <makefile | ls -la |
+exit
+cat    <makefile | ls -la |
+exit

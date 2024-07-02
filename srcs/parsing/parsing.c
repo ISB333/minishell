@@ -6,12 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 08:36:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:57:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 void	print_lst(t_ast *ast)
 {
@@ -115,6 +114,8 @@ void	exit_check(t_ast *ast)
 {
 	int	code;
 
+	if (!ast)
+		return ;
 	if (!ast->next)
 	{
 		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
@@ -183,17 +184,43 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	if (lst_parse(&new_node, tokens, 0, n))
-		return (1);
+	lst_parse(&new_node, tokens, 0, n);
 	cmd_path_init(new_node, -1);
 	return (0);
 }
 
-int	parser(t_ast **ast, char *s)
+int	syntax_checker(char **tokens, int i)
+{
+	if (is_pipe(tokens[0], 0, 0))
+		return (printf("minihell: syntax error near unexpected token '%s'\n",
+				tokens[i + 1]));
+	while (tokens[++i])
+	{
+		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
+			&& !tokens[i + 1])
+		{
+			printf("minihell: syntax error near unexpected token 'newline'\n");
+			return (1);
+		}
+		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
+		{
+			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
+					|| !is_append(tokens[i + 1], 0, 0)
+					|| !is_heredoc(tokens[i + 1], 0, 0)))
+			{
+				printf("minihell: syntax error near unexpected token '%s'\n",
+					tokens[i + 1]);
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
+int	parser(t_ast **ast, char *s, int i)
 {
 	char	**tokens;
 	char	***array;
-	int		i;
 
 	if (is_only_del(s))
 		return (0);
@@ -201,6 +228,8 @@ int	parser(t_ast **ast, char *s)
 	{
 		i = -1;
 		tokens = lexer(s);
+		if (syntax_checker(tokens, -1))
+			return (0);
 		if (is_pipe_in_arr(tokens) || is_new_line_in_arr(tokens))
 			array = split_array(array, tokens, 0, 0);
 		else
