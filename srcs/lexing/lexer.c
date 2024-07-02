@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 09:41:54 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/02 08:39:45 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 	int	len;
 
 	len = is_pipe_in_arr(tokens) + is_new_line_in_arr(tokens);
-	printf("len = %d\n", len);
 	array = mem_manager((len + 2) * sizeof(char **), 0, 0, 'A');
 	array[len + 1] = NULL;
 	while (tokens[i])
 	{
 		if (split_array_utils(array, tokens, &i, &k))
-			return (printf("split_array error\n"), NULL);
+			return (NULL);
 		if (!tokens[i])
 			return (array);
 		else if (tokens[i][0] == '|' || tokens[i][0] == '\n')

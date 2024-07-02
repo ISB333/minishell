@@ -1239,3 +1239,18 @@ exit
 cat
 echo $?
 exit
+< lol
+< lol
+< lol
+>> lol
+exit
+>> lol
+>> lol
+exit
+>> lol
+exit
+>> lol
+exit
+<< 'de'l
+<< 'd"e'l
+exit

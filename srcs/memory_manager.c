@@ -6,28 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/01 10:37:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 08:09:30 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// void	*m_malloc(size_t size)
-// {
-// 	static int	i = 0;
-// 	void		*ptr;
-
-// 	// printf("malloc n %d\n", ++i);
-// 	// if (i++ > 300 && i % 2 == 1)
-// 	// 	return (NULL);
-// 	ptr = malloc(size);
-// 	if (!ptr)
-// 	{
-// 		fprintf(stderr, "Memory allocation failed\n");
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	return (ptr);
-// }
 
 void	init_node(t_memman *new_node, t_memman **mem_list, void *ptr, int token)
 {
@@ -58,14 +41,12 @@ void	*allocate(t_memman **mem_list, size_t size, int token)
 	ptr = malloc(size);
 	if (!ptr)
 	{
-		fprintf(stderr, "Memory allocation failed\n");
 		mem_manager(0, 0, 0, 'C');
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(t_memman));
 	if (!new_node)
 	{
-		fprintf(stderr, "Memory manager new node allocation failed\n");
 		free(ptr);
 		mem_manager(0, 0, 0, 'C');
 		exit(EXIT_FAILURE);
@@ -92,7 +73,6 @@ void	close_fd(t_memman *mem_list, int fd)
 			else
 				mem_list = mem_temp->next;
 			free(mem_temp);
-			printf("CLEAR\n");
 			break ;
 		}
 		prev = mem_temp;

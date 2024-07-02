@@ -6,13 +6,12 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 13:32:13 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 08:36:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// ! TODO : Change > & >> to WRONLY 
 
 void	print_lst(t_ast *ast)
 {
