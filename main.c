@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 08:38:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:29:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		g_error_code = 0;
 
 // ! TODO : Change > & >> to WRONLY (in parse_utils2 (fonctions: parse_redir_utils && parse_append)) 
+// ! TODO : Add -Werror
 
 int	prompt(char **rl)
 {
