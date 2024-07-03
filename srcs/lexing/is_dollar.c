@@ -6,29 +6,13 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/01 12:58:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:02:32 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_dollar_utils(char **arr, int i, int k, int pos)
-{
-	while (arr[++i])
-	{
-		k = -1;
-		while (arr[i][++k])
-		{
-			if (arr[i][k] == '$' && pos == 'i')
-				return (i);
-			if (arr[i][k] == '$' && pos == 'k')
-				return (k);
-		}
-	}
-	return (0);
-}
-
-int	is_dollar(char **arr, int i, char token, char pos)
+int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 {
 	int	k;
 
@@ -44,6 +28,25 @@ int	is_dollar(char **arr, int i, char token, char pos)
 	}
 	if (token == 'p')
 		return (is_dollar_utils(arr, i, k, pos));
+	return (0);
+}
+
+int	is_dollar(char *s, int token)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = -1;
+	while (s[++i])
+	{
+		if (s[i] == '$')
+		{
+			if (token == '?')
+				return (1);
+			return (i);
+		}
+	}
 	return (0);
 }
 
@@ -92,9 +95,8 @@ int	is_dollar_in_double_quotes(char *s, int k, int i, int token1)
 			if (token1 == 34)
 				return (1);
 		}
-		else
-			if (token2 == 34)
-				return (1);
+		else if (token2 == 34)
+			return (1);
 		return (0);
 	}
 	return (1);
@@ -108,8 +110,8 @@ void	get_dollar(char **arr)
 	int		k;
 	int		j;
 
-	i = is_dollar(arr, -1, 'p', 'i');
-	k = is_dollar(arr, -1, 'p', 'k');
+	i = is_dollar_in_arr(arr, -1, 'p', 'i');
+	k = is_dollar_in_arr(arr, -1, 'p', 'k');
 	if (k)
 		if (!is_dollar_in_double_quotes(arr[i], k, k, 0))
 			return ;

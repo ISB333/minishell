@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_history.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/06/30 07:28:34 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/03 10:02:24 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	add_previous_history(void)
 	char	*line_trimmed;
 	int		history;
 
-	history = open("./srcs/history/history.txt", O_RDWR | O_CREAT, 0644);
+	history = open("srcs/history/history.txt", O_RDWR | O_CREAT, 0777);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
 	mem_manager(sizeof(int), 0, history, 'O');
@@ -37,7 +37,7 @@ int	append_new_history(char *rl)
 {
 	int	history;
 
-	history = open("./srcs/history/history.txt", O_WRONLY | O_APPEND, 0644);
+	history = open("srcs//history/history.txt", O_WRONLY | O_APPEND, 0777);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
 	ft_putstr_fd(rl, history);

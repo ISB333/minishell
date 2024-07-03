@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/01 10:34:33 by adesille         ###   ########.fr        #
+#    Updated: 2024/07/03 10:05:35 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ WHITE = \033[0;37m
 SRCS = main.c \
 	./srcs/get_prompt.c \
 	./srcs/memory_manager.c \
-	./srcs/utils.c \
+	./srcs/memory_manager_utils.c \
 	./srcs/history/gnl.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
@@ -44,6 +44,7 @@ SRCS = main.c \
 	./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils2.c \
 	./srcs/parsing/parse_utils3.c \
+	./srcs/parsing/parse_utils4.c \
 	./sigHandler.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)

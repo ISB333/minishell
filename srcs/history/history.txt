@@ -1342,3 +1342,81 @@ cat    <makefile | ls -la |
 exit
 cat    <makefile | ls -la |
 exit
+exit
+<< del cat | ls
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+EXIT
+exit
+<< del 
+exit
+<< del 
+<< del 
+<< del 
+<< del 
+exit 3000
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+d
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+<< del 
+exit
+<< del 
+exit
+<< del 
+<< del
+echo "$USER hbwbh mb h bh bh hk $SESSION_MANAGER"
+exit
+echo "$USER hbwbh mb h bh bh hk $SESSION_MANAGER"
+exit
+<< del
+<< del
+exit
+<< del
+exit
+<< del
+exit
+<< del
+<< del
+exit
+<< del
+<< del
+exit
+<< del
+<< del
+exit
+<< del
+<< del
+<< del
+<<
+<< del
+exit
+<< del
+exit

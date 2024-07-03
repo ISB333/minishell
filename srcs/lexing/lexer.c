@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 08:39:45 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:05:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	**lexer(char *s)
 	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
 	tokens[len] = NULL;
 	tokens = splitter(tokens, s);
-	if (is_dollar(tokens, 0, '?', 0))
+	while (is_dollar_in_arr(tokens, 0, '?', 0))
 		get_dollar(tokens);
 	return (tokens);
 }

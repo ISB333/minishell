@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:11:08 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:27:48 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/03 09:04:55 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_gnl_strlen(const char *str)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ size_t	ft_gnl_strlcpy(char *dst, char *src, size_t size)
 
 	if (!src)
 		return (0);
-	src_len = ft_strlen(src);
+	src_len = ft_gnl_strlen(src);
 	if (!size)
 		return (src_len);
 	while (*src && --size)
@@ -46,7 +46,7 @@ char	*ft_gnl_strdup(char *s)
 
 	if (!s)
 		return (NULL);
-	size = ft_strlen(s) + 1;
+	size = ft_gnl_strlen(s) + 1;
 	str = mem_manager(size, 0, 0, 'A');
 	ft_gnl_strlcpy(str, s, size);
 	return (str);
@@ -57,10 +57,10 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	char	*str;
 	int		len;
 
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	len = ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 1;
 	str = mem_manager(len * sizeof(char), 0, 0, 'A');
-	ft_gnl_strlcpy(str, s1, (ft_strlen(s1) + 1));
-	ft_gnl_strlcpy(&str[ft_strlen(s1)], s2, (ft_strlen(s2) + 1));
+	ft_gnl_strlcpy(str, s1, (ft_gnl_strlen(s1) + 1));
+	ft_gnl_strlcpy(&str[ft_gnl_strlen(s1)], s2, (ft_gnl_strlen(s2) + 1));
 	return (str);
 }
 

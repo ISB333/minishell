@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/01 10:36:42 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 09:43:07 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,22 @@ int	is_open_pipe_in_arr(char **array)
 	{
 		if (array[i][0] == '|' && !array[i + 1])
 			return (1);
+	}
+	return (0);
+}
+
+int	is_dollar_utils(char **arr, int i, int k, int pos)
+{
+	while (arr[++i])
+	{
+		k = -1;
+		while (arr[i][++k])
+		{
+			if (arr[i][k] == '$' && pos == 'i')
+				return (i);
+			if (arr[i][k] == '$' && pos == 'k')
+				return (k);
+		}
 	}
 	return (0);
 }

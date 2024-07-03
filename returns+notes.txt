@@ -54,3 +54,14 @@
 	-- Fonctions qui peut t'etre utile:
 	- is_builtin (return 1 si la str est un builtin)
 	- error (return "minihell: " + file (if file) + msg d'erreur)
+
+	***************************************************************************************************************
+												ERROR
+	***************************************************************************************************************
+	- ENV Variables dans heredoc
+
+	- pwd lien symbolique vs physique (don't use get_cwd)
+		- need to use path and test access to add cwd
+			=> Not asked by the subjet so 🖕( •_• )🖕 ???
+
+	- better to start the execution now

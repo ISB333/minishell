@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/02 08:09:30 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 09:09:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,13 @@ void	*free_ptr(t_memman **mem_list, void *ptr)
 		if (mem_temp->ptr == ptr)
 		{
 			free(mem_temp->ptr);
+			ptr = NULL;
 			if (prev)
 				prev->next = mem_temp->next;
 			else
 				*mem_list = mem_temp->next;
 			free(mem_temp);
+			mem_temp = NULL;
 			break ;
 		}
 		prev = mem_temp;

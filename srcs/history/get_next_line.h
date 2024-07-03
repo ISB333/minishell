@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:13:37 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/01 13:06:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 09:05:18 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # endif
 
 char	*gnhell(int fd);
-size_t	ft_strlen(const char *str);
+size_t	ft_gnl_strlen(const char *str);
 size_t	ft_gnl_strlcpy(char *dst, char *src, size_t size);
 char	*ft_gnl_strdup(char *s);
 char	*ft_gnl_strjoin(char *s1, char *s2);
