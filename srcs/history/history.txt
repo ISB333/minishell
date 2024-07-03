@@ -1420,3 +1420,11 @@ exit
 exit
 << del
 exit
+/srcs
+/home/adesille/Desktop/minishell/minishell/srcs
+exit
+/home/adesille/Desktop/minishell/minishell/srcs
+exit
+/home/adesille/Desktop/minishell/minishell/srcs
+/srcs
+exit
