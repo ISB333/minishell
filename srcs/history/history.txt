@@ -1428,3 +1428,268 @@ exit
 /home/adesille/Desktop/minishell/minishell/srcs
 /srcs
 exit
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat 
+< Makefile cat 
+< Makefile cat 
+exit
+< Makefile cat 
+< Makefile cat 
+ cat 
+ls
+ls
+ls
+ls
+ls
+Makefile
+libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
+libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.cmain.c
+
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
+main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
+libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+minishell.h
+libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.cisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
+main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+pipex
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ pipex
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+libft
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.hisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
+
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+minishell.h
+main.c
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishellisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
+ls
+Makefile
+libft
+main.c
+minishell
+minishell.h
+pipex
+returns+notes.txt
+sigHandler.c
+srcs
+valgrind.supp
+isb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+ls
+exit
+ls
+Makefile
+libft
+main.c
+minishell
+minishell.h
+pipex
+returns+notes.txt
+sigHandler.c
+srcs
+valgrind.supp
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+ls
+Makefile
+libft
+main.c
+minishell
+minishell.h
+pipex
+returns+notes.txt
+sigHandler.c
+srcs
+valgrind.supp
+ls
+Makefile
+libft
+main.c
+minishell
+minishell.h
+pipex
+returns+notes.txt
+sigHandler.c
+srcs
+valgrind.supp
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+ls
+ls
+ls
+Makefile
+libft
+main.c
+minishell
+minishell.h
+pipex
+returns+notes.txt
+sigHandler.c
+srcs
+valgrind.supp
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
+ls
+Makefile
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+ls
+Makefile
+m
+m
+m
+m
+m
+ls
+Makefile
+m
+m
+m
+< Makefile cat 
+exit
+< Makefile cat 
+make
+< Makefile cat
+exit
+< Makefile cat
+< Makefile cat > out
+exit
+< Makefile cat > out
+exit
+< Makefile cat > out
+< Makefile cat 
+< Makefile cat | cat
+ls
+ls
+ls
+ls
+ls -la
+ls -la | cat
+ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
+< Makefile cat
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
+< Makefile cat |cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
+< Makefile cat |cat | ls
+< Makefile cat |cat | ls
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g' | cat
+ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
+< Makefile ls -la | cat 
+< Makefile ls -la | cat 
+< Makefile ls -la | cat 
+< Makefile ls -la | cat 
+ls -la | cat 
+ls -la | cat 
+ls -la | cat 
+exit
+ls -la | cat 
+ls -la | sed 's/Makefile/LOOOOOOOOOOL/g'
+ls -la | sed 's/Makefile/LOOOOOOOOOOL/g' >out
+ls -la | sed 's/Makefile/LOOOOOOOOOOL/g' >out
+ls -la | <out sed 's/Makefile/LOOOOOOOOOOL/g'
+ls -la | <out sed 's/LOOOOOOOOOOL/AAAAAAAAAAAAAAAAAAAH/g'
+ls -la >out | cat
+ls -la <out | cat
+ls -la |<out cat
+ls -la |<out cat
+ls -la |<out cat
+< Makefile cat | ls -la
+< Makefile cat | ls -la
+< Makefile cat | cat
+< Makefile cat 
+exit
+< Makefile cat 
+< Makefile cat | cat
+< Makefile cat | ls
+< Makefile cat | sed 's/ARGUMENTS/LOOOOL/g'
+< Makefile cat | sed 's/ARGUMENTS/LOOOOL/g'
+< Makefile cat 
+< Makefile cat 
+< Makefile cat 
+< Makefile cat 
+< Makefile cat 
+< Makefile cat | ls
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | ls
+< Makefile cat | cat
+< Makefile cat | cat
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g'
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g'
+< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
+> out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
+< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
+< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
+< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
+< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out

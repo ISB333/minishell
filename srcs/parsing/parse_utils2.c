@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 08:40:13 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:01:12 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	(*ast)->fd_out = open(fd, O_RDONLY | O_CREAT | O_APPEND, 0644);
+	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
 	(*ast)->append = 1;
@@ -39,7 +39,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	if ((*ast)->fd_out)
 		mem_manager(0, 0, (*ast)->fd_out, 'N');
-	(*ast)->fd_out = open(fd, O_RDONLY | O_CREAT, 0644);
+	(*ast)->fd_out = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
 	(*ast)->outfile = 1;
@@ -94,6 +94,7 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 		else
 			i++;
 	}
+
 	return (0);
 }
 
