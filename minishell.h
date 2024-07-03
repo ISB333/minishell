@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:07:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:13:01 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_ast
 	char				*cmd_path;
 	int					fd_in;
 	int					fd_out;
+	int					pipe_fd[2];
 	int					pipe;
 	int					new_line;
 
@@ -88,6 +89,7 @@ typedef struct s_heredoc
 }						t_heredoc;
 
 char					*get_prompt(void);
+void					print_lst(t_ast *ast);
 
 /// History ///
 char					*gnhell(int fd);

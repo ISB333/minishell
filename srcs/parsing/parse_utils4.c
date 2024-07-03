@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:07:01 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:52:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	format_check(char *s, int *code)
 	{
 		if (*code > 255)
 			*code -= 256;
-		else if (code < 0)
+		else if (*code < 0)
 			*code = 256 - -*code;
 	}
 	return (0);
