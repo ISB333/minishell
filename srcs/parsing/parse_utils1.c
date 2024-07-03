@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:06:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:52:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	check_if_directory(t_ast *ast)
 		ast->error = error_init("No such file or directory", ast->cmd[0]);
 		return (ast->cmd = NULL, g_error_code = 127, 127);
 	}
-	if (ast->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
+	if ((ast->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
+		|| (ast->cmd[0][0] == '/' && S_ISDIR(path_stat.st_mode)))
 	{
 		ast->error = error_init("Is a directory", ast->cmd[0]);
 		return (ast->cmd = NULL, g_error_code = 126, 126);
