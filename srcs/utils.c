@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 12:58:31 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 07:56:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	error(char *msg, char *file, int return_code)
 
 void	*ff(t_memman *mem_list)
 {
-	static char	heredoc[18] = "./srcs/parsing/hd0";
+	static char	heredoc[16] = "srcs/parsing/hd0";
 	t_memman	*temp;
 	int			i;
 
@@ -100,7 +100,7 @@ void	*ff(t_memman *mem_list)
 	i = -1;
 	while (++i < 50)
 	{
-		heredoc[17] = i + '0';
+		heredoc[15] = i + '0';
 		if (!access(heredoc, R_OK))
 			unlink(heredoc);
 	}

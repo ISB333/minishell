@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 08:41:34 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 08:18:18 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,31 +67,31 @@ int	cmd_path_init(t_ast *ast, int i)
 	return (check_if_directory(ast));
 }
 
-void	add_node_hd(t_heredoc **hd, char *s)
-{
-	t_heredoc	*new_node;
-	t_heredoc	*last_node;
+// void	add_node_hd(t_heredoc **hd, char *s)
+// {
+// 	t_heredoc	*new_node;
+// 	t_heredoc	*last_node;
 
-	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
-	new_node->s = ft_strdup(s);
-	new_node->next = NULL;
-	if (!*hd)
-		*hd = new_node;
-	else
-	{
-		last_node = *hd;
-		while (last_node->next)
-			last_node = last_node->next;
-		last_node->next = new_node;
-	}
-}
+// 	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
+// 	new_node->s = ft_strdup(s);
+// 	new_node->next = NULL;
+// 	if (!*hd)
+// 		*hd = new_node;
+// 	else
+// 	{
+// 		last_node = *hd;
+// 		while (last_node->next)
+// 			last_node = last_node->next;
+// 		last_node->next = new_node;
+// 	}
+// }
 
 int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 {
 	char	*path;
 	int		fd;
 
-	path = ft_strjoin(ft_strdup("./srcs/parsing/hd"), ft_itoa(n));
+	path = ft_strjoin(ft_strdup("srcs/parsing/hd"), ft_itoa(n));
 	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
 	if (fd == -1)
 		return (error(strerror(errno), path, 1));
@@ -113,30 +113,36 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	return (0);
 }
 
+void	add_node_hd(char **arr)
+{
+
+}
+
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 {
 	char		*s;
-	char		*heredoc;
-	t_heredoc	*hd;
+	char		*del;
+	// t_heredoc	*hd;
+	char		**heredoc;
 
 	printf("HEREDOC\n");
-	hd = NULL;
+	heredoc = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
-		heredoc = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
+		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
-		heredoc = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+		del = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	while (1)
 	{
 		s = readline("> ");
-		if (!ft_strcmp(s, heredoc))
+		if (!ft_strcmp(s, del))
 		{
 			free(s);
 			break ;
 		}
-		add_node_hd(&hd, s);
+		add_node_hd(&heredoc, s);
 		free(s);
 	}
-	add_to_ast(ast, hd, n);
+	// add_to_ast(ast, hd, n);
 	*i += 2;
 	return (0);
 }

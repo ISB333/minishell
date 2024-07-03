@@ -1342,3 +1342,12 @@ cat    <makefile | ls -la |
 exit
 cat    <makefile | ls -la |
 exit
+exit
+<< del cat | ls
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
+echo "$USER tetstgdwhfjh bs $PATH"
+exit
