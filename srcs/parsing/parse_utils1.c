@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 08:18:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:06:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,24 @@ int	cmd_path_init(t_ast *ast, int i)
 	return (check_if_directory(ast));
 }
 
-// void	add_node_hd(t_heredoc **hd, char *s)
-// {
-// 	t_heredoc	*new_node;
-// 	t_heredoc	*last_node;
+void	add_node_hd(t_heredoc **hd, char *s)
+{
+	t_heredoc	*new_node;
+	t_heredoc	*last_node;
 
-// 	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
-// 	new_node->s = ft_strdup(s);
-// 	new_node->next = NULL;
-// 	if (!*hd)
-// 		*hd = new_node;
-// 	else
-// 	{
-// 		last_node = *hd;
-// 		while (last_node->next)
-// 			last_node = last_node->next;
-// 		last_node->next = new_node;
-// 	}
-// }
+	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
+	new_node->s = ft_strdup(s);
+	new_node->next = NULL;
+	if (!*hd)
+		*hd = new_node;
+	else
+	{
+		last_node = *hd;
+		while (last_node->next)
+			last_node = last_node->next;
+		last_node->next = new_node;
+	}
+}
 
 int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 {
@@ -113,20 +113,15 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	return (0);
 }
 
-void	add_node_hd(char **arr)
-{
-
-}
-
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 {
 	char		*s;
 	char		*del;
-	// t_heredoc	*hd;
-	char		**heredoc;
+	t_heredoc	*hd;
+	char		*ss;
 
 	printf("HEREDOC\n");
-	heredoc = NULL;
+	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
@@ -134,15 +129,14 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 	while (1)
 	{
 		s = readline("> ");
-		if (!ft_strcmp(s, del))
-		{
-			free(s);
-			break ;
-		}
-		add_node_hd(&heredoc, s);
+		ss = ft_strdup(s);
 		free(s);
+		if (!ft_strcmp(ss, del))
+			break ;
+		add_node_hd(&hd, ss);
 	}
-	// add_to_ast(ast, hd, n);
+	get_dollar_hd(hd);
+	add_to_ast(ast, hd, n);
 	*i += 2;
 	return (0);
 }

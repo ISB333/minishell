@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/01 13:06:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 09:05:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_line(int fd, char *stock_buff, char *read_buff)
 		read_buff[bytes_read] = '\0';
 		if (bytes_read)
 			stock_buff = ft_gnl_strjoin(stock_buff, read_buff);
-		if (!ft_strlen(stock_buff))
+		if (!ft_gnl_strlen(stock_buff))
 			return (NULL);
 	}
 	return (stock_buff);
@@ -73,7 +73,7 @@ char	*gnhell(int fd)
 	if (!stock_buff)
 		return (NULL);
 	line = strchr_n_split(stock_buff);
-	linelen = ft_strlen(line);
+	linelen = ft_gnl_strlen(line);
 	while (stock_buff[linelen])
 		stock_buff[i++] = stock_buff[linelen++];
 	stock_buff[i] = '\0';

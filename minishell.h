@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/02 14:55:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:07:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ char					***split_array(char ***array, char **tokens, int i,
 int						lexer_utils(char ****array, char **tokens);
 
 // is_??? //
-int						is_dollar(char **arr, int i, char token, char pos);
 int						is_sh_ope(char *s, int i, char token);
 int						is_del(char c);
 int						is_quotes(char *s, int i, char token);
@@ -112,6 +111,9 @@ int						is_append(char *s, int i, char token);
 int						is_heredoc(char *s, int i, char token);
 int						is_new_line(char **tokens, int i);
 int						is_path(char *s);
+int						is_dollar(char *s, int token);
+int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
+int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
@@ -132,6 +134,7 @@ int						split_utils_quotes(t_split *i, char *s, char **array);
 int						open_quotes(char *s);
 int						array_len(char **tokens);
 char					*open_pipe_manager(void);
+char					*join_new_str(char *str, char *new_str, int var_len);
 
 /// Parsing ///
 int						parser(t_ast **ast, char *s, int i);
@@ -143,8 +146,8 @@ int						cmd_path_init(t_ast *ast, int i);
 
 int						parse_redir(t_ast **ast, char **tokens, int i, int n);
 int						parse_cmd(t_ast **ast, char **tokens, int *i, int j);
-int						parse_heredoc(t_ast **ast, char **tokens, int *i,
-							int n);
+int						parse_heredoc(t_ast **ast, char **t, int *i, int n);
+void					get_dollar_hd(t_heredoc *hd);
 int						parse_append(t_ast **ast, char **tokens, int *i);
 
 char					*quotes_destroyer(char *s, int i, int k, int token);
