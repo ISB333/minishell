@@ -62,7 +62,6 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 }
 
 // ! Heredoc syscall
-// ! Heredoc 
 
 int	main(int argc, char *argv[], char *env[])
 {

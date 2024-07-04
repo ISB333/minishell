@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/29 09:56:29 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/04 10:51:24 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	*open_pipe_manager(void)
 	char		*s;
 	char		*str;
 
-	printf("OPEN PIPE\n");
 	while (1)
 	{
 		s = readline("> ");

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 09:44:39 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:51:04 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	while (hd)
 	{
 		ft_putstr_fd(hd->s, fd);
-		if (hd->next)
-			ft_putstr_fd("\n", fd);
+		ft_putstr_fd("\n", fd);
 		hd = hd->next;
 	}
 	(*ast)->heredoc = 1;
@@ -122,7 +121,6 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 	char		*ss;
 
 	n++;
-	printf("HEREDOC\n");
 	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);

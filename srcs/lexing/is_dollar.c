@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 10:44:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:59:44 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*join_new_str(char *str, char *new_str, int var_len)
 
 	i = 0;
 	j = 0;
+	if(!str)
+		return(NULL);
 	new_len = ft_strlen(str) - var_len + ft_strlen(new_str) + 1;
 	str_update = mem_manager(new_len, 0, 0, 'A');
 	while (str[j] != '$')
@@ -66,7 +68,7 @@ int	is_dollar_in_double_quotes(char *s, int k, int i, int token1)
 
 	token2 = 0;
 	while (s[i] && s[i] != 34 && s[i] != 39)
-		i--;
+		--i;
 	if (s[i] == 34 || s[i] == 39)
 		token1 = s[i];
 	while (s[k] && s[k] != 34 && s[k] != 39)

@@ -1894,3 +1894,24 @@ echo '$USER'"$USER"
 exit
 echo '$USER'"$USER"
 exit
+<< del
+<< del | cat
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo "$USER $USER"
+exit
+<< del cat
+exit
+<< del cat
+exit
+echo "$USER $USER"
+echo '$USER'"$USER"
+exit
