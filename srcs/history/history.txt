@@ -1915,3 +1915,86 @@ exit
 echo "$USER $USER"
 echo '$USER'"$USER"
 exit
+< Makefile cat > out | echo lol
+echo lol | < Makefile cat > out
+echo lol | << del cat 
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+EXIT
+exit
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo lol | << del cat 
+echo '$USER'"$USER"
+exit
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+<< del
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+echo $USER $USER
+exit
+echo $USER $USER
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+echo "$USER $USER"
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+echo $USER $USER
+exit
+echo $USER $USER
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+q
+<< del cat
+exit

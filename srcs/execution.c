@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 10:19:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 11:13:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	call_builtins(t_ast *ast, int c)
 {
+	// int	return_code;
 	if (c == CD)
 		return (ft_cd(ast));
 	if (c == PWD)
@@ -44,6 +45,36 @@ int	child(t_ast *ast)
 	return (0);
 }
 
+int	executor(t_ast *ast, char *env[])
+{
+	if (pipe(ast->pipe_fd) == -1)
+		return (write(2, strerror(errno), strlen(strerror(errno))), errno);
+	ast->pid = fork();
+	if (ast->pid == -1)
+		return (errno);
+	if (ast->pid == 0)
+	{
+		if (child(ast) == -1)
+			return (1);
+		if (is_builtin(ast))
+			call_builtins(ast, is_builtin(ast));
+		else if (execve(ast->cmd_path, ast->cmd, env) == -1)
+			return (perror("execve"), 1);
+		mem_manager(0, 0, 0, 'C'); // TODO : 1 clean function
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		if (close(ast->pipe_fd[1]) == -1)
+			return (-1);
+		if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
+			return (-1);
+		if (close(ast->pipe_fd[0]) == -1)
+			return (-1);
+	}
+	return (0);
+}
+
 int	warlord_executor(t_ast *ast, char *env[])
 {
 	t_ast	*wait;
@@ -63,32 +94,8 @@ int	warlord_executor(t_ast *ast, char *env[])
 		}
 		else
 		{
-			if (pipe(ast->pipe_fd) == -1)
-				return (write(2, strerror(errno), strlen(strerror(errno))), errno);
-			ast->pid = fork();
-			if (ast->pid == -1)
-				return (errno);
-			if (ast->pid == 0)
-			{
-				if (child(ast) == -1)
-					return (1);
-				if (is_builtin(ast))
-					call_builtins(ast, is_builtin(ast));
-				else if (execve(ast->cmd_path, ast->cmd, env) == -1)
-						return (perror("execve"), 1);
-				mem_manager(0, 0, 0, 'C');
-				exit(EXIT_SUCCESS);
-			}
-			else
-			{
-				if (close(ast->pipe_fd[1]) == -1)
-					return (-1);
-				if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
-					return (-1);
-				if (close(ast->pipe_fd[0]) == -1)
-					return (-1);
-				ast = ast->next;
-			}
+			executor(ast, env);
+			ast = ast->next;
 		}
 	}
 	while (wait->next)

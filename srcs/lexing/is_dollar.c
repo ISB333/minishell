@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 10:59:44 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:17:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	is_dollar_in_double_quotes(char *s, int k, int i, int token1)
 	int	token2;
 
 	token2 = 0;
-	while (s[i] && s[i] != 34 && s[i] != 39)
-		--i;
-	if (s[i] == 34 || s[i] == 39)
+	while (i > 0 && s[i] && s[i] != 34 && s[i] != 39)
+		i--;
+	if (i > 0 &&s[i] && (s[i] == 34 || s[i] == 39))
 		token1 = s[i];
 	while (s[k] && s[k] != 34 && s[k] != 39)
 		k++;
