@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/03 15:44:24 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/04 09:58:07 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline
 CC = cc 
 
 DEFAULT = \033[0;39m
@@ -28,6 +28,7 @@ SRCS = main.c \
 	./srcs/get_prompt.c \
 	./srcs/memory_manager.c \
 	./srcs/memory_manager_utils.c \
+	./srcs/execution.c \
 	./srcs/history/gnl.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
@@ -45,6 +46,10 @@ SRCS = main.c \
 	./srcs/parsing/parse_utils2.c \
 	./srcs/parsing/parse_utils3.c \
 	./srcs/parsing/parse_utils4.c \
+	./srcs/builtins/cd.c \
+	./srcs/builtins/echo.c \
+	./srcs/builtins/export.c \
+	./srcs/builtins/pwd.c \
 	./sigHandler.c
 
 DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)

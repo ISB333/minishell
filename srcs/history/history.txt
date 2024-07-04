@@ -1693,3 +1693,338 @@ exit
 < out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
 < out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
 < out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
+< Makefile cat
+< Makefile cat
+< Makefile cat
+< Makefile cat
+< in cat
+< in cat
+< in cat
+< in cat | < Makefile cat 
+ls
+ls -la
+exit
+ls -la
+< in cat | < Makefile cat 
+exit
+< in cat | < Makefile cat 
+ls
+exit
+< in cat | < Makefile cat 
+< in cat | < Makefile cat 
+adesille@k1r2p12:~/Desktop/minishell/minishell$ adesille@k1r2p12:~/Desktop/minishell/minishell$ 
+adesille@k1r2p12:~/Desktop/minishell/minishell$ 
+[0;33m
+============= LINKED_LIST =============
+
+[0;37m[0;33m
+       ------- LIST n°1 -------
+
+[0;37mfd_in = 0
+fd_out = 0
+minihell: adesille@k1r2p12:~/Desktop/minishell/minishell$: No such file or directory
+error_code = 127
+[0m
+
+< in cat | < Makefile cat 
+exit
+< in cat | < Makefile cat 
+ls -la
+exit
+< in cat | < Makefile cat 
+ls -la
+exit
+< in cat | < Makefile cat 
+ls -la
+ls -la
+ls -la
+< in cat | < Makefile cat 
+ls -la
+exit
+< in cat | < Makefile cat 
+ls -la
+exit
+< in cat | < Makefile cat 
+ls -la
+exit
+echo loool
+echo plop
+echo lol
+pwd
+cd ..
+cd 
+cd 
+cd 
+cd ~
+cd ..
+cd /home
+exit
+exit
+exit
+echo lol
+exit
+exit
+exit
+exit
+echo lol
+exit
+cd srcs
+cd ..
+cd ..
+cd  srcs
+cd  srcs
+export
+export
+exit
+cd srcs
+cd srcs
+cd srcs
+cd srcs
+cd ..
+echo lol
+echo lol | cat
+echo lol | cat
+exit
+echo lol | cat
+cat | cat | ls
+xt
+cat | cat | ls
+cat | cat | ls
+xt
+xt
+xt
+xt
+xt
+xt
+xt
+xt
+xt
+xt
+xt
+exit
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+cd ..
+cd ..
+cd ..
+exit
+cd ..
+exit
+cd ..
+exit
+cd ..
+cat | cat | ls
+cat | cat | ls
+exit
+cat | cat | ls
+ls -la
+echo lol | cat
+echo lol | cat >out
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+ls -la
+exit
+cat | cat | ls
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+cat | cat | ls
+exit
+cd ..
+cd ..
+<< del
+echo "$USER $SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER""$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER" '$USER' "$SESSION_MANAGER"
+echo "$USER" '$USER' "$SESSION_MANAGER"
+echo $USER
+EXIT
+echo $USER
+echo "$USER"
+echo '$USER'
+echo "test"'$USER'
+echo "$USER"'$USER'
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+exit
+<< del
+<< del | cat
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo "$USER $USER"
+exit
+<< del cat
+exit
+<< del cat
+exit
+echo "$USER $USER"
+echo '$USER'"$USER"
+exit
+< Makefile cat > out | echo lol
+echo lol | < Makefile cat > out
+echo lol | << del cat 
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+EXIT
+exit
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo lol | << del cat 
+echo '$USER'"$USER"
+exit
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+exit
+echo lol | << del cat 
+<< del
+<< del cat
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+echo $USER $USER
+exit
+echo $USER $USER
+exit
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+<< del cat
+exit
+<< del cat
+echo "$USER $USER"
+exit
+<< del cat
+exit
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+echo $USER $USER
+exit
+echo $USER $USER
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+exit
+<< del cat
+<< del cat
+q
+<< del cat
+exit
+cd ..
+cd ..
+echo lol
+cd srcs
+cd srcs
+cd srcs
+cd srcs
+cd ..
+cd ..
+cd ..
+cd ...
+exit
+cd 
+cd ...
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd 
+ls]
+ls
+cd goinfre/
+pwd
+cd ..
+cd 
+ls
+ls -la
+exit
+exit

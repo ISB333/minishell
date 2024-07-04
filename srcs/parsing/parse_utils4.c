@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 15:52:41 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/04 13:47:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,26 @@ void	get_dollar_hd(t_heredoc *hd)
 {
 	char	*env_var;
 	char	*new_str;
-	int		i;
 	int		k;
+	int		j;
 
 	while (hd)
 	{
 		while (is_dollar(hd->s, '?'))
 		{
-			i = is_dollar(hd->s, 0);
-			k = i;
-			while (!is_del(hd->s[k]) && hd->s[k] && hd->s[k] != 34
-				&& hd->s[k] != 39)
-				k++;
-			env_var = ft_substr(hd->s, i + 1, k - i - 1);
-			if (!ft_strncmp(&hd->s[i], "$?", 2))
+			k = is_dollar(hd->s, 0);
+			j = k;
+			while (!is_del(hd->s[j]) && hd->s[j] && hd->s[j] != 34
+				&& hd->s[j] != 39)
+				j++;
+			env_var = ft_substr(hd->s, k + 1, j - k - 1);
+			if (!ft_strncmp(&hd->s[k], "$?", 2))
 				new_str = ft_itoa(g_error_code);
 			else
 				new_str = getenv(env_var);
 			if (!new_str)
 				new_str = ft_strdup("\0");
-			hd->s = join_new_str(hd->s, new_str, k - i);
+			hd->s = join_new_str(hd->s, new_str, j - k, 0);
 		}
 		hd = hd->next;
 	}
