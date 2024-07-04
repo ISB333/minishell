@@ -1,5 +1,12 @@
 {
 	"files.associations": {
 		"get_next_line.h": "c"
-	}
+	},
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/adesille/Desktop/minishell/minishell",
+			"binaryPath": "/home/adesille/Desktop/minishell/minishell/minishell",
+			"binaryArgs": []
+		}
+	]
 }

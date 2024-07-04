@@ -16,7 +16,6 @@
    obj:/usr/bin/ls
    fun:(below main)
 }
-
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -24,20 +23,14 @@
    fun:calloc
    ...
    fun:readline
-   fun:prompt3
-   fun:prompt
-   fun:main
 }
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
    match-leak-kinds: reachable
    fun:malloc
-   fun:xmalloc
    ...
    fun:add_history
-   ...
-   fun:main
 }
 {
    <insert_a_suppression_name_here>
@@ -54,16 +47,6 @@
    fun:malloc
    ...
    fun:readline
-   fun:prompt3
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   ...
-   fun:readline
-   fun:prompt3
 }
 {
    <insert_a_suppression_name_here>
@@ -89,22 +72,6 @@
    fun:calloc
    ...
    fun:add_history
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   ...
-   fun:readline
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   ...
-   fun:readline
 }
 {
    <insert_a_suppression_name_here>

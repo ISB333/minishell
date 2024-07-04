@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 16:13:01 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/04 09:40:33 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@
 # define RED "\033[0;31m"
 # define DEF "\033[0m"
 
+# define CD 1
+# define PWD 2
+# define EXPORT 3
+# define UNSET 4
+# define ENV 5
+# define ECH 6
+
 extern int				g_error_code;
 
 typedef struct s_prompt
@@ -58,6 +65,7 @@ typedef struct s_ast
 	int					fd_in;
 	int					fd_out;
 	int					pipe_fd[2];
+	pid_t				pid;
 	int					pipe;
 	int					new_line;
 
@@ -144,7 +152,7 @@ int						parser(t_ast **ast, char *s, int i);
 // utils //
 void					init_lst(t_ast **ast);
 t_ast					*return_tail(t_ast *ast);
-int						cmd_path_init(t_ast *ast, int i);
+int						cmd_path_init(t_ast **ast, int i);
 
 int						parse_redir(t_ast **ast, char **tokens, int i, int n);
 int						parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -162,6 +170,11 @@ void					*mem_manager(size_t size, void *ptr, int fd, int token);
 void					*ff(t_memman *mem_list);
 int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
+
+/// builins ///
+int						ft_cd(t_ast *ast);
+int						ft_echo(t_ast *data);
+int						ft_pwd(void);
 
 // sigHandler.c
 int						catchBackslash(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 17:06:57 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/04 09:06:40 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	exit_check(t_ast *ast)
 		return ;
 	if (!ast->next)
 	{
-		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit"))
 		{
 			if (ast->cmd[1])
 			{
@@ -177,7 +177,6 @@ int	add_node(t_ast **ast, char **tokens)
 	t_ast		*new_node;
 	t_ast		*last_node;
 
-	n++;
 	new_node = mem_manager(sizeof(t_ast), 0, 0, 'A');
 	new_node->next = NULL;
 	init_lst(&new_node);
@@ -189,7 +188,7 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node->next = new_node;
 	}
 	lst_parse(&new_node, tokens, 0, n);
-	cmd_path_init(new_node, -1);
+	cmd_path_init(&new_node, -1);
 	return (0);
 }
 

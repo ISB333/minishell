@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/01 13:00:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 09:40:45 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,21 @@ int	is_redir_in_arr(char **array)
 
 int	is_builtin(t_ast *ast)
 {
-	if (!ft_strcmp(ast->cmd[0], "cd") || !ft_strcmp(ast->cmd[0], "pwd"))
-		return (1);
-	if (!ft_strcmp(ast->cmd[0], "export") || !ft_strcmp(ast->cmd[0], "unset"))
-		return (1);
-	if (!ft_strcmp(ast->cmd[0], "env") || !ft_strcmp(ast->cmd[0], "exit"))
-		return (1);
+	if (!ast || !ast->cmd)
+		return (0);
+	if (!ft_strcmp(ast->cmd[0], "cd"))
+		return (CD);
+	if (!ft_strcmp(ast->cmd[0], "pwd"))
+		return (PWD);
+	if (!ft_strcmp(ast->cmd[0], "export"))
+		return (EXPORT);
+	if (!ft_strcmp(ast->cmd[0], "unset"))
+		return (UNSET);
+	if (!ft_strcmp(ast->cmd[0], "env"))
+		return (ENV);
 	if (!ft_strcmp(ast->cmd[0], "echo"))
+		return (ECH);
+	if (!ft_strcmp(ast->cmd[0], "exit"))
 		return (1);
 	return (0);
 }
