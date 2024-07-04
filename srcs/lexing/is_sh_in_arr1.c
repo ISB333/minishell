@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/03 09:43:07 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:37:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	is_dollar_utils(char **arr, int i, int k, int pos)
 		k = -1;
 		while (arr[i][++k])
 		{
-			if (arr[i][k] == '$' && pos == 'i')
+			if (arr[i][k] == '$' && pos == 'i' && is_dollar_in_double_quotes(arr[i], k, k, 0))
 				return (i);
-			if (arr[i][k] == '$' && pos == 'k')
+			if (arr[i][k] == '$' && pos == 'k' && is_dollar_in_double_quotes(arr[i], k, k, 0))
 				return (k);
 		}
 	}

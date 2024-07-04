@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 09:40:33 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:37:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define UNSET 4
 # define ENV 5
 # define ECH 6
+# define DUP_STD 20
+# define CLOSE_STD 21
 
 extern int				g_error_code;
 
@@ -97,6 +99,7 @@ typedef struct s_heredoc
 }						t_heredoc;
 
 char					*get_prompt(void);
+int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
 
 /// History ///
@@ -124,6 +127,8 @@ int						is_path(char *s);
 int						is_dollar(char *s, int token);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
+int						is_dollar_in_double_quotes(char *s, int k, int i,
+							int token1);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);

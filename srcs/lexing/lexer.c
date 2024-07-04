@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:05:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 10:30:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ char	**lexer(char *s)
 	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
 	tokens[len] = NULL;
 	tokens = splitter(tokens, s);
+	int i = -1;
+	while(tokens[++i])
+		printf("%s\n", tokens[i]);
 	while (is_dollar_in_arr(tokens, 0, '?', 0))
 		get_dollar(tokens);
 	return (tokens);

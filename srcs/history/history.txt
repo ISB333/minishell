@@ -1845,3 +1845,52 @@ echo lol | cat >>out
 exit
 echo lol | cat >>out
 exit
+echo lol | cat >>out
+exit
+echo lol | cat >>out
+ls -la
+exit
+cat | cat | ls
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+exit
+cat | cat | ls
+cat | cat | ls
+exit
+cd ..
+cd ..
+<< del
+echo "$USER $SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER""$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER" '$USER' "$SESSION_MANAGER"
+echo "$USER" '$USER' "$SESSION_MANAGER"
+echo $USER
+EXIT
+echo $USER
+echo "$USER"
+echo '$USER'
+echo "test"'$USER'
+echo "$USER"'$USER'
+echo "$USER"'$USER'"$SESSION_MANAGER"
+echo "$USER"'$USER'
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$SESSION_MANAGER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+echo '$USER'"$USER"
+exit
+echo '$USER'"$USER"
+exit

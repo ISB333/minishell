@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/04 07:07:19 by adesille         ###   ########.fr        #
+#    Updated: 2024/07/04 09:58:07 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = main.c \
 	./srcs/get_prompt.c \
 	./srcs/memory_manager.c \
 	./srcs/memory_manager_utils.c \
+	./srcs/execution.c \
 	./srcs/history/gnl.c \
 	./srcs/history/gnl_utils.c \
 	./srcs/history/manage_history.c \
