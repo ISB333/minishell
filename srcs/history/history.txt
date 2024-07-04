@@ -1998,3 +1998,33 @@ exit
 q
 << del cat
 exit
+cd ..
+cd ..
+echo lol
+cd srcs
+cd srcs
+cd srcs
+cd srcs
+cd ..
+cd ..
+cd ..
+cd ...
+exit
+cd 
+cd ...
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd 
+ls]
+ls
+cd goinfre/
+pwd
+cd ..
+cd 
+ls
+ls -la
+exit
+exit

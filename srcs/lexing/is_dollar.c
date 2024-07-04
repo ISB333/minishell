@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 12:17:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:46:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,16 @@ int	is_dollar(char *s, int token)
 	return (0);
 }
 
-char	*join_new_str(char *str, char *new_str, int var_len)
+char	*join_new_str(char *str, char *new_str, int var_len, int i)
 {
 	char	*str_update;
 	int		new_len;
-	int		i;
 	int		k;
 	int		j;
 
-	i = 0;
 	j = 0;
-	if(!str)
-		return(NULL);
+	if (!str)
+		return (NULL);
 	new_len = ft_strlen(str) - var_len + ft_strlen(new_str) + 1;
 	str_update = mem_manager(new_len, 0, 0, 'A');
 	while (str[j] != '$')
@@ -69,7 +67,7 @@ int	is_dollar_in_double_quotes(char *s, int k, int i, int token1)
 	token2 = 0;
 	while (i > 0 && s[i] && s[i] != 34 && s[i] != 39)
 		i--;
-	if (i > 0 &&s[i] && (s[i] == 34 || s[i] == 39))
+	if (i > 0 && s[i] && (s[i] == 34 || s[i] == 39))
 		token1 = s[i];
 	while (s[k] && s[k] != 34 && s[k] != 39)
 		k++;
@@ -133,5 +131,5 @@ void	get_dollar(char **arr)
 		new_str = getenv(env_var);
 	if (!new_str)
 		new_str = ft_strdup("\0");
-	arr[i] = join_new_str(arr[i], new_str, j - k);
+	arr[i] = join_new_str(arr[i], new_str, j - k, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 10:37:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:47:28 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <unistd.h>
 
 # define RED "\033[0;31m"
+# define BLUE "\033[0;34m"
 # define DEF "\033[0m"
 
 # define CD 1
@@ -110,8 +111,7 @@ int						add_previous_history(void);
 /// Lexing ///
 char					**lexer(char *str);
 void					get_dollar(char **arr);
-char					***split_array(char ***array, char **tokens, int i,
-							int k);
+char					***split_array(char ***arr, char **tok, int i, int k);
 int						lexer_utils(char ****array, char **tokens);
 
 // is_??? //
@@ -149,7 +149,7 @@ int						split_utils_quotes(t_split *i, char *s, char **array);
 int						open_quotes(char *s);
 int						array_len(char **tokens);
 char					*open_pipe_manager(void);
-char					*join_new_str(char *str, char *new_str, int var_len);
+char					*join_new_str(char *str, char *new_str, int len, int i);
 
 /// Parsing ///
 int						parser(t_ast **ast, char *s, int i);

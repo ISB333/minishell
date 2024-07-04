@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 09:06:40 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:41:44 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ void	print_lst(t_ast *ast)
 {
 	int		i;
 	int		n;
-	// char	buffer[10000];
-	// int		bytes;
-	// char	buff[10000];
-	// int		byte;
 
 	n = 1;
 	if (!ast)
@@ -41,20 +37,6 @@ void	print_lst(t_ast *ast)
 		}
 		printf("fd_in = %d\n", ast->fd_in);
 		printf("fd_out = %d\n", ast->fd_out);
-		// if (ast->fd_in)
-		// {
-		// 	printf("INFILE\n");
-		// 	bytes = read(ast->fd_in, buffer, 10000);
-		// 	buffer[bytes] = '\0';
-		// 	printf("%s\n", buffer);
-		// }
-		// if (ast->fd_out)
-		// {
-		// 	printf("OUTFILE\n");
-		// 	byte = read(ast->fd_out, buff, 10000);
-		// 	buff[byte] = '\0';
-		// 	printf("%s\n", buff);
-		// }
 		if (ast->append)
 			printf("APPEND\n");
 		if (ast->pipe)
@@ -166,8 +148,6 @@ int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 		else
 			parse_cmd(ast, tokens, &i, -1);
 	}
-	// if (!(*ast)->fd_out)
-	// 	(*ast)->fd_out = 1;
 	return (0);
 }
 
@@ -246,6 +226,5 @@ int	parser(t_ast **ast, char *s, int i)
 			break ;
 	}
 	exit_check(*ast);
-	// print_lst(*ast);
 	return (0);
 }

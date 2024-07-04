@@ -6,22 +6,26 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 11:13:37 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:44:47 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	call_builtins(t_ast *ast, int c)
+int	call_builtins(t_ast **ast, int c)
 {
-	// int	return_code;
+	int	return_code;
+
 	if (c == CD)
-		return (ft_cd(ast));
+	{
+		return_code = ft_cd(*ast);
+		*ast = (*ast)->next;
+	}
 	if (c == PWD)
-		return (ft_pwd());
+		return_code = ft_pwd();
 	if (c == ECH)
-		return (ft_echo(ast));
-	return (0);
+		return_code = ft_echo(*ast);
+	return (return_code);
 }
 
 int	child(t_ast *ast)
@@ -88,10 +92,7 @@ int	warlord_executor(t_ast *ast, char *env[])
 			ast = ast->next;
 		}
 		else if (is_builtin(ast) == CD)
-		{
-			call_builtins(ast, is_builtin(ast));
-			ast = ast->next;
-		}
+			call_builtins(&ast, is_builtin(ast));
 		else
 		{
 			executor(ast, env);

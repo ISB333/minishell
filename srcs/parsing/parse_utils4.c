@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 12:09:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:47:12 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	get_dollar_hd(t_heredoc *hd)
 				new_str = getenv(env_var);
 			if (!new_str)
 				new_str = ft_strdup("\0");
-			hd->s = join_new_str(hd->s, new_str, j - k);
+			hd->s = join_new_str(hd->s, new_str, j - k, 0);
 		}
 		hd = hd->next;
 	}

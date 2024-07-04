@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 15:35:17y isb3             ###   ########.fr       */
+/*   Updated: 2024/07/04 13:48:38 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	prompt(char **rl)
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
+	printf(BLUE);
 	s = readline(prompt);
+	printf(DEF);
 	if (!s || !ft_strlen(s))
 		return (free(s), 1);
 	*rl = ft_strdup(s);
@@ -61,7 +63,6 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 	return (0);
 }
 
-// ! Heredoc syscall
 int	main(int argc, char *argv[], char *env[])
 {
 	int		stdin_origin;
