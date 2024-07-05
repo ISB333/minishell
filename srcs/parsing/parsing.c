@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 11:19:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:24:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,56 +200,7 @@ int	syntax_checker(char **tokens, int i)
 	return (0);
 }
 
-int	add_node_local_var(char *var, t_local_var **local)
-{
-	t_local_var	*new_node;
-	t_local_var	*last_node;
-
-	new_node = mem_manager(sizeof(t_local_var), 0, 0, 'A');
-	new_node->var = ft_strdup(var);
-	new_node->next = NULL;
-	if (!*local)
-		*local = new_node;
-	else
-	{
-		last_node = *local;
-		while (last_node->next)
-			last_node = last_node->next;
-		last_node->next = new_node;
-	}
-	return (0);
-}
-
-int	local_var_manager(char **tokens, t_local_var **local)
-{
-	int	i;
-
-	i = 0;
-	if (is_only_local_var(tokens, 0, -1, 0))
-	{
-		while (is_local_var_in_arr(tokens, i, -1, 0))
-		{
-			if (is_local_var_in_arr(tokens, i, -1, 'y'))
-			{
-				add_node_local_var(tokens[i], local);
-				tokens[i] = ft_strdup("");
-			}
-			i++;
-		}
-	}
-	return (0);
-}
-
-/*
-	- If local_var cmd 
-		-> local var ignored, cmd executed
-	- If only_local_var
-		-> local_var assigned for export
-	- if there's pipe
-		-> every local_var are ignored 
-*/
-
-int	parser(t_ast **ast, char *s, int i, t_local_var **local)
+int	parser(t_ast **ast, char *s, int i)
 {
 	char	**tokens;
 	char	***array;
@@ -274,7 +225,5 @@ int	parser(t_ast **ast, char *s, int i, t_local_var **local)
 		else
 			break ;
 	}
-	// if (is_only_local_var(tokens, 0, -1, 0))
-	// 	return (local_var_manager(tokens, local));
 	return (0);
 }

@@ -2270,3 +2270,63 @@ exit
 < Makefile << del cat
 < Makefile << del cat
 exit
+echo hello world
+exit 298
+echo hello world
+a=5
+exit
+a=5
+exit
+a=5
+exit
+a=5
+exit
+a=5
+a=5 | echo lol
+a=5 c=7
+exit
+a=5 c=7
+exit
+exit 250
+echo lol
+exit
+echo lol | cat
+exit
+echo lol | cat | ls
+exit
+echo lol | cat | ls
+echo lol | cat | cat 
+echo lol | cat | cat 
+cat | cat | cat | cat | cat | cat | cat | ls
+./minishell
+exit
+cat | cat | cat | cat | cat | cat | cat | ls
+exit
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+echo lol
+exit
+echo lol
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo test
+echo test
+echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
+exit
+echo lol >>out2
+echo lol >>./out2
+echo lol >>./out/out2
+exit

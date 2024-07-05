@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 09:56:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:27:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,6 @@ typedef struct s_heredoc
 	struct s_heredoc	*next;
 }						t_heredoc;
 
-typedef struct s_local_var
-{
-	char				*var;
-	struct s_local_var	*next;
-}						t_local_var;
-
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
@@ -143,8 +137,6 @@ int						is_append_in_arr(char **array);
 int						is_heredoc_in_arr(char **array);
 int						is_open_pipe_in_arr_arr(char ***array);
 int						is_open_pipe_in_arr(char **array);
-int						is_local_var_in_arr(char **arr, int i, int k, int tok);
-int						is_only_local_var(char **arr, int i, int k, int token);
 int						is_builtin(t_ast *ast);
 int						is_only_del(char *s);
 int						is_there_quotes_in_da_shit(char *s);
@@ -161,8 +153,7 @@ char					*open_pipe_manager(void);
 char					*join_new_str(char *str, char *new_str, int len, int i);
 
 /// Parsing ///
-int						parser(t_ast **ast, char *s, int i,
-							t_local_var **local);
+int						parser(t_ast **ast, char *s, int i);
 
 // utils //
 void					init_lst(t_ast **ast);

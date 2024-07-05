@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 11:59:39 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:49:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		g_error_code = 0;
 // ! TODO : Add -Werror
 
 // TODO : modify functions where there's get_env
-// TODO : create linked list for env/export variable
 // TODO : Find a way to print the error msg after all the waitpid
+// TODO : execute files
 
 int	prompt(char **rl)
 {
@@ -65,10 +65,8 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 }
 
 /*
-	adesille@k1r2p12:~/Desktop/minishell/minishell$ &=9
-		bash: syntax error near unexpected token `&'
-	adesille@k1r2p12:~/Desktop/minishell/minishell$ ^=8
-		bash: :s^=8: substitution failed
+	adesille@k1r2p12:~/Desktop/minishell/minishell$ ./minishell
+	minihell: ./minishell: command not found
 */
 
 int	main(int argc, char *argv[], char *env[])
@@ -76,14 +74,12 @@ int	main(int argc, char *argv[], char *env[])
 	int			stdin_origin;
 	int			stdout_origin;
 	t_ast		*ast;
-	t_local_var	*local;
 	char		*rl;
 
 	// catchBackslash();
 	// catchC();
 	(void)argc;
 	(void)argv;
-	local = NULL;
 	while (1)
 	{
 		rl = NULL;
@@ -92,17 +88,12 @@ int	main(int argc, char *argv[], char *env[])
 		if (!prompt(&rl))
 		{
 			history(rl);
-			if (parser(&ast, rl, -1, &local))
+			if (parser(&ast, rl, -1))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
-			while (local)
-			{
-				printf("%s\n", local->var);
-				local = local->next;
-			}
 			exit_check(ast);
 			// print_lst(ast);
-			if (warlord_executor(ast, env))
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+			// if (warlord_executor(ast, env))
+			// 	return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
 		}
 		stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 	}
