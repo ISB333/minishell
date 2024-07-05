@@ -2058,3 +2058,215 @@ exit
 exit
 echo lol
 exit
+ct
+exit
+ct
+exit
+echo lol | exit | cat
+exit 200
+exit | echo lol
+exit
+a=5
+exit
+a=5
+exit
+a=5
+a=5
+a=5
+a =5
+a =5
+export a=
+a=8
+a=5 | echo lol
+exit
+a=5 | echo lol
+a=5
+a=5
+a=5
+a=5
+a=5
+a=5
+a=5
+a=5
+a=5
+exit
+a=5 | cat
+b= 5 | cat
+b =5 | cat
+b=5 =7
+b=5 c=7
+exit
+b=5 c=7
+echo lol
+exit
+echo lol
+echo ur mom fat
+exit
+echo ur mom fat
+exit
+echo ur mom fat
+exit
+make
+exit
+echo ur mom fat
+a=5
+exit
+echo lol
+EXIT
+exit
+eexit
+exit
+cd ../minishell/srcs/../srcs
+cd ../minishell/srcs/../srcs
+cd ../minishell/srcs
+cd ../minishell/
+cd ..
+cd ..
+cd srcs
+cd srcs
+cd srcs
+cd ..
+cd ../minishell/srcs/../srcs
+exit
+cd ../minishell/srcs/../srcs
+cd ../minishell/srcs/..
+cd ..
+cd ../minishell/srcs/..
+cd ../minishell/srcs/../srcs/history/../history
+exit
+a=5
+a=5
+a=5
+a=5 c=7
+a=5 | echo lol
+warlord_executor
+exit
+a=5 | echo lol
+exit
+a=5 | echo lol
+exit
+a=5 | echo lol
+ei
+xtmk
+a=5 | echo lol
+a=5 | echo lol
+exit
+a=5 | echo lol
+exit
+exit
+a=5 | echo lol
+exit
+exit
+a=5 | echo lol
+exit
+a=5 | echo lol
+exit
+xit
+exit
+a=5 | echo lol
+exit
+a=5 | echo lol
+exit
+a=5 c =7
+a=5 c=7
+a=5 c=7
+echo lol | a=5
+exit
+echo lol | a=5
+exit
+echo lol | a=5
+exit
+echo lol | a=5
+a=5c =7
+a=5 c=7
+exit
+a=5 c=7
+a=5c =7
+exit
+a=5c =7
+exit
+a=5
+exit
+a=5
+exit
+a=5
+a=5c =7
+exit
+a=5c =7
+a=5c | echo lol
+exit
+a=5c | echo lol
+a=5c | ec
+exit
+a=5c | echo lol
+exit
+exit
+a=5c | echo lol
+a=5c | echo lol
+a=5c | echo lol
+exit
+a=5c | echo lol
+exit
+a=5c | echo lol
+exit
+a=5c | echo lol
+exit
+a=5c | echo lol
+exit
+a=5c | echo lol
+a=5c c=8 b=9
+exit
+a=5c c=8 b=9
+exit
+a=5c c=8 b=9
+exit
+exit
+echo lol
+exit
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+<< del cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+echo lol
+< Makefile
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+l
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile cat
+exit
+< Makefile << del cat
+exit
+< Makefile << del cat
+< Makefile << del cat
+exit

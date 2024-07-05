@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:41:44 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:19:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_lst(t_ast *ast)
 {
-	int		i;
-	int		n;
+	int	i;
+	int	n;
 
 	n = 1;
 	if (!ast)
@@ -44,7 +44,7 @@ void	print_lst(t_ast *ast)
 		if (ast->new_line)
 			printf("NEWLINE\n");
 		if (ast->error)
-			printf("%s\n", ast->error);
+			printf("ERROR: %s\n", ast->error);
 		ast = ast->next;
 		n++;
 	}
@@ -179,8 +179,8 @@ int	syntax_checker(char **tokens, int i)
 				tokens[i + 1]));
 	while (tokens[++i])
 	{
-		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
-			&& !tokens[i + 1])
+		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0) && !tokens[i
+			+ 1])
 		{
 			printf("minihell: syntax error near unexpected token 'newline'\n");
 			return (1);
@@ -188,7 +188,7 @@ int	syntax_checker(char **tokens, int i)
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
 			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
-					|| !is_append(tokens[i + 1], 0, 0)
+					|| !is_append(tokens[i + 1], 0, 0) 
 					|| !is_heredoc(tokens[i + 1], 0, 0)))
 			{
 				printf("minihell: syntax error near unexpected token '%s'\n",
@@ -200,7 +200,56 @@ int	syntax_checker(char **tokens, int i)
 	return (0);
 }
 
-int	parser(t_ast **ast, char *s, int i)
+int	add_node_local_var(char *var, t_local_var **local)
+{
+	t_local_var	*new_node;
+	t_local_var	*last_node;
+
+	new_node = mem_manager(sizeof(t_local_var), 0, 0, 'A');
+	new_node->var = ft_strdup(var);
+	new_node->next = NULL;
+	if (!*local)
+		*local = new_node;
+	else
+	{
+		last_node = *local;
+		while (last_node->next)
+			last_node = last_node->next;
+		last_node->next = new_node;
+	}
+	return (0);
+}
+
+int	local_var_manager(char **tokens, t_local_var **local)
+{
+	int	i;
+
+	i = 0;
+	if (is_only_local_var(tokens, 0, -1, 0))
+	{
+		while (is_local_var_in_arr(tokens, i, -1, 0))
+		{
+			if (is_local_var_in_arr(tokens, i, -1, 'y'))
+			{
+				add_node_local_var(tokens[i], local);
+				tokens[i] = ft_strdup("");
+			}
+			i++;
+		}
+	}
+	return (0);
+}
+
+/*
+	- If local_var cmd 
+		-> local var ignored, cmd executed
+	- If only_local_var
+		-> local_var assigned for export
+	- if there's pipe
+		-> every local_var are ignored 
+*/
+
+int	parser(t_ast **ast, char *s, int i, t_local_var **local)
 {
 	char	**tokens;
 	char	***array;
@@ -225,6 +274,7 @@ int	parser(t_ast **ast, char *s, int i)
 		else
 			break ;
 	}
-	exit_check(*ast);
+	// if (is_only_local_var(tokens, 0, -1, 0))
+	// 	return (local_var_manager(tokens, local));
 	return (0);
 }

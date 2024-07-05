@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:30:24 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/05 10:13:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	init_lst(t_ast **ast)
 	(*ast)->cmd = NULL;
 	(*ast)->cmd_path = NULL;
 	(*ast)->error = NULL;
+	(*ast)->pid = 0;
 	(*ast)->heredoc = 0;
 	(*ast)->fd_in = 0;
 	(*ast)->fd_out = 0;

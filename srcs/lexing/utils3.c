@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 10:51:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 07:37:25 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,25 @@ char	*open_pipe_manager(void)
 		}
 	}
 	return (NULL);
+}
+
+int	is_builtin(t_ast *ast)
+{
+	if (!ast || !ast->cmd)
+		return (0);
+	if (!ft_strcmp(ast->cmd[0], "cd"))
+		return (CD);
+	if (!ft_strcmp(ast->cmd[0], "pwd"))
+		return (PWD);
+	if (!ft_strcmp(ast->cmd[0], "export"))
+		return (EXPORT);
+	if (!ft_strcmp(ast->cmd[0], "unset"))
+		return (UNSET);
+	if (!ft_strcmp(ast->cmd[0], "env"))
+		return (ENV);
+	if (!ft_strcmp(ast->cmd[0], "echo"))
+		return (ECH);
+	if (!ft_strcmp(ast->cmd[0], "exit"))
+		return (EXIT);
+	return (0);
 }

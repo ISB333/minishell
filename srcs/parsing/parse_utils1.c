@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 12:10:32 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:03:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,27 @@ int	check_if_directory(t_ast **ast)
 	if (stat((*ast)->cmd[0], &path_stat) != 0 && access((*ast)->cmd[0], OK))
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	if (((*ast)->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
 		|| ((*ast)->cmd[0][0] == '/' && S_ISDIR(path_stat.st_mode)))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		return (g_error_code = 126, 126);
 	}
 	if (access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
 	{
 		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 1, 1);
+		// return ((*ast)->cmd = NULL, g_error_code = 1, 1);
+		return (g_error_code = 1, 1);
 	}
 	else
 	{
 		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	return (0);
 }
@@ -48,6 +52,8 @@ int	cmd_path_init(t_ast **ast, int i)
 
 	if ((*ast)->cmd == NULL || is_builtin(*ast))
 		return (0);
+	// if (is_local_var((*ast)->cmd[0]))
+	// 	return((*ast)->cmd = NULL, 0);
 	path = extract_path();
 	if (!path)
 	{

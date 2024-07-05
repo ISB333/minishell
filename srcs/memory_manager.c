@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/03 09:09:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:57:16 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,19 @@ void	close_fd(t_memman *mem_list, int fd)
 	}
 }
 
+void	close_all_fds(t_memman *mem_list)
+{
+	while (mem_list)
+	{
+		if (mem_list->type == FD)
+		{
+			close(*(int *)mem_list->ptr);
+			free(mem_list->ptr);
+		}
+		mem_list = mem_list->next;
+	}
+}
+
 void	*free_ptr(t_memman **mem_list, void *ptr)
 {
 	t_memman	*mem_temp;
@@ -122,6 +135,8 @@ void	*mem_manager(size_t size, void *ptr, int fd, int token)
 	}
 	if (token == 'N')
 		close_fd(mem_list, fd);
+	if (token == 'K')
+		close_all_fds(mem_list);
 	if (token == 'F')
 		return (free_ptr(&mem_list, ptr));
 	if (token == 'C')

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 13:46:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:58:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	add_previous_history(void)
 	history = open("/home/adesille/Desktop/minishell/minishell/srcs/history/history.txt", O_RDWR | O_CREAT, 0777);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
-	mem_manager(sizeof(int), 0, history, 'O');
+	mem_manager(0, 0, history, 'O');
 	while (1)
 	{
 		line = gnhell(history);
@@ -40,8 +40,8 @@ int	append_new_history(char *rl)
 	history = open("/home/adesille/Desktop/minishell/minishell/srcs/history/history.txt", O_WRONLY | O_APPEND, 0777);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
+	mem_manager(0, 0, history, 'O');
 	ft_putstr_fd(rl, history);
 	ft_putstr_fd("\n", history);
-	close(history);
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   memory_manager_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:04:38 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 07:17:27 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*error_init(char *msg, char *file)
 	char	*s;
 
 	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
-	return (ft_strjoin(s, msg));
+	s = ft_strjoin(s, msg);
+	s = ft_strjoin(ft_strjoin(RED, s), DEF);
+	return (s);
 }
 
 int	error(char *msg, char *file, int return_code)

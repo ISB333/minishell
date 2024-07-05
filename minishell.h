@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:47:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:56:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define UNSET 4
 # define ENV 5
 # define ECH 6
+# define EXIT 7
 # define DUP_STD 20
 # define CLOSE_STD 21
 
@@ -99,6 +100,12 @@ typedef struct s_heredoc
 	struct s_heredoc	*next;
 }						t_heredoc;
 
+typedef struct s_local_var
+{
+	char				*var;
+	struct s_local_var	*next;
+}						t_local_var;
+
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
@@ -128,7 +135,7 @@ int						is_dollar(char *s, int token);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_dollar_in_double_quotes(char *s, int k, int i,
-							int token1);
+							int tokens);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
@@ -136,6 +143,8 @@ int						is_append_in_arr(char **array);
 int						is_heredoc_in_arr(char **array);
 int						is_open_pipe_in_arr_arr(char ***array);
 int						is_open_pipe_in_arr(char **array);
+int						is_local_var_in_arr(char **arr, int i, int k, int tok);
+int						is_only_local_var(char **arr, int i, int k, int token);
 int						is_builtin(t_ast *ast);
 int						is_only_del(char *s);
 int						is_there_quotes_in_da_shit(char *s);
@@ -152,7 +161,8 @@ char					*open_pipe_manager(void);
 char					*join_new_str(char *str, char *new_str, int len, int i);
 
 /// Parsing ///
-int						parser(t_ast **ast, char *s, int i);
+int						parser(t_ast **ast, char *s, int i,
+							t_local_var **local);
 
 // utils //
 void					init_lst(t_ast **ast);
@@ -177,6 +187,7 @@ int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
 
 /// builins ///
+void					exit_check(t_ast *ast);
 int						ft_cd(t_ast *ast);
 int						ft_echo(t_ast *data);
 int						ft_pwd(void);
