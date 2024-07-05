@@ -2028,3 +2028,33 @@ ls
 ls -la
 exit
 exit
+ls -la
+exit
+ls -la
+echo lol
+echo lol
+exit
+exit
+echo lol
+exit
+echo lol
+< Makefile cat
+exit
+echo lol
+exit
+echo lol
+exit
+echo lol
+exit
+echo lol
+EXIT
+EXIT
+exit
+echo lol
+exit
+lol]
+echo lol
+exit
+exit
+echo lol
+exit
