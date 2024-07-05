@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:48:38 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 07:12:05 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	prompt(char **rl)
 {
 	char	*prompt;
 	char	*s;
+	char	*full_prompt;
 
 	s = NULL;
 	prompt = NULL;
@@ -29,9 +30,8 @@ int	prompt(char **rl)
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
-	printf(BLUE);
-	s = readline(prompt);
-	printf(DEF);
+	full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
+	s = readline(full_prompt);
 	if (!s || !ft_strlen(s))
 		return (free(s), 1);
 	*rl = ft_strdup(s);

@@ -6,11 +6,26 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:44:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/05 06:58:44 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	quit(int token)
+{
+	if (token == EXIT_FAILURE)
+	{
+		mem_manager(0, 0, 0, 'C');
+		exit(EXIT_FAILURE);
+	}
+	if (token == EXIT_SUCCESS)
+	{
+		mem_manager(0, 0, 0, 'C');
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
 
 int	call_builtins(t_ast **ast, int c)
 {
@@ -25,7 +40,7 @@ int	call_builtins(t_ast **ast, int c)
 		return_code = ft_pwd();
 	if (c == ECH)
 		return_code = ft_echo(*ast);
-	return (return_code);
+	return (quit(return_code));
 }
 
 int	child(t_ast *ast)
@@ -61,11 +76,10 @@ int	executor(t_ast *ast, char *env[])
 		if (child(ast) == -1)
 			return (1);
 		if (is_builtin(ast))
-			call_builtins(ast, is_builtin(ast));
+			call_builtins(&ast, is_builtin(ast));
 		else if (execve(ast->cmd_path, ast->cmd, env) == -1)
 			return (perror("execve"), 1);
-		mem_manager(0, 0, 0, 'C'); // TODO : 1 clean function
-		exit(EXIT_SUCCESS);
+		quit(EXIT_FAILURE);
 	}
 	else
 	{
