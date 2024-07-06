@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 13:24:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 06:26:18 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,8 +188,8 @@ int	syntax_checker(char **tokens, int i)
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
 			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
-					|| !is_append(tokens[i + 1], 0, 0) 
-					|| !is_heredoc(tokens[i + 1], 0, 0)))
+					|| !is_append(tokens[i + 1], 0, 0) || !is_heredoc(tokens[i
+						+ 1], 0, 0)))
 			{
 				printf("minihell: syntax error near unexpected token '%s'\n",
 					tokens[i + 1]);
@@ -200,16 +200,17 @@ int	syntax_checker(char **tokens, int i)
 	return (0);
 }
 
-int	parser(t_ast **ast, char *s, int i)
+int	parser(t_ast **ast, char *s)
 {
 	char	**tokens;
 	char	***array;
+	int		i;
 
 	if (is_only_del(s))
 		return (0);
+	i = -1;
 	while (1)
 	{
-		i = -1;
 		tokens = lexer(s);
 		if (syntax_checker(tokens, -1))
 			return (0);

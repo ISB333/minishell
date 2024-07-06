@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:27:33 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/06 11:02:39 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 	if (!dir)
 		return (1);
 	data->curr_dir = ft_strdup(dir);
-	free(dir);
 	if (extract_pos(&data->pos) && getenv("NAME"))
 		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
 	else if (!data->pos)
@@ -110,7 +109,7 @@ char	*get_prompt(void)
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
-	if (init_prompt_data(data, 0, 0, getcwd(NULL, 0)))
+	if (init_prompt_data(data, 0, 0, get_cwdd(0, 0, 'G')))
 		return (NULL);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)

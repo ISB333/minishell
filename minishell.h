@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 13:27:19 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:04:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,18 @@ typedef struct s_heredoc
 	struct s_heredoc	*next;
 }						t_heredoc;
 
+typedef struct s_env
+{
+	char				*var;
+	struct s_env		*next;
+}						t_env;
+
+typedef struct s_cwd
+{
+	char				*dir;
+	struct s_cwd		*next;
+}						t_cwd;
+
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
@@ -153,7 +165,7 @@ char					*open_pipe_manager(void);
 char					*join_new_str(char *str, char *new_str, int len, int i);
 
 /// Parsing ///
-int						parser(t_ast **ast, char *s, int i);
+int						parser(t_ast **ast, char *s);
 
 // utils //
 void					init_lst(t_ast **ast);
@@ -179,12 +191,10 @@ char					*error_init(char *msg, char *file);
 
 /// builins ///
 void					exit_check(t_ast *ast);
-int						ft_cd(t_ast *ast);
-int						ft_echo(t_ast *data);
-int						ft_pwd(void);
-
-// sigHandler.c
-int						catchBackslash(void);
-int						catchC(void);
+char					*get_cwdd(char *cwd, char *new_dir, int token);
+char					*get_envv(char *env[], char *to_find, int token);
+void					echoo(char **arr);
+void					pwdd(void);
+int						cd(char **arr);
 
 #endif

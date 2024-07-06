@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 11:57:32 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:05:06 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	quit(int token)
 	return (0);
 }
 
-int	call_builtins(t_ast **ast, int c, int token)
+int	call_builtins(t_ast *ast, int c, int token)
 {
-	int	return_code;
+	int	return_code = 0;
 
 	if (c == CD)
-		return_code = ft_cd(*ast);
+		return_code = cd(ast->cmd);
 	if (c == PWD)
-		return_code = ft_pwd();
+		pwdd();
 	if (c == ECH)
-		return_code = ft_echo(*ast);
+		echoo(ast->cmd);
 	if (token == 'X')
 		quit(EXIT_SUCCESS);
 	return (return_code);
@@ -79,7 +79,7 @@ int	executor(t_ast *ast, char *env[])
 		if (child(ast) == -1)
 			return (1);
 		if (is_builtin(ast))
-			call_builtins(&ast, is_builtin(ast), 'X');
+			call_builtins(ast, is_builtin(ast), 'X');
 		else
 		{
 			mem_manager(0, 0, 0, 'K');
@@ -110,7 +110,7 @@ int	warlord_executor(t_ast *ast, char *env[])
 	while (ast)
 	{
 		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT)
-			call_builtins(&ast, is_builtin(ast), 0);
+			call_builtins(ast, is_builtin(ast), 0);
 		else if (ast->cmd && !ast->error)
 			executor(ast, env);
 		ast = ast->next;

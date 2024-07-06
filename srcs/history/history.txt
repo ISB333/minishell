@@ -1,2332 +1,387 @@
-ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2ls -la < Makefile | <<lol cat > lol1 >>lol2exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-exit
-ls -la < Makefile | <<lol cat > lol1 >>lol2
-exit
-ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
-exit
-ls -la < Makefile <minishell.h | <<lol cat > lol1 >lol2
-exit
-echo "$USDER"
-echo "$USDER test"
-exit
-echo "$USDER test"
-exit
-echo "$USDER test"
-exit
-echo "$USDER test"
-exit
-echo "$USDER test"
-exit
-echo "$USDER test"
-echo "$USER test"
-exit
-echo "$USER test"
-echo "$U'SER test"
-exit
-echo "$U'SER test"
-exit
-echo "$U""SER test"
-echo "$U'SER test"
-exit
-echo "$U'SER test"
-echo "$U""SER test"
-echo "$USER"" test"
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-echo "$USER"" test"
-exit
-echo "$U'SER test"
-exit
-echo "$U'SER test"
-echo "$USER"" test"
-echo "$USDER"
-exit
-echo "$USDER"
-echo "$USER"" test"
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-exit
-echo "$USER"" test"
-echo "$USER test"
-exit
-echo "$USER test"
-exit
-echo "$USER test"
-echo " test"
-echo "$USER test"
-exit
-echo " test"
-exit
-echo "$USER test"
-exit
-echo "$USER test"
-echo "$USER test"
-echo " test"
-exit
-echo " test"
-exit
-echo " test"
-echo "$USER test"
-exit
-echo "$USER test"
-exit
-exit
-echo "$USER test"
-echo "$US'ER test"
-exit
-echo "$US'ER test"
-exit
-echo "$US'ER test"
-echo "$US'ER test"
-exit
-echo "$US'ER test"
-exit
-echo "$US'ER test"
-exit
-echo "$USER test"
-echo "$US""ER test"
-exit
-echo "$USER test"
-echo "$US'ER test"
-echo "$USER test"
-echo "$USER"
-echo $USER
-exit
-echo $USER
-exit
-echo $USER
-exit
-echo $USER
-echo $USER
-exit
-echo $USER
-echo $USER
-echo $USER
-exit
-echo "$US""ER test"
-exit
-echo $USER
-echo "$USER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$USER test"
-echo "$US'ER test"
-echo "$US"ER test"
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-b splitter
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-echo "hbwn"bhjhbf
-q
-exit
-echo "$US""ER test"
-echo "$US"""
-echo "$US"
-exit
-echo "$US""ER test"
-q
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "hbwn"bhjhbf
-exit
-echo "hbwn"bhjhbf
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-echo "$US""ER test"
-echo "$US""ER test"
-exit
-exit
-echo "$US""ER test"
-exit
-echo "hbwn"bhjhbf
-echo "$USER test"
-echo "$USE'R test"
-echo "$'USE'R test"
-echo "$""USER test"
-exit
-echo "$""USER test"
-echo "$'USE'R test"
-exit
-echo "$""USER test"
-echo "$USER test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$USER' test"
-echo "$USER' test"
-exit
-echo "$USER' test"
-echo "$USER' test"
-exit
-echo "$USER' test"
-exit
-echo "$""USER test"
-echo "$USER' test"
-echo "$USER" """test"
-exit
-echo "$USER" """test"
-exit
-echo "$USER" """test"
-exit
-echo "$USER" """test"
-exit
-echo "$USER' test"
-exit
-echo "$USE'R' test"
-echo "$USDER test"
-echo "$USDER" "test"
-echo "$USDER""test"
-exit
-echo "$USER test" | cat ls
-exit
-echo "$USER test" | cat ls
-echo "$USER test" | cat ls
-exit
-echo "$USER test" | cat ls 
- cat
-echo "$USER test" | cat ls 
-echo "$USER test" | cat ls 
-echo "$USER test" | cat -e
-ls -la
-echo "$USER test" | cat -e
-ls -la
-echo "$USER test" | cat -e
-ls -la
-echo "$USER test" | cat -e
-ls -la
-echo "$USER test" | cat -e
-ls -la
-echo "$USER test" | cat -e
-echo "$USER test" | cat -e
-ls -la
-exit
-echo "$USER test" | cat -e
-ls -la
-exit
-echo "$USER test" | cat -e
-ls -la
-exit
-echo "$USER test" | cat -e
-ls -la
-exit
-echo "$USER test" | cat -e
-ls -la
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-exit
-echo "$USER test" | cat -e
-exit
-echo "$USER test" | cat -e
-exit
-echo "$USER test" | cat -e
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-exit
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e
-ls
-exit
-echo "$USER test" | cat -e |
-ls
-exit
-echo "$USER test" | cat -e |
-exit
-echo "$USER test" | cat -e
-echo "$USER test" | cat -e | ls
-exit
-exit
-echo "$USER test" | cat -e | ls
-exit
-echo "$USER test" | cat -e | ls
-exit
-<< del 
-<< del cat
-<< del cat
-<< del cat
-c
-<< del cat
-<< del cat
-q
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-<< del cat
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-b update_buff
-q
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-exit
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-exit
-<< del cat
-<< del cat
-exit
-<< del cat
-q
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat | <<del2 test
-exit
-<< del cat | <<del2 test
-exit
-<< del cat | <<del2 test >> app
-exit
-cat >> apend
-exit
-cat >> apend
-exit
-cat >> apend
-exit
-cat >> apend
-exit
-<lol cat >> apend
-<lol cat >> apend
-<lol cat >> apend
-exit
-<lol cat >> apend
-<lol cat >> apend | cat -e
-> test <lol cat >> apend | cat -e
-q
-exit
-exit
-> test <lol cat >> apend | cat -e
-exit
-> test <lol cat >> apend | cat -e
-exit
-> test <lol cat >> apend | cat -e
-> test cat >> apend <lol | cat -e
-> test cat >> apend <lol | cat -e
-> test cat >> app <lol | cat -e
-exit
-> test cat >> app <lol | cat -e
-exit
-< lol <<del cat
-exit
-< lol <<del cat
-< lol <<del cat
-<<del cat
-<<del cat
-<<del cat
-exit
-<<del cat
-<<del cat
-<<del cat
-exit
-<<del cat
-exit
-<<del cat
-q
-exit
-<<del cat
-exit
-<<del << del2 << del5 cat
-exit
-<<del << del2 << del5 cat
-exit
-<<del << del2 << del5 cat
-exit
-<<del << del2 << del5 cat
-exit
-<<del << del2 << del5 cat
-exit
-<<del << del2 << del5 cat
-<<del << del2 cat | << del3 ls << del4 || << del5
-exit
-<<del << del2 cat | << del3 ls << del4 || << del5
-exit
-cat
-exit
-< lol cat
-exit
-< lol cat
-< lol catexit
-'exit
-exit
-< lol catexit
-exit
-< lol catexit
-exit
-< lol catexit
-exit
-< lol catexit
-exit
-< lol catexit
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-< out cat
-exit
-cat > out
-exit
-cat > out
-exit
-ct > out
-ct > out2
-ct > out2
-exit
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-ct > out2
-exit
-ct > out2
-exit
-ct > out2
-exit
-exit200
-exit
-exit
-exit
-exit
-exit
-exit 200
-exit
-exit 200
-exit
-exit
-exit
-exit
-exit 200
-exit 200
-exit 200
-exit 200
-exit 200
-exit 200
-exit 200
-cat | exit 200
-cat | exit 20
-exit 20
-exit 250
-cat | exit 200
-exit 300
-exit 300 5
-echo $?
-exit
-exit
-exit
-exit
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-exit 300 
-ct
-exit
-ct
-exit
-ct
-ct
-ct
-exit
-ct
-exit
-cat |
-exit
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-c
-cat |
-y
-cat |
-cat |
-cat |
-exit
-cat |
-cat |
-cat |
-exit
-cat |
-exit
-cat |
-cat |
-cat |
-cat |
-cat |
-cat |
-exit
-cat |
-cat |
-cat |
-cat |
-exit
-cat |
-cat | ls
-exit
-cat | ls
-exit
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-exit
-cat | 
-cat | 
-exit
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-cat | 
-exit
-cat | 
-exit
-< in1 <in2 cat 
-exit
-< in1 <in2 cat 
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exxit
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del
-< in1 <in2 cat <<del
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-MAKE
-EXIT
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-d
-d
-d
-d
-d
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del > returns.txt
-exit
-< in1 <in2 cat <<del > returns.txt
-exit
-< in1 <in2 cat <<del > returns.txt
-exit
-< in1 <in2 cat <<del > returns.txt
-exit
-< in1 <in2 cat <<del > returns.txt
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-exot
-exit
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-< in1 < reutrns.txt <in2 cat <<del 
-< in1 < returns.txt <in2 cat <<del 
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 <in2 cat <<del < returns.txt
-< in1 <in2 cat <<del < returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del 
-exit
-< in1 < reutrns.txt <in2 cat <<del 
-< in1 < returns.txt <in2 cat <<del 
-< in1 < returns.txt <in2 cat <<del  < returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-< in1 < returns.txt <in2 cat <<del  > returns.txt
-exit
-cat | 
-exit
-<<del |
-exit
-cat |
-exit
-cat |
-exit
-cat |
-exit
-cat |
-cat |
-<<del |
-exit
-<<del |
-exit
-<<del | << del2 cat
-exit
-<<del | << del2 cat
-<<del | << del2 cat
-cat |
-a
-q
-q
-exit
-cat |
-d
-ed
-exit
-<< del |
-<< del |
-<< del |
-exit
-<< del |
-exit
-<< del |
-exit
-<< del |
-exit
-<<del
-<<del |
-<<del |
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-<<del |
-<<del |
-<<del |
-<<del |
-q
-exit
-<<del |
-<<del |
-<<del |
-exit
-<<del |
-exit
-<<del |
-c
-c
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-<<del |
-exit
-cat -e | ls -la|echo<<del |
-cat -e | ls -la|echo<<del |
-exit
-cat -e | ls -la|echo<<del |
-cat -e | ls -la|echo<<del |
-cat -e | ls -la|echo<<del |
-exit
-cat -e | <in 1 ls -la|echo<<del |
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e 
-exit
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-de
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-exit
-cat -e | <in1 ls -la|echo<<del |
-cat -e | <in1 ls -la|echo<<del |
-exit
-exit
-cat -e | <in1 ls -la|echo<<del |exi
-exit
-cat -e | <in1 ls -la|echo<<del |
-cat
-cat >> app1 >>app2 <<app3
-cat >> app0 >>app2 >>app1 
-exit
-cat >> app0 >>app2 >>app1 
-cat >> app0 >>app2 >>app1 
-exit
-/home/isb3/42_Projects/7_minishell/minishell/main.c
-~/42_Projects/7_minishell/minishell
-exit
-~/42_Projects/7_minishell/minishell
-srcs
-srcs/e
-srr
-exit
-srr
-srcs/e
-srcs/e sexit
-exit
-srcs/ sexit
-srcs/ 
-srcs/s
-cat
-ca
-ca srcs
-srcs/s hj
-exit
-srcs/
-srcs/s hj
-exit
-srcs/s hj
-exit
-srcs/s hj
-srcs/
-exit
-srcs/
+cd srcs
+pwd
+exit
+cd srcs
+pwd
+cd ..
+pwd
 make
 exit
-srcs/
+cd srcs
+pwd
+exit
+cd srcs
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd srcs
+pwd
+exit
+cd srcs
+pwd
+exit
+pwd
+exit
+cd srcs
+exit
+cd srcs
+exit
+cd srcs
+pwd
+exit
+cd srcs
+exit
+cd srcs
+exit
+cd srcs
+exit
+cd srcs
+exit
+cd srcs
+cd srcs
+pwd
+cd ..
+exit
+cd ..
+cd ..
+cd .
+cd srcs
+pwd
+cd minishell/srcs
+cd parsing/
+pwd
+exit
+cd 
+pwd
+exit
+cd srcs
+pwd
+cd ..
+pwd
+cd srcs/parsing
+pwd
+exit
+cd srcs
+pwd
+exit
+cd srcs
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd srcs
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+pwd
+cd srcs
+pwd
+cd ..
+pwd
+cd ..
+pwd
 exit
 exit
-man ks
+pwd
+cd srcs
+pwd
+cd ..
+pwd
 exit
-echo lol | cat | <in ls
+cd srcs
+cd srcs
+pwd
 exit
-echo lol | cat | <in ls <lol
-echo lol | cat | <lol
-echo lol | cat | >lol
-echo lol | cat | >>lol
-echo lol | cat | >lol
+cd srcs
+pwd
+cd ..
+pwd
 exit
-echo lol | cat | >>lol
+pwd
+cd srcs
+pwd
 exit
-echo lol | cat 
-cat
-cat
-
-
-
-cat
-echo lol | cat | 
-
-
-ls
-echo lol | cat 
-
-
-ls
+cd srcs
+pwd
 exit
-echo lol | cat 
-
-
-ls
+cd srcs
+pwd
+cd ..
+cd ..
+pwd
 exit
-echo lol | cat 
-ls
-echo lol | cat 
-ls
-exit
-echo lol | cat 
-ls
-echo lol | cat 
-ls
-echo lol | cat 
-ls
-echo lol | cat 
-ls
-exit
-echo lol | cat 
-
-
-
-
-
-ls
-exit
-< lol
-exit
-echo lol | cat |
-exit
-echo lol | cat |
-exit
-echo lol | cat |
-exit
-<<del cat
-exit
-exit +200
-exit ++200
-exit
-exit 
-exit fs
-exit fs
-exit fs
-exit fs
-exit
-exit 200
-exit 300
-exit -300
-exit -200
-exit -200
-exit 3200
-exit 3200
-exit 3200
-exit 300
-exit -300
-exit -200
-echo < lol
-echo < Makefile
-exit
-echo < Makefile <lol <main.c
-echo < Makefile  <main.c
-echo < Makefile  <main.c |
-d
-d
-ded
-de
-de
-ef
-echo
-exit
-exit
-exit
-exit
-exit 200
+cd srcs
+pwd
+cd ..
+pwd
 echo lol
-export
-env
-unset
+exit
+cd 
+cd ..
+cd ..
+pwd
+cd home/
+pwd
+cd Desktop
+cd adesille
+pwd
+exit
+pwd
+cd..
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd 
+cd ..
+pwd
+cd adesille/
+pwd
+cd Desktop/
+pwd
+cd ..
+exit
+ls
+ cd ..
+cd ..
+pwd
+exit
+cd ..
+pwd
+exit
+cd ..
+pwd
+cd srcs
+pwd
+cd  srcs
+pwd
+cdsrcs
+cd srcs
+pwd
+cd srcs
+exit
+cd srcs
+cd ..
+pwd
+cd srcs
+pwd
+cd ..
+exit
+cd srcs
+pwd
+cd ..
+exit
+cd srcs
+pwd
+cd ..
+pwd
+cd ..
+cd ..
+pwd
+cd 
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+exit
+cd 
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd 
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd 
+pwd
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+cd  home/
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+pwd
+cd 
+cd ..
+pwd
+cd .
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd 
+cd ..
+cd ..
+pwd
+exit
+CD 
+cd 
+cd ..
+cd adesille/
+pwd
+exit
+cd 
+cd ..
+pwd
+cd .
+cd ..
+pwd
+cd ..
+exit
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd 
+cd ..
+cd..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd 
+cd ..
+cd ..
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+cd ..
+cd ..
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+cd ..
+c d..
+cd ..
+exit
+cd 
+cd ..
+cd ..
+pwd
+exit
+cd 
+pwd
+cd ..
+cd ..
+cd ..
+pwd
+cd ..
+pwd
+exit
+cd srcs/
+cd 
+cd goinfre
+pwd
+exit
+cd 
+cd goinfre
+pwd
+exit
+cd 
+cd 
+cd goinfre
+pwd
+exit
 cd
+cd goinfre
 pwd
-e
-echo $?
-exit
-echo $?
-exit
-cd | echo $?
-cd | echo " test $?"
-exit
-echo $?
-exit
-exit
-echo $?
-q
-exit
-echo $?
-echo "blabaldjk $?"
-echo "blabaldjk $? dsv sv"
-exit
-echo "blabaldjk $? dsv sv"
-echo $?
-d
-echo $?
-echo $?
-echo $?
-echo $?
-exit
-echo $?
-echo d
-d
-echo $?
-lol | echo $?
-echo $? | cat
-echo $? | ct
-echo $? | cat
-exit
-echo $? | cat
-echo $? | ct
-echo $? | cat
-exit
-
-D
-
-
-
-
-[200~
-~
-exit
-
-
-
-
-exit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-							         					
 exit
 exit
 exit
 exit
 exit
-ls -la | echo lol | 
-exit
-ls -la | echo lol | 
-exit
-ls -la | echo lol | 
-d
-d
-exit
-exit
-./minishell
-./minishell
-./lol
-exit
-./lol
-./ibhg
-srcs e
-ed ee
-wd
-wd ed
-srcs ef
-exit
-./lol
-./lol
-exit
-./lol
-./lol
-exit
-./lol
-exit
-./lol
-exit
-./lol
-./lol
-./lol
-./lol
-exit
-./lol
-exit
-./lol
-exit
-srcs
-./srcs
-./srcs
-./lol
-ct
-exit
-./lol
-exit
-./lol
-./sdf
-exit
-./sdf
-exit
-./sdf
-srcs
-./srcs
 /srcs
 exit
-./srcs
+cd /var
 exit
-./srcs
+cd /var
+pwd
+cd log/
+pwd
 exit
-./srcs
-/srcs
-srcs
+cd /var
+pwd
 exit
-srcs
-exit
-cat
-echo $?
-exit
-< lol
-< lol
-< lol
->> lol
-exit
->> lol
->> lol
-exit
->> lol
-exit
->> lol
-exit
-<< 'de'l
-<< 'd"e'l
-exit
-< <
-< Makefile | |
-< Makefile | |
-exit
-< Makefile | |
-< Makefile | |
-< Makefile | |
-exit
-< Makefile | |
-exit
-< Makefile | |
-< Makefile | >>
-< Makefile | <<
-< Makefile | <
-< Makefile | >
-< >> Makefile | >
-exit
-< >> Makefile | >
-exit
-< >> Makefile | >
-< > Makefile | >
-exit
-< Makle | ls -la
-exit
-< Makle | ls -la
-< Makle lol | ls -la
-< Makefile lol | ls -la
-cat  | <mkefile ls -la
-cat  | <mkefile ls -la
-exit
-cat  | <mkefile ls -la
-exit
-cat  | <mkefile ls -la
-exit
-cat  | <mkefile ls -la
-cat  | <mkefile ls -la
-cat  | <mkefile ls -la
-cat  | <mkefile ls -la
-cat  | < <mkefile ls -la
-cat   < <mkefile ls -la
-| cat   < <mkefile ls -la
-exit
-exit
-| cat   < <mkefile ls -la
-cat   < <mkefile ls -la
-cat    <mkefile | < ls -la
-cat    <mkefile | < <ls -la
-cat    <mkefile | ls -la < >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >e
-exit
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la | >
-cat    <mkefile | ls -la > >
-cat    <mkefile | ls -la > 
-cat    <mkefile | ls -la >>
-cat    <mkefile | ls -la<<
-cat    <mkefile | ls -la |
-exit
-cat    <mkefile | ls -la |
-cat    <mkefile | ls -la |
-cat    <mkefile | ls -la <
-cat    <makefile | ls -la <
-cat    <makefile | ls -la <
-cat    <makefile | ls -la <
-cat    <makefile | ls -la <
-exit
-cat    <makefile | ls -la <
-cat    <makefile | ls -la |
-d
-d
-cat    <makefile | ls -la |
-exit
-cat    <makefile | ls -la |
-exit
-cat    <makefile | ls -la |
-cat    <makefile | ls -la |
-exit
-cat    <makefile | ls -la |
-exit
-exit
-<< del cat | ls
-exit
-echo "$USER tetstgdwhfjh bs $PATH"
-exit
-echo "$USER tetstgdwhfjh bs $PATH"
-exit
-echo "$USER tetstgdwhfjh bs $PATH"
-exit
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-EXIT
-exit
-<< del 
-exit
-<< del 
-<< del 
-<< del 
-<< del 
-exit 3000
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-d
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-<< del 
-exit
-<< del 
-exit
-<< del 
-<< del
-echo "$USER hbwbh mb h bh bh hk $SESSION_MANAGER"
-exit
-echo "$USER hbwbh mb h bh bh hk $SESSION_MANAGER"
-exit
-<< del
-<< del
-exit
-<< del
-exit
-<< del
-exit
-<< del
-<< del
-exit
-<< del
-<< del
-exit
-<< del
-<< del
-exit
-<< del
-<< del
-<< del
-<<
-<< del
-exit
-<< del
-exit
-/srcs
-/home/adesille/Desktop/minishell/minishell/srcs
-exit
-/home/adesille/Desktop/minishell/minishell/srcs
-exit
-/home/adesille/Desktop/minishell/minishell/srcs
-/srcs
-exit
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat 
-< Makefile cat 
-< Makefile cat 
-exit
-< Makefile cat 
-< Makefile cat 
- cat 
-ls
-ls
-ls
-ls
-ls
-Makefile
-libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
-libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.cmain.c
-
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
-main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
-libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-minishell.h
-libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.cisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
-main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-pipex
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ pipex
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-libft
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.hisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
-
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-minishell.h
-main.c
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishellisb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ minishell.h
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ isb3@ISB3:~/42_Projects/7_minishell/minishell$ main.c
-ls
-Makefile
-libft
-main.c
-minishell
-minishell.h
-pipex
-returns+notes.txt
-sigHandler.c
-srcs
-valgrind.supp
-isb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-ls
-exit
-ls
-Makefile
-libft
-main.c
-minishell
-minishell.h
-pipex
-returns+notes.txt
-sigHandler.c
-srcs
-valgrind.supp
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-ls
-Makefile
-libft
-main.c
-minishell
-minishell.h
-pipex
-returns+notes.txt
-sigHandler.c
-srcs
-valgrind.supp
-ls
-Makefile
-libft
-main.c
-minishell
-minishell.h
-pipex
-returns+notes.txt
-sigHandler.c
-srcs
-valgrind.supp
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-ls
-ls
-ls
-Makefile
-libft
-main.c
-minishell
-minishell.h
-pipex
-returns+notes.txt
-sigHandler.c
-srcs
-valgrind.supp
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-misb3@ISB3:~/42_Projects/7_minishell/minishell$ 
-ls
-Makefile
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-m
-ls
-Makefile
-m
-m
-m
-m
-m
-ls
-Makefile
-m
-m
-m
-< Makefile cat 
-exit
-< Makefile cat 
-make
-< Makefile cat
-exit
-< Makefile cat
-< Makefile cat > out
-exit
-< Makefile cat > out
-exit
-< Makefile cat > out
-< Makefile cat 
-< Makefile cat | cat
-ls
-ls
-ls
-ls
-ls -la
-ls -la | cat
-ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
-< Makefile cat
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
-< Makefile cat |cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g'
-< Makefile cat |cat | ls
-< Makefile cat |cat | ls
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOOOOL/g' | cat
-ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat | sed 's/Makefile/LOOOOOOOOL/g'
-< Makefile ls -la | cat 
-< Makefile ls -la | cat 
-< Makefile ls -la | cat 
-< Makefile ls -la | cat 
-ls -la | cat 
-ls -la | cat 
-ls -la | cat 
-exit
-ls -la | cat 
-ls -la | sed 's/Makefile/LOOOOOOOOOOL/g'
-ls -la | sed 's/Makefile/LOOOOOOOOOOL/g' >out
-ls -la | sed 's/Makefile/LOOOOOOOOOOL/g' >out
-ls -la | <out sed 's/Makefile/LOOOOOOOOOOL/g'
-ls -la | <out sed 's/LOOOOOOOOOOL/AAAAAAAAAAAAAAAAAAAH/g'
-ls -la >out | cat
-ls -la <out | cat
-ls -la |<out cat
-ls -la |<out cat
-ls -la |<out cat
-< Makefile cat | ls -la
-< Makefile cat | ls -la
-< Makefile cat | cat
-< Makefile cat 
-exit
-< Makefile cat 
-< Makefile cat | cat
-< Makefile cat | ls
-< Makefile cat | sed 's/ARGUMENTS/LOOOOL/g'
-< Makefile cat | sed 's/ARGUMENTS/LOOOOL/g'
-< Makefile cat 
-< Makefile cat 
-< Makefile cat 
-< Makefile cat 
-< Makefile cat 
-< Makefile cat | ls
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | ls
-< Makefile cat | cat
-< Makefile cat | cat
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g'
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g'
-< Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
-> out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
-< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
-< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
-< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' 
-< out < Makefile cat | sed 's/ARGUMENTS/LOOOOOOOOOOL/g' > out
-< Makefile cat
-< Makefile cat
-< Makefile cat
-< Makefile cat
-< in cat
-< in cat
-< in cat
-< in cat | < Makefile cat 
-ls
-ls -la
-exit
-ls -la
-< in cat | < Makefile cat 
-exit
-< in cat | < Makefile cat 
-ls
-exit
-< in cat | < Makefile cat 
-< in cat | < Makefile cat 
-adesille@k1r2p12:~/Desktop/minishell/minishell$ adesille@k1r2p12:~/Desktop/minishell/minishell$ 
-adesille@k1r2p12:~/Desktop/minishell/minishell$ 
-[0;33m
-============= LINKED_LIST =============
-
-[0;37m[0;33m
-       ------- LIST n°1 -------
-
-[0;37mfd_in = 0
-fd_out = 0
-minihell: adesille@k1r2p12:~/Desktop/minishell/minishell$: No such file or directory
-error_code = 127
-[0m
-
-< in cat | < Makefile cat 
-exit
-< in cat | < Makefile cat 
-ls -la
-exit
-< in cat | < Makefile cat 
-ls -la
-exit
-< in cat | < Makefile cat 
-ls -la
-ls -la
-ls -la
-< in cat | < Makefile cat 
-ls -la
-exit
-< in cat | < Makefile cat 
-ls -la
-exit
-< in cat | < Makefile cat 
-ls -la
-exit
-echo loool
-echo plop
-echo lol
 pwd
 cd ..
-cd 
-cd 
-cd 
-cd ~
-cd ..
-cd /home
 exit
-exit
-exit
-echo lol
-exit
-exit
-exit
-exit
-echo lol
-exit
-cd srcs
-cd ..
-cd ..
-cd  srcs
-cd  srcs
-export
-export
-exit
-cd srcs
-cd srcs
-cd srcs
-cd srcs
-cd ..
-echo lol
-echo lol | cat
-echo lol | cat
-exit
-echo lol | cat
-cat | cat | ls
-xt
-cat | cat | ls
-cat | cat | ls
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-xt
-exit
-cat | cat | ls
-cat | cat | ls
-cat | cat | ls
-cat | cat | ls
-cat | cat | ls
-cat | cat | ls
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-cd ..
-cd ..
-cd ..
-exit
-cd ..
-exit
-cd ..
-exit
-cd ..
-cat | cat | ls
-cat | cat | ls
-exit
-cat | cat | ls
-ls -la
-echo lol | cat
-echo lol | cat >out
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-exit
-echo lol | cat >>out
-ls -la
-exit
-cat | cat | ls
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-exit
-cat | cat | ls
-cat | cat | ls
-exit
-cd ..
-cd ..
-<< del
-echo "$USER $SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER""$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER" '$USER' "$SESSION_MANAGER"
-echo "$USER" '$USER' "$SESSION_MANAGER"
-echo $USER
-EXIT
-echo $USER
-echo "$USER"
-echo '$USER'
-echo "test"'$USER'
-echo "$USER"'$USER'
-echo "$USER"'$USER'"$SESSION_MANAGER"
-echo "$USER"'$USER'
-echo '$USER'"$SESSION_MANAGER"
-echo '$USER'"$SESSION_MANAGER"
-echo '$USER'"$SESSION_MANAGER"
-echo '$USER'"$USER"
-exit
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-exit
-echo '$USER'"$USER"
-exit
-<< del
-<< del | cat
-<< del cat
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-echo '$USER'"$USER"
-exit
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo "$USER $USER"
-exit
-<< del cat
-exit
-<< del cat
-exit
-echo "$USER $USER"
-echo '$USER'"$USER"
-exit
-< Makefile cat > out | echo lol
-echo lol | < Makefile cat > out
-echo lol | << del cat 
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-EXIT
-exit
-echo '$USER'"$USER"
-exit
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-exit
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo '$USER'"$USER"
-echo lol | << del cat 
-echo '$USER'"$USER"
-exit
-exit
-echo lol | << del cat 
-exit
-echo lol | << del cat 
-exit
-echo lol | << del cat 
-exit
-echo lol | << del cat 
-<< del
-<< del cat
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-echo $USER $USER
-exit
-echo $USER $USER
-exit
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-<< del cat
-exit
-<< del cat
-echo "$USER $USER"
-exit
-<< del cat
-exit
-<< del cat
-exit
-<< del cat
-<< del cat
-exit
-echo $USER $USER
-exit
-echo $USER $USER
-<< del cat
-<< del cat
-exit
-<< del cat
-<< del cat
-exit
-<< del cat
-<< del cat
-q
-<< del cat
-exit
-cd ..
-cd ..
-echo lol
-cd srcs
-cd srcs
-cd srcs
-cd srcs
-cd ..
-cd ..
-cd ..
-cd ...
-exit
-cd 
-cd ...
-cd ..
-cd ..
-cd ..
-cd ..
-cd ..
-cd 
-ls]
-ls
-cd goinfre/
 pwd
-cd ..
-cd 
-ls
-ls -la
-exit
-exit
-ls -la
-exit
-ls -la
-echo lol
-echo lol
-exit
-exit
-echo lol
-exit
-echo lol
-< Makefile cat
-exit
-echo lol
-exit
-echo lol
-exit
-echo lol
-exit
-echo lol
-EXIT
-EXIT
-exit
-echo lol
-exit
-lol]
-echo lol
-exit
-exit
-echo lol
-exit
-ct
-exit
-ct
-exit
-echo lol | exit | cat
-exit 200
-exit | echo lol
-exit
-a=5
-exit
-a=5
-exit
-a=5
-a=5
-a=5
-a =5
-a =5
-export a=
-a=8
-a=5 | echo lol
-exit
-a=5 | echo lol
-a=5
-a=5
-a=5
-a=5
-a=5
-a=5
-a=5
-a=5
-a=5
-exit
-a=5 | cat
-b= 5 | cat
-b =5 | cat
-b=5 =7
-b=5 c=7
-exit
-b=5 c=7
-echo lol
-exit
-echo lol
-echo ur mom fat
-exit
-echo ur mom fat
-exit
-echo ur mom fat
-exit
-make
-exit
-echo ur mom fat
-a=5
-exit
-echo lol
-EXIT
-exit
-eexit
-exit
-cd ../minishell/srcs/../srcs
-cd ../minishell/srcs/../srcs
-cd ../minishell/srcs
-cd ../minishell/
-cd ..
-cd ..
-cd srcs
-cd srcs
-cd srcs
-cd ..
-cd ../minishell/srcs/../srcs
-exit
-cd ../minishell/srcs/../srcs
-cd ../minishell/srcs/..
-cd ..
-cd ../minishell/srcs/..
-cd ../minishell/srcs/../srcs/history/../history
-exit
-a=5
-a=5
-a=5
-a=5 c=7
-a=5 | echo lol
-warlord_executor
-exit
-a=5 | echo lol
-exit
-a=5 | echo lol
-exit
-a=5 | echo lol
-ei
-xtmk
-a=5 | echo lol
-a=5 | echo lol
-exit
-a=5 | echo lol
-exit
-exit
-a=5 | echo lol
-exit
-exit
-a=5 | echo lol
-exit
-a=5 | echo lol
-exit
-xit
-exit
-a=5 | echo lol
-exit
-a=5 | echo lol
-exit
-a=5 c =7
-a=5 c=7
-a=5 c=7
-echo lol | a=5
-exit
-echo lol | a=5
-exit
-echo lol | a=5
-exit
-echo lol | a=5
-a=5c =7
-a=5 c=7
-exit
-a=5 c=7
-a=5c =7
-exit
-a=5c =7
-exit
-a=5
-exit
-a=5
-exit
-a=5
-a=5c =7
-exit
-a=5c =7
-a=5c | echo lol
-exit
-a=5c | echo lol
-a=5c | ec
-exit
-a=5c | echo lol
-exit
-exit
-a=5c | echo lol
-a=5c | echo lol
-a=5c | echo lol
-exit
-a=5c | echo lol
-exit
-a=5c | echo lol
-exit
-a=5c | echo lol
-exit
-a=5c | echo lol
-exit
-a=5c | echo lol
-a=5c c=8 b=9
-exit
-a=5c c=8 b=9
-exit
-a=5c c=8 b=9
-exit
-exit
-echo lol
-exit
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-<< del cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-echo lol
-< Makefile
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-l
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile cat
-exit
-< Makefile << del cat
-exit
-< Makefile << del cat
-< Makefile << del cat
-exit
-echo hello world
-exit 298
-echo hello world
-a=5
-exit
-a=5
-exit
-a=5
-exit
-a=5
-exit
-a=5
-a=5 | echo lol
-a=5 c=7
-exit
-a=5 c=7
-exit
-exit 250
-echo lol
-exit
-echo lol | cat
-exit
-echo lol | cat | ls
-exit
-echo lol | cat | ls
-echo lol | cat | cat 
-echo lol | cat | cat 
-cat | cat | cat | cat | cat | cat | cat | ls
-./minishell
-exit
-cat | cat | cat | cat | cat | cat | cat | ls
-exit
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-echo lol
-exit
-echo lol
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo test
-echo test
-echo hi | echo bye >>./outfiles/outfile01 >>./outfiles/outfile02
-exit
-echo lol >>out2
-echo lol >>./out2
-echo lol >>./out/out2
 exit

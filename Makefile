@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/05 13:26:00 by adesille         ###   ########.fr        #
+#    Updated: 2024/07/06 07:49:33 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,39 +24,39 @@ WHITE = \033[0;37m
 
 ######################## SOURCES ########################
 
-SRCS = main.c \
-	./srcs/get_prompt.c \
-	./srcs/memory_manager.c \
-	./srcs/memory_manager_utils.c \
-	./srcs/execution.c \
-	./srcs/history/gnl.c \
-	./srcs/history/gnl_utils.c \
-	./srcs/history/manage_history.c \
-	./srcs/lexing/lexer.c \
-	./srcs/lexing/is_sh1.c \
-	./srcs/lexing/is_sh2.c \
-	./srcs/lexing/is_sh_in_arr1.c \
-	./srcs/lexing/is_sh_in_arr2.c \
-	./srcs/lexing/is_dollar.c \
-	./srcs/lexing/utils1.c \
-	./srcs/lexing/utils2.c \
-	./srcs/lexing/utils3.c \
-	./srcs/parsing/parsing.c \
-	./srcs/parsing/parse_utils1.c \
-	./srcs/parsing/parse_utils2.c \
-	./srcs/parsing/parse_utils3.c \
-	./srcs/parsing/parse_utils4.c \
-	./srcs/builtins/cd.c \
-	./srcs/builtins/echo.c \
-	./srcs/builtins/export.c \
-	./srcs/builtins/pwd.c \
-	./sigHandler.c
+SRCS = main.c ./srcs/get_prompt.c \
+	./srcs/memory_manager.c ./srcs/memory_manager_utils.c \
+	./srcs/execution.c
 
-DEPFILES = $(SRCS:%c=$(OBJ_DIR)/%.o)
+HISTORY = ./srcs/history/gnl.c ./srcs/history/gnl_utils.c \
+	./srcs/history/manage_history.c 
+	
+LEXING = ./srcs/lexing/lexer.c ./srcs/lexing/is_sh1.c \
+	./srcs/lexing/is_sh2.c ./srcs/lexing/is_sh_in_arr1.c \
+	./srcs/lexing/is_sh_in_arr2.c ./srcs/lexing/is_dollar.c \
+	./srcs/lexing/utils1.c ./srcs/lexing/utils2.c \
+	./srcs/lexing/utils3.c 
+	
+PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
+	./srcs/parsing/parse_utils2.c ./srcs/parsing/parse_utils3.c \
+	./srcs/parsing/parse_utils4.c 
+
+BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
+		./srcs/builtins/builtins.c
+
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
+		$(HISTORY:%.c=$(OBJ_DIR)/%.o.d) \
+		$(LEXING:%.c=$(OBJ_DIR)/%.o.d) \
+		$(PARSING:%.c=$(OBJ_DIR)/%.o.d) \
+		$(BUILTINS:%.c=$(OBJ_DIR)/%.o.d)
 
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) \
+		$(HISTORY:%.c=$(OBJ_DIR)/%.o) \
+		$(LEXING:%.c=$(OBJ_DIR)/%.o) \
+		$(PARSING:%.c=$(OBJ_DIR)/%.o) \
+		$(BUILTINS:%.c=$(OBJ_DIR)/%.o)
 ######################## LIBRARY ########################
 
 LIBFT_DIR = ./libft
