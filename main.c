@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 11:36:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:37:15 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
+// TODO : modify history + heredoc path into temp file in /home
+// TODO : check if env_var exist already
+// TODO : bubble sort linked list
+
 // TODO : modify functions where there's get_env
 // TODO : Find a way to print the error msg after all the waitpid
 // TODO : execute files
-// TODO : if cd symbolic link, prompt is not correct
 
 int	prompt(char **rl)
 {

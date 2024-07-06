@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 06:32:40 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:52:53by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,75 @@ char	*env_var_search(t_env *envv, char *to_find)
 	return (NULL);
 }
 
-char	*get_envv(char *env[], char *to_find, int token)
+void	print_env(t_env *envv)
+{
+	while (envv)
+	{
+		printf("%s\n", envv->var);
+		envv = envv->next;
+	}
+}
+
+void	unset_env(t_env **envv, char *var)
+{
+	t_env *prev = *envv;
+	t_env *curr = *envv;
+	
+	if (!ft_strncmp((*envv)->var, var, ft_strlen(var)))
+		*envv = (*envv)->next;
+	else
+	{
+		prev = curr;
+		curr = curr->next;
+		while (curr)
+		{
+			if (!ft_strncmp(curr->var, var, ft_strlen(var)))
+			{
+				prev->next = curr->next;
+				return ;
+			}
+			prev = curr;
+			curr = curr->next;
+		}
+	}
+}
+
+void	modify_env_var(t_env *envv, char *var)
+{
+	char *envv_var;
+
+	while (envv)
+	{
+		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var) - ft_strlen(ft_strchr(envv->var, '=')));
+		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
+		{
+			envv->var = ft_strdup(var);
+			return ;
+		}
+		envv = envv->next;
+	}
+}
+
+int	check_if_exist(t_env *envv, char *var)
+{
+	char *envv_var;
+
+	if (ft_strchr(var, '='))
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var, '=')));
+	while (envv)
+	{
+		if (ft_strchr(envv->var, '='))
+			envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var) - ft_strlen(ft_strchr(envv->var, '=')));
+		else
+			envv_var = ft_strdup(envv->var);
+		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
+			return (1);
+		envv = envv->next;
+	}
+	return (0);
+}
+
+char	*get_envv(char *env[], char *var, int token)
 {
 	static	t_env	*envv;
 	int				i;
@@ -53,7 +121,28 @@ char	*get_envv(char *env[], char *to_find, int token)
 		while (env[++i])
 			add_node_env(&envv, env[i]);
 	}
+	if (token == 'A')
+	{
+		if (!check_if_exist(envv, var))
+		{
+			printf("notexisting\n");
+			add_node_env(&envv, var);
+			return (NULL);
+		}
+		else
+		{
+			printf("exist\n");
+			get_envv(0, var, 'M');
+			return ("YES");
+		}
+	}
+	if (token == 'U')
+		unset_env(&envv, var);
 	if (token == 'F')
-		return (env_var_search(envv, to_find));
+		return (env_var_search(envv, var));
+	if (token == 'M')
+		modify_env_var(envv, var);
+	if (token == 'P')
+		print_env(envv);
 	return (NULL);
 }

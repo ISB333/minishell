@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 12:20:23 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 14:39:38 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	call_builtins(t_ast *ast, int c, int token)
 		exportt(0, 0, 'P');
 	if (c == EXPORT && ast->cmd[1])
 		exportt(0, ast->cmd[1], 'A');
+	if (c == ENV)
+		get_envv(0, 0, 'P');
+	if (c == UNSET)
+	{
+		exportt(0, ast->cmd[1], 'U');
+		get_envv(0, ast->cmd[1], 'U');
+	}
 	if (token == 'X')
 		quit(EXIT_SUCCESS);
 	return (return_code);
@@ -113,7 +120,7 @@ int	warlord_executor(t_ast *ast, char *env[])
 	error = ast;
 	while (ast)
 	{
-		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT)
+		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT || is_builtin(ast) == UNSET)
 			call_builtins(ast, is_builtin(ast), 0);
 		if (is_builtin(ast) == EXPORT && !ast->next)
 			call_builtins(ast, is_builtin(ast), 0);

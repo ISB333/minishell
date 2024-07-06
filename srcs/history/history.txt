@@ -440,3 +440,250 @@ export | cat
 export | ls
 export a=8 | ls
 exit
+export
+export a=8
+export
+unset a=8
+export a=8
+unset a=8
+export a=8
+env
+unset a=8
+export a=8
+env
+unset a=8
+unset a=8
+export a=8
+unset a=8
+export a=8
+env
+unset a
+env
+exit
+export a=8
+unset a
+env
+export
+exit
+export a=8
+env
+unset a
+env
+exit
+export a=8
+unset a
+env
+export
+exit
+export a=8
+unset a
+exit
+unset a
+export a
+export a=8
+env
+unset a
+env
+unset a
+env
+exit
+env
+export a=8
+env
+unset a
+env
+export
+export a=8
+export
+unset a
+export
+exit
+export a=8
+env
+export a=9
+export a=9
+env
+export a=8
+env
+exit
+export a=8
+env
+export A=8
+env
+export a
+export a
+env
+export a=8
+env
+export
+exit
+export a=8
+export a
+export a=8
+export a
+export a
+export a=8
+env
+export
+exit
+export a
+export a=8
+env
+export 
+exit
+export a=8
+export a
+export a=8
+exit
+export a=8
+exit
+export a=8
+exit
+export a=8
+exit
+export a=8
+exit
+exit
+export a=8
+export 
+export a
+env
+export
+unset a
+export
+exit
+export a
+export
+export a=8
+env
+export
+xit
+exit
+export a
+export a=8
+env
+export
+exit
+export a
+env
+export a=8
+env
+export
+exit
+export a
+export a=8
+export
+exit
+export a=8
+export a
+export a
+export a
+export a
+export a
+env
+export
+env
+export a=
+export a
+export a=
+env
+export
+env
+export a=8
+env
+unset a
+env
+exit
+export a=8
+export a=8
+env
+exit
+export a=8
+env
+exit
+export a=8
+export a=8
+export a=8
+export a=8
+export a=8
+export a=8
+env
+export
+export a=
+export a=
+export
+env
+export a=8
+env
+export
+exit
+export a=8
+export a=
+export a=8
+export a=
+env
+export
+exit
+export a=8
+export a=
+export a=8
+export a=
+env
+export
+exit
+export a=8
+export a=
+eexport
+export
+exit
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+exit
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+export a=8
+export a=
+export 
+exit
+export a=8
+export a=
+export a=8
+export a=
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+export a=8
+export a=
+export a=8
+export a=
+export a=8
+export a=
+export
+exit
+export a=8
+export a=
+export 
+env
+export a=8
+export
+env
+exit
