@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 11:04:51 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:36:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 
 void	init_utils(char *env[], char *cwd)
 {
-	get_envv(env, 0, 'I');
-	// printf("%s\n", cwd);
 	get_cwdd(cwd, 0, 'I');
 	free(cwd);
+	get_envv(env, 0, 'I');
+	exportt(env, 0, 'I');
+	// printf("%s\n", cwd);
 }
 
 int	main(int argc, char *argv[], char *env[])

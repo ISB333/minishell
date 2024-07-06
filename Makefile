@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/06 07:49:33 by adesille         ###   ########.fr        #
+#    Updated: 2024/07/06 12:11:24 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils4.c 
 
 BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
-		./srcs/builtins/builtins.c
+		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils.c
 
 OFLAGS += -Wall -Wextra -g3 -I.
 OBJ_DIR = .obj

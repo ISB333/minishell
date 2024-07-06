@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 11:04:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 12:14:39 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,12 @@ typedef struct s_cwd
 	struct s_cwd		*next;
 }						t_cwd;
 
+typedef struct s_export
+{
+	char				*var;
+	struct s_export		*next;
+}						t_export;
+
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
@@ -196,5 +202,9 @@ char					*get_envv(char *env[], char *to_find, int token);
 void					echoo(char **arr);
 void					pwdd(void);
 int						cd(char **arr);
+void					exportt(char *env[], char *new_var, int token);
+void					init_export(char *env[], t_export **exp);
+void					print_export(t_export *exp);
+void					add_node_exp(t_export **exp, char *var);
 
 #endif

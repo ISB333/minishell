@@ -385,3 +385,58 @@ cd ..
 exit
 pwd
 exit
+exit af
+echo -n lol
+echo -n lol
+exit
+echo -n lol
+exit
+echo -n lol
+exit
+echo -n lol
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+export
+export a=8
+export
+exit
+export
+export a=8
+export
+exit
+export
+export a=8
+export
+exit
+export a=8
+EXIT
+exit
+export a=8
+export
+exit
+export
+export a=8 | export
+export | cat
+export a=8
+export
+exit
+exit
+export
+export a=8
+export
+exit
+export | cat
+export | ls
+export a=8 | ls
+exit
