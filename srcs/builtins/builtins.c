@@ -14,9 +14,11 @@
 
 void	unset_export(t_export **exp, char *var)
 {
-	t_export *prev = *exp;
-	t_export *curr = *exp;
-	
+	t_export	*prev;
+	t_export	*curr;
+
+	prev = *exp;
+	curr = *exp;
 	if (!ft_strncmp(ft_strchr((*exp)->var, 'x') + 2, var, ft_strlen(var)))
 		*exp = (*exp)->next;
 	else
@@ -38,12 +40,13 @@ void	unset_export(t_export **exp, char *var)
 
 int	modify_exp_var(t_export *exp, char *var)
 {
-	char *exp_var;
+	char	*exp_var;
 
 	while (exp)
 	{
 		exp_var = ft_strchr(exp->var, 'x') + 2;
-		exp_var = ft_substr(exp_var, 0, ft_strlen(exp_var) - ft_strlen(ft_strchr(exp_var, '=')));
+		exp_var = ft_substr(exp_var, 0, ft_strlen(exp_var)
+				- ft_strlen(ft_strchr(exp_var, '=')));
 		if (!ft_strncmp(exp_var, var, ft_strlen(exp_var)))
 		{
 			exp->var = ft_strjoin("declare -x ", var);

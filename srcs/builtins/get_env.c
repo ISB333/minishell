@@ -53,9 +53,11 @@ void	print_env(t_env *envv)
 
 void	unset_env(t_env **envv, char *var)
 {
-	t_env *prev = *envv;
-	t_env *curr = *envv;
-	
+	t_env	*prev;
+	t_env	*curr;
+
+	prev = *envv;
+	curr = *envv;
 	if (!ft_strncmp((*envv)->var, var, ft_strlen(var)))
 		*envv = (*envv)->next;
 	else
@@ -77,11 +79,12 @@ void	unset_env(t_env **envv, char *var)
 
 void	modify_env_var(t_env *envv, char *var)
 {
-	char *envv_var;
+	char	*envv_var;
 
 	while (envv)
 	{
-		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var) - ft_strlen(ft_strchr(envv->var, '=')));
+		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var)
+				- ft_strlen(ft_strchr(envv->var, '=')));
 		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
 		{
 			envv->var = ft_strdup(var);
@@ -93,14 +96,16 @@ void	modify_env_var(t_env *envv, char *var)
 
 int	check_if_exist(t_env *envv, char *var)
 {
-	char *envv_var;
+	char	*envv_var;
 
 	if (ft_strchr(var, '='))
-		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var, '=')));
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=')));
 	while (envv)
 	{
 		if (ft_strchr(envv->var, '='))
-			envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var) - ft_strlen(ft_strchr(envv->var, '=')));
+			envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var)
+					- ft_strlen(ft_strchr(envv->var, '=')));
 		else
 			envv_var = ft_strdup(envv->var);
 		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
@@ -112,7 +117,7 @@ int	check_if_exist(t_env *envv, char *var)
 
 char	*get_envv(char *env[], char *var, int token)
 {
-	static	t_env	*envv;
+	static t_env	*envv;
 	int				i;
 
 	if (token == 'I')
