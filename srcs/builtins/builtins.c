@@ -66,7 +66,11 @@ void	exportt(char *env[], char *var, int token)
 	if (token == 'A')
 	{
 		if (!get_envv(0, var, 'A'))
+		{
 			add_node_exp(&exp, ft_strjoin("declare -x ", var));
+			sort_export(exp);
+			// print_export(exp);
+		}
 		else
 			modify_exp_var(exp, var);
 	}

@@ -687,3 +687,21 @@ export a=8
 export
 env
 exit
+export a=8
+export
+exit
+export a=8
+export
+exit
+export a=8
+export a=8
+export
+exit
+export a=8
+export a=8
+export a=8
+exit
+export a=8
+export A=8
+export
+exit

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 12:04:31 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 12:09:35 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:55:46 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,45 @@ void	init_export(char *env[], t_export **exp)
 	i = -1;
 	while (env[++i])
 		add_node_exp(exp, ft_strjoin("declare -x ", env[i]));
+}
+
+int	lst_len(t_export *exp)
+{
+	int len = 0;
+
+	while (exp)
+	{
+		len++;
+		exp = exp->next;
+	}
+	return (len);
+}
+
+void	sort_export(t_export *exp)
+{
+	char	*temp;
+	int		len;
+	int		i;
+	int		j;
+
+	i = -1;
+	len = lst_len(exp);
+	t_export *origin = exp;
+	while (++i < len - 1)
+	{
+		j = -1;
+		exp = origin;
+		while (++j < len - 1 - i)
+		{
+			if (ft_strcmp(ft_strchr(exp->var, 'x') + 2, ft_strchr(exp->next->var, 'x') + 2) > 0)
+			{
+				temp = ft_strdup(exp->var);
+				exp->var = ft_strdup(exp->next->var);
+				exp->next->var = ft_strdup(temp);
+			}
+			exp = exp->next;
+		}
+	}
 }
 
 void	print_export(t_export *exp)
