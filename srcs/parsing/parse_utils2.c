@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 06:57:21 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 06:26:58 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
-	(*ast)->append = 1;
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
@@ -42,7 +41,6 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	(*ast)->fd_out = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 		return (error(strerror(errno), fd, 1));
-	(*ast)->outfile = 1;
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
@@ -64,7 +62,6 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 		init_lst(ast);
 		return (error(strerror(errno), fd, 1));
 	}
-	(*ast)->infile = 1;
 	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
 	*i += 2;
 	return (0);

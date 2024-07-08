@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:41:44 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:27:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_lst(t_ast *ast)
 {
-	int		i;
-	int		n;
+	int	i;
+	int	n;
 
 	n = 1;
 	if (!ast)
@@ -37,14 +37,8 @@ void	print_lst(t_ast *ast)
 		}
 		printf("fd_in = %d\n", ast->fd_in);
 		printf("fd_out = %d\n", ast->fd_out);
-		if (ast->append)
-			printf("APPEND\n");
-		if (ast->pipe)
-			printf("PIPE\n");
-		if (ast->new_line)
-			printf("NEWLINE\n");
 		if (ast->error)
-			printf("%s\n", ast->error);
+			printf("ERROR: %s\n", ast->error);
 		ast = ast->next;
 		n++;
 	}
@@ -136,15 +130,7 @@ int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 		else if (is_heredoc(tokens[i], 0, 0))
 			i += 2;
 		else if (is_pipe(tokens[i], 0, 0))
-		{
-			(*ast)->pipe = 1;
 			i++;
-		}
-		else if (is_new_line(tokens, i))
-		{
-			(*ast)->new_line = 1;
-			i++;
-		}
 		else
 			parse_cmd(ast, tokens, &i, -1);
 	}
@@ -179,8 +165,8 @@ int	syntax_checker(char **tokens, int i)
 				tokens[i + 1]));
 	while (tokens[++i])
 	{
-		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
-			&& !tokens[i + 1])
+		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0) && !tokens[i
+			+ 1])
 		{
 			printf("minihell: syntax error near unexpected token 'newline'\n");
 			return (1);
@@ -188,8 +174,8 @@ int	syntax_checker(char **tokens, int i)
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
 			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
-					|| !is_append(tokens[i + 1], 0, 0)
-					|| !is_heredoc(tokens[i + 1], 0, 0)))
+					|| !is_append(tokens[i + 1], 0, 0) || !is_heredoc(tokens[i
+						+ 1], 0, 0)))
 			{
 				printf("minihell: syntax error near unexpected token '%s'\n",
 					tokens[i + 1]);
@@ -200,20 +186,21 @@ int	syntax_checker(char **tokens, int i)
 	return (0);
 }
 
-int	parser(t_ast **ast, char *s, int i)
+int	parser(t_ast **ast, char *s)
 {
 	char	**tokens;
 	char	***array;
+	int		i;
 
 	if (is_only_del(s))
 		return (0);
+	i = -1;
 	while (1)
 	{
-		i = -1;
 		tokens = lexer(s);
 		if (syntax_checker(tokens, -1))
 			return (0);
-		if (is_pipe_in_arr(tokens) || is_new_line_in_arr(tokens))
+		if (is_pipe_in_arr(tokens))
 			array = split_array(array, tokens, 0, 0);
 		else
 			lexer_utils(&array, tokens);
@@ -225,6 +212,5 @@ int	parser(t_ast **ast, char *s, int i)
 		else
 			break ;
 	}
-	exit_check(*ast);
 	return (0);
 }

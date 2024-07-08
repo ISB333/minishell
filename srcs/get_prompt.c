@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:27:33 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 08:49:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	extract_pos(char **position)
 	char	*trimm_path;
 	int		i;
 
-	trimm_path = ft_strtrim(getenv("SESSION_MANAGER"), "local/");
+	trimm_path = ft_strtrim(get_envv(0, "SESSION_MANAGER", 'F'), "local/");
 	if (!trimm_path)
 		return (1);
 	i = -1;
@@ -73,15 +73,14 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 
 int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 {
-	data->name = ft_substr(getenv("LOGNAME"), 0, ft_strlen(getenv("LOGNAME")));
+	data->name = ft_substr(get_envv(0, "LOGNAME", 'F'), 0, ft_strlen(get_envv(0, "LOGNAME", 'F')));
 	if (!data->name)
 		data->name = ft_substr("\0", 0, 1);
 	if (!dir)
 		return (1);
 	data->curr_dir = ft_strdup(dir);
-	free(dir);
-	if (extract_pos(&data->pos) && getenv("NAME"))
-		data->pos = ft_substr(getenv("NAME"), 0, ft_strlen(getenv("NAME")));
+	if (extract_pos(&data->pos) && get_envv(0, "NAME", 'F'))
+		data->pos = ft_substr(get_envv(0, "NAME", 'F'), 0, ft_strlen(get_envv(0, "NAME", 'F')));
 	else if (!data->pos)
 		data->pos = ft_substr("\0", 0, 1);
 	data->root_dir = ft_strnstr(data->curr_dir, data->name,
@@ -110,7 +109,7 @@ char	*get_prompt(void)
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
-	if (init_prompt_data(data, 0, 0, getcwd(NULL, 0)))
+	if (init_prompt_data(data, 0, 0, get_cwdd(0, 0, 'G')))
 		return (NULL);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_history.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 13:46:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:30:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int	add_previous_history(void)
 	char	*line;
 	char	*line_trimmed;
 	int		history;
+	char	*path;
 
-	history = open("/home/adesille/Desktop/minishell/minishell/srcs/history/history.txt", O_RDWR | O_CREAT, 0777);
+	path = ft_strjoin(get_envv(0, "HOME", 'F'), "/history.txt");
+	history = open(path, O_RDWR | O_CREAT, 0644);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
-	mem_manager(sizeof(int), 0, history, 'O');
+	mem_manager(0, 0, history, 'O');
 	while (1)
 	{
 		line = gnhell(history);
@@ -35,13 +37,15 @@ int	add_previous_history(void)
 
 int	append_new_history(char *rl)
 {
-	int	history;
+	int		history;
+	char	*path;
 
-	history = open("/home/adesille/Desktop/minishell/minishell/srcs/history/history.txt", O_WRONLY | O_APPEND, 0777);
+	path = ft_strjoin(get_envv(0, "HOME", 'F'), "/history.txt");
+	history = open(path, O_WRONLY | O_APPEND, 0644);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
+	mem_manager(0, 0, history, 'O');
 	ft_putstr_fd(rl, history);
 	ft_putstr_fd("\n", history);
-	close(history);
 	return (0);
 }

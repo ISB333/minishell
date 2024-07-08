@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:47:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:44:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define UNSET 4
 # define ENV 5
 # define ECH 6
+# define EXIT 7
 # define DUP_STD 20
 # define CLOSE_STD 21
 
@@ -69,13 +70,6 @@ typedef struct s_ast
 	int					fd_out;
 	int					pipe_fd[2];
 	pid_t				pid;
-	int					pipe;
-	int					new_line;
-
-	int					append;
-	int					infile;
-	int					outfile;
-	int					heredoc;
 	char				*error;
 	struct s_ast		*next;
 }						t_ast;
@@ -98,6 +92,24 @@ typedef struct s_heredoc
 	char				*s;
 	struct s_heredoc	*next;
 }						t_heredoc;
+
+typedef struct s_env
+{
+	char				*var;
+	struct s_env		*next;
+}						t_env;
+
+typedef struct s_cwd
+{
+	char				*dir;
+	struct s_cwd		*next;
+}						t_cwd;
+
+typedef struct s_export
+{
+	char				*var;
+	struct s_export		*next;
+}						t_export;
 
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
@@ -128,7 +140,7 @@ int						is_dollar(char *s, int token);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_dollar_in_double_quotes(char *s, int k, int i,
-							int token1);
+							int tokens);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
@@ -152,7 +164,7 @@ char					*open_pipe_manager(void);
 char					*join_new_str(char *str, char *new_str, int len, int i);
 
 /// Parsing ///
-int						parser(t_ast **ast, char *s, int i);
+int						parser(t_ast **ast, char *s);
 
 // utils //
 void					init_lst(t_ast **ast);
@@ -172,17 +184,21 @@ char					**extract_path(void);
 int						format_check(char *s, int *code);
 
 void					*mem_manager(size_t size, void *ptr, int fd, int token);
-void					*ff(t_memman *mem_list);
+void					ff(t_memman *mem_list, int i);
 int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
 
 /// builins ///
-int						ft_cd(t_ast *ast);
-int						ft_echo(t_ast *data);
-int						ft_pwd(void);
-
-// sigHandler.c
-int						catchBackslash(void);
-int						catchC(void);
+void					exit_check(t_ast *ast);
+char					*get_cwdd(char *cwd, char *new_dir, int token);
+char					*get_envv(char *env[], char *to_find, int token);
+void					echoo(char **arr);
+void					pwdd(void);
+int						cd(char **arr);
+void					exportt(char *env[], char *new_var, int token);
+void					init_export(char *env[], t_export **exp);
+void					print_export(t_export *exp);
+void					add_node_exp(t_export **exp, char *var);
+void					sort_export(t_export *exp);
 
 #endif

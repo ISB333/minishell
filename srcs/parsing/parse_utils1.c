@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 12:10:32 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:46:57 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,27 @@ int	check_if_directory(t_ast **ast)
 	if (stat((*ast)->cmd[0], &path_stat) != 0 && access((*ast)->cmd[0], OK))
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	if (((*ast)->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
 		|| ((*ast)->cmd[0][0] == '/' && S_ISDIR(path_stat.st_mode)))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		return (g_error_code = 126, 126);
 	}
 	if (access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
 	{
 		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 1, 1);
+		// return ((*ast)->cmd = NULL, g_error_code = 1, 1);
+		return (g_error_code = 1, 1);
 	}
 	else
 	{
 		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	return (0);
 }
@@ -48,6 +52,8 @@ int	cmd_path_init(t_ast **ast, int i)
 
 	if ((*ast)->cmd == NULL || is_builtin(*ast))
 		return (0);
+	// if (is_local_var((*ast)->cmd[0]))
+	// 	return((*ast)->cmd = NULL, 0);
 	path = extract_path();
 	if (!path)
 	{
@@ -92,7 +98,7 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	char	*path;
 	int		fd;
 
-	path = ft_strjoin(ft_strdup("/home/adesille/Desktop/minishell/minishell/srcs/parsing/hd"), ft_itoa(n));
+	path = ft_strjoin(ft_strjoin(get_envv(0, "HOME", 'F'), "/hd"), ft_itoa(n));
 	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
 	if (fd == -1)
 		return (error(strerror(errno), path, 1));
@@ -103,7 +109,6 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 		ft_putstr_fd("\n", fd);
 		hd = hd->next;
 	}
-	(*ast)->heredoc = 1;
 	if ((*ast)->fd_in)
 		mem_manager(0, 0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(path, O_RDONLY, 0644);
@@ -120,7 +125,6 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 	t_heredoc	*hd;
 	char		*ss;
 
-	n++;
 	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
@@ -136,7 +140,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 		add_node_hd(&hd, ss);
 	}
 	get_dollar_hd(hd);
-	add_to_ast(ast, hd, n);
+	add_to_ast(ast, hd, ++n);
 	*i += 2;
 	return (0);
 }

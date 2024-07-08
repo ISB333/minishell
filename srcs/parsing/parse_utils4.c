@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/04 13:47:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:57:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**extract_path(void)
 	char	**path;
 	char	*trimm_path;
 
-	trimm_path = getenv("PATH");
+	trimm_path = get_envv(0, "PATH", 'F');
 	if (!trimm_path)
 		return (NULL);
 	path = ft_split(trimm_path, ':');
@@ -68,7 +68,7 @@ void	get_dollar_hd(t_heredoc *hd)
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
 				new_str = ft_itoa(g_error_code);
 			else
-				new_str = getenv(env_var);
+				new_str = get_envv(0, env_var, 'F');
 			if (!new_str)
 				new_str = ft_strdup("\0");
 			hd->s = join_new_str(hd->s, new_str, j - k, 0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   memory_manager_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 10:04:38 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:44:20 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ char	*error_init(char *msg, char *file)
 	char	*s;
 
 	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
-	return (ft_strjoin(s, msg));
+	s = ft_strjoin(s, msg);
+	s = ft_strjoin(ft_strjoin(RED, s), DEF);
+	return (s);
 }
 
 int	error(char *msg, char *file, int return_code)
@@ -42,12 +44,19 @@ int	error(char *msg, char *file, int return_code)
 	return (1);
 }
 
-void	*ff(t_memman *mem_list)
+void	ff(t_memman *mem_list, int i)
 {
-	static char	heredoc[16] = "srcs/parsing/hd0";
+	char	*path;
+	char	*heredoc;
 	t_memman	*temp;
-	int			i;
 
+	path = ft_strjoin(get_envv(0, "HOME", 'F'), "/hd");
+	while (++i < 50)
+	{
+		heredoc = ft_strjoin(path, ft_itoa(i));
+		if (!access(heredoc, R_OK))
+			unlink(heredoc);
+	}
 	while (mem_list)
 	{
 		temp = mem_list;
@@ -61,12 +70,4 @@ void	*ff(t_memman *mem_list)
 		}
 		free(temp);
 	}
-	i = -1;
-	while (++i < 50)
-	{
-		heredoc[15] = i + '0';
-		if (!access(heredoc, R_OK))
-			unlink(heredoc);
-	}
-	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:30:24 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 06:27:25 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,7 @@ void	init_lst(t_ast **ast)
 	(*ast)->cmd = NULL;
 	(*ast)->cmd_path = NULL;
 	(*ast)->error = NULL;
-	(*ast)->heredoc = 0;
+	(*ast)->pid = 0;
 	(*ast)->fd_in = 0;
 	(*ast)->fd_out = 0;
-	(*ast)->append = 0;
-	(*ast)->infile = 0;
-	(*ast)->outfile = 0;
-	(*ast)->pipe = 0;
-	(*ast)->new_line = 0;
 }
