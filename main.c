@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 08:56:55 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:08:44 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		g_error_code = 0;
 
 // TODO : bubble sort linked list
 
-// TODO : Find a way to print the error msg after all the waitpid
 // TODO : execute files
 
 int	prompt(char **rl)
@@ -99,7 +98,7 @@ int	main(int argc, char *argv[], char *env[])
 			if (parser(&ast, rl))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
 			exit_check(ast);
-			print_lst(ast);
+			// print_lst(ast);
 			if (warlord_executor(ast, env))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
 		}

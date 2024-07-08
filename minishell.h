@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 08:44:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:38:10 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,7 @@ int						is_path(char *s);
 int						is_dollar(char *s, int token);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
-int						is_dollar_in_double_quotes(char *s, int k, int i,
-							int tokens);
+int						is_dollar_in_double_quotes(char *s, int k, int i);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
@@ -185,12 +184,14 @@ int						format_check(char *s, int *code);
 
 void					*mem_manager(size_t size, void *ptr, int fd, int token);
 void					ff(t_memman *mem_list, int i);
+void					close_all_fds(t_memman *mem_list);
 int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
 
-/// builins ///
+/// builtins ///
 void					exit_check(t_ast *ast);
 char					*get_cwdd(char *cwd, char *new_dir, int token);
+int						count_dir(char *cwd);
 char					*get_envv(char *env[], char *to_find, int token);
 void					echoo(char **arr);
 void					pwdd(void);
@@ -200,5 +201,11 @@ void					init_export(char *env[], t_export **exp);
 void					print_export(t_export *exp);
 void					add_node_exp(t_export **exp, char *var);
 void					sort_export(t_export *exp);
+int						quit(int token);
+char					*env_var_search(t_env *envv, char *to_find);
+void					print_env(t_env *envv);
+int						modify_exp_var(t_export *exp, char *var);
+int						is_only_n(char *s);
+void					exit_check_utils(t_ast *ast);
 
 #endif

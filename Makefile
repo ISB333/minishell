@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/08 07:48:33 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/08 09:21:19 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils4.c 
 
 BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
-		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils.c
+		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils1.c \
+		./srcs/builtins/builtins_utils2.c
 
 OFLAGS += -Wall -Wextra -g3 -I. -I/usr/include/readline
 OBJ_DIR = .obj
@@ -57,10 +58,14 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) \
 		$(LEXING:%.c=$(OBJ_DIR)/%.o) \
 		$(PARSING:%.c=$(OBJ_DIR)/%.o) \
 		$(BUILTINS:%.c=$(OBJ_DIR)/%.o)
-######################## LIBRARY ########################
+
+######################## UTILS ########################
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
+GREEN = \033[0;92m
+CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M")
 
 VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
 	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
@@ -98,6 +103,12 @@ fclean : clean
 	@rm -f $(NAME)
 
 re : fclean all
+
+git:
+	@git add . > /dev/null 2>&1
+	@git commit -m "$(CURRENT_DATE)" > /dev/null 2>&1
+	@git push > /dev/null 2>&1
+	@echo "$(GREEN)┌(メ▼▼)┘ GIT UPDATE └(▼▼メ)┐ $(DEF_COLOR)"
 
 -include $(DEPFILES)
 

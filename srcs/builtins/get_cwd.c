@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 11:10:57 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:30:37 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ void	add_node_cwd(t_cwd **cwdd, char *dirr)
 			last_node->dir = ft_strjoin(last_node->dir, "/");
 		last_node->next = new_node;
 	}
-}
-
-int	count_dir(char *cwd)
-{
-	int	i;
-	int	len;
-
-	i = -1;
-	len = 0;
-	if (!cwd)
-		return (0);
-	while (cwd[++i])
-		if (cwd[i] == '/')
-			len++;
-	return (++len);
 }
 
 char	**split_cwd(char *cwd)
@@ -113,7 +98,8 @@ char	*join_cwd(t_cwd *cwdd, int i, int k, int len)
 	while (tmp)
 	{
 		len += ft_strlen(tmp->dir);
-		if (!tmp->next && tmp->dir[ft_strlen(tmp->dir) - 1] == '/' && tmp->dir[0] != '/')
+		if (!tmp->next && tmp->dir[ft_strlen(tmp->dir) - 1] == '/'
+			&& tmp->dir[0] != '/')
 			len--;
 		tmp = tmp->next;
 	}

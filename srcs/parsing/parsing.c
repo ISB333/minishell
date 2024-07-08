@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 08:27:17 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:38:22 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,6 @@ void	printer(char ***array)
 			printf("%s\n", array[i][k]);
 	}
 	printf("\033[0m\n");
-}
-
-void	exit_check_utils(t_ast *ast)
-{
-	int	code;
-
-	while (ast->next)
-		ast = ast->next;
-	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
-	{
-		code = ft_atoi(ast->cmd[1]);
-		if (ast->cmd[1])
-		{
-			if (format_check(ast->cmd[1], &code))
-				return (mem_manager(0, 0, 0, 'C'), exit(2));
-			return (mem_manager(0, 0, 0, 'C'), exit(code));
-		}
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
-	}
 }
 
 void	exit_check(t_ast *ast)
@@ -165,8 +146,8 @@ int	syntax_checker(char **tokens, int i)
 				tokens[i + 1]));
 	while (tokens[++i])
 	{
-		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0) && !tokens[i
-			+ 1])
+		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
+			&& !tokens[i + 1])
 		{
 			printf("minihell: syntax error near unexpected token 'newline'\n");
 			return (1);
@@ -174,8 +155,8 @@ int	syntax_checker(char **tokens, int i)
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
 			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
-					|| !is_append(tokens[i + 1], 0, 0) || !is_heredoc(tokens[i
-						+ 1], 0, 0)))
+					|| !is_append(tokens[i + 1], 0, 0)
+					|| !is_heredoc(tokens[i + 1], 0, 0)))
 			{
 				printf("minihell: syntax error near unexpected token '%s'\n",
 					tokens[i + 1]);

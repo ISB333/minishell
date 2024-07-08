@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sh_in_arr1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 13:47:44 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:15:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ int	is_dollar_utils(char **arr, int i, int k, int pos)
 		while (arr[i][++k])
 		{
 			if (arr[i][k] == '$' && pos == 'i'
-				&& is_dollar_in_double_quotes(arr[i], k, k, 0))
+				&& is_dollar_in_double_quotes(arr[i], k, k))
 				return (i);
 			if (arr[i][k] == '$' && pos == 'k'
-				&& is_dollar_in_double_quotes(arr[i], k, k, 0))
+				&& is_dollar_in_double_quotes(arr[i], k, k))
 				return (k);
 		}
 	}

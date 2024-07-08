@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 15:52:53by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:32:06 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,6 @@ void	add_node_env(t_env **envv, char *var)
 		while (last_node->next)
 			last_node = last_node->next;
 		last_node->next = new_node;
-	}
-}
-
-char	*env_var_search(t_env *envv, char *to_find)
-{
-	while (envv)
-	{
-		if (!ft_strncmp(envv->var, to_find, ft_strlen(to_find)))
-			return (ft_strchr(envv->var, '=') + 1);
-		envv = envv->next;
-	}
-	return (NULL);
-}
-
-void	print_env(t_env *envv)
-{
-	while (envv)
-	{
-		printf("%s\n", envv->var);
-		envv = envv->next;
 	}
 }
 

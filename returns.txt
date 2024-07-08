@@ -40,27 +40,3 @@
     128 + 31 = 159: SIGSYS - Bad system call.
 
     ------------------------------------------------------------------------------------------------------------------------
-
-    - Si il y a plusieurs infile/outfile, uniquement le dernier est pris en compte 
-    (valable pour heredoc et append)
-
-    - Si heredoc wrong_cmd | wrong_cmd | cmd 
-        -> les messages d'erreurs sont afficher après l'execution des commandes
-        -> return_code = 0 (même si la dernière commande est "echo $?")
-
-    - Si il y a une erreur d'infile/outfile, le processus s'arrête
-
-
-	-- Fonctions qui peut t'etre utile:
-	- is_builtin (return 1 si la str est un builtin)
-	- error (return "minihell: " + file (if file) + msg d'erreur)
-
-	***************************************************************************************************************
-												ERROR
-	***************************************************************************************************************
-
-	- pwd lien symbolique vs physique (don't use get_cwd)
-		- need to use path and test access to add cwd
-			=> Not asked by the subjet so 🖕( •_• )🖕 ???
-
-	- better to start the execution now

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 14:35:57by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:35:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,6 @@ void	unset_export(t_export **exp, char *var)
 	}
 }
 
-int	modify_exp_var(t_export *exp, char *var)
-{
-	char	*exp_var;
-
-	while (exp)
-	{
-		exp_var = ft_strchr(exp->var, 'x') + 2;
-		exp_var = ft_substr(exp_var, 0, ft_strlen(exp_var)
-				- ft_strlen(ft_strchr(exp_var, '=')));
-		if (!ft_strncmp(exp_var, var, ft_strlen(exp_var)))
-		{
-			exp->var = ft_strjoin("declare -x ", var);
-			return (0);
-		}
-		exp = exp->next;
-	}
-	return (1);
-}
-
 void	exportt(char *env[], char *var, int token)
 {
 	static t_export	*exp;
@@ -79,18 +60,6 @@ void	exportt(char *env[], char *var, int token)
 		unset_export(&exp, var);
 }
 
-int	is_only_n(char *s)
-{
-	int i = 0;
-
-	while (s[++i])
-	{
-		if (s[i] != 'n')
-			return (0);
-	}
-	return (1);
-}
-
 void	echoo(char **arr)
 {
 	int	i;
@@ -102,8 +71,8 @@ void	echoo(char **arr)
 	{
 		if (is_only_n(arr[i]))
 			token = 1;
-		else 
-			break;
+		else
+			break ;
 	}
 	if (arr)
 	{

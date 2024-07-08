@@ -6,26 +6,11 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 07:28:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:27:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	quit(int token)
-{
-	if (token == EXIT_FAILURE)
-	{
-		mem_manager(0, 0, 0, 'C');
-		exit(EXIT_FAILURE);
-	}
-	if (token == EXIT_SUCCESS)
-	{
-		mem_manager(0, 0, 0, 'C');
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
 
 int	call_builtins(t_ast *ast, int c, int token)
 {
@@ -79,6 +64,16 @@ int	child(t_ast *ast)
 	return (0);
 }
 
+int	parent(t_ast *ast)
+{
+	if (close(ast->pipe_fd[1]) == -1)
+		return (1);
+	if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
+		return (1);
+	if (close(ast->pipe_fd[0]) == -1)
+		return (1);
+}
+
 int	executor(t_ast *ast, char *env[])
 {
 	if (pipe(ast->pipe_fd) == -1)
@@ -101,24 +96,15 @@ int	executor(t_ast *ast, char *env[])
 		quit(EXIT_FAILURE);
 	}
 	else
-	{
-		if (close(ast->pipe_fd[1]) == -1)
-			return (-1);
-		if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
-			return (-1);
-		if (close(ast->pipe_fd[0]) == -1)
-			return (-1);
-	}
+		parent(ast);
 	return (0);
 }
 
 int	warlord_executor(t_ast *ast, char *env[])
 {
 	t_ast	*wait;
-	t_ast	*error;
 
 	wait = ast;
-	error = ast;
 	while (ast)
 	{
 		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT
@@ -134,13 +120,9 @@ int	warlord_executor(t_ast *ast, char *env[])
 	{
 		if (wait->pid)
 			waitpid(wait->pid, NULL, 0);
+		if (wait->error)
+			printf("%s\n", wait->error);
 		wait = wait->next;
-	}
-	while (error)
-	{
-		if (error->error)
-			printf("%s\n", error->error);
-		error = error->next;
 	}
 	return (0);
 }

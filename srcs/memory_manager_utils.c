@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 08:44:20 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:22:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,23 @@ int	error(char *msg, char *file, int return_code)
 	return (1);
 }
 
+void	close_all_fds(t_memman *mem_list)
+{
+	while (mem_list)
+	{
+		if (mem_list->type == FD)
+		{
+			close(*(int *)mem_list->ptr);
+			free(mem_list->ptr);
+		}
+		mem_list = mem_list->next;
+	}
+}
+
 void	ff(t_memman *mem_list, int i)
 {
-	char	*path;
-	char	*heredoc;
+	char		*path;
+	char		*heredoc;
 	t_memman	*temp;
 
 	path = ft_strjoin(get_envv(0, "HOME", 'F'), "/hd");

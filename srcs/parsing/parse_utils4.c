@@ -6,11 +6,30 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 08:57:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:37:56 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	exit_check_utils(t_ast *ast)
+{
+	int	code;
+
+	while (ast->next)
+		ast = ast->next;
+	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
+	{
+		code = ft_atoi(ast->cmd[1]);
+		if (ast->cmd[1])
+		{
+			if (format_check(ast->cmd[1], &code))
+				return (mem_manager(0, 0, 0, 'C'), exit(2));
+			return (mem_manager(0, 0, 0, 'C'), exit(code));
+		}
+		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
+	}
+}
 
 int	format_check(char *s, int *code)
 {

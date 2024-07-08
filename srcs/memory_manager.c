@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/08 08:41:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 09:22:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,6 @@ void	close_fd(t_memman *mem_list, int fd)
 		}
 		prev = mem_temp;
 		mem_temp = mem_temp->next;
-	}
-}
-
-void	close_all_fds(t_memman *mem_list)
-{
-	while (mem_list)
-	{
-		if (mem_list->type == FD)
-		{
-			close(*(int *)mem_list->ptr);
-			free(mem_list->ptr);
-		}
-		mem_list = mem_list->next;
 	}
 }
 
