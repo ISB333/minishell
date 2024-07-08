@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 16:38:49 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 08:56:55 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
-// TODO : modify history + heredoc path into temp file in /home
-// TODO : !echo -nusyfsbfikhsbfjk
 // TODO : bubble sort linked list
 
-// TODO : modify functions where there's get_env
 // TODO : Find a way to print the error msg after all the waitpid
 // TODO : execute files
 
@@ -79,7 +76,6 @@ void	init_utils(char *env[], char *cwd)
 	free(cwd);
 	get_envv(env, 0, 'I');
 	exportt(env, 0, 'I');
-	// printf("%s\n", cwd);
 }
 
 int	main(int argc, char *argv[], char *env[])
@@ -92,7 +88,6 @@ int	main(int argc, char *argv[], char *env[])
 	(void)argc;
 	(void)argv;
 	init_utils(env, getcwd(NULL, 0));
-	// printf("%s\n", get_envv(NULL, "USER", 'F'));
 	while (1)
 	{
 		rl = NULL;
@@ -104,7 +99,7 @@ int	main(int argc, char *argv[], char *env[])
 			if (parser(&ast, rl))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
 			exit_check(ast);
-			// print_lst(ast);
+			print_lst(ast);
 			if (warlord_executor(ast, env))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
 		}

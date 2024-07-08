@@ -69,7 +69,6 @@ void	exportt(char *env[], char *var, int token)
 		{
 			add_node_exp(&exp, ft_strjoin("declare -x ", var));
 			sort_export(exp);
-			// print_export(exp);
 		}
 		else
 			modify_exp_var(exp, var);
@@ -80,24 +79,40 @@ void	exportt(char *env[], char *var, int token)
 		unset_export(&exp, var);
 }
 
+int	is_only_n(char *s)
+{
+	int i = 0;
+
+	while (s[++i])
+	{
+		if (s[i] != 'n')
+			return (0);
+	}
+	return (1);
+}
+
 void	echoo(char **arr)
 {
 	int	i;
 	int	token;
 
 	token = 0;
-	i = 1;
-	while (!ft_strncmp(arr[i], "-n", 2))
+	i = 0;
+	while (!ft_strncmp(arr[++i], "-n", 2))
 	{
-		token = 1;
-		i++;
+		if (is_only_n(arr[i]))
+			token = 1;
+		else 
+			break;
 	}
 	if (arr)
 	{
 		while (arr[i])
-			printf("%s", arr[i++]);
-		if (arr[i + 1])
-			printf(" ");
+		{
+			printf("%s", arr[i]);
+			if (arr[++i])
+				printf(" ");
+		}
 		if (!token)
 			printf("\n");
 	}

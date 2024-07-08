@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 16:43:28 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 08:44:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,6 @@ typedef struct s_ast
 	int					fd_out;
 	int					pipe_fd[2];
 	pid_t				pid;
-	int					pipe;
-	int					new_line;
-
-	int					append;
-	int					infile;
-	int					outfile;
-	int					heredoc;
 	char				*error;
 	struct s_ast		*next;
 }						t_ast;
@@ -191,7 +184,7 @@ char					**extract_path(void);
 int						format_check(char *s, int *code);
 
 void					*mem_manager(size_t size, void *ptr, int fd, int token);
-void					*ff(t_memman *mem_list);
+void					ff(t_memman *mem_list, int i);
 int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
 

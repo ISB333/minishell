@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/05 11:57:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:41:25 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	*mem_manager(size_t size, void *ptr, int fd, int token)
 		return (free_ptr(&mem_list, ptr));
 	if (token == 'C')
 	{
-		ff(mem_list);
+		ff(mem_list, -1);
 		mem_list = NULL;
 		return (NULL);
 	}

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 14:39:38 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 07:28:36 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	quit(int token)
 
 int	call_builtins(t_ast *ast, int c, int token)
 {
-	int	return_code = 0;
+	int	return_code;
 
+	return_code = 0;
 	if (c == CD)
 		return_code = cd(ast->cmd);
 	if (c == PWD)
@@ -120,7 +121,8 @@ int	warlord_executor(t_ast *ast, char *env[])
 	error = ast;
 	while (ast)
 	{
-		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT || is_builtin(ast) == UNSET)
+		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT
+			|| is_builtin(ast) == UNSET)
 			call_builtins(ast, is_builtin(ast), 0);
 		if (is_builtin(ast) == EXPORT && !ast->next)
 			call_builtins(ast, is_builtin(ast), 0);
@@ -134,9 +136,9 @@ int	warlord_executor(t_ast *ast, char *env[])
 			waitpid(wait->pid, NULL, 0);
 		wait = wait->next;
 	}
-	while(error)
+	while (error)
 	{
-		if(error->error)
+		if (error->error)
 			printf("%s\n", error->error);
 		error = error->next;
 	}

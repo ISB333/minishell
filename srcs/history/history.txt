@@ -705,3 +705,74 @@ export a=8
 export A=8
 export
 exit
+echo lol
+exit
+
+
+
+
+echo
+ lol
+echo
+lol
+exit
+echo
+lol
+echo
+lol
+
+echo 
+lol
+exit
+echo 
+lol
+exit
+echo lol
+exit
+echo -n lol
+exit
+echo -n lol
+exit
+echo -n lol
+echo -nnnnnnnnnnnnn lol
+echo -n -n lol
+exit
+echo -n -n lol
+echo --n -n lol
+echo -n-n lol
+echo -ndfgdfg lol
+make
+echo -ndfgdfg lol
+echo -n-n lol
+echo -n-n lol
+exit
+echo -n-n lol
+echo -n- lol
+echo -n lol
+make
+echo -n lol
+echo -n- lol
+echo -n-n lol
+exit
+echo -n- lol
+exit
+echo -n- lol
+echo -n lol
+exit
+echo -n lol
+exit
+echo -n lol
+echo -n lol
+exit
+echo -n lol
+echo -n -fdg lol
+echo -ndg lol
+exit
+exit
+make
+make
+make
+make
+make re
+echo lol
+exit

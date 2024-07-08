@@ -6,14 +6,14 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/06 14:26:51 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/08 07:48:33 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -lreadline -fsanitize=address
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -I/usr/include/readline
 CC = cc 
 
 DEFAULT = \033[0;39m
@@ -44,7 +44,7 @@ PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
 		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils.c
 
-OFLAGS += -Wall -Wextra -g3 -I.
+OFLAGS += -Wall -Wextra -g3 -I. -I/usr/include/readline
 OBJ_DIR = .obj
 DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
 		$(HISTORY:%.c=$(OBJ_DIR)/%.o.d) \
@@ -70,7 +70,7 @@ VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)

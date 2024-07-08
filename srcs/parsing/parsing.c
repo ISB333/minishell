@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/06 06:26:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:27:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ void	print_lst(t_ast *ast)
 		}
 		printf("fd_in = %d\n", ast->fd_in);
 		printf("fd_out = %d\n", ast->fd_out);
-		if (ast->append)
-			printf("APPEND\n");
-		if (ast->pipe)
-			printf("PIPE\n");
-		if (ast->new_line)
-			printf("NEWLINE\n");
 		if (ast->error)
 			printf("ERROR: %s\n", ast->error);
 		ast = ast->next;
@@ -136,15 +130,7 @@ int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 		else if (is_heredoc(tokens[i], 0, 0))
 			i += 2;
 		else if (is_pipe(tokens[i], 0, 0))
-		{
-			(*ast)->pipe = 1;
 			i++;
-		}
-		else if (is_new_line(tokens, i))
-		{
-			(*ast)->new_line = 1;
-			i++;
-		}
 		else
 			parse_cmd(ast, tokens, &i, -1);
 	}
@@ -214,7 +200,7 @@ int	parser(t_ast **ast, char *s)
 		tokens = lexer(s);
 		if (syntax_checker(tokens, -1))
 			return (0);
-		if (is_pipe_in_arr(tokens) || is_new_line_in_arr(tokens))
+		if (is_pipe_in_arr(tokens))
 			array = split_array(array, tokens, 0, 0);
 		else
 			lexer_utils(&array, tokens);

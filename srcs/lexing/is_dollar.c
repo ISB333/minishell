@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/04 13:46:57 by adesille         ###   ########.fr       */
+/*   Updated: 2024/07/08 08:55:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	get_dollar(char **arr)
 	if (!ft_strncmp(&arr[i][k], "$?", 2))
 		new_str = ft_itoa(g_error_code);
 	else
-		new_str = getenv(env_var);
+		new_str = get_envv(0, env_var, 'F');
 	if (!new_str)
 		new_str = ft_strdup("\0");
 	arr[i] = join_new_str(arr[i], new_str, j - k, 0);

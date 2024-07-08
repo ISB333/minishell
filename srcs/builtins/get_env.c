@@ -129,17 +129,9 @@ char	*get_envv(char *env[], char *var, int token)
 	if (token == 'A')
 	{
 		if (!check_if_exist(envv, var))
-		{
-			printf("notexisting\n");
 			add_node_env(&envv, var);
-			return (NULL);
-		}
 		else
-		{
-			printf("exist\n");
 			get_envv(0, var, 'M');
-			return ("YES");
-		}
 	}
 	if (token == 'U')
 		unset_env(&envv, var);
