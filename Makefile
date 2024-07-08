@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/08 09:21:19 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/08 10:39:43 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 
 BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
 		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils1.c \
-		./srcs/builtins/builtins_utils2.c
+		./srcs/builtins/builtins_utils2.c ./srcs/builtins/builtins_utils3.c
 
 OFLAGS += -Wall -Wextra -g3 -I. -I/usr/include/readline
 OBJ_DIR = .obj

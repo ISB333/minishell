@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:27:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 10:38:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	parent(t_ast *ast)
 		return (1);
 	if (close(ast->pipe_fd[0]) == -1)
 		return (1);
+	return (0);
 }
 
 int	executor(t_ast *ast, char *env[])
@@ -96,7 +97,8 @@ int	executor(t_ast *ast, char *env[])
 		quit(EXIT_FAILURE);
 	}
 	else
-		parent(ast);
+		if (parent(ast))
+			return (1);
 	return (0);
 }
 
@@ -113,7 +115,8 @@ int	warlord_executor(t_ast *ast, char *env[])
 		if (is_builtin(ast) == EXPORT && !ast->next)
 			call_builtins(ast, is_builtin(ast), 0);
 		else if (ast->cmd && !ast->error)
-			executor(ast, env);
+			if (executor(ast, env))
+				return (1);
 		ast = ast->next;
 	}
 	while (wait && wait->next)

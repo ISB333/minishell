@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:38:10 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/08 10:39:18 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,5 +207,7 @@ void					print_env(t_env *envv);
 int						modify_exp_var(t_export *exp, char *var);
 int						is_only_n(char *s);
 void					exit_check_utils(t_ast *ast);
+int						modify_exp_var(t_export *exp, char *var);
+int						is_only_n(char *s);
 
 #endif
