@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/07/09 07:41:12 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/09 08:59:19 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
 ######################## RULES ########################
 
 all : $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 $(NAME) : $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
@@ -96,7 +97,6 @@ val :
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
-	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 	@echo "$(BLUE)\nEvery files are cleaned$(DEFAULT)"
 
 fclean : clean
