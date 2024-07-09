@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 06:24:17 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 08:53:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,10 @@ int	executor(t_ast *ast, char *env[])
 int	warlord_executor(t_ast *ast, char *env[])
 {
 	t_ast	*wait;
+	t_ast	*error;
 
 	wait = ast;
+	error = ast;
 	while (ast)
 	{
 		if (is_builtin(ast) == CD || is_builtin(ast) == EXIT
@@ -114,8 +116,7 @@ int	warlord_executor(t_ast *ast, char *env[])
 			call_builtins(ast, is_builtin(ast), 0);
 		if (is_builtin(ast) == EXPORT && !ast->next)
 			call_builtins(ast, is_builtin(ast), 0);
-		// else if (ast->cmd && !ast->error)
-		else if (ast->cmd)
+		else if (ast->cmd && !ast->error)
 			if (executor(ast, env))
 				return (1);
 		ast = ast->next;
@@ -124,9 +125,13 @@ int	warlord_executor(t_ast *ast, char *env[])
 	{
 		if (wait->pid)
 			waitpid(wait->pid, NULL, 0);
-		if (wait->error)
-			printf("%s\n", wait->error);
 		wait = wait->next;
+	}
+	while (error && error->next)
+	{
+		if (error->error)
+			printf("%s\n", error->error);
+		error = error->next;
 	}
 	return (0);
 }

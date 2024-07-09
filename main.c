@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 08:38:55 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 08:56:09 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
-// TODO : Signals (also in heredoc)
-/*	◦ ctrl-C displays a new prompt on a new line.
-	◦ ctrl-D exits the shell.
-	◦ ctrl-\ does nothing
-*/
+// TODO : Signals code == global variable
+
 // TODO : Manage error code return with a static inside a function
 // TODO : Manage nested shell to execute files
 // TODO : Write errors on stderr
+// TODO : error management
+//*			- ct 
+//*			- ls | ct 
+//*			== print nothing
+//*			- ls | ct | ls
+//*			== print error_msg before exec
 
 int	prompt(char **rl)
 {
@@ -105,7 +108,6 @@ int	main(int argc, char *argv[], char *env[])
 			break ;
 		if (!is_eof)
 		{
-		// if (!prompt(&rl))
 			stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 			history(rl);
 			if (parser(&ast, rl))
