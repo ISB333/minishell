@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:32:06 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:02:02 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,26 +100,26 @@ char	*get_envv(char *env[], char *var, int token)
 	static t_env	*envv;
 	int				i;
 
-	if (token == 'I')
+	if (token == INIT)
 	{
 		i = -1;
 		while (env[++i])
 			add_node_env(&envv, env[i]);
 	}
-	if (token == 'A')
+	if (token == ADD)
 	{
 		if (!check_if_exist(envv, var))
 			add_node_env(&envv, var);
 		else
-			get_envv(0, var, 'M');
+			get_envv(0, var, MODIF);
 	}
-	if (token == 'U')
+	if (token == UNSET)
 		unset_env(&envv, var);
-	if (token == 'F')
+	if (token == FIND)
 		return (env_var_search(envv, var));
-	if (token == 'M')
+	if (token == MODIF)
 		modify_env_var(envv, var);
-	if (token == 'P')
+	if (token == PRINT)
 		print_env(envv);
 	return (NULL);
 }

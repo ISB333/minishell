@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:35:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:07:32 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	exportt(char *env[], char *var, int token)
 {
 	static t_export	*exp;
 
-	if (token == 'I')
+	if (token == INIT)
 		init_export(env, &exp);
-	if (token == 'A')
+	if (token == ADD)
 	{
-		if (!get_envv(0, var, 'A'))
+		if (!get_envv(0, var, ADD))
 		{
 			add_node_exp(&exp, ft_strjoin("declare -x ", var));
 			sort_export(exp);
@@ -54,9 +54,9 @@ void	exportt(char *env[], char *var, int token)
 		else
 			modify_exp_var(exp, var);
 	}
-	if (token == 'P')
+	if (token == PRINT)
 		print_export(exp);
-	if (token == 'U')
+	if (token == UNSET)
 		unset_export(&exp, var);
 }
 
@@ -91,14 +91,14 @@ void	echoo(char **arr)
 
 void	pwdd(void)
 {
-	printf("%s\n", get_cwdd(0, 0, 'G'));
+	printf("%s\n", get_cwdd(0, 0, GET));
 }
 
 int	cd(char **arr)
 {
 	if (!arr[1])
 	{
-		if (chdir(ft_strjoin("/home/", get_envv(0, "USER", 'F'))))
+		if (chdir(ft_strjoin("/home/", get_envv(0, "USER", FIND))))
 			return (-1);
 	}
 	else
@@ -106,6 +106,6 @@ int	cd(char **arr)
 		if (chdir(arr[1]))
 			return (-1);
 	}
-	get_cwdd(0, arr[1], 'U');
+	get_cwdd(0, arr[1], UPDATE);
 	return (0);
 }

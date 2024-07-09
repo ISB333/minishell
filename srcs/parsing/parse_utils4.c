@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:37:56 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:06:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**extract_path(void)
 	char	**path;
 	char	*trimm_path;
 
-	trimm_path = get_envv(0, "PATH", 'F');
+	trimm_path = get_envv(0, "PATH", FIND);
 	if (!trimm_path)
 		return (NULL);
 	path = ft_split(trimm_path, ':');
@@ -87,7 +87,7 @@ void	get_dollar_hd(t_heredoc *hd)
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
 				new_str = ft_itoa(g_error_code);
 			else
-				new_str = get_envv(0, env_var, 'F');
+				new_str = get_envv(0, env_var, FIND);
 			if (!new_str)
 				new_str = ft_strdup("\0");
 			hd->s = join_new_str(hd->s, new_str, j - k, 0);

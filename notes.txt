@@ -1,0 +1,115 @@
+    1: General error.
+    2: Misuse of shell builtins.
+    126: Command found but is not executable.
+    127: Command not found.
+    128+n: Fatal error signal "n".
+    130: Script terminated by Ctrl+C.
+    255: Exit status out of range.
+
+
+	128 + 1 = 129: SIGHUP - Hangup detected on controlling terminal or death of controlling process.
+    128 + 2 = 130: SIGINT - Interrupt from keyboard (e.g., Ctrl+C).
+    128 + 3 = 131: SIGQUIT - Quit from keyboard.
+    128 + 4 = 132: SIGILL - Illegal instruction.
+    128 + 5 = 133: SIGTRAP - Trace/breakpoint trap.
+    128 + 6 = 134: SIGABRT - Abort signal from abort(3).
+    128 + 7 = 135: SIGBUS - Bus error.
+    128 + 8 = 136: SIGFPE - Floating-point exception.
+    128 + 9 = 137: SIGKILL - Kill signal (cannot be caught or ignored).
+    128 + 10 = 138: SIGUSR1 - User-defined signal 1.
+    128 + 11 = 139: SIGSEGV - Invalid memory reference.
+    128 + 12 = 140: SIGUSR2 - User-defined signal 2.
+    128 + 13 = 141: SIGPIPE - Broken pipe.
+    128 + 14 = 142: SIGALRM - Timer signal from alarm(2).
+    128 + 15 = 143: SIGTERM - Termination signal.
+    128 + 16 = 144: SIGSTKFLT - Stack fault on coprocessor.
+    128 + 17 = 145: SIGCHLD - Child process terminated, stopped, or continued.
+    128 + 18 = 146: SIGCONT - Continue executing, if stopped.
+    128 + 19 = 147: SIGSTOP - Stop executing (cannot be caught or ignored).
+    128 + 20 = 148: SIGTSTP - Stop signal from keyboard (Ctrl+Z).
+    128 + 21 = 149: SIGTTIN - Background process attempting to read from TTY.
+    128 + 22 = 150: SIGTTOU - Background process attempting to write to TTY.
+    128 + 23 = 151: SIGURG - Urgent condition on socket.
+    128 + 24 = 152: SIGXCPU - CPU time limit exceeded.
+    128 + 25 = 153: SIGXFSZ - File size limit exceeded.
+    128 + 26 = 154: SIGVTALRM - Virtual timer expired.
+    128 + 27 = 155: SIGPROF - Profiling timer expired.
+    128 + 28 = 156: SIGWINCH - Window size change.
+    128 + 29 = 157: SIGIO - I/O now possible.
+    128 + 30 = 158: SIGPWR - Power failure restart.
+    128 + 31 = 159: SIGSYS - Bad system call.
+
+    ------------------------------------------------------------------------------------------------------------------------
+    // ! Nested Shell ! //
+        Causes
+        Terminal Echo Settings: If the terminal settings are not correctly managed, especially the echo mode, you may see each character you type being echoed twice.
+        Duplicate Input Handling: The outer and inner shells might both be processing and echoing the input, leading to duplication.
+        Pseudoterminal (PTY) Misconfiguration: When using pseudoterminals, improper handling can cause input to be processed incorrectly.
+        Buffering Issues: Differences in how input buffering is handled in the nested shell environment can cause unexpected behavior.
+        Troubleshooting Steps
+        Check Terminal Echo Settings: Ensure the terminal echo is managed correctly in both the outer and inner shell. The termios settings can control echo behavior.
+
+        c
+        Copier le code
+        #include <termios.h>
+        #include <unistd.h>
+
+        void disable_echo() {
+            struct termios tty;
+            tcgetattr(STDIN_FILENO, &tty);
+            tty.c_lflag &= ~ECHO;
+            tcsetattr(STDIN_FILENO, TCSANOW, &tty);
+        }
+
+        void enable_echo() {
+            struct termios tty;
+            tcgetattr(STDIN_FILENO, &tty);
+            tty.c_lflag |= ECHO;
+            tcsetattr(STDIN_FILENO, TCSANOW, &tty);
+        }
+        You can use these functions to disable and enable echo as needed.
+
+        Check for Duplicate Input Handling: Ensure that only one shell instance is responsible for processing input and echoing characters.
+
+        Pseudoterminal Configuration: If your shell uses pseudoterminals, ensure they are correctly set up. Pseudoterminals often involve specific ioctl calls to configure them properly.
+
+        Monitor Input and Output: Add debug statements to see how input is being read and echoed. This can help identify where the duplication occurs.
+
+        Example Debugging
+        Here’s a basic example of how you might debug terminal settings:
+
+        c
+        Copier le code
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+        #include <termios.h>
+
+        void check_terminal_settings() {
+            struct termios tty;
+            if (tcgetattr(STDIN_FILENO, &tty) == 0) {
+                printf("Input flags: %x\n", tty.c_iflag);
+                printf("Output flags: %x\n", tty.c_oflag);
+                printf("Control flags: %x\n", tty.c_cflag);
+                printf("Local flags: %x\n", tty.c_lflag);
+            } else {
+                perror("tcgetattr");
+            }
+        }
+
+        int main() {
+            printf("Outer shell terminal settings:\n");
+            check_terminal_settings();
+
+            printf("Launching nested shell...\n");
+            system("/bin/sh"); // Replace with your minishell path
+
+            printf("Returned to outer shell.\n");
+            check_terminal_settings();
+
+            return 0;
+        }
+        Run this code to observe the terminal settings before and after launching the nested shell. This information can help you determine if terminal settings are being altered incorrectly.
+
+        Conclusion
+        To fix the issue of having to type letters twice in a nested shell, you need to carefully manage terminal settings, ensuring that echo is handled properly and input is not duplicated. Debugging the terminal settings and monitoring input handling in both the outer and inner shells will help identify and resolve the problem.

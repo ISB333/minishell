@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:37:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:27:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int	check_if_directory(t_ast **ast)
 	else
 	{
 		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
-		// return (g_error_code = 127, 127);
+		(*ast)->cmd_path = ft_strdup((*ast)->cmd[0]);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	return (0);
 }
@@ -96,7 +97,7 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	char	*path;
 	int		fd;
 
-	path = ft_strjoin(ft_strjoin(get_envv(0, "HOME", 'F'), "/hd"), ft_itoa(n));
+	path = ft_strjoin(ft_strjoin(get_envv(0, "HOME", FIND), "/hd"), ft_itoa(n));
 	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
 	if (fd == -1)
 		return (error(strerror(errno), path, 1));

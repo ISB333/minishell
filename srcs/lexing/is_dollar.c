@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/08 09:15:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:05:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	get_dollar(char **arr)
 	if (!ft_strncmp(&arr[i][k], "$?", 2))
 		new_str = ft_itoa(g_error_code);
 	else
-		new_str = get_envv(0, env_var, 'F');
+		new_str = get_envv(0, env_var, FIND);
 	if (!new_str)
 		new_str = ft_strdup("\0");
 	arr[i] = join_new_str(arr[i], new_str, j - k, 0);

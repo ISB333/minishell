@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 10:39:18 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 07:41:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,24 @@
 # define BLUE "\033[0;34m"
 # define DEF "\033[0m"
 
-# define CD 1
-# define PWD 2
-# define EXPORT 3
-# define UNSET 4
-# define ENV 5
-# define ECH 6
-# define EXIT 7
-# define DUP_STD 20
-# define CLOSE_STD 21
+# define CD 301
+# define PWD 302
+# define EXPORT 303
+# define UNSET 304
+# define ENV 305
+# define ECH 306
+# define EXIT 307
+
+# define DUP_STD 320
+# define CLOSE_STD 321
+
+# define INIT 330
+# define ADD 331
+# define PRINT 332
+# define MODIF 333
+# define FIND 334
+# define GET 335
+# define UPDATE 336
 
 extern int				g_error_code;
 
@@ -114,6 +123,7 @@ typedef struct s_export
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
+void					signals_handler(void);
 
 /// History ///
 char					*gnhell(int fd);

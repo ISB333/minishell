@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:23:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:04:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	extract_pos(char **position)
 	char	*trimm_path;
 	int		i;
 
-	trimm_path = ft_strtrim(get_envv(0, "SESSION_MANAGER", 'F'), "local/");
+	trimm_path = ft_strtrim(get_envv(0, "SESSION_MANAGER", FIND), "local/");
 	if (!trimm_path)
 		return (1);
 	i = -1;
@@ -73,16 +73,16 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 
 int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 {
-	data->name = ft_substr(get_envv(0, "LOGNAME", 'F'), 0,
-			ft_strlen(get_envv(0, "LOGNAME", 'F')));
+	data->name = ft_substr(get_envv(0, "LOGNAME", FIND), 0,
+			ft_strlen(get_envv(0, "LOGNAME", FIND)));
 	if (!data->name)
 		data->name = ft_substr("\0", 0, 1);
 	if (!dir)
 		return (1);
 	data->curr_dir = ft_strdup(dir);
-	if (extract_pos(&data->pos) && get_envv(0, "NAME", 'F'))
-		data->pos = ft_substr(get_envv(0, "NAME", 'F'), 0,
-				ft_strlen(get_envv(0, "NAME", 'F')));
+	if (extract_pos(&data->pos) && get_envv(0, "NAME", FIND))
+		data->pos = ft_substr(get_envv(0, "NAME", FIND), 0,
+				ft_strlen(get_envv(0, "NAME", FIND)));
 	else if (!data->pos)
 		data->pos = ft_substr("\0", 0, 1);
 	data->root_dir = ft_strnstr(data->curr_dir, data->name,
@@ -111,7 +111,7 @@ char	*get_prompt(void)
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = NULL;
-	if (init_prompt_data(data, 0, 0, get_cwdd(0, 0, 'G')))
+	if (init_prompt_data(data, 0, 0, get_cwdd(0, 0, GET)))
 		return (NULL);
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
 	if (!prompt)

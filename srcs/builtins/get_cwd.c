@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:30:37 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:08:02 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	update_cwd(t_cwd **cwdd, char *new_dir)
 	if (new_dir[0] == '/')
 	{
 		*cwdd = NULL;
-		get_cwdd(new_dir, 0, 'I');
+		get_cwdd(new_dir, 0, INIT);
 	}
 	else
 	{
@@ -124,16 +124,16 @@ char	*get_cwdd(char *cwd, char *new_dir, int token)
 	char			**cwd_dir;
 	int				i;
 
-	if (token == 'I')
+	if (token == INIT)
 	{
 		cwd_dir = split_cwd(cwd);
 		i = -1;
 		while (cwd_dir[++i])
 			add_node_cwd(&cwdd, cwd_dir[i]);
 	}
-	if (token == 'U')
+	if (token == UPDATE)
 		update_cwd(&cwdd, new_dir);
-	if (token == 'G')
+	if (token == GET)
 		return (join_cwd(cwdd, 0, 0, 0));
 	return (NULL);
 }

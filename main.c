@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:08:44 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 08:38:55 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
-// TODO : bubble sort linked list
-
-// TODO : execute files
+// TODO : Signals (also in heredoc)
+/*	◦ ctrl-C displays a new prompt on a new line.
+	◦ ctrl-D exits the shell.
+	◦ ctrl-\ does nothing
+*/
+// TODO : Manage error code return with a static inside a function
+// TODO : Manage nested shell to execute files
+// TODO : Write errors on stderr
 
 int	prompt(char **rl)
 {
@@ -34,7 +39,9 @@ int	prompt(char **rl)
 		return (printf("prompt error\n"), 1);
 	full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	s = readline(full_prompt);
-	if (!s || !ft_strlen(s))
+	if (!s)
+		return (free(s), -1);
+	if (!ft_strlen(s))
 		return (free(s), 1);
 	*rl = ft_strdup(s);
 	free(s);
@@ -71,29 +78,35 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 
 void	init_utils(char *env[], char *cwd)
 {
-	get_cwdd(cwd, 0, 'I');
+	get_cwdd(cwd, 0, INIT);
 	free(cwd);
-	get_envv(env, 0, 'I');
-	exportt(env, 0, 'I');
+	get_envv(env, 0, INIT);
+	exportt(env, 0, INIT);
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	int			stdin_origin;
-	int			stdout_origin;
-	t_ast		*ast;
-	char		*rl;
+	int		stdin_origin;
+	int		stdout_origin;
+	t_ast	*ast;
+	char	*rl;
+	int		is_eof;
 
 	(void)argc;
 	(void)argv;
 	init_utils(env, getcwd(NULL, 0));
+	signals_handler();
 	while (1)
 	{
 		rl = NULL;
 		ast = NULL;
-		stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
-		if (!prompt(&rl))
+		is_eof = prompt(&rl);
+		if (is_eof == -1)
+			break ;
+		if (!is_eof)
 		{
+		// if (!prompt(&rl))
+			stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 			history(rl);
 			if (parser(&ast, rl))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
@@ -101,8 +114,8 @@ int	main(int argc, char *argv[], char *env[])
 			// print_lst(ast);
 			if (warlord_executor(ast, env))
 				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+			stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 		}
-		stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 	}
 	mem_manager(0, 0, 0, 'C');
 }

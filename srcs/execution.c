@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 10:38:48 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/09 06:24:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int	call_builtins(t_ast *ast, int c, int token)
 	if (c == ECH)
 		echoo(ast->cmd);
 	if (c == EXPORT && !ast->cmd[1])
-		exportt(0, 0, 'P');
+		exportt(0, 0, PRINT);
 	if (c == EXPORT && ast->cmd[1])
-		exportt(0, ast->cmd[1], 'A');
+		exportt(0, ast->cmd[1], ADD);
 	if (c == ENV)
-		get_envv(0, 0, 'P');
+		get_envv(0, 0, PRINT);
 	if (c == UNSET)
 	{
-		exportt(0, ast->cmd[1], 'U');
-		get_envv(0, ast->cmd[1], 'U');
+		exportt(0, ast->cmd[1], UNSET);
+		get_envv(0, ast->cmd[1], UNSET);
 	}
-	if (token == 'X')
+	if (token == EXIT)
 		quit(EXIT_SUCCESS);
 	return (return_code);
 }
@@ -87,7 +87,7 @@ int	executor(t_ast *ast, char *env[])
 		if (child(ast) == -1)
 			return (1);
 		if (is_builtin(ast))
-			call_builtins(ast, is_builtin(ast), 'X');
+			call_builtins(ast, is_builtin(ast), EXIT);
 		else
 		{
 			mem_manager(0, 0, 0, 'K');
@@ -114,7 +114,8 @@ int	warlord_executor(t_ast *ast, char *env[])
 			call_builtins(ast, is_builtin(ast), 0);
 		if (is_builtin(ast) == EXPORT && !ast->next)
 			call_builtins(ast, is_builtin(ast), 0);
-		else if (ast->cmd && !ast->error)
+		// else if (ast->cmd && !ast->error)
+		else if (ast->cmd)
 			if (executor(ast, env))
 				return (1);
 		ast = ast->next;
