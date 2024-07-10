@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 07:41:45 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/10 10:46:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
 void					signals_handler(void);
+
+void disable_raw_mode();
+void enable_raw_mode();
 
 /// History ///
 char					*gnhell(int fd);

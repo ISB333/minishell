@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 08:56:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/10 11:44:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,27 @@ int	check_if_directory(t_ast **ast)
 {
 	struct stat	path_stat;
 
-	if (stat((*ast)->cmd[0], &path_stat) != 0 && access((*ast)->cmd[0], OK))
+	if (stat((*ast)->cmd[0], &path_stat) != 0 && (!ft_strncmp((*ast)->cmd[0], "./", 2)
+		|| (*ast)->cmd[0][0] == '/') && access((*ast)->cmd[0], OK))
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
 		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
 	}
-	if (((*ast)->cmd[0][0] == '.' && S_ISDIR(path_stat.st_mode))
-		|| ((*ast)->cmd[0][0] == '/' && S_ISDIR(path_stat.st_mode)))
+	if (!ft_strncmp((*ast)->cmd[0], "./", 2) && S_ISDIR(path_stat.st_mode))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
 		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
 	}
-	if (access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
+	if ((access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
+		&& !ft_strncmp((*ast)->cmd[0], "./", 2))
 	{
 		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
 		return ((*ast)->cmd = NULL, g_error_code = 1, 1);
 	}
-	if (!access((*ast)->cmd[0], X_OK))
+	if (!access((*ast)->cmd[0], X_OK) && (*ast)->cmd[0][0] == '.')
 	{
 		(*ast)->cmd_path = ft_strdup((*ast)->cmd[0]);
-		return ((*ast)->cmd[0] = '\0', 0);
+		return (0);
 	}
 	else
 	{

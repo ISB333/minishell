@@ -6,15 +6,19 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 07:39:30 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/09 08:51:03 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/10 10:34:27 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_sig_c()
+void	handle_sig_c(int signal)
 {
-	printf(BLUE"\n%s"DEF, get_prompt());
+	if (signal == SIGINT)
+	{
+		printf(BLUE"\n%s"DEF, get_prompt());
+		fflush(stdout);
+	}
 }
 
 void	handle_sig_q()

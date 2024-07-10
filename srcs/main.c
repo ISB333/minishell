@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 08:56:09 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/10 11:15:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,12 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
-// TODO : Signals code == global variable
-
-// TODO : Manage error code return with a static inside a function
 // TODO : Manage nested shell to execute files
-// TODO : Write errors on stderr
-// TODO : error management
-//*			- ct 
-//*			- ls | ct 
-//*			== print nothing
-//*			- ls | ct | ls
-//*			== print error_msg before exec
+
+// TODO : Error Management
+	// TODO : Signals code == global variable
+	// TODO : Manage error code return with a static inside a function
+	// TODO : Write errors on stderr
 
 int	prompt(char **rl)
 {
@@ -43,7 +38,7 @@ int	prompt(char **rl)
 	full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	s = readline(full_prompt);
 	if (!s)
-		return (free(s), -1);
+		return (-1);
 	if (!ft_strlen(s))
 		return (free(s), 1);
 	*rl = ft_strdup(s);

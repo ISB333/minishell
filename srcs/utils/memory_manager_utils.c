@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 06:05:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/10 11:48:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ char	*error_init(char *msg, char *file)
 {
 	char	*s;
 
-	s = ft_strjoin(ft_strjoin("minihell: ", file), ": ");
+	s = ft_strjoin(ft_strjoin("❌ minihell: ", file), ": ");
 	s = ft_strjoin(s, msg);
 	s = ft_strjoin(ft_strjoin(RED, s), DEF);
+	s = ft_strjoin(s, " ❌");
 	return (s);
 }
 
