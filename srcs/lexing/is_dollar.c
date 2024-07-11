@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/09 06:05:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 10:21:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	is_dollar_in_double_quotes(char *s, int k, int i)
 	token1 = 0;
 	while (i > 0 && s[i] && s[i] != 34 && s[i] != 39)
 		i--;
-	if (i > 0 && s[i] && (s[i] == 34 || s[i] == 39))
+	if (s[i] && (s[i] == 34 || s[i] == 39))
 		token1 = s[i];
 	while (s[k] && s[k] != 34 && s[k] != 39)
 		k++;
@@ -99,9 +99,14 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 		{
 			k = -1;
 			while (arr[i][++k])
+			{
+				if (arr[i][k] == '$' && (is_del(arr[i][k + 1]) || !arr[i][k + 1]
+					|| is_quotes(arr[i], k + 1, 0)))
+					k++;
 				if (arr[i][k] == '$')
 					if (is_dollar_in_double_quotes(arr[i], k, k))
 						return (1);
+			}
 		}
 	}
 	if (token == 'p')
@@ -109,26 +114,28 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 	return (0);
 }
 
-void	get_dollar(char **arr)
+void	get_dollar(char **arr, int i, int k, int j)
 {
 	char	*env_var;
 	char	*new_str;
-	int		i;
-	int		k;
-	int		j;
 
 	i = is_dollar_in_arr(arr, -1, 'p', 'i');
 	k = is_dollar_in_arr(arr, -1, 'p', 'k');
-	if (k)
-		if (!is_dollar_in_double_quotes(arr[i], k, k))
-			return ;
+	if (k && !is_dollar_in_double_quotes(arr[i], k, k))
+		return ;
+	if (is_del(arr[i][k + 1]) || !arr[i][k + 1])
+		return ;
 	j = k;
 	while (!is_del(arr[i][j]) && arr[i][j] && arr[i][j] != 34
 		&& arr[i][j] != 39)
 		j++;
 	env_var = ft_substr(arr[i], k + 1, j - k - 1);
 	if (!ft_strncmp(&arr[i][k], "$?", 2))
-		new_str = ft_itoa(g_error_code);
+	{
+		return (arr[i] = ft_strjoin(ft_strjoin(ft_substr(arr[i], 0,
+						ft_strlen(arr[i]) - ft_strlen(ft_strchr(arr[i], '$'))),
+					ft_itoa(g_error_code)), &arr[i][k + 2]), (void)0);
+	}
 	else
 		new_str = get_envv(0, env_var, FIND);
 	if (!new_str)

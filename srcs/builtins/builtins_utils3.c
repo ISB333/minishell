@@ -6,11 +6,24 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:34:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/08 09:34:35 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 09:41:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	env_format_check(char *var)
+{
+	int	i;
+
+	i = -1;
+	if (!ft_isalpha(var[0]))
+		return (0);
+	while (var[++i] && var[i] != '=')
+		if (var[i] != '=' && !ft_isalnum(var[i]))
+			return (0);
+	return (1);
+}
 
 int	is_only_n(char *s)
 {

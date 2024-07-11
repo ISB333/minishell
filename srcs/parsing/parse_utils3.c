@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 06:27:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 11:00:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ int	cmdlen(char **tokens, int *i)
 	{
 		if (is_redir(tokens[*i], 0, 0))
 			(*i) += 2;
-		else
+		else if (ft_strlen(tokens[*i]))
 		{
 			(*i)++;
 			len++;
 		}
+		else
+			(*i)++;
 	}
 	return (len);
 }

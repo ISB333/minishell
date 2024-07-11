@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 09:38:22 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 06:48:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	print_lst(t_ast *ast)
 		ast = ast->next;
 		n++;
 	}
-	if (g_error_code)
-		printf("error_code = %d\n", g_error_code);
+	// if (g_error_code)
+	// 	printf("error_code = %d\n", g_error_code);
 	printf(DEF);
 }
 
@@ -141,6 +141,8 @@ int	add_node(t_ast **ast, char **tokens)
 
 int	syntax_checker(char **tokens, int i)
 {
+	if (!tokens)
+		return (1);
 	if (is_pipe(tokens[0], 0, 0))
 		return (printf("minihell: syntax error near unexpected token '%s'\n",
 				tokens[i + 1]));

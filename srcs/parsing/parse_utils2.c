@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 06:26:58 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 11:28:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if ((*ast)->fd_out == -1)
-		return (error(strerror(errno), fd, 1));
+	{
+		(*ast)->error = error_init(strerror(errno), fd);
+		return (g_error_code = 1, errno);
+	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
@@ -40,7 +43,10 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 		mem_manager(0, 0, (*ast)->fd_out, 'N');
 	(*ast)->fd_out = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
-		return (error(strerror(errno), fd, 1));
+	{
+		(*ast)->error = error_init(strerror(errno), fd);
+		return (g_error_code = 1, errno);
+	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
 	return (0);
@@ -60,7 +66,8 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	if ((*ast)->fd_in == -1)
 	{
 		init_lst(ast);
-		return (error(strerror(errno), fd, 1));
+		(*ast)->error = error_init(strerror(errno), fd);
+		return (g_error_code = 1, errno);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
 	*i += 2;
@@ -112,6 +119,8 @@ int	parse_cmd(t_ast **ast, char **tok, int *i, int j)
 			k += 2;
 		else if (is_there_quotes_in_da_shit(tok[k]) && tok[k])
 			(*ast)->cmd[++j] = quotes_destroyer(tok[k++], 0, 0, 0);
+		else if (!ft_strlen(tok[k]))
+			k++;
 		else if (!is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
 		{
 			(*ast)->cmd[++j] = ft_substr(tok[k], 0, ft_strlen(tok[k]));

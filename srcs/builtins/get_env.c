@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 06:02:02 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 10:23:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	unset_env(t_env **envv, char *var)
 	t_env	*prev;
 	t_env	*curr;
 
+	if (!var)
+		return ;
 	prev = *envv;
 	curr = *envv;
 	if (!ft_strncmp((*envv)->var, var, ft_strlen(var)))
@@ -79,8 +81,8 @@ int	check_if_exist(t_env *envv, char *var)
 	char	*envv_var;
 
 	if (ft_strchr(var, '='))
-		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
-						'=')));
+		var = ft_substr(var, 0, ft_strlen(var)
+				- ft_strlen(ft_strchr(var, '=')));
 	while (envv)
 	{
 		if (ft_strchr(envv->var, '='))
@@ -108,10 +110,10 @@ char	*get_envv(char *env[], char *var, int token)
 	}
 	if (token == ADD)
 	{
-		if (!check_if_exist(envv, var))
+		if (!check_if_exist(envv, var) && env_format_check(var))
 			add_node_env(&envv, var);
-		else
-			get_envv(0, var, MODIF);
+		else if (env_format_check(var))
+			return (get_envv(0, var, MODIF), "EXIST");
 	}
 	if (token == UNSET)
 		unset_env(&envv, var);

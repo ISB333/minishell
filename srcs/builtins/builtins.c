@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 06:07:32 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 10:09:43 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	unset_export(t_export **exp, char *var)
 
 	prev = *exp;
 	curr = *exp;
+	if (!var)
+		return ;
 	if (!ft_strncmp(ft_strchr((*exp)->var, 'x') + 2, var, ft_strlen(var)))
 		*exp = (*exp)->next;
 	else
@@ -46,11 +48,13 @@ void	exportt(char *env[], char *var, int token)
 		init_export(env, &exp);
 	if (token == ADD)
 	{
-		if (!get_envv(0, var, ADD))
+		if (!get_envv(0, var, ADD) && env_format_check(var))
 		{
 			add_node_exp(&exp, ft_strjoin("declare -x ", var));
 			sort_export(exp);
 		}
+		else if (!env_format_check(var))
+			error("not a valid identifier", ft_strjoin("export: ", var), 1);
 		else
 			modify_exp_var(exp, var);
 	}
@@ -103,8 +107,13 @@ int	cd(char **arr)
 	}
 	else
 	{
+		if (arr[2])
+			return (error("too many arguments", "cd", 1));
+		if (!access(arr[1], OK) && access(arr[1], X_OK))
+			return (error("Permission denied", "cd", 1));
 		if (chdir(arr[1]))
-			return (-1);
+			return (error("No such file or directory", 
+					ft_strjoin("cd: ", arr[1]), 1));
 	}
 	get_cwdd(0, arr[1], UPDATE);
 	return (0);

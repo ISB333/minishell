@@ -43,7 +43,7 @@ int	child(t_ast *ast)
 {
 	if (close(ast->pipe_fd[0]))
 		return (-1);
-		// return (close(ast->pipe_fd[1]), -1);
+	// return (close(ast->pipe_fd[1]), -1);
 	if (ast->fd_in)
 	{
 		if (dup2(ast->fd_in, STDIN_FILENO) == -1 || close(ast->fd_in))
@@ -98,10 +98,16 @@ int	executor(t_ast *ast, char *env[])
 
 void	wait_and_print_error(t_ast *wait, t_ast *error)
 {
+	int status;
+
 	while (wait)
 	{
 		if (wait->pid)
-			waitpid(wait->pid, NULL, 0);
+			waitpid(wait->pid, &status, 0);
+		if (WIFEXITED(status) && WEXITSTATUS(status))
+			g_error_code = 1;
+		else if (!WEXITSTATUS(status))
+			g_error_code = 0;
 		wait = wait->next;
 	}
 	if (!wait)
@@ -109,7 +115,7 @@ void	wait_and_print_error(t_ast *wait, t_ast *error)
 		while (error)
 		{
 			if (error->error)
-				printf("%s\n", error->error);
+				write(2, error->error, ft_strlen(error->error));
 			error = error->next;
 		}
 	}
@@ -120,15 +126,17 @@ int	warlord_executor(t_ast *ast, char *env[])
 	t_ast	*wait;
 	t_ast	*error;
 
+	if (!ast)
+		return (0);
 	wait = ast;
 	error = ast;
-	if (!ast->next && is_builtin(ast))
+	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
 		call_builtins(ast, is_builtin(ast), 0);
 	else
 	{
 		while (ast)
 		{
-			if (ast->cmd && !ast->error)
+			if (ast->cmd && ast->cmd[0] && !ast->error)
 				if (executor(ast, env))
 					return (1);
 			ast = ast->next;

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/10 10:46:31 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 10:04:16 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,8 @@ int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
 void					signals_handler(void);
 
-void disable_raw_mode();
-void enable_raw_mode();
+void					disable_raw_mode(void);
+void					enable_raw_mode(void);
 
 /// History ///
 char					*gnhell(int fd);
@@ -135,7 +135,7 @@ int						add_previous_history(void);
 
 /// Lexing ///
 char					**lexer(char *str);
-void					get_dollar(char **arr);
+void					get_dollar(char **arr, int i, int k, int j);
 char					***split_array(char ***arr, char **tok, int i, int k);
 int						lexer_utils(char ****array, char **tokens);
 
@@ -222,5 +222,6 @@ int						is_only_n(char *s);
 void					exit_check_utils(t_ast *ast);
 int						modify_exp_var(t_export *exp, char *var);
 int						is_only_n(char *s);
+int						env_format_check(char *var);
 
 #endif

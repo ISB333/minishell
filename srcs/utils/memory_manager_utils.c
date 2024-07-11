@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/10 11:48:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 10:29:21 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*error_init(char *msg, char *file)
 	s = ft_strjoin(ft_strjoin("❌ minihell: ", file), ": ");
 	s = ft_strjoin(s, msg);
 	s = ft_strjoin(ft_strjoin(RED, s), DEF);
-	s = ft_strjoin(s, " ❌");
+	s = ft_strjoin(s, " ❌\n");
 	return (s);
 }
 
@@ -39,7 +39,6 @@ int	error(char *msg, char *file, int return_code)
 	if (return_code)
 	{
 		g_error_code = return_code;
-		printf("error_code = %d\n", g_error_code);
 		return (return_code);
 	}
 	return (1);

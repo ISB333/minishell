@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/10 11:15:45 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 11:25:33 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		g_error_code = 0;
 
 // ! TODO : Add -Werror
 
-// TODO : Manage nested shell to execute files
+// TODO : ctrl+D
 
 // TODO : Error Management
 	// TODO : Signals code == global variable
@@ -69,11 +69,6 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 	return (0);
 }
 
-/*
-	adesille@k1r2p12:~/Desktop/minishell/minishell$ ./minishell
-	minihell: ./minishell: command not found
-*/
-
 void	init_utils(char *env[], char *cwd)
 {
 	get_cwdd(cwd, 0, INIT);
@@ -115,4 +110,5 @@ int	main(int argc, char *argv[], char *env[])
 		}
 	}
 	mem_manager(0, 0, 0, 'C');
+	return (g_error_code);
 }

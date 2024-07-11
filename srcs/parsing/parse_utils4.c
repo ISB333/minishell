@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/09 06:06:14 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 08:00:22 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	format_check(char *s, int *code)
 		if (s[i] >= '0' && s[i] <= '9')
 			i++;
 		else
-			return (printf("minihell: %s: numeric argument required\n", s), 1);
+			return (error("numeric argument required", s, 2));
 	}
 	if (*code)
 	{
