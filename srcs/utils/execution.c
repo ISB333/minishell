@@ -106,8 +106,10 @@ void	wait_and_print_error(t_ast *wait, t_ast *error)
 			waitpid(wait->pid, &status, 0);
 		if (WIFEXITED(status) && WEXITSTATUS(status))
 			g_error_code = 1;
-		else if (!WEXITSTATUS(status))
+		else if (!WEXITSTATUS(status) && !wait->error_code)
 			g_error_code = 0;
+		else if (wait->error_code)
+			g_error_code = wait->error_code;
 		wait = wait->next;
 	}
 	if (!wait)

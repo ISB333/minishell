@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 11:25:33 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 12:45:51 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	main(int argc, char *argv[], char *env[])
 			exit_check(ast);
 			// print_lst(ast);
 			if (warlord_executor(ast, env))
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), g_error_code);
 			stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 		}
 	}

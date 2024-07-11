@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 10:04:16 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 12:38:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_ast
 	int					pipe_fd[2];
 	pid_t				pid;
 	char				*error;
+	int					error_code;
 	struct s_ast		*next;
 }						t_ast;
 

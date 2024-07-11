@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 11:28:14 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/11 12:39:08 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 	if ((*ast)->fd_out == -1)
 	{
 		(*ast)->error = error_init(strerror(errno), fd);
+		(*ast)->error_code = 1;
 		return (g_error_code = 1, errno);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
@@ -45,6 +46,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	if ((*ast)->fd_out == -1)
 	{
 		(*ast)->error = error_init(strerror(errno), fd);
+		(*ast)->error_code = 1;
 		return (g_error_code = 1, errno);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
@@ -67,6 +69,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	{
 		init_lst(ast);
 		(*ast)->error = error_init(strerror(errno), fd);
+		(*ast)->error_code = 1;
 		return (g_error_code = 1, errno);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
