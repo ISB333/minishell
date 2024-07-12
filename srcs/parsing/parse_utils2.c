@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 12:39:08 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/12 13:04:08 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 	{
 		(*ast)->error = error_init(strerror(errno), fd);
 		(*ast)->error_code = 1;
-		return (g_error_code = 1, errno);
+		return (g_error_code = 1, 1);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
@@ -47,7 +47,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	{
 		(*ast)->error = error_init(strerror(errno), fd);
 		(*ast)->error_code = 1;
-		return (g_error_code = 1, errno);
+		return (g_error_code = 1, 1);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
 	*i += 2;
@@ -61,16 +61,16 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
-		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+		fd = ft_strdup(tokens[*i + 1]);
 	if ((*ast)->fd_in)
 		mem_manager(0, 0, (*ast)->fd_in, 'N');
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
 	{
-		init_lst(ast);
+		// init_lst(ast);
 		(*ast)->error = error_init(strerror(errno), fd);
 		(*ast)->error_code = 1;
-		return (g_error_code = 1, errno);
+		return (g_error_code = 1, 1);
 	}
 	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
 	*i += 2;

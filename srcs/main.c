@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 12:45:51 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/12 09:14:00by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int		g_error_code = 0;
 
 // ! TODO : Add -Werror
-
-// TODO : ctrl+D
 
 // TODO : Error Management
 	// TODO : Signals code == global variable

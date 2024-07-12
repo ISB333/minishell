@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 12:39:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/12 13:35:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,23 @@ int	check_if_directory(t_ast **ast)
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 127;
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	if ((!ft_strncmp((*ast)->cmd[0], "/", 1)
 		|| !ft_strncmp((*ast)->cmd[0], "./", 2)) && S_ISDIR(path_stat.st_mode))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
-		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		return (g_error_code = 126, 126);
 	}
 	if ((access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
 		&& !ft_strncmp((*ast)->cmd[0], "./", 2))
 	{
 		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
+		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
 		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
 	}
 	if (!access((*ast)->cmd[0], X_OK) && (*ast)->cmd[0][0] == '.')
@@ -46,7 +49,8 @@ int	check_if_directory(t_ast **ast)
 	{
 		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
 		(*ast)->error_code = 127;
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return (g_error_code = 127, 127);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 10:29:21 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/12 11:50:25 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*error_init(char *msg, char *file)
 
 	s = ft_strjoin(ft_strjoin("❌ minihell: ", file), ": ");
 	s = ft_strjoin(s, msg);
-	s = ft_strjoin(ft_strjoin(RED, s), DEF);
+	s = ft_strjoin(RED, s);
+	s = ft_strjoin(s, DEF);
 	s = ft_strjoin(s, " ❌\n");
 	return (s);
 }
@@ -52,6 +53,8 @@ void	close_all_fds(t_memman *mem_list)
 		{
 			close(*(int *)mem_list->ptr);
 			free(mem_list->ptr);
+			mem_list->type = NONE;
+			mem_list->ptr = NULL;
 		}
 		mem_list = mem_list->next;
 	}
