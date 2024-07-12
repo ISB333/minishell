@@ -126,15 +126,12 @@ void	wait_and_print_error(t_ast *wait, t_ast *error, int exit_status)
 		}
 		wait = wait->next;
 	}
-	// if (!wait)
-	// {
-		while (error)
-		{
-			if (error->error)
-				write(2, error->error, ft_strlen(error->error));
-			error = error->next;
-		}
-	// }
+	while (error)
+	{
+		if (error->error)
+			write(2, error->error, ft_strlen(error->error));
+		error = error->next;
+	}
 }
 
 int	warlord_executor(t_ast *ast, char *env[])
