@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 12:19:03 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:12:08 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@
 # define FIND 334
 # define GET 335
 # define UPDATE 336
-
-extern int				g_error_code;
 
 typedef struct s_prompt
 {
@@ -125,9 +123,7 @@ char					*get_prompt(void);
 int						warlord_executor(t_ast *ast, char *env[]);
 void					print_lst(t_ast *ast);
 void					signals_handler(void);
-
-void					disable_raw_mode(void);
-void					enable_raw_mode(void);
+int						return_(int code, int token);
 
 /// History ///
 char					*gnhell(int fd);

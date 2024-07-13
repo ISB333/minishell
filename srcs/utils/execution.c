@@ -62,8 +62,6 @@ int	child(t_ast *ast)
 	{
 		if (dup2(ast->pipe_fd[1], STDOUT_FILENO) == -1)
 			return (close(ast->pipe_fd[1]), -1);
-		// if (ast->error)
-		// 	printf("%s", ast->error);
 	}
 	if (close(ast->pipe_fd[1]))
 		return (-1);
@@ -87,7 +85,6 @@ int	executor(t_ast *ast, char *env[])
 		{
 			mem_manager(0, 0, 0, 'K');
 			execve(ast->cmd_path, ast->cmd, env);
-				// perror("execve");
 		}
 		quit(EXIT_FAILURE);
 	}
@@ -119,9 +116,9 @@ void	wait_and_print_error(t_ast *wait, t_ast *error, int exit_status)
 			{
 				exit_status = WEXITSTATUS(status);
 				if (!wait->next && !wait->error_code)
-					g_error_code = exit_status;
+					return_(exit_status, ADD);
 				else if (!wait->next && wait->error_code)
-					g_error_code = wait->error_code;
+					return_(wait->error_code, ADD);
 			}
 		}
 		wait = wait->next;

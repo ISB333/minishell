@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 08:00:22 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:17:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	get_dollar_hd(t_heredoc *hd)
 				j++;
 			env_var = ft_substr(hd->s, k + 1, j - k - 1);
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
-				new_str = ft_itoa(g_error_code);
+				new_str = ft_itoa(return_(0, GET));
 			else
 				new_str = get_envv(0, env_var, FIND);
 			if (!new_str)

@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-int		g_error_code = 0;
-
 // ! TODO : Add -Werror
 
 // TODO : Error Management
@@ -103,10 +101,10 @@ int	main(int argc, char *argv[], char *env[])
 			exit_check(ast);
 			// print_lst(ast);
 			if (warlord_executor(ast, env))
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), g_error_code);
+				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), return_(0, GET));
 			stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 		}
 	}
 	mem_manager(0, 0, 0, 'C');
-	return (g_error_code);
+	return (return_(0, GET));
 }

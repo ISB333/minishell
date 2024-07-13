@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/11 10:21:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:12:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 	{
 		return (arr[i] = ft_strjoin(ft_strjoin(ft_substr(arr[i], 0,
 						ft_strlen(arr[i]) - ft_strlen(ft_strchr(arr[i], '$'))),
-					ft_itoa(g_error_code)), &arr[i][k + 2]), (void)0);
+					ft_itoa(return_(0, GET))), &arr[i][k + 2]), (void)0);
 	}
 	else
 		new_str = get_envv(0, env_var, FIND);

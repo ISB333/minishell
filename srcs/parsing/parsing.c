@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 06:48:40 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:17:43 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	print_lst(t_ast *ast)
 		ast = ast->next;
 		n++;
 	}
-	// if (g_error_code)
-	// 	printf("error_code = %d\n", g_error_code);
 	printf(DEF);
 }
 

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 13:35:35 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:16:43 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,24 @@ int	check_if_directory(t_ast **ast)
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 127;
-		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
-		return (g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, return_(127, ADD), 127);
+		return (return_(127, ADD), 127);
 	}
 	if ((!ft_strncmp((*ast)->cmd[0], "/", 1)
 		|| !ft_strncmp((*ast)->cmd[0], "./", 2)) && S_ISDIR(path_stat.st_mode))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
-		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
-		return (g_error_code = 126, 126);
+		// return ((*ast)->cmd = NULL, return_(126, ADD), 126);
+		return (return_(126, ADD), 126);
 	}
 	if ((access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
 		&& !ft_strncmp((*ast)->cmd[0], "./", 2))
 	{
 		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
-		// return ((*ast)->cmd = NULL, g_error_code = 126, 126);
-		return ((*ast)->cmd = NULL, g_error_code = 126, 126);
+		// return ((*ast)->cmd = NULL, return_(126, ADD), 126);
+		return (return_(126, ADD), 126);
 	}
 	if (!access((*ast)->cmd[0], X_OK) && (*ast)->cmd[0][0] == '.')
 	{
@@ -49,8 +49,8 @@ int	check_if_directory(t_ast **ast)
 	{
 		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
 		(*ast)->error_code = 127;
-		// return ((*ast)->cmd = NULL, g_error_code = 127, 127);
-		return (g_error_code = 127, 127);
+		// return ((*ast)->cmd = NULL, return_(127, ADD), 127);
+		return (return_(127, ADD), 127);
 	}
 	return (0);
 }
@@ -67,7 +67,7 @@ int	cmd_path_init(t_ast **ast, int i)
 	if (!path)
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, g_error_code = 127, 127);
+		return ((*ast)->cmd = NULL, return_(127, ADD), 127);
 	}
 	cmd = ft_strjoin("/", (*ast)->cmd[0]);
 	while (path[++i])
@@ -76,8 +76,7 @@ int	cmd_path_init(t_ast **ast, int i)
 		if (!access(test_path, R_OK))
 		{
 			(*ast)->cmd_path = test_path;
-			g_error_code = 0;
-			return (g_error_code = 0, 0);
+			return (return_(0, ADD), 0);
 		}
 	}
 	return (check_if_directory(ast));

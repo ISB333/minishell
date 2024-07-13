@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 11:50:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:18:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	error(char *msg, char *file, int return_code)
 	}
 	if (return_code)
 	{
-		g_error_code = return_code;
+		return_(return_code, ADD);
 		return (return_code);
 	}
 	return (1);
