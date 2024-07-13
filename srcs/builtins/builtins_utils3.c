@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:34:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/11 09:41:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:14:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,31 @@ int	modify_exp_var(t_export *exp, char *var)
 		exp = exp->next;
 	}
 	return (1);
+}
+
+int	call_builtins(t_ast *ast, int c, int token)
+{
+	int	return_code;
+
+	return_code = 0;
+	if (c == CD)
+		return_code = cd(ast->cmd);
+	if (c == PWD)
+		pwdd();
+	if (c == ECH)
+		echoo(ast->cmd);
+	if (c == EXPORT && !ast->cmd[1])
+		exportt(0, 0, PRINT);
+	if (c == EXPORT && ast->cmd[1])
+		exportt(0, ast->cmd[1], ADD);
+	if (c == ENV)
+		get_envv(0, 0, PRINT);
+	if (c == UNSET)
+	{
+		exportt(0, ast->cmd[1], UNSET);
+		get_envv(0, ast->cmd[1], UNSET);
+	}
+	if (token == EXIT)
+		quit(EXIT_SUCCESS);
+	return (return_code);
 }

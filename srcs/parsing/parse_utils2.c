@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 05:17:21 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:23:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,8 @@ int	parse_cmd(t_ast **ast, char **tok, int *i, int j)
 		return (1);
 	while (tok[k] && !is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
 	{
-		if (is_redir(tok[k], 0, 0))
-			k += 2;
-		else if (is_append(tok[k], 0, 0))
-			k += 2;
-		else if (is_heredoc(tok[k], 0, 0))
+		if (is_redir(tok[k], 0, 0) || is_append(tok[k], 0, 0)
+			|| is_heredoc(tok[k], 0, 0))
 			k += 2;
 		else if (is_there_quotes_in_da_shit(tok[k]) && tok[k])
 			(*ast)->cmd[++j] = quotes_destroyer(tok[k++], 0, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 05:12:08 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:24:20 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,7 @@ typedef struct s_export
 }						t_export;
 
 char					*get_prompt(void);
-int						warlord_executor(t_ast *ast, char *env[]);
-void					print_lst(t_ast *ast);
+int						warlord_executor(t_ast *ast);
 void					signals_handler(void);
 int						return_(int code, int token);
 
@@ -129,6 +128,7 @@ int						return_(int code, int token);
 char					*gnhell(int fd);
 int						append_new_history(char *rl);
 int						add_previous_history(void);
+void					history(char *rl);
 
 /// Lexing ///
 char					**lexer(char *str);
@@ -179,6 +179,7 @@ int						parser(t_ast **ast, char *s);
 void					init_lst(t_ast **ast);
 t_ast					*return_tail(t_ast *ast);
 int						cmd_path_init(t_ast **ast, int i);
+int						check_if_directory(t_ast **ast);
 
 int						parse_redir(t_ast **ast, char **tokens, int i, int n);
 int						parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -189,7 +190,6 @@ int						parse_append(t_ast **ast, char **tokens, int *i);
 char					*quotes_destroyer(char *s, int i, int k, int token);
 int						strlen_minus_quotes(char *s, int token, int len, int i);
 int						cmdlen(char **tokens, int *i);
-char					**extract_path(void);
 int						format_check(char *s, int *code);
 
 void					*mem_manager(size_t size, void *ptr, int fd, int token);
@@ -199,10 +199,11 @@ int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);
 
 /// builtins ///
+int						call_builtins(t_ast *ast, int c, int token);
 void					exit_check(t_ast *ast);
 char					*get_cwdd(char *cwd, char *new_dir, int token);
 int						count_dir(char *cwd);
-char					*get_envv(char *env[], char *to_find, int token);
+void					*get_envv(char *env[], char *to_find, int token);
 void					echoo(char **arr);
 void					pwdd(void);
 int						cd(char **arr);
@@ -213,7 +214,7 @@ void					add_node_exp(t_export **exp, char *var);
 void					sort_export(t_export *exp);
 int						quit(int token);
 char					*env_var_search(t_env *envv, char *to_find);
-void					print_env(t_env *envv);
+void					*print_or_get_env(t_env *envv, int token);
 int						modify_exp_var(t_export *exp, char *var);
 int						is_only_n(char *s);
 void					exit_check_utils(t_ast *ast);

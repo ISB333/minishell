@@ -6,18 +6,13 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 09:14:00by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:19:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // ! TODO : Add -Werror
-
-// TODO : Error Management
-	// TODO : Signals code == global variable
-	// TODO : Manage error code return with a static inside a function
-	// TODO : Write errors on stderr
 
 int	prompt(char **rl)
 {
@@ -40,12 +35,6 @@ int	prompt(char **rl)
 	*rl = ft_strdup(s);
 	free(s);
 	return (0);
-}
-
-void	history(char *rl)
-{
-	add_history(rl);
-	append_new_history(rl);
 }
 
 int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
@@ -73,11 +62,26 @@ void	init_utils(char *env[], char *cwd)
 	exportt(env, 0, INIT);
 }
 
-int	main(int argc, char *argv[], char *env[])
+int	factory(char *rl)
 {
 	int		stdin_origin;
 	int		stdout_origin;
 	t_ast	*ast;
+
+	ast = NULL;
+	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
+	history(rl);
+	if (parser(&ast, rl))
+		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+	exit_check(ast);
+	if (warlord_executor(ast))
+		return (mem_manager(0, 0, 0, 'C'), 1);
+	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
+	return (0);
+}
+
+int	main(int argc, char *argv[], char *env[])
+{
 	char	*rl;
 	int		is_eof;
 
@@ -88,22 +92,12 @@ int	main(int argc, char *argv[], char *env[])
 	while (1)
 	{
 		rl = NULL;
-		ast = NULL;
 		is_eof = prompt(&rl);
 		if (is_eof == -1)
 			break ;
 		if (!is_eof)
-		{
-			stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
-			history(rl);
-			if (parser(&ast, rl))
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
-			exit_check(ast);
-			// print_lst(ast);
-			if (warlord_executor(ast, env))
-				return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), return_(0, GET));
-			stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
-		}
+			if (factory(rl))
+				return (return_(0, GET));
 	}
 	mem_manager(0, 0, 0, 'C');
 	return (return_(0, GET));

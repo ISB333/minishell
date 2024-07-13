@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/11 10:09:43 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:32:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	cd(char **arr)
 		if (!access(arr[1], OK) && access(arr[1], X_OK))
 			return (error("Permission denied", "cd", 1));
 		if (chdir(arr[1]))
-			return (error("No such file or directory", 
+			return (error("No such file or directory",
 					ft_strjoin("cd: ", arr[1]), 1));
 	}
 	get_cwdd(0, arr[1], UPDATE);

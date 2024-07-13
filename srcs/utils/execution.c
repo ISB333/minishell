@@ -6,40 +6,12 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/10 10:46:08by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:20:07 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	call_builtins(t_ast *ast, int c, int token)
-{
-	int	return_code;
-
-	return_code = 0;
-	if (c == CD)
-		return_code = cd(ast->cmd);
-	if (c == PWD)
-		pwdd();
-	if (c == ECH)
-		echoo(ast->cmd);
-	if (c == EXPORT && !ast->cmd[1])
-		exportt(0, 0, PRINT);
-	if (c == EXPORT && ast->cmd[1])
-		exportt(0, ast->cmd[1], ADD);
-	if (c == ENV)
-		get_envv(0, 0, PRINT);
-	if (c == UNSET)
-	{
-		exportt(0, ast->cmd[1], UNSET);
-		get_envv(0, ast->cmd[1], UNSET);
-	}
-	if (token == EXIT)
-		quit(EXIT_SUCCESS);
-	return (return_code);
-}
-
-// ! Correect to handle close in every cases
 int	child(t_ast *ast)
 {
 	if (close(ast->pipe_fd[0]))
@@ -68,7 +40,20 @@ int	child(t_ast *ast)
 	return (0);
 }
 
-int	executor(t_ast *ast, char *env[])
+int	parent(t_ast *ast)
+{
+	if (ast->cmd && ast->cmd[0] && !ft_strncmp(ast->cmd[0], "./", 2))
+		waitpid(ast->pid, NULL, 0);
+	if (close(ast->pipe_fd[1]))
+		return (close(ast->pipe_fd[0]), 1);
+	if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
+		return (close(ast->pipe_fd[0]), 1);
+	if (close(ast->pipe_fd[0]))
+		return (1);
+	return (0);
+}
+
+int	executor(t_ast *ast)
 {
 	if (pipe(ast->pipe_fd) == -1)
 		return (write(2, strerror(errno), strlen(strerror(errno))), errno);
@@ -84,21 +69,13 @@ int	executor(t_ast *ast, char *env[])
 		else
 		{
 			mem_manager(0, 0, 0, 'K');
-			execve(ast->cmd_path, ast->cmd, env);
+			execve(ast->cmd_path, ast->cmd, get_envv(0, 0, GET));
 		}
 		quit(EXIT_FAILURE);
 	}
 	else
-	{
-		if (ast->cmd && ast->cmd[0] && !ft_strncmp(ast->cmd[0], "./", 2))
-			waitpid(ast->pid, NULL, 0);
-		if (close(ast->pipe_fd[1]))
-			return (close(ast->pipe_fd[0]), 1);
-		if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
-			return (close(ast->pipe_fd[0]), 1);
-		if (close(ast->pipe_fd[0]))
+		if (parent(ast))
 			return (1);
-	}
 	return (0);
 }
 
@@ -131,7 +108,7 @@ void	wait_and_print_error(t_ast *wait, t_ast *error, int exit_status)
 	}
 }
 
-int	warlord_executor(t_ast *ast, char *env[])
+int	warlord_executor(t_ast *ast)
 {
 	t_ast	*wait;
 	t_ast	*error;
@@ -141,14 +118,12 @@ int	warlord_executor(t_ast *ast, char *env[])
 	wait = ast;
 	error = ast;
 	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
-	{
 		call_builtins(ast, is_builtin(ast), 0);
-	}
 	else
 	{
 		while (ast)
 		{
-			if (executor(ast, env))
+			if (executor(ast))
 				return (1);
 			ast = ast->next;
 		}

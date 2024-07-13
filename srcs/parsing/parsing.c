@@ -6,66 +6,11 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 05:17:43 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:30:29 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	print_lst(t_ast *ast)
-{
-	int	i;
-	int	n;
-
-	n = 1;
-	if (!ast)
-		return ;
-	printf("\033[0;33m");
-	printf("\n============= LINKED_LIST =============\n\n");
-	printf("\033[0;37m");
-	while (ast)
-	{
-		printf("\033[0;33m");
-		printf("\n       ------- LIST n°%d -------\n\n", n);
-		printf("\033[0;37m");
-		i = -1;
-		if (ast->cmd)
-		{
-			while (ast->cmd[++i])
-				printf("%s\n", ast->cmd[i]);
-			printf("cmd_path = %s\n", ast->cmd_path);
-		}
-		printf("fd_in = %d\n", ast->fd_in);
-		printf("fd_out = %d\n", ast->fd_out);
-		if (ast->error)
-			printf("ERROR: %s\n", ast->error);
-		ast = ast->next;
-		n++;
-	}
-	printf(DEF);
-}
-
-void	printer(char ***array)
-{
-	int	i;
-	int	k;
-
-	i = -1;
-	k = -1;
-	printf("\033[0;34m");
-	printf("\n============= ARRAY =============\n\n");
-	printf("\033[0;37m");
-	while (array[++i])
-	{
-		k = -1;
-		printf("\033[0;36m");
-		printf("\n\narray n°%d:\n", i + 1);
-		printf("\033[0;37m");
-		while (array[i][++k])
-			printf("%s\n", array[i][k]);
-	}
-	printf("\033[0m\n");
-}
 
 void	exit_check(t_ast *ast)
 {
@@ -142,14 +87,15 @@ int	syntax_checker(char **tokens, int i)
 	if (!tokens)
 		return (1);
 	if (is_pipe(tokens[0], 0, 0))
-		return (printf("minihell: syntax error near unexpected token '%s'\n",
-				tokens[i + 1]));
+		return (error("minihell: syntax error near unexpected token",
+				tokens[i + 1], 2));
 	while (tokens[++i])
 	{
 		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
 			&& !tokens[i + 1])
 		{
-			printf("minihell: syntax error near unexpected token 'newline'\n");
+			error("minihell: syntax error near unexpected token 'newline'",
+				0, 2);
 			return (1);
 		}
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
@@ -157,11 +103,8 @@ int	syntax_checker(char **tokens, int i)
 			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
 					|| !is_append(tokens[i + 1], 0, 0)
 					|| !is_heredoc(tokens[i + 1], 0, 0)))
-			{
-				printf("minihell: syntax error near unexpected token '%s'\n",
-					tokens[i + 1]);
-				return (1);
-			}
+				return (error("minihell: syntax error near unexpected token",
+						tokens[i + 1], 2));
 		}
 	}
 	return (0);

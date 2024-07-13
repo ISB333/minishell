@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/12 12:16:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:20:21 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,31 @@ char	*env_var_search(t_env *envv, char *to_find)
 	return (NULL);
 }
 
-void	print_env(t_env *envv)
+void	*print_or_get_env(t_env *envv, int token)
 {
+	int		len;
+	char	**env;
+	t_env	*tmp;
+
+	tmp = envv;
 	while (envv)
 	{
-		printf("%s\n", envv->var);
+		if (token == PRINT)
+			printf("%s\n", envv->var);
+		len++;
 		envv = envv->next;
 	}
+	if (token == GET)
+	{
+		env = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+		env[len] = NULL;
+		len = 0;
+		while (tmp)
+		{
+			env[len++] = tmp->var;
+			tmp = tmp->next;
+		}
+		return (env);
+	}
+	return (NULL);
 }

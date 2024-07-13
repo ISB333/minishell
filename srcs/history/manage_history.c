@@ -6,11 +6,17 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/09 06:05:43 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 06:11:07 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	history(char *rl)
+{
+	add_history(rl);
+	append_new_history(rl);
+}
 
 int	add_previous_history(void)
 {

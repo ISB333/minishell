@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 12:19:13 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 05:59:13 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	check_if_exist(t_env *envv, char *var)
 	return (0);
 }
 
-char	*get_envv(char *env[], char *var, int token)
+void	*get_envv(char *env[], char *var, int token)
 {
 	static t_env	*envv;
 	int				i;
@@ -121,7 +121,7 @@ char	*get_envv(char *env[], char *var, int token)
 		return (env_var_search(envv, var));
 	if (token == MODIF)
 		modify_env_var(envv, var);
-	if (token == PRINT)
-		print_env(envv);
+	if (token == PRINT || token == GET)
+		print_or_get_env(envv, token);
 	return (NULL);
 }
