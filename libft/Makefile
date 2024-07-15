@@ -6,7 +6,7 @@
 #    By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 09:53:02 by adesille          #+#    #+#              #
-#    Updated: 2024/06/18 10:24:01 by isb3             ###   ########.fr        #
+#    Updated: 2024/07/15 12:03:33 by isb3             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS = ft_isalpha.c \
 	ft_strdup.c \
 	ft_substr.c \
 	ft_atoi.c  \
+	ft_atoi_ll.c  \
 	ft_strnstr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \

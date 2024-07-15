@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 12:04:31 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 12:16:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/13 08:26:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_export(char *env[], t_export **exp)
 	}
 	i = -1;
 	while (env[++i])
-		add_node_exp(exp, ft_strjoin("declare -x ", env[i]));
+		add_node_exp(exp, env[i]);
 }
 
 int	lst_len(t_export *exp)
@@ -88,8 +88,7 @@ void	sort_export(t_export *exp)
 		exp = origin;
 		while (++j < len - 1 - i)
 		{
-			if (ft_strcmp(ft_strchr(exp->var, 'x') + 2,
-					ft_strchr(exp->next->var, 'x') + 2) > 0)
+			if (ft_strcmp(exp->var, exp->next->var) > 0)
 			{
 				temp = ft_strdup(exp->var);
 				exp->var = ft_strdup(exp->next->var);
@@ -104,7 +103,7 @@ void	print_export(t_export *exp)
 {
 	while (exp)
 	{
-		printf("%s\n", exp->var);
+		printf("declare -x %s\n", exp->var);
 		exp = exp->next;
 	}
 }

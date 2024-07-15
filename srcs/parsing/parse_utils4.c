@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 06:22:22 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:18:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	check_if_directory_utils(t_ast **ast)
 		(*ast)->error_code = 126;
 		return (return_(126, ADD), 126);
 	}
-	if (!access((*ast)->cmd[0], X_OK) && (*ast)->cmd[0][0] == '.')
+	if (!access((*ast)->cmd[0], X_OK) && ((*ast)->cmd[0][0] == '.'
+			|| (*ast)->cmd[0][0] == '/'))
 	{
 		(*ast)->cmd_path = ft_strdup((*ast)->cmd[0]);
 		return (0);
@@ -39,17 +40,16 @@ int	check_if_directory(t_ast **ast)
 {
 	struct stat	path_stat;
 
-	if (stat((*ast)->cmd[0], &path_stat) != 0
-		&& (!ft_strncmp((*ast)->cmd[0], "./", 2)
-			|| (*ast)->cmd[0][0] == '/') && access((*ast)->cmd[0], OK))
+	if (stat((*ast)->cmd[0], &path_stat) != 0 && (!ft_strncmp((*ast)->cmd[0],
+				"./", 2) || (*ast)->cmd[0][0] == '/') && access((*ast)->cmd[0],
+			OK))
 	{
 		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 127;
 		return (return_(127, ADD), 127);
 	}
-	if ((!ft_strncmp((*ast)->cmd[0], "/", 1)
-			|| !ft_strncmp((*ast)->cmd[0], "./", 2))
-		&& S_ISDIR(path_stat.st_mode))
+	if ((!ft_strncmp((*ast)->cmd[0], "/", 1) || !ft_strncmp((*ast)->cmd[0],
+				"./", 2)) && S_ISDIR(path_stat.st_mode))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
@@ -62,45 +62,65 @@ int	check_if_directory(t_ast **ast)
 
 void	exit_check_utils(t_ast *ast)
 {
-	int	code;
+	long long	code;
 
 	while (ast->next)
 		ast = ast->next;
 	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
 	{
-		code = ft_atoi(ast->cmd[1]);
+		code = ft_atoi_ll(ast->cmd[1]);
 		if (ast->cmd[1])
 		{
 			if (format_check(ast->cmd[1], &code))
-				return (mem_manager(0, 0, 0, 'C'), exit(2));
-			return (mem_manager(0, 0, 0, 'C'), exit(code));
+				return (mem_manager(0, 0, 0, EXIT), exit(2));
+			return (mem_manager(0, 0, 0, EXIT), exit(code));
 		}
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
+		return (mem_manager(0, 0, 0, EXIT), exit(EXIT_SUCCESS));
 	}
 }
 
-int	format_check(char *s, int *code)
+int	format_check_utils(char *s, long long *code)
+{
+	int	token;
+
+	token = 0;
+	while (*s == '-' || *s == '+' || *s == '0')
+	{
+		token = 1;
+		s++;
+	}
+	if (ft_strlen(s) > 19)
+		return (error("numeric argument required", s, 2));
+	if (!token && ft_strcmp(s,	"9223372036854775807") > 0)
+		return (error("numeric argument required", s, 2));
+	else if (token && ft_strcmp(s,	"9223372036854775808") > 0)
+		return (error("numeric argument required", s, 2));
+	if (*code > 255)
+		*code -= 256;
+	else if (*code < 0)
+		*code = 256 - -*code;
+	return (0);
+}
+
+int	format_check(char *s, long long *code)
 {
 	int	i;
 
 	i = 0;
-	if (s[i] == '-' || s[i] == '+')
+	while (is_del(*s))
+		s++;
+	if (!ft_strlen(s))
+		return (error("numeric argument required", s, 2));
+	if ((s[i] == '-' || s[i] == '+') && s[i + 1])
 		i++;
 	while (s[i])
 	{
-		if (s[i] >= '0' && s[i] <= '9')
+		if ((s[i] >= '0' && s[i] <= '9') || is_del(s[i]))
 			i++;
 		else
 			return (error("numeric argument required", s, 2));
 	}
-	if (*code)
-	{
-		if (*code > 255)
-			*code -= 256;
-		else if (*code < 0)
-			*code = 256 - -*code;
-	}
-	return (0);
+	return (format_check_utils(s, code));
 }
 
 void	get_dollar_hd(t_heredoc *hd)

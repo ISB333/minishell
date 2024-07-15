@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/08 09:22:17 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:26:42 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,13 @@ void	*free_ptr(t_memman **mem_list, void *ptr)
 void	*mem_manager(size_t size, void *ptr, int fd, int token)
 {
 	static t_memman	*mem_list = NULL;
+	static t_memman	*mem_lock = NULL;
 	int				*fd_ptr;
 
-	if (token == 'A')
+	if (token == 'A' && !to_lock(GET))
 		return (allocate(&mem_list, size, 'A'));
+	if (token == 'A' && to_lock(GET))
+		return (allocate(&mem_lock, size, 'A'));
 	if (token == 'O')
 	{
 		fd_ptr = allocate(&mem_list, sizeof(int), 'O');
@@ -130,6 +133,12 @@ void	*mem_manager(size_t size, void *ptr, int fd, int token)
 	{
 		ff(mem_list, -1);
 		mem_list = NULL;
+		return (NULL);
+	}
+	if (token == EXIT)
+	{
+		ff(mem_list, -1);
+		ff_lock(mem_lock);
 		return (NULL);
 	}
 	return (NULL);

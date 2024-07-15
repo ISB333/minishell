@@ -6,36 +6,52 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 05:32:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 08:50:11y isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int	check_if_exist_exp(t_export *exp, char *var)
+{
+	char	*exp_var;
+
+	if (ft_strchr(var, '='))
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=')));
+	while (exp)
+	{
+		if (ft_strchr(exp->var, '='))
+			exp_var = ft_substr(exp->var, 0, ft_strlen(exp->var)
+					- ft_strlen(ft_strchr(exp->var, '=')));
+		else
+			exp_var = ft_strdup(exp->var);
+		if (!ft_strcmp(exp_var, var))
+			return (1);
+		exp = exp->next;
+	}
+	return (0);
+}
+
 void	unset_export(t_export **exp, char *var)
 {
-	t_export	*prev;
-	t_export	*curr;
+	t_export	*tmp;
 
-	prev = *exp;
-	curr = *exp;
 	if (!var)
 		return ;
-	if (!ft_strncmp(ft_strchr((*exp)->var, 'x') + 2, var, ft_strlen(var)))
+	tmp = *exp;
+	if (!ft_strncmp((*exp)->var, var, ft_strlen(var)))
 		*exp = (*exp)->next;
 	else
 	{
-		prev = curr;
-		curr = curr->next;
-		while (curr)
+		while (tmp)
 		{
-			if (!ft_strncmp(ft_strchr(curr->var, 'x') + 2, var, ft_strlen(var)))
+			if (tmp->next && !ft_strncmp(tmp->next->var, var, ft_strlen(var)))
 			{
-				prev->next = curr->next;
-				return ;
+				tmp->next = tmp->next->next;
+				break ;
 			}
-			prev = curr;
-			curr = curr->next;
+			tmp = tmp->next;
 		}
 	}
 }
@@ -48,9 +64,12 @@ void	exportt(char *env[], char *var, int token)
 		init_export(env, &exp);
 	if (token == ADD)
 	{
-		if (!get_envv(0, var, ADD) && env_format_check(var))
+		if (!var)
+			return ;
+		if (!get_envv(0, var, ADD) && env_format_check(var)
+			&& !check_if_exist_exp(exp, var))
 		{
-			add_node_exp(&exp, ft_strjoin("declare -x ", var));
+			add_node_exp(&exp, var);
 			sort_export(exp);
 		}
 		else if (!env_format_check(var))
@@ -71,14 +90,14 @@ void	echoo(char **arr)
 
 	token = 0;
 	i = 0;
-	while (!ft_strncmp(arr[++i], "-n", 2))
+	while (arr[++i] && !ft_strncmp(arr[i], "-n", 2))
 	{
 		if (is_only_n(arr[i]))
 			token = 1;
 		else
 			break ;
 	}
-	if (arr)
+	if (arr[i])
 	{
 		while (arr[i])
 		{
@@ -89,7 +108,7 @@ void	echoo(char **arr)
 		if (!token)
 			printf("\n");
 	}
-	else
+	else if (!token)
 		printf("\n");
 }
 
@@ -100,20 +119,34 @@ void	pwdd(void)
 
 int	cd(char **arr)
 {
-	if (!arr[1])
+	struct stat	path_stat;
+	char		*dir;
+
+	if ((arr[1] && arr[2]))
+		return (error("too many arguments", "cd", 1));
+	if (arr[1] && ft_strchr(arr[1], '/'))
+		dir = ft_substr(arr[1], 0, ft_strlen(arr[1])
+				- ft_strlen(ft_strchr(arr[1], '/')));
+	else if (arr[1])
+		dir = ft_strdup(arr[1]);
+	if (!stat(dir, &path_stat) && !S_ISDIR(path_stat.st_mode))
+		return (error("Not a directory", ft_strjoin("cd: ", arr[1]), 1));
+	if (!arr[1] || !ft_strcmp(arr[1], "~"))
 	{
-		if (chdir(ft_strjoin("/home/", get_envv(0, "USER", FIND))))
-			return (-1);
+		if (chdir(get_cwdd(0, 0, HOME)))
+			return (printf("thefuck\n"), -1);
 	}
 	else
 	{
-		if (arr[2])
-			return (error("too many arguments", "cd", 1));
+		if (arr[1] && (!ft_strlen(arr[1]) || !ft_strcmp(arr[1], ".")))
+			return (0);
+		if (arr[1][0] == '~')
+			arr[1] = ft_strjoin(get_cwdd(0, 0, HOME),	arr[1] + 1);
 		if (!access(arr[1], OK) && access(arr[1], X_OK))
 			return (error("Permission denied", "cd", 1));
 		if (chdir(arr[1]))
-			return (error("No such file or directory",
-					ft_strjoin("cd: ", arr[1]), 1));
+			return (error("No such file or directory", ft_strjoin("cd: ",
+						arr[1]), 1));
 	}
 	get_cwdd(0, arr[1], UPDATE);
 	return (0);

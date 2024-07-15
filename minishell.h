@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 06:24:20 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:24:49 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -52,6 +53,7 @@
 # define FIND 334
 # define GET 335
 # define UPDATE 336
+# define HOME 337
 
 typedef struct s_prompt
 {
@@ -123,6 +125,7 @@ char					*get_prompt(void);
 int						warlord_executor(t_ast *ast);
 void					signals_handler(void);
 int						return_(int code, int token);
+int						to_lock(int code);
 
 /// History ///
 char					*gnhell(int fd);
@@ -190,10 +193,11 @@ int						parse_append(t_ast **ast, char **tokens, int *i);
 char					*quotes_destroyer(char *s, int i, int k, int token);
 int						strlen_minus_quotes(char *s, int token, int len, int i);
 int						cmdlen(char **tokens, int *i);
-int						format_check(char *s, int *code);
+int						format_check(char *s, long long *code);
 
 void					*mem_manager(size_t size, void *ptr, int fd, int token);
 void					ff(t_memman *mem_list, int i);
+void					ff_lock(t_memman *mem_lock);
 void					close_all_fds(t_memman *mem_list);
 int						error(char *msg, char *file, int return_code);
 char					*error_init(char *msg, char *file);

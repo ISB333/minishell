@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:34:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/13 06:14:31 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 09:02:05 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ int	modify_exp_var(t_export *exp, char *var)
 
 	while (exp)
 	{
-		exp_var = ft_strchr(exp->var, 'x') + 2;
-		exp_var = ft_substr(exp_var, 0, ft_strlen(exp_var)
-				- ft_strlen(ft_strchr(exp_var, '=')));
-		if (!ft_strncmp(exp_var, var, ft_strlen(exp_var)))
+		if (ft_strchr(exp->var, '='))
+			exp_var = ft_substr(exp->var, 0, ft_strlen(exp->var)
+					- ft_strlen(ft_strchr(exp->var, '=')));
+		else
+			exp_var = ft_strdup(exp->var);
+		if (!ft_strcmp(exp_var, var))
 		{
-			exp->var = ft_strjoin("declare -x ", var);
+			exp->var = ft_strdup(var);
 			return (0);
 		}
 		exp = exp->next;
@@ -60,7 +62,9 @@ int	modify_exp_var(t_export *exp, char *var)
 int	call_builtins(t_ast *ast, int c, int token)
 {
 	int	return_code;
+	int	i;
 
+	i = 0;
 	return_code = 0;
 	if (c == CD)
 		return_code = cd(ast->cmd);
@@ -70,14 +74,14 @@ int	call_builtins(t_ast *ast, int c, int token)
 		echoo(ast->cmd);
 	if (c == EXPORT && !ast->cmd[1])
 		exportt(0, 0, PRINT);
-	if (c == EXPORT && ast->cmd[1])
-		exportt(0, ast->cmd[1], ADD);
+	while (c == EXPORT && ast->cmd[i])
+		exportt(0, ast->cmd[++i], ADD);
 	if (c == ENV)
 		get_envv(0, 0, PRINT);
-	if (c == UNSET)
+	while (c == UNSET && ast->cmd[i])
 	{
-		exportt(0, ast->cmd[1], UNSET);
-		get_envv(0, ast->cmd[1], UNSET);
+		exportt(0, ast->cmd[++i], UNSET);
+		get_envv(0, ast->cmd[i], UNSET);
 	}
 	if (token == EXIT)
 		quit(EXIT_SUCCESS);

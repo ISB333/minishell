@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 12:16:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 13:42:01 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,20 @@ void	update_cwd(t_cwd **cwdd, char *new_dir)
 {
 	t_cwd	*last_node;
 
-	if (!new_dir)
-		(*cwdd)->next->next->next = NULL;
-	if (new_dir[0] == '/')
+	if (!new_dir || !ft_strcmp(new_dir, "~"))
 	{
 		*cwdd = NULL;
-		get_cwdd(new_dir, 0, INIT);
+		get_cwdd(get_cwdd(0, 0, HOME), 0, INIT);
+	}
+	else if (new_dir[0] == '/')
+	{
+		*cwdd = NULL;
+		if (!ft_strcmp(new_dir, "/."))
+			get_cwdd("/", 0, INIT);
+		else if (!ft_strcmp(new_dir, "//"))
+			get_cwdd("//", 0, INIT);
+		else	
+			get_cwdd(new_dir, 0, INIT);
 	}
 	else
 	{
@@ -121,6 +129,7 @@ char	*join_cwd(t_cwd *cwdd, int i, int k, int len)
 char	*get_cwdd(char *cwd, char *new_dir, int token)
 {
 	static t_cwd	*cwdd = NULL;
+	static char		*home = NULL;
 	char			**cwd_dir;
 	int				i;
 
@@ -130,10 +139,14 @@ char	*get_cwdd(char *cwd, char *new_dir, int token)
 		i = -1;
 		while (cwd_dir[++i])
 			add_node_cwd(&cwdd, cwd_dir[i]);
+		if (!home)
+			home = get_envv(0, "HOME", FIND);
 	}
 	if (token == UPDATE)
 		update_cwd(&cwdd, new_dir);
 	if (token == GET)
 		return (join_cwd(cwdd, 0, 0, 0));
+	if (token == HOME)
+		return (home);
 	return (NULL);
 }

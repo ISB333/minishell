@@ -6,13 +6,24 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 06:19:40 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 14:20:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // ! TODO : Add -Werror
+
+int to_lock(int code)
+{
+	static int lock = 0;
+
+	if (code == 1)
+		lock = 1;
+	else if (!code)		
+		lock = 0;
+	return (lock);
+}
 
 int	prompt(char **rl)
 {
@@ -22,14 +33,18 @@ int	prompt(char **rl)
 
 	s = NULL;
 	prompt = NULL;
-	add_previous_history();
+	// add_previous_history();
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
 	full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	s = readline(full_prompt);
 	if (!s)
-		return (-1);
+	{
+	    if (isatty(STDIN_FILENO))
+			write(2, "exit\n", 6);
+		exit (return_(0, GET));
+	}
 	if (!ft_strlen(s))
 		return (free(s), 1);
 	*rl = ft_strdup(s);
@@ -56,10 +71,12 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 
 void	init_utils(char *env[], char *cwd)
 {
+	to_lock(1);
+	get_envv(env, 0, INIT);
 	get_cwdd(cwd, 0, INIT);
 	free(cwd);
-	get_envv(env, 0, INIT);
 	exportt(env, 0, INIT);
+	to_lock(0);
 }
 
 int	factory(char *rl)
@@ -72,10 +89,10 @@ int	factory(char *rl)
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
 	if (parser(&ast, rl))
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+		return (mem_manager(0, 0, 0, EXIT), exit(EXIT_FAILURE), 1);
 	exit_check(ast);
 	if (warlord_executor(ast))
-		return (mem_manager(0, 0, 0, 'C'), 1);
+		return (mem_manager(0, 0, 0, EXIT), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 	return (0);
 }
@@ -98,7 +115,8 @@ int	main(int argc, char *argv[], char *env[])
 		if (!is_eof)
 			if (factory(rl))
 				return (return_(0, GET));
+		mem_manager(0, 0, 0, 'C');
 	}
-	mem_manager(0, 0, 0, 'C');
+	mem_manager(0, 0, 0, EXIT);
 	return (return_(0, GET));
 }

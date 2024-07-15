@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 05:59:13 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/15 13:20:12 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	add_node_env(t_env **envv, char *var)
 	t_env	*new_node;
 	t_env	*last_node;
 
+	if (!ft_strchr(var, '='))
+		return ;
 	new_node = mem_manager(sizeof(t_env), 0, 0, 'A');
 	new_node->var = ft_strdup(var);
 	new_node->next = NULL;
@@ -67,7 +69,7 @@ void	modify_env_var(t_env *envv, char *var)
 	{
 		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var)
 				- ft_strlen(ft_strchr(envv->var, '=')));
-		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
+		if (!ft_strcmp(envv_var, var))
 		{
 			envv->var = ft_strdup(var);
 			return ;
@@ -90,7 +92,7 @@ int	check_if_exist(t_env *envv, char *var)
 					- ft_strlen(ft_strchr(envv->var, '=')));
 		else
 			envv_var = ft_strdup(envv->var);
-		if (!ft_strncmp(envv->var, var, ft_strlen(envv_var)))
+		if (!ft_strcmp(envv_var, var))
 			return (1);
 		envv = envv->next;
 	}
