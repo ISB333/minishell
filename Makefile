@@ -34,8 +34,8 @@ HISTORY = ./srcs/history/gnl.c ./srcs/history/gnl_utils.c \
 LEXING = ./srcs/lexing/lexer.c ./srcs/lexing/is_sh1.c \
 	./srcs/lexing/is_sh2.c ./srcs/lexing/is_sh_in_arr1.c \
 	./srcs/lexing/is_sh_in_arr2.c ./srcs/lexing/is_dollar.c \
-	./srcs/lexing/utils1.c ./srcs/lexing/utils2.c \
-	./srcs/lexing/utils3.c 
+	./srcs/lexing/is_tilde.c ./srcs/lexing/utils1.c \
+	./srcs/lexing/utils2.c ./srcs/lexing/utils3.c 
 	
 PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils2.c ./srcs/parsing/parse_utils3.c \

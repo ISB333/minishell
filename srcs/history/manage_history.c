@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/13 06:11:07 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 09:22:08 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	add_previous_history(void)
 	int		history;
 	char	*path;
 
-	path = ft_strjoin(get_envv(0, "HOME", FIND), "/history.txt");
+	path = ft_strjoin(get_cwdd(0, 0, HOME), "/history.txt");
 	history = open(path, O_RDWR | O_CREAT, 0644);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);
@@ -46,7 +46,7 @@ int	append_new_history(char *rl)
 	int		history;
 	char	*path;
 
-	path = ft_strjoin(get_envv(0, "HOME", FIND), "/history.txt");
+	path = ft_strjoin(get_cwdd(0, 0, HOME), "/history.txt");
 	history = open(path, O_WRONLY | O_APPEND, 0644);
 	if (history == -1)
 		return (perror("Error opening file"), EXIT_FAILURE);

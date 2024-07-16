@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 14:19:14 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 10:14:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	exit_check(t_ast *ast)
 			{
 				code = ft_atoi_ll(ast->cmd[1]);
 				if (format_check(ast->cmd[1], &code))
-					return (mem_manager(0, 0, 0, EXIT), exit(2));
+					return (mem_manager(0, 0, 0, 'C'), exit(2));
 				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 0, EXIT), exit(code));
+					return (mem_manager(0, 0, 0, 'C'), exit(code));
 				else
 					error("too many arguments", "exit", 1);
 			}
 			else
-				return (mem_manager(0, 0, 0, EXIT), exit(return_(0, GET)));
+				return (mem_manager(0, 0, 0, 'C'), exit(return_(0, GET)));
 		}
 	}
 	else
@@ -122,9 +122,10 @@ int	syntax_checker(char **tokens, int i)
 		}
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
-			if (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
+			if ((is_pipe(tokens[i], 0, 0) && is_pipe(tokens[i + 1], 0, 0)) 
+				|| (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
 					|| !is_append(tokens[i + 1], 0, 0)
-					|| !is_heredoc(tokens[i + 1], 0, 0)))
+					|| !is_heredoc(tokens[i + 1], 0, 0))))
 				return (error("minihell: syntax error near unexpected token",
 						tokens[i + 1], 2));
 		}
@@ -144,6 +145,9 @@ int	parser(t_ast **ast, char *s)
 	while (1)
 	{
 		tokens = lexer(s);
+		// int k  = -1;
+		// while (tokens[++k])
+		// 	printf("%s\n", tokens[k]);
 		if (syntax_checker(tokens, -1))
 			return (0);
 		if (is_pipe_in_arr(tokens))

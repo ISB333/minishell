@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 06:22:44 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 10:18:32 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	cmd_path_init(t_ast **ast, int i)
 
 	if ((*ast)->cmd == NULL || (*ast)->cmd[0] == NULL || is_builtin(*ast))
 		return (0);
+	if (!ft_strlen((*ast)->cmd[0]))
+		return (check_if_directory(ast));
 	path = extract_path();
 	if (!path)
 	{

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 14:18:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 10:12:12 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	exit_check_utils(t_ast *ast)
 		if (ast->cmd[1])
 		{
 			if (format_check(ast->cmd[1], &code))
-				return (mem_manager(0, 0, 0, EXIT), exit(2));
-			return (mem_manager(0, 0, 0, EXIT), exit(code));
+				return (mem_manager(0, 0, 0, 'C'), exit(2));
+			return (mem_manager(0, 0, 0, 'C'), exit(code));
 		}
-		return (mem_manager(0, 0, 0, EXIT), exit(EXIT_SUCCESS));
+		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 14:24:49 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 09:11:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void					history(char *rl);
 /// Lexing ///
 char					**lexer(char *str);
 void					get_dollar(char **arr, int i, int k, int j);
+void					get_tilde(char **arr);
 char					***split_array(char ***arr, char **tok, int i, int k);
 int						lexer_utils(char ****array, char **tokens);
 
@@ -153,6 +154,7 @@ int						is_dollar(char *s, int token);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_dollar_in_double_quotes(char *s, int k, int i);
+int						is_tilde_in_arr(char **arr, int i, char token);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
