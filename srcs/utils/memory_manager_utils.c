@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 14:25:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/16 13:37:20 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ff(t_memman *mem_list, int i)
 	char		*heredoc;
 	t_memman	*temp;
 
-	path = ft_strjoin(get_envv(0, "HOME", FIND), "/hd");
+	path = ft_strjoin(get_cwdd(0, 0, HOME), "/hd");
 	while (++i < 50)
 	{
 		heredoc = ft_strjoin(path, ft_itoa(i));
