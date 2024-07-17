@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 09:11:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/17 07:34:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,13 @@ typedef struct s_export
 	char				*var;
 	struct s_export		*next;
 }						t_export;
+
+typedef struct s_home
+{
+	char				*dir;
+	char				*path;
+	struct s_home		*next;
+}						t_home;
 
 char					*get_prompt(void);
 int						warlord_executor(t_ast *ast);

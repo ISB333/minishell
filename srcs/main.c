@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 08:15:34 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/17 08:07:36 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	prompt(char **rl)
 
 	s = NULL;
 	prompt = NULL;
-	// add_previous_history();
+	add_previous_history();
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
