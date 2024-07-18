@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/17 08:18:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/18 14:25:08 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	init_tilde(t_home **h)
 				break ;
 			add_node_h(h, line);
 		}
-		clode(fd);
+		close(fd);
 	}
 	return (0);
 }
@@ -86,8 +86,10 @@ int	is_tilde_in_arr(char **arr, int i, char token)
 		while (arr[++i])
 		{
 			if (arr[i][0] == '~' && arr[i][1])
+			{
 				if (home_paths(&arr[i][1], FIND))
 					return (1);
+			}
 			else if (arr[i][0] == '~' && !arr[i][1])
 				return (1);
 		}
@@ -97,8 +99,10 @@ int	is_tilde_in_arr(char **arr, int i, char token)
 		while (arr[++i])
 		{
 			if (arr[i][0] == '~' && arr[i][1])
+			{
 				if (home_paths(&arr[i][1], FIND))
 					return (i);
+			}
 			else if (arr[i][0] == '~' && !arr[i][1])
 				return (i);
 		}
