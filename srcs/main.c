@@ -6,24 +6,13 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/17 08:07:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/19 06:30:50 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // ! TODO : Add -Werror
-
-int to_lock(int code)
-{
-	static int lock = 0;
-
-	if (code == 1)
-		lock = 1;
-	else if (!code)		
-		lock = 0;
-	return (lock);
-}
 
 int	prompt(char **rl)
 {

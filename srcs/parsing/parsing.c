@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 10:14:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/07/19 06:27:47 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,9 +145,6 @@ int	parser(t_ast **ast, char *s)
 	while (1)
 	{
 		tokens = lexer(s);
-		// int k  = -1;
-		// while (tokens[++k])
-		// 	printf("%s\n", tokens[k]);
 		if (syntax_checker(tokens, -1))
 			return (0);
 		if (is_pipe_in_arr(tokens))
