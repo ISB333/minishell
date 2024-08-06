@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/16 08:43:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:20:28 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	count_dir(char *cwd)
 
 char	*env_var_search(t_env *envv, char *to_find)
 {
-	char *envv_var;
+	char	*envv_var;
 
 	while (envv)
 	{
@@ -64,6 +64,7 @@ void	*print_or_get_env(t_env *envv, int token)
 	t_env	*tmp;
 
 	tmp = envv;
+	len = 0;
 	while (envv)
 	{
 		if (token == PRINT)
@@ -75,7 +76,6 @@ void	*print_or_get_env(t_env *envv, int token)
 	{
 		env = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
 		env[len] = NULL;
-		len = 0;
 		while (tmp)
 		{
 			env[len++] = tmp->var;

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/05 07:37:25 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/06 10:17:25 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int	open_quotes(char *s)
 		else
 			i++;
 	}
+	return (0);
+}
+
+int	is_dollar_del(char c)
+{
+	if (c == '$' || c == '/' || c == '|' || c == 34 || c == 39)
+		return (1);
 	return (0);
 }
 

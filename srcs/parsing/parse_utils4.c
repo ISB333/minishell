@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 10:12:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:18:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_if_directory_utils(t_ast **ast)
 		return (return_(126, ADD), 126);
 	}
 	if (!access((*ast)->cmd[0], X_OK) && ((*ast)->cmd[0][0] == '.'
-			|| (*ast)->cmd[0][0] == '/'))
+		|| (*ast)->cmd[0][0] == '/'))
 	{
 		(*ast)->cmd_path = ft_strdup((*ast)->cmd[0]);
 		return (0);
@@ -91,9 +91,9 @@ int	format_check_utils(char *s, long long *code)
 	}
 	if (ft_strlen(s) > 19)
 		return (error("numeric argument required", s, 2));
-	if (!token && ft_strcmp(s,	"9223372036854775807") > 0)
+	if (!token && ft_strcmp(s, "9223372036854775807") > 0)
 		return (error("numeric argument required", s, 2));
-	else if (token && ft_strcmp(s,	"9223372036854775808") > 0)
+	else if (token && ft_strcmp(s, "9223372036854775808") > 0)
 		return (error("numeric argument required", s, 2));
 	if (*code > 255)
 		*code -= 256;

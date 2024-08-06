@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/19 06:27:47 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:19:43 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,16 @@ int	syntax_checker(char **tokens, int i)
 		if (is_sh_ope(tokens[i], 0, 0) && !is_pipe(tokens[i], 0, 0)
 			&& !tokens[i + 1])
 		{
-			error("minihell: syntax error near unexpected token 'newline'",
-				0, 2);
+			error("minihell: syntax error near unexpected token 'newline'", 0,
+				2);
 			return (1);
 		}
 		if (is_sh_ope(tokens[i], 0, 0) && is_sh_ope(tokens[i + 1], 0, 0))
 		{
-			if ((is_pipe(tokens[i], 0, 0) && is_pipe(tokens[i + 1], 0, 0)) 
+			if ((is_pipe(tokens[i], 0, 0) && is_pipe(tokens[i + 1], 0, 0))
 				|| (!is_pipe(tokens[i], 0, 0) && (!is_redir(tokens[i + 1], 0, 0)
-					|| !is_append(tokens[i + 1], 0, 0)
-					|| !is_heredoc(tokens[i + 1], 0, 0))))
+						|| !is_append(tokens[i + 1], 0, 0)
+						|| !is_heredoc(tokens[i + 1], 0, 0))))
 				return (error("minihell: syntax error near unexpected token",
 						tokens[i + 1], 2));
 		}

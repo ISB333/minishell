@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 13:42:01 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:20:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	update_cwd(t_cwd **cwdd, char *new_dir)
 			get_cwdd("/", 0, INIT);
 		else if (!ft_strcmp(new_dir, "//"))
 			get_cwdd("//", 0, INIT);
-		else	
+		else
 			get_cwdd(new_dir, 0, INIT);
 	}
 	else

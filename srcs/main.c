@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/19 06:30:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:16:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	prompt(char **rl)
 	s = readline(full_prompt);
 	if (!s)
 	{
-	    if (isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO)) // ! to use mpanic
 			write(2, "exit\n", 6);
-		exit (return_(0, GET));
+		exit(return_(0, GET));
 	}
 	if (!ft_strlen(s))
 		return (free(s), 1);

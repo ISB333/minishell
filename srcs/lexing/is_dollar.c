@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/16 09:55:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:17:30 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ int	is_dollar(char *s, int token)
 			return (i);
 		}
 	}
-	return (0);
-}
-
-int	is_dollar_del(char c)
-{
-	if (c == '$' || c == '/' || c == '|' || c == 34 || c == 39)
-		return (1);
 	return (0);
 }
 

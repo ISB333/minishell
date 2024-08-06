@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/17 07:34:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:17:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ int						is_heredoc(char *s, int i, char token);
 int						is_new_line(char **tokens, int i);
 int						is_path(char *s);
 int						is_dollar(char *s, int token);
+int						is_dollar_del(char c);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_dollar_in_double_quotes(char *s, int k, int i);

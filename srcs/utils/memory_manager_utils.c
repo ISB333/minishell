@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manager_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 13:37:20 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/06 10:21:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	close_all_fds(t_memman *mem_list)
 		mem_list = mem_list->next;
 	}
 }
+
 void	ff_lock(t_memman *mem_lock)
 {
 	t_memman	*temp;
