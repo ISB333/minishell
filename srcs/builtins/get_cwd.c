@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:20:41 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/09 13:03:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,17 @@ char	**split_cwd(char *cwd)
 	len = 0;
 	i = 0;
 	k = 0;
-	j = 0;
+	j = -1;
 	len = count_dir(cwd);
 	cwd_dir = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
 	cwd_dir[len] = NULL;
 	while (cwd[i])
 	{
+		if (cwd[i] == '/' && cwd[i + 1] == '/')
+			i++;
 		if (cwd[i] == '/' || !cwd[i + 1])
 		{
-			cwd_dir[j++] = ft_substr(cwd, k, i - k + 1);
+			cwd_dir[++j] = ft_substr(cwd, k, i - k + 1);
 			k = ++i;
 		}
 		else
@@ -136,8 +138,11 @@ char	*get_cwdd(char *cwd, char *new_dir, int token)
 	if (token == INIT)
 	{
 		cwd_dir = split_cwd(cwd);
+		// int k = -1;
+		// while (cwd_dir[++k])
+		// 	printf("%s\n", cwd_dir[k]);
 		i = -1;
-		while (cwd_dir[++i])
+		while (cwd_dir && cwd_dir[++i])
 			add_node_cwd(&cwdd, cwd_dir[i]);
 		if (!home)
 			home = get_envv(0, "HOME", FIND);

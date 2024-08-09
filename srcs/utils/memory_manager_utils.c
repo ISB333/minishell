@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 09:57:38 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:21:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/09 10:46:02 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ff(t_memman *mem_list, int i)
 	t_memman	*temp;
 
 	path = ft_strjoin(get_cwdd(0, 0, HOME), "/hd");
-	while (++i < 50)
+	while (++i < 50 && path)
 	{
 		heredoc = ft_strjoin(path, ft_itoa(i));
 		if (!access(heredoc, R_OK))
