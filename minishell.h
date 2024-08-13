@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:24:05 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:17:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:54:21 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void					history(char *rl);
 char					**lexer(char *str);
 void					get_dollar(char **arr, int i, int k, int j);
 void					get_tilde(char **arr);
+char					*home_paths(char *to_find, int token);
 char					***split_array(char ***arr, char **tok, int i, int k);
 int						lexer_utils(char ****array, char **tokens);
 
@@ -162,7 +163,7 @@ int						is_dollar_del(char c);
 int						is_dollar_in_arr(char **arr, int i, char tok, char pos);
 int						is_dollar_utils(char **arr, int i, int k, int pos);
 int						is_dollar_in_double_quotes(char *s, int k, int i);
-int						is_tilde_in_arr(char **arr, int i, char token);
+int						is_tilde_in_arr(char **arr, int i);
 int						is_pipe_in_arr(char **array);
 int						is_new_line_in_arr(char **array);
 int						is_redir_in_arr(char **array);
@@ -193,6 +194,8 @@ void					init_lst(t_ast **ast);
 t_ast					*return_tail(t_ast *ast);
 int						cmd_path_init(t_ast **ast, int i);
 int						check_if_directory(t_ast **ast);
+int						check_if_directory_utils(t_ast **ast);
+long long				ft_atoi_ll(const char *nptr);
 
 int						parse_redir(t_ast **ast, char **tokens, int i, int n);
 int						parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -228,12 +231,15 @@ void					add_node_exp(t_export **exp, char *var);
 void					sort_export(t_export *exp);
 int						quit(int token);
 char					*env_var_search(t_env *envv, char *to_find);
-void					*print_or_get_env(t_env *envv, int token);
+void					*print_or_get_env(t_env *envv, int token, int len);
 int						modify_exp_var(t_export *exp, char *var);
 int						is_only_n(char *s);
 void					exit_check_utils(t_ast *ast);
 int						modify_exp_var(t_export *exp, char *var);
 int						is_only_n(char *s);
 int						env_format_check(char *var);
+int						check_if_exist_exp(t_export *exp, char *var);
+int						cd_utils(char **arr);
+void					add_node_cwd(t_cwd **cwdd, char *dirr);
 
 #endif

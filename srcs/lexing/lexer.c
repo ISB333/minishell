@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 09:11:30 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/13 09:42:03 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ char	**lexer(char *s)
 	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
 	tokens[len] = NULL;
 	tokens = splitter(tokens, s);
-	while (is_tilde_in_arr(tokens, -1, '?'))
+	home_paths(0, INIT);
+	while (is_tilde_in_arr(tokens, -1))
 		get_tilde(tokens);
 	while (is_dollar_in_arr(tokens, -1, '?', 0))
 		get_dollar(tokens, 0, 0, 0);

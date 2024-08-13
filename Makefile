@@ -39,11 +39,12 @@ LEXING = ./srcs/lexing/lexer.c ./srcs/lexing/is_sh1.c \
 	
 PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
 	./srcs/parsing/parse_utils2.c ./srcs/parsing/parse_utils3.c \
-	./srcs/parsing/parse_utils4.c 
+	./srcs/parsing/parse_utils4.c ./srcs/parsing/parse_utils5.c 
 
 BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
 		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils1.c \
-		./srcs/builtins/builtins_utils2.c ./srcs/builtins/builtins_utils3.c
+		./srcs/builtins/builtins_utils2.c ./srcs/builtins/builtins_utils3.c \
+		./srcs/builtins/builtins_utils4.c
 
 OFLAGS += -Wall -Wextra -g3 -I. -I/usr/include/readline
 OBJ_DIR = .obj

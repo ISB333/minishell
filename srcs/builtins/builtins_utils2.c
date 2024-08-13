@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/13 08:53:58 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:48:24 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ char	*env_var_search(t_env *envv, char *to_find)
 	return (NULL);
 }
 
-void	*print_or_get_env(t_env *envv, int token)
+void	*print_or_get_env(t_env *envv, int token, int len)
 {
-	int		len;
 	char	**env;
 	t_env	*tmp;
 
 	tmp = envv;
-	len = 0;
 	while (envv)
 	{
 		if (token == PRINT)

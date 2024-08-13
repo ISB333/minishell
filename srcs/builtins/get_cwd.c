@@ -6,42 +6,37 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 08:54:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:54:06 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_node_cwd(t_cwd **cwdd, char *dirr)
+void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
 {
-	t_cwd	*new_node;
 	t_cwd	*last_node;
 
-	new_node = mem_manager(sizeof(t_cwd), 0, 0, 'A');
-	new_node->dir = ft_strdup(dirr);
-	new_node->next = NULL;
-	if (!*cwdd)
-		*cwdd = new_node;
-	else
+	last_node = *cwdd;
+	while (last_node->next && last_node->next->next)
+		last_node = last_node->next;
+	if (!ft_strcmp(new_dir, ".."))
 	{
-		last_node = *cwdd;
-		while (last_node->next)
-			last_node = last_node->next;
-		if (last_node->dir[ft_strlen(last_node->dir) - 1] != '/')
-			last_node->dir = ft_strjoin(last_node->dir, "/");
-		last_node->next = new_node;
+		if (last_node->dir[0] == '/' && last_node->next)
+			last_node->next = NULL;
+		else if (last_node->dir[0] != '/')
+			last_node->next = NULL;
 	}
+	else
+		add_node_cwd(cwdd, new_dir);
 }
 
-char	**split_cwd(char *cwd)
+char	**split_cwd(char *cwd, int len)
 {
 	char	**cwd_dir;
-	int		len;
 	int		i;
 	int		k;
 	int		j;
 
-	len = 0;
 	i = 0;
 	k = 0;
 	j = -1;
@@ -65,8 +60,6 @@ char	**split_cwd(char *cwd)
 
 void	update_cwd(t_cwd **cwdd, char *new_dir)
 {
-	t_cwd	*last_node;
-
 	if (!new_dir || !ft_strcmp(new_dir, "~"))
 	{
 		*cwdd = NULL;
@@ -83,20 +76,7 @@ void	update_cwd(t_cwd **cwdd, char *new_dir)
 			get_cwdd(new_dir, 0, INIT);
 	}
 	else
-	{
-		last_node = *cwdd;
-		while (last_node->next && last_node->next->next)
-			last_node = last_node->next;
-		if (!ft_strcmp(new_dir, ".."))
-		{
-			if (last_node->dir[0] == '/' && last_node->next)
-				last_node->next = NULL;
-			else if (last_node->dir[0] != '/')
-				last_node->next = NULL;
-		}
-		else
-			add_node_cwd(cwdd, new_dir);
-	}
+		update_cwd_utils(cwdd, new_dir);
 }
 
 char	*join_cwd(t_cwd *cwdd, int i, int k, int len)
@@ -137,10 +117,7 @@ char	*get_cwdd(char *cwd, char *new_dir, int token)
 
 	if (token == INIT)
 	{
-		cwd_dir = split_cwd(cwd);
-		// int k = -1;
-		// while (cwd_dir[++k])
-		// 	printf("%s\n", cwd_dir[k]);
+		cwd_dir = split_cwd(cwd, 0);
 		i = -1;
 		while (cwd_dir && cwd_dir[++i])
 			add_node_cwd(&cwdd, cwd_dir[i]);

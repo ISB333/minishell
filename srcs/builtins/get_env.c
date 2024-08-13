@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/15 13:20:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/13 09:48:37 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ void	*get_envv(char *env[], char *var, int token)
 	if (token == MODIF)
 		modify_env_var(envv, var);
 	if (token == PRINT || token == GET)
-		print_or_get_env(envv, token);
+		print_or_get_env(envv, token, 0);
 	return (NULL);
 }

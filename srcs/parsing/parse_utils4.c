@@ -6,35 +6,11 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:18:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:43:29 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	check_if_directory_utils(t_ast **ast)
-{
-	if ((access((*ast)->cmd[0], R_OK) || access((*ast)->cmd[0], X_OK))
-		&& !ft_strncmp((*ast)->cmd[0], "./", 2))
-	{
-		(*ast)->error = error_init("Permission denied", (*ast)->cmd[0]);
-		(*ast)->error_code = 126;
-		return (return_(126, ADD), 126);
-	}
-	if (!access((*ast)->cmd[0], X_OK) && ((*ast)->cmd[0][0] == '.'
-		|| (*ast)->cmd[0][0] == '/'))
-	{
-		(*ast)->cmd_path = ft_strdup((*ast)->cmd[0]);
-		return (0);
-	}
-	else
-	{
-		(*ast)->error = error_init("command not found", (*ast)->cmd[0]);
-		(*ast)->error_code = 127;
-		return (return_(127, ADD), 127);
-	}
-	return (0);
-}
 
 int	check_if_directory(t_ast **ast)
 {

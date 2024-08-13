@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/09 10:45:17 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:34:27 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	add_previous_history(void)
 	history = open(path, O_RDWR | O_CREAT, 0644);
 	if (history == -1)
 		return (1);
-		// return (perror("Error opening file"), EXIT_FAILURE);
 	mem_manager(0, 0, history, 'O');
 	while (1)
 	{
@@ -55,7 +54,6 @@ int	append_new_history(char *rl)
 	history = open(path, O_WRONLY | O_APPEND, 0644);
 	if (history == -1)
 		return (1);
-		// return (perror("Error opening file"), EXIT_FAILURE);
 	mem_manager(0, 0, history, 'O');
 	ft_putstr_fd(rl, history);
 	ft_putstr_fd("\n", history);
