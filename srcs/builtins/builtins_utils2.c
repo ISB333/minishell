@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/09 12:29:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 08:53:58 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	count_dir(char *cwd)
 		if (cwd[i] == '/')
 			len++;
 	}
-	return (len);
+	return (++len);
 }
 
 char	*env_var_search(t_env *envv, char *to_find)

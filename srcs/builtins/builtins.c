@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/09 13:01:09 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:04:40y adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +144,12 @@ int	cd(char **arr)
 			arr[1] = ft_strjoin(get_cwdd(0, 0, HOME), arr[1] + 1);
 		if (!access(arr[1], OK) && access(arr[1], X_OK))
 			return (error("Permission denied", "cd", 1));
-		if (ft_strcmp(arr[1], ".."))
+		get_cwdd(0, arr[1], UPDATE);
+		if (!ft_strcmp(arr[1], ".."))
 			arr[1] = get_cwdd(0, 0, GET);
 		if (chdir(arr[1]))
 			return (error("No such file or directory", ft_strjoin("cd: ",
 						arr[1]), 1));
 	}
-	get_cwdd(0, arr[1], UPDATE);
 	return (0);
 }
