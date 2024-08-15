@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 12:04:31 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 08:26:00 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/15 12:56:29 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_export(char *env[], t_export **exp)
 		}
 	}
 	i = -1;
-	while (env[++i])
+	while (env && env[++i])
 		add_node_exp(exp, env[i]);
 }
 

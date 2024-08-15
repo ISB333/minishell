@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:17:25 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:56:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	array_len(char **tokens)
 	int	i;
 
 	i = 0;
-	while (tokens[i])
+	while (tokens && tokens[i])
 		i++;
 	return (i);
 }

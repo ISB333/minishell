@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/06 10:16:23 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:54:47 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	main(int argc, char *argv[], char *env[])
 
 	(void)argc;
 	(void)argv;
+	env = NULL;
 	init_utils(env, getcwd(NULL, 0));
 	signals_handler();
 	while (1)

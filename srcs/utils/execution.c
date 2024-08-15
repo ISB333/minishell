@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/09 10:02:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:02:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	executor(t_ast *ast)
 			return (mem_manager(0, 0, 0, 'C'), exit(1), 1);
 		if (is_builtin(ast))
 			call_builtins(ast, is_builtin(ast), EXIT);
-		else
+		else if (ast->cmd_path)
 		{
 			mem_manager(0, 0, 0, 'K');
 			execve(ast->cmd_path, ast->cmd, get_envv(0, 0, GET));

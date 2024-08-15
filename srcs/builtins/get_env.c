@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:48:37 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:55:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	*get_envv(char *env[], char *var, int token)
 	if (token == INIT)
 	{
 		i = -1;
-		while (env[++i])
+		while (env && env[++i])
 			add_node_env(&envv, env[i]);
 	}
 	if (token == ADD)
