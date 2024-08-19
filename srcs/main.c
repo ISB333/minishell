@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/16 12:01:35 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 11:12:17 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ int	factory(char *rl)
 /*
 	shlevel
 	signaux
-	export var modif
+	nested minishell
+	last_cmd == 131 etc
+	no env == ENV Vars basic
+
+	unset path -> cd (should not working)
 */
 
 int	main(int argc, char *argv[], char *env[])

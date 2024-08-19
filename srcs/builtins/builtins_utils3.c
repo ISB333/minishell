@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:34:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/13 09:21:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 11:04:44 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	is_only_n(char *s)
 int	modify_exp_var(t_export *exp, char *var)
 {
 	char	*exp_var;
+	char 	*var_to_modif;
 
+	var_to_modif = ft_substr(var, 0, ft_strlen(var)
+			- ft_strlen(ft_strchr(var, '=')));
 	while (exp)
 	{
 		if (ft_strchr(exp->var, '='))
@@ -49,9 +52,10 @@ int	modify_exp_var(t_export *exp, char *var)
 					- ft_strlen(ft_strchr(exp->var, '=')));
 		else
 			exp_var = ft_strdup(exp->var);
-		if (!ft_strcmp(exp_var, var))
+		if (!ft_strcmp(exp_var, var_to_modif))
 		{
-			exp->var = ft_strdup(var);
+			if (ft_strrchr(var, '='))
+				exp->var = ft_strdup(var);
 			return (0);
 		}
 		exp = exp->next;

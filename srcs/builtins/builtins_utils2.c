@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/13 09:48:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:57:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,19 @@ int	count_dir(char *cwd)
 	int	i;
 	int	len;
 
-	i = -1;
+	i = 0;
 	len = 0;
 	if (!cwd)
 		return (0);
-	while (cwd[++i])
+	while (cwd[i])
 	{
 		if (cwd[i] == '/' && cwd[i + 1] == '/')
 			i++;
-		if (cwd[i] == '/')
+		if (cwd[i] == '/' || !cwd[i + 1])
 			len++;
+		i++;
 	}
-	return (++len);
+	return (len);
 }
 
 char	*env_var_search(t_env *envv, char *to_find)

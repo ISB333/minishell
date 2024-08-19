@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/15 12:55:41 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 11:06:25 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,18 @@ void	unset_env(t_env **envv, char *var)
 void	modify_env_var(t_env *envv, char *var)
 {
 	char	*envv_var;
+	char 	*var_to_modif;
 
+	var_to_modif = ft_substr(var, 0, ft_strlen(var)
+			- ft_strlen(ft_strchr(var, '=')));
 	while (envv)
 	{
 		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var)
 				- ft_strlen(ft_strchr(envv->var, '=')));
-		if (!ft_strcmp(envv_var, var))
+		if (!ft_strcmp(envv_var, var_to_modif))
 		{
-			envv->var = ft_strdup(var);
+			if (ft_strrchr(var, '='))
+				envv->var = ft_strdup(var);
 			return ;
 		}
 		envv = envv->next;

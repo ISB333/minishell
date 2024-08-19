@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/15 13:02:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 11:11:51 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	wait_and_print_error(t_ast *wait, t_ast *error, int exit_status)
 	}
 	while (error)
 	{
-		if (error->error && get_envv(0, 0, GET))
+		if (error->error)
 			write(2, error->error, ft_strlen(error->error));
 		error = error->next;
 	}

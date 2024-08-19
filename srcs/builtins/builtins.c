@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:47:06 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:58:50 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	cd(char **arr)
 	if (!arr[1] || !ft_strcmp(arr[1], "~"))
 	{
 		if (chdir(get_cwdd(0, 0, HOME)))
-			return (printf("thefuck\n"), -1);
+			return (-1);
 	}
 	else
 		return (cd_utils(arr));

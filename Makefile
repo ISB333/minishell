@@ -18,9 +18,10 @@ CC = cc
 
 DEFAULT = \033[0;39m
 BLUE = \033[0;34m
-GREEN = \033[0;32m
+DARK_GREEN =\033[0;3;32m
 RED = \033[31;1m
 WHITE = \033[0;37m
+YELLOW = \033[0;33m
 
 ######################## SOURCES ########################
 
@@ -81,7 +82,7 @@ $(NAME) : $(OBJS) $(LIBFT)
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
 	@if [ ! -f .obj/srcs/*.o ]; then \
-	    echo "$(WHITE)\nCompiling minishell files...$(DEFAULT)"; \
+	    echo "$(YELLOW)\nCompiling minishell files...$(DEFAULT)"; \
 	fi
 	@$(CC) $(OFLAGS) -c $< -o $@
 
@@ -97,7 +98,7 @@ val :
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
-	@echo "$(BLUE)\nEvery files are cleaned$(DEFAULT)"
+	@echo "$(DARK_GREEN)\nEvery files are cleaned$(DEFAULT)"
 
 fclean : clean
 	@rm -f $(NAME)
