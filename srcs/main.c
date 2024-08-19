@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/19 11:12:17 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/19 11:16:46 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,17 @@ int	factory(char *rl)
 }
 
 /*
-	shlevel
-	signaux
-	nested minishell
-	last_cmd == 131 etc
-	no env == ENV Vars basic
+	TODO : no env == ENV Vars basic
+		PWD=/home/isb3/42_Projects/7_minishell
+		SHLVL=1
+		_=/usr/bin/env
+		PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	TODO : shlevel
+	TODO : signaux
+	TODO : nested minishell
+	TODO : last_cmd == 131 etc
 
-	unset path -> cd (should not working)
+	TODO : unset path -> cd (should not working)
 */
 
 int	main(int argc, char *argv[], char *env[])
