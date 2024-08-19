@@ -13,7 +13,7 @@
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I. -I/usr/include/readline
+CFLAGS += -Wall -Wextra -MP -MD -g3 -I./headers
 CC = cc 
 
 DEFAULT = \033[0;39m
@@ -47,7 +47,7 @@ BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
 		./srcs/builtins/builtins_utils2.c ./srcs/builtins/builtins_utils3.c \
 		./srcs/builtins/builtins_utils4.c
 
-OFLAGS += -Wall -Wextra -g3 -I. -I/usr/include/readline
+OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj
 DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
 		$(HISTORY:%.c=$(OBJ_DIR)/%.o.d) \
