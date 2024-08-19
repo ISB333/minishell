@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:34:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/19 11:04:44 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/19 12:59:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,19 @@ int	env_format_check(char *var)
 
 int	is_only_n(char *s)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
-	while (s[++i])
-	{
-		if (s[i] != 'n')
-			return (0);
-	}
-	return (1);
+	// i = 0;
+	// while (s[++i])
+	// {
+	// 	if (s[i] != 'n')
+	// 		return (0);
+	// }
+	// return (1);
+	while (++s)
+		if (*s != 'n')
+			break ;
+	return (*s != 'n');
 }
 
 int	modify_exp_var(t_export *exp, char *var)

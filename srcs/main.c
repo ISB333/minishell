@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/19 11:16:46 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/19 12:45:06 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	factory(char *rl)
 	TODO : signaux
 	TODO : nested minishell
 	TODO : last_cmd == 131 etc
+
+	TODO : Heredoc $
 
 	TODO : unset path -> cd (should not working)
 */

@@ -98,11 +98,12 @@ val :
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 	@echo "$(DARK_GREEN)\nEvery files are cleaned$(DEFAULT)"
 
 fclean : clean
 	@rm -f $(NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
+# @$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 re : fclean all
 
