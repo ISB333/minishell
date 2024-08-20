@@ -6,60 +6,21 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/19 09:58:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 08:55:29 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	unset_export(t_export **exp, char *var)
+int	is_only_n(char *s)
 {
-	t_export	*tmp;
+	int	i;
 
-	if (!var)
-		return ;
-	tmp = *exp;
-	if (!ft_strncmp((*exp)->var, var, ft_strlen(var)))
-		*exp = (*exp)->next;
-	else
-	{
-		while (tmp)
-		{
-			if (tmp->next && !ft_strncmp(tmp->next->var, var, ft_strlen(var)))
-			{
-				tmp->next = tmp->next->next;
-				break ;
-			}
-			tmp = tmp->next;
-		}
-	}
-}
-
-void	exportt(char *env[], char *var, int token)
-{
-	static t_export	*exp;
-
-	if (token == INIT)
-		init_export(env, &exp);
-	if (token == ADD)
-	{
-		if (!var)
-			return ;
-		if (!get_envv(0, var, ADD) && env_format_check(var)
-			&& !check_if_exist_exp(exp, var))
-		{
-			add_node_exp(&exp, var);
-			sort_export(exp);
-		}
-		else if (!env_format_check(var))
-			error("not a valid identifier", ft_strjoin("export: ", var), 1);
-		else
-			modify_exp_var(exp, var);
-	}
-	if (token == PRINT)
-		print_export(exp);
-	if (token == UNSET)
-		unset_export(&exp, var);
+	i = 0;
+	while (s[++i])
+		if (s[i] != 'n')
+			return (0);
+	return (1);
 }
 
 void	echoo(char **arr)
@@ -118,4 +79,33 @@ int	cd(char **arr)
 	else
 		return (cd_utils(arr));
 	return (0);
+}
+
+int	call_builtins(t_ast *ast, int c, int token)
+{
+	int	return_code;
+	int	i;
+
+	i = 0;
+	return_code = 0;
+	if (c == CD)
+		return_code = cd(ast->cmd);
+	if (c == PWD)
+		pwdd();
+	if (c == ECH)
+		echoo(ast->cmd);
+	if (c == EXPORT && !ast->cmd[1])
+		exportt(0, 0, PRINT);
+	while (c == EXPORT && ast->cmd[i])
+		exportt(0, ast->cmd[++i], ADD);
+	if (c == ENV)
+		get_envv(0, 0, PRINT);
+	while (c == UNSET && ast->cmd[i])
+	{
+		exportt(0, ast->cmd[++i], UNSET);
+		get_envv(0, ast->cmd[i], UNSET);
+	}
+	if (token == EXIT)
+		quit(EXIT_SUCCESS);
+	return (return_code);
 }

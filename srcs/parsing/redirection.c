@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils2.c                                     :+:      :+:    :+:   */
+/*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 08:10:37 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/13 06:23:59 by isb3             ###   ########.fr       */
+/*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
+/*   Updated: 2024/08/20 07:56:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,32 +101,4 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 			i++;
 	}
 	return (0);
-}
-
-int	parse_cmd(t_ast **ast, char **tok, int *i, int j)
-{
-	int	k;
-
-	k = *i;
-	(*ast)->cmd = mem_manager((cmdlen(tok, i) + 1) * sizeof(char *), 0, 0, 'A');
-	if (!(*ast)->cmd)
-		return (1);
-	while (tok[k] && !is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
-	{
-		if (is_redir(tok[k], 0, 0) || is_append(tok[k], 0, 0)
-			|| is_heredoc(tok[k], 0, 0))
-			k += 2;
-		else if (is_there_quotes_in_da_shit(tok[k]) && tok[k])
-			(*ast)->cmd[++j] = quotes_destroyer(tok[k++], 0, 0, 0);
-		else if (!ft_strlen(tok[k]))
-			k++;
-		else if (!is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))
-		{
-			(*ast)->cmd[++j] = ft_substr(tok[k], 0, ft_strlen(tok[k]));
-			k++;
-		}
-		if (!(*ast)->cmd[j])
-			return (1);
-	}
-	return ((*ast)->cmd[++j] = NULL, 0);
 }

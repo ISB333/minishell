@@ -1,50 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_utils2.c                                  :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/19 09:57:31 by isb3             ###   ########.fr       */
+/*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
+/*   Updated: 2024/08/20 08:05:18 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	quit(int token)
-{
-	if (token == EXIT_FAILURE)
-	{
-		mem_manager(0, 0, 0, 'C');
-		exit(EXIT_FAILURE);
-	}
-	if (token == EXIT_SUCCESS)
-	{
-		mem_manager(0, 0, 0, 'C');
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
-
-int	count_dir(char *cwd)
+int	env_format_check(char *var)
 {
 	int	i;
-	int	len;
 
-	i = 0;
-	len = 0;
-	if (!cwd)
+	i = -1;
+	if (!ft_isalpha(var[0]))
 		return (0);
-	while (cwd[i])
-	{
-		if (cwd[i] == '/' && cwd[i + 1] == '/')
-			i++;
-		if (cwd[i] == '/' || !cwd[i + 1])
-			len++;
-		i++;
-	}
-	return (len);
+	while (var[++i] && var[i] != '=')
+		if (var[i] != '=' && !ft_isalnum(var[i]))
+			return (0);
+	return (1);
 }
 
 char	*env_var_search(t_env *envv, char *to_find)

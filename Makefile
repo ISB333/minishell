@@ -23,29 +23,51 @@ RED = \033[31;1m
 WHITE = \033[0;37m
 YELLOW = \033[0;33m
 
+######################## UTILS ########################
+
+GREEN = \033[0;92m
+CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M")
+
+VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
+	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=/home/adesille/Desktop/minishell/minishell/valgrind.supp --quiet ./minishell
+
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+H_DIR = ./srcs/history
+L_DIR = ./srcs/lexing
+P_DIR = ./srcs/parsing
+B_DIR = ./srcs/builtins
+U_DIR = ./srcs/utils
+
 ######################## SOURCES ########################
 
-SRCS = ./srcs/main.c ./srcs/utils/get_prompt.c \
-	./srcs/utils/memory_manager.c ./srcs/utils/memory_manager_utils.c \
-	./srcs/utils/execution.c ./srcs/utils/signals.c
+SRCS = ./srcs/main.c 
 
-HISTORY = ./srcs/history/gnl.c ./srcs/history/gnl_utils.c \
-	./srcs/history/manage_history.c 
+HISTORY = $(H_DIR)/gnhell.c $(H_DIR)/gnhell_utils.c \
+	$(H_DIR)/manage_history.c 
 	
-LEXING = ./srcs/lexing/lexer.c ./srcs/lexing/is_sh1.c \
-	./srcs/lexing/is_sh2.c ./srcs/lexing/is_sh_in_arr1.c \
-	./srcs/lexing/is_sh_in_arr2.c ./srcs/lexing/is_dollar.c \
-	./srcs/lexing/is_tilde.c ./srcs/lexing/utils1.c \
-	./srcs/lexing/utils2.c ./srcs/lexing/utils3.c 
+LEXING = $(L_DIR)/lexer.c \
+	$(L_DIR)/is_functions/is_sh1.c $(L_DIR)/is_functions/is_sh2.c \
+	$(L_DIR)/is_functions/is_sh_in_arr1.c $(L_DIR)/is_functions/is_sh_in_arr2.c \
+	$(L_DIR)/handle_dollar.c $(L_DIR)/handle_tilde.c \
+	$(L_DIR)/split.c $(L_DIR)/count_rows.c \
+	$(L_DIR)/add_space.c $(L_DIR)/utils.c
 	
-PARSING = ./srcs/parsing/parsing.c ./srcs/parsing/parse_utils1.c \
-	./srcs/parsing/parse_utils2.c ./srcs/parsing/parse_utils3.c \
-	./srcs/parsing/parse_utils4.c ./srcs/parsing/parse_utils5.c 
+PARSING = $(P_DIR)/parsing.c $(P_DIR)/commands.c \
+	$(P_DIR)/redirection.c $(P_DIR)/heredoc.c \
+	$(P_DIR)/parse_utils.c
 
-BUILTINS = ./srcs/builtins/get_env.c ./srcs/builtins/get_cwd.c \
-		./srcs/builtins/builtins.c ./srcs/builtins/builtins_utils1.c \
-		./srcs/builtins/builtins_utils2.c ./srcs/builtins/builtins_utils3.c \
-		./srcs/builtins/builtins_utils4.c
+EXECUTION = ./srcs/execution/execution.c ./srcs/execution/exec_utils.c
+
+BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
+	$(B_DIR)/get_env.c $(B_DIR)/get_cwd.c \
+	$(B_DIR)/exit.c $(B_DIR)/env.c \
+	$(B_DIR)/export.c $(B_DIR)/export_utils.c
+
+UTILS = $(U_DIR)/get_prompt.c \
+	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \
+	$(U_DIR)/signals.c
 
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj
@@ -53,24 +75,17 @@ DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
 		$(HISTORY:%.c=$(OBJ_DIR)/%.o.d) \
 		$(LEXING:%.c=$(OBJ_DIR)/%.o.d) \
 		$(PARSING:%.c=$(OBJ_DIR)/%.o.d) \
-		$(BUILTINS:%.c=$(OBJ_DIR)/%.o.d)
+		$(EXECUTION:%.c=$(OBJ_DIR)/%.o.d) \
+		$(BUILTINS:%.c=$(OBJ_DIR)/%.o.d) \
+		$(UTILS:%.c=$(OBJ_DIR)/%.o.d)
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) \
 		$(HISTORY:%.c=$(OBJ_DIR)/%.o) \
 		$(LEXING:%.c=$(OBJ_DIR)/%.o) \
 		$(PARSING:%.c=$(OBJ_DIR)/%.o) \
-		$(BUILTINS:%.c=$(OBJ_DIR)/%.o)
-
-######################## UTILS ########################
-
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-
-GREEN = \033[0;92m
-CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M")
-
-VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
-	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=/home/adesille/Desktop/minishell/minishell/valgrind.supp --quiet ./minishell
+		$(EXECUTION:%.c=$(OBJ_DIR)/%.o) \
+		$(BUILTINS:%.c=$(OBJ_DIR)/%.o) \
+		$(UTILS:%.c=$(OBJ_DIR)/%.o)
 
 ######################## RULES ########################
 

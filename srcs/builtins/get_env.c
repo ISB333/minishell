@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/19 11:06:25 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 08:55:22 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	unset_env(t_env **envv, char *var)
 void	modify_env_var(t_env *envv, char *var)
 {
 	char	*envv_var;
-	char 	*var_to_modif;
+	char	*var_to_modif;
 
-	var_to_modif = ft_substr(var, 0, ft_strlen(var)
-			- ft_strlen(ft_strchr(var, '=')));
+	var_to_modif = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+					'=')));
 	while (envv)
 	{
 		envv_var = ft_substr(envv->var, 0, ft_strlen(envv->var)
@@ -87,8 +87,8 @@ int	check_if_exist(t_env *envv, char *var)
 	char	*envv_var;
 
 	if (ft_strchr(var, '='))
-		var = ft_substr(var, 0, ft_strlen(var)
-				- ft_strlen(ft_strchr(var, '=')));
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=')));
 	while (envv)
 	{
 		if (ft_strchr(envv->var, '='))

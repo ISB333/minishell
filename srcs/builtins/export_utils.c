@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_utils1.c                                  :+:      :+:    :+:   */
+/*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/06 12:04:31 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/15 12:56:29 by adesille         ###   ########.fr       */
+/*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
+/*   Updated: 2024/08/20 08:55:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	modify_exp_var(t_export *exp, char *var)
+{
+	char	*exp_var;
+	char	*var_to_modif;
+
+	var_to_modif = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+					'=')));
+	while (exp)
+	{
+		if (ft_strchr(exp->var, '='))
+			exp_var = ft_substr(exp->var, 0, ft_strlen(exp->var)
+					- ft_strlen(ft_strchr(exp->var, '=')));
+		else
+			exp_var = ft_strdup(exp->var);
+		if (!ft_strcmp(exp_var, var_to_modif))
+		{
+			if (ft_strrchr(var, '='))
+				exp->var = ft_strdup(var);
+			return (0);
+		}
+		exp = exp->next;
+	}
+	return (1);
+}
 
 void	add_node_exp(t_export **exp, char *var)
 {
@@ -69,41 +94,4 @@ int	lst_len(t_export *exp)
 		exp = exp->next;
 	}
 	return (len);
-}
-
-void	sort_export(t_export *exp)
-{
-	char		*temp;
-	int			len;
-	int			i;
-	int			j;
-	t_export	*origin;
-
-	i = -1;
-	len = lst_len(exp);
-	origin = exp;
-	while (++i < len - 1)
-	{
-		j = -1;
-		exp = origin;
-		while (++j < len - 1 - i)
-		{
-			if (ft_strcmp(exp->var, exp->next->var) > 0)
-			{
-				temp = ft_strdup(exp->var);
-				exp->var = ft_strdup(exp->next->var);
-				exp->next->var = ft_strdup(temp);
-			}
-			exp = exp->next;
-		}
-	}
-}
-
-void	print_export(t_export *exp)
-{
-	while (exp)
-	{
-		printf("declare -x %s\n", exp->var);
-		exp = exp->next;
-	}
 }

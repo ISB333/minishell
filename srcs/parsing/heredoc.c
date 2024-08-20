@@ -1,56 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils1.c                                     :+:      :+:    :+:   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 08:10:33 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/16 10:18:32 by isb3             ###   ########.fr       */
+/*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
+/*   Updated: 2024/08/20 07:55:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**extract_path(void)
+void	get_dollar_hd(t_heredoc *hd)
 {
-	char	**path;
-	char	*trimm_path;
+	char	*env_var;
+	char	*new_str;
+	int		k;
+	int		j;
 
-	trimm_path = get_envv(0, "PATH", FIND);
-	if (!trimm_path)
-		return (NULL);
-	path = ft_split(trimm_path, ':');
-	return (path);
-}
-
-int	cmd_path_init(t_ast **ast, int i)
-{
-	char	**path;
-	char	*cmd;
-	char	*test_path;
-
-	if ((*ast)->cmd == NULL || (*ast)->cmd[0] == NULL || is_builtin(*ast))
-		return (0);
-	if (!ft_strlen((*ast)->cmd[0]))
-		return (check_if_directory(ast));
-	path = extract_path();
-	if (!path)
+	while (hd)
 	{
-		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, return_(127, ADD), 127);
-	}
-	cmd = ft_strjoin("/", (*ast)->cmd[0]);
-	while (path[++i])
-	{
-		test_path = ft_strjoin(path[i], cmd);
-		if (!access(test_path, R_OK))
+		while (is_dollar(hd->s, '?'))
 		{
-			(*ast)->cmd_path = test_path;
-			return (return_(0, ADD), 0);
+			k = is_dollar(hd->s, 0);
+			j = k;
+			while (!is_del(hd->s[j]) && hd->s[j] && hd->s[j] != 34
+				&& hd->s[j] != 39)
+				j++;
+			env_var = ft_substr(hd->s, k + 1, j - k - 1);
+			if (!ft_strncmp(&hd->s[k], "$?", 2))
+				new_str = ft_itoa(return_(0, GET));
+			else
+				new_str = get_envv(0, env_var, FIND);
+			if (!new_str)
+				new_str = ft_strdup("\0");
+			hd->s = join_new_str(hd->s, new_str, j - k, 0);
 		}
+		hd = hd->next;
 	}
-	return (check_if_directory(ast));
 }
 
 void	add_node_hd(t_heredoc **hd, char *s)

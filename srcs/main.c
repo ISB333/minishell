@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/19 12:45:06 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 08:54:34 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,15 @@ int	factory(char *rl)
 		SHLVL=1
 		_=/usr/bin/env
 		PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-	TODO : shlevel
-	TODO : signaux
+	TODO : shlevel management
 	TODO : nested minishell
-	TODO : last_cmd == 131 etc
 
-	TODO : Heredoc $
+	TODO : signaux
+	TODO : last_cmd == 131 etc (?? need to ask to someone)
 
-	TODO : unset path -> cd (should not working)
+	TODO : Heredoc $ check if everything ok
+
+	TODO : unset path -> cd (should not redirect to HOME)
 */
 
 int	main(int argc, char *argv[], char *env[])

@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils4.c                                     :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 10:03:01 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:43:29 by adesille         ###   ########.fr       */
+/*   Created: 2024/08/20 07:50:24 by isb3              #+#    #+#             */
+/*   Updated: 2024/08/20 07:58:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_if_directory(t_ast **ast)
+long long	ft_atoi_ll(const char *nptr)
 {
-	struct stat	path_stat;
+	int			i;
+	int			sign;
+	long long	nbr;
 
-	if (stat((*ast)->cmd[0], &path_stat) != 0 && (!ft_strncmp((*ast)->cmd[0],
-				"./", 2) || (*ast)->cmd[0][0] == '/') && access((*ast)->cmd[0],
-			OK))
+	sign = 1;
+	i = 0;
+	nbr = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == 43 || nptr[i] == 45)
 	{
-		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		(*ast)->error_code = 127;
-		return (return_(127, ADD), 127);
+		if (nptr[i] == 45)
+			sign *= -1;
+		i++;
 	}
-	if ((!ft_strncmp((*ast)->cmd[0], "/", 1) || !ft_strncmp((*ast)->cmd[0],
-				"./", 2)) && S_ISDIR(path_stat.st_mode))
-	{
-		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
-		(*ast)->error_code = 126;
-		return (return_(126, ADD), 126);
-	}
-	else
-		return (check_if_directory_utils(ast));
-	return (0);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		nbr = (nbr * 10) + ((nptr[i++]) - 48);
+	return (nbr * sign);
 }
 
 void	exit_check_utils(t_ast *ast)
@@ -99,31 +97,30 @@ int	format_check(char *s, long long *code)
 	return (format_check_utils(s, code));
 }
 
-void	get_dollar_hd(t_heredoc *hd)
+void	exit_check(t_ast *ast)
 {
-	char	*env_var;
-	char	*new_str;
-	int		k;
-	int		j;
+	long long	code;
 
-	while (hd)
+	if (!ast)
+		return ;
+	if (!ast->next)
 	{
-		while (is_dollar(hd->s, '?'))
+		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit"))
 		{
-			k = is_dollar(hd->s, 0);
-			j = k;
-			while (!is_del(hd->s[j]) && hd->s[j] && hd->s[j] != 34
-				&& hd->s[j] != 39)
-				j++;
-			env_var = ft_substr(hd->s, k + 1, j - k - 1);
-			if (!ft_strncmp(&hd->s[k], "$?", 2))
-				new_str = ft_itoa(return_(0, GET));
+			if (ast->cmd[1])
+			{
+				code = ft_atoi_ll(ast->cmd[1]);
+				if (format_check(ast->cmd[1], &code))
+					return (mem_manager(0, 0, 0, 'C'), exit(2));
+				if (!ast->cmd[2])
+					return (mem_manager(0, 0, 0, 'C'), exit(code));
+				else
+					error("too many arguments", "exit", 1);
+			}
 			else
-				new_str = get_envv(0, env_var, FIND);
-			if (!new_str)
-				new_str = ft_strdup("\0");
-			hd->s = join_new_str(hd->s, new_str, j - k, 0);
+				return (mem_manager(0, 0, 0, 'C'), exit(return_(0, GET)));
 		}
-		hd = hd->next;
 	}
+	else
+		exit_check_utils(ast);
 }

@@ -6,46 +6,11 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:29:17 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 06:54:14 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	init_i(t_split **i)
-{
-	(*i)->i = 0;
-	(*i)->j = 0;
-	(*i)->k = 0;
-	(*i)->token = 0;
-}
-
-char	**splitter(char **array, char *s)
-{
-	t_split	*i;
-
-	i = malloc(sizeof(t_split));
-	if (!i)
-		return (NULL);
-	init_i(&i);
-	while (s[i->i])
-	{
-		while (is_del(s[i->i]))
-			i->i++;
-		if (s[i->i] == 34 || s[i->i] == 39)
-		{
-			if (split_utils_quotes(i, s, array))
-				return (free(i), NULL);
-			if (i->token == 1)
-				if (split_utils_char(i, s, array))
-					return (free(i), NULL);
-		}
-		else if (s[i->i])
-			if (split_utils_char(i, s, array))
-				return (free(i), NULL);
-	}
-	return (array[i->j] = NULL, free(i), array);
-}
 
 int	strlen_space(char *s)
 {

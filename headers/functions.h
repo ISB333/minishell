@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/19 17:48:07 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/20 08:18:31 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void		init_export(char *env[], t_export **exp);
 void		print_export(t_export *exp);
 void		add_node_exp(t_export **exp, char *var);
 void		sort_export(t_export *exp);
+int			lst_len(t_export *exp);
 int			quit(int token);
 char		*env_var_search(t_env *envv, char *to_find);
 void		*print_or_get_env(t_env *envv, int token, int len);

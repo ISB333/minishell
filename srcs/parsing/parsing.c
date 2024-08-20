@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:40:57 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/20 07:50:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	exit_check(t_ast *ast)
-{
-	long long	code;
-
-	if (!ast)
-		return ;
-	if (!ast->next)
-	{
-		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit"))
-		{
-			if (ast->cmd[1])
-			{
-				code = ft_atoi_ll(ast->cmd[1]);
-				if (format_check(ast->cmd[1], &code))
-					return (mem_manager(0, 0, 0, 'C'), exit(2));
-				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 0, 'C'), exit(code));
-				else
-					error("too many arguments", "exit", 1);
-			}
-			else
-				return (mem_manager(0, 0, 0, 'C'), exit(return_(0, GET)));
-		}
-	}
-	else
-		exit_check_utils(ast);
-}
 
 int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 {
