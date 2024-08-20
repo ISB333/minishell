@@ -58,7 +58,7 @@ PARSING = $(P_DIR)/parsing.c $(P_DIR)/commands.c \
 	$(P_DIR)/redirection.c $(P_DIR)/heredoc.c \
 	$(P_DIR)/parse_utils.c
 
-EXECUTION = ./srcs/execution/execution.c ./srcs/execution/exec_utils.c
+EXECUTION = ./srcs/execution/execution.c
 
 BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 	$(B_DIR)/get_env.c $(B_DIR)/get_cwd.c \

@@ -6,22 +6,11 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/20 08:55:29 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 08:57:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	is_only_n(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[++i])
-		if (s[i] != 'n')
-			return (0);
-	return (1);
-}
 
 void	echoo(char **arr)
 {
@@ -108,4 +97,25 @@ int	call_builtins(t_ast *ast, int c, int token)
 	if (token == EXIT)
 		quit(EXIT_SUCCESS);
 	return (return_code);
+}
+
+int	is_builtin(t_ast *ast)
+{
+	if (!ast || !ast->cmd)
+		return (0);
+	if (!ft_strcmp(ast->cmd[0], "cd"))
+		return (CD);
+	if (!ft_strcmp(ast->cmd[0], "pwd"))
+		return (PWD);
+	if (!ft_strcmp(ast->cmd[0], "export"))
+		return (EXPORT);
+	if (!ft_strcmp(ast->cmd[0], "unset"))
+		return (UNSET);
+	if (!ft_strcmp(ast->cmd[0], "env"))
+		return (ENV);
+	if (!ft_strcmp(ast->cmd[0], "echo"))
+		return (ECH);
+	if (!ft_strcmp(ast->cmd[0], "exit"))
+		return (EXIT);
+	return (0);
 }

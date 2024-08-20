@@ -6,11 +6,22 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 08:55:34 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 08:57:36 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	is_only_n(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[++i])
+		if (s[i] != 'n')
+			return (0);
+	return (1);
+}
 
 int	cd_utils(char **arr)
 {
