@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/20 16:06:26 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/21 10:05:27 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*get_envv(t_string env[], const t_string var, const int action)
 	else if (action == MODIF)
 		update_env_var(env_head, var);
 	else if (action == PRINT || action == GET)
-		print_or_get_env(env_head, action, 0);
+		return (print_or_get_env(env_head, action, 0));
 	return (NULL);
 }
 

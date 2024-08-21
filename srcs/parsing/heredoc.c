@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 07:55:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/21 10:19:35 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	get_dollar_hd(t_heredoc *hd)
 		{
 			k = is_dollar(hd->s, 0);
 			j = k;
-			while (!is_del(hd->s[j]) && hd->s[j] && hd->s[j] != 34
-				&& hd->s[j] != 39)
+			if (!hd->s[j + 1] || is_del(hd->s[j + 1]))
+				return ;
+			while (hd->s[j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
 				j++;
 			env_var = ft_substr(hd->s, k + 1, j - k - 1);
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
