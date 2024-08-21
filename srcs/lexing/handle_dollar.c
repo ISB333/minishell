@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_dollar.c                                        :+:      :+:    :+:   */
+/*   handle_dollar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/06 10:17:30 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/21 10:38:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 	k = is_dollar_in_arr(arr, -1, 'p', 'k');
 	if (k && !is_dollar_in_double_quotes(arr[i], k, k))
 		return ;
-	if (is_del(arr[i][k + 1]) || !arr[i][k + 1])
+	if (!arr[i][k + 1] || is_del(arr[i][k + 1]))
 		return ;
 	j = k;
 	while (arr[i][++j] && !is_del(arr[i][j]) && !is_dollar_del(arr[i][j]))
