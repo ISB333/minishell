@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/20 08:18:31 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/20 16:05:33 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int			call_builtins(t_ast *ast, int c, int token);
 void		exit_check(t_ast *ast);
 char		*get_cwdd(char *cwd, char *new_dir, int token);
 int			count_dir(char *cwd);
-void		*get_envv(char *env[], char *to_find, int token);
+void		*get_envv(t_string env[], const t_string var, const int action);
 void		echoo(char **arr);
 void		pwdd(void);
 int			cd(char **arr);
