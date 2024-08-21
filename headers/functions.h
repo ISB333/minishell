@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/20 16:05:33 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/21 17:28:48 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void		close_all_fds(t_memman *mem_list);
 int			error(char *msg, char *file, int return_code);
 char		*error_init(char *msg, char *file);
 
+void		*get_node_at(void *list, const int n);
+
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
 int			parser(t_ast **ast, char *s);
@@ -111,7 +113,7 @@ int			parser(t_ast **ast, char *s);
 
 int			call_builtins(t_ast *ast, int c, int token);
 void		exit_check(t_ast *ast);
-char		*get_cwdd(char *cwd, char *new_dir, int token);
+t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action);
 int			count_dir(char *cwd);
 void		*get_envv(t_string env[], const t_string var, const int action);
 void		echoo(char **arr);
@@ -135,5 +137,6 @@ int			env_format_check(char *var);
 int			check_if_exist_exp(t_export *exp, char *var);
 int			cd_utils(char **arr);
 void		add_node_cwd(t_cwd **cwdd, char *dirr);
+t_string	join_cwd(t_cwd *cwd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/20 16:06:26 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/21 17:57:15 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ static void	add_env_var(t_env **env_list, const t_string var)
 		*env_list = new_node;
 	else
 	{
-		last_node = *env_list;
-		while (last_node->next)
-			last_node = last_node->next;
+		last_node = get_node_at(*env_list, LAST);
 		last_node->next = new_node;
 	}
 }
