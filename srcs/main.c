@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 10:39:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/21 14:18:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ int	factory(char *rl)
 	TODO : signaux
 	TODO : last_cmd == 131 etc (?? need to ask to someone)
 
-	TODO : unset path -> cd (should not redirect to HOME)
+	TODO : env -i ./minishell -> cd (bash: cd: HOME not set)
+	TODO : unset PATH, cwd don't work anymore
+	TODO : define for memory_manager
 */
 
 int	main(int argc, char *argv[], char *env[])

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 10:05:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/21 14:44:01 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,31 @@ static t_bool	env_var_exists(t_env *env, t_string var);
  *
  * ⬅️ Return: NULL for most actions, or a result if applicable.
  */
+
+void	init_basic_env(char **env[])
+{
+	*env = mem_manager(4 * sizeof(char *), 0, 0, 'A');
+	(*env)[0] = ft_strjoin("PWD=", getcwd(NULL , 0)) ;
+	(*env)[1] = ft_strdup("SHLVL=1") ;
+	(*env)[2] = ft_strdup("PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
+	(*env)[3] = NULL;
+}
+
 void	*get_envv(t_string env[], const t_string var, const int action)
 {
 	int				i;
 	static t_env	*env_head = NULL;
 
-	if (action == INIT && env)
+	if (action == INIT)
 	{
+		if (!env[0])
+			init_basic_env(&env);
 		i = 0;
 		while (env[i])
+		{
+			printf("%s\n", env[i]);
 			add_env_var(&env_head, env[i++]);
+		}
 	}
 	else if (action == ADD)
 	{
