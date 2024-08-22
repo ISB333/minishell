@@ -3,95 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 08:55:14 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 17:52:22 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	modify_exp_var(t_export *exp, char *var)
+/**
+ * 📋 Description: modifies the value of an existing export variable.
+ * 
+ * @param export_list: the list of all export variables.
+ * @param var: the variable to replace.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	modify_exp_var(t_export *export_list, const t_string var)
 {
-	char	*exp_var;
-	char	*var_to_modif;
+	t_string		exp_var;
+	const t_string	var_to_modif = ft_substr(var, 0, ft_strchr(var, '=') - var);
 
-	var_to_modif = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
-					'=')));
-	while (exp)
+	if (!var_to_modif || !ft_strchr(var, '='))
+		return ;
+	while (export_list)
 	{
-		if (ft_strchr(exp->var, '='))
-			exp_var = ft_substr(exp->var, 0, ft_strlen(exp->var)
-					- ft_strlen(ft_strchr(exp->var, '=')));
+		if (ft_strchr(export_list->var, '='))
+			exp_var = ft_substr(export_list->var, 0,
+					ft_strchr(export_list->var, '=') - export_list->var);
 		else
-			exp_var = ft_strdup(exp->var);
-		if (!ft_strcmp(exp_var, var_to_modif))
-		{
-			if (ft_strrchr(var, '='))
-				exp->var = ft_strdup(var);
-			return (0);
-		}
-		exp = exp->next;
+			exp_var = ft_strdup(export_list->var);
+		if (ft_strcmp(exp_var, var_to_modif) == EQUAL)
+			export_list->var = ft_strdup(var);
+		export_list = export_list->next;
 	}
-	return (1);
 }
 
-void	add_node_exp(t_export **exp, char *var)
+/**
+ * 📋 Description: sorts and stores environment variables as exports.
+ * 
+ * @param env: the list of all environment variables.
+ * @param export_list: the address of the list where to store the variables.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	init_export(t_string env[], t_export **export_list)
+{
+	t_string	tmp;
+	size_t		index;
+	size_t		scan;
+
+	index = 0;
+	if (!env || !*env || !export_list)
+		return ;
+	while (env[index + 1])
+	{
+		scan = 0;
+		while (env[scan + 1])
+		{
+			if (ft_strcmp(env[scan], env[scan + 1]) > 0)
+			{
+				tmp = env[scan];
+				env[scan] = env[scan + 1];
+				env[scan + 1] = tmp;
+			}
+			++scan;
+		}
+		++index;
+	}
+	while (*env)
+		add_node_exp(export_list, *env++);
+}
+
+/**
+ * 📋 Description: adds a variable to the export list and sorts it.
+ * 
+ * @param exp_list: the list of all export variables.
+ * @param var: the variable to add.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	add_node_exp(t_export **exp_list, const t_string var)
 {
 	t_export	*new_node;
-	t_export	*last_node;
 
+	if (!exp_list || !var)
+		return ;
 	new_node = mem_manager(sizeof(t_export), 0, 0, 'A');
 	new_node->var = ft_strdup(var);
 	new_node->next = NULL;
-	if (!*exp)
-		*exp = new_node;
+	if (!*exp_list)
+		*exp_list = new_node;
 	else
-	{
-		last_node = *exp;
-		while (last_node->next)
-			last_node = last_node->next;
-		last_node->next = new_node;
-	}
-}
-
-void	init_export(char *env[], t_export **exp)
-{
-	char	*temp;
-	int		len;
-	int		i;
-	int		j;
-
-	i = -1;
-	len = array_len(env);
-	while (++i < len - 1)
-	{
-		j = -1;
-		while (++j < len - 1 - i)
-		{
-			if (ft_strcmp(env[j], env[j + 1]) > 0)
-			{
-				temp = ft_strdup(env[j]);
-				env[j] = ft_strdup(env[j + 1]);
-				env[j + 1] = ft_strdup(temp);
-			}
-		}
-	}
-	i = -1;
-	while (env && env[++i])
-		add_node_exp(exp, env[i]);
-}
-
-int	lst_len(t_export *exp)
-{
-	int	len;
-
-	len = 0;
-	while (exp)
-	{
-		len++;
-		exp = exp->next;
-	}
-	return (len);
+		((t_export *)get_node_at(*exp_list, LAST))->next = new_node;
 }
