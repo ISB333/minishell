@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 08:05:18 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:19:30 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	env_format_check(char *var)
 	if (!ft_isalpha(var[0]))
 		return (0);
 	while (var[++i] && var[i] != '=')
-		if (var[i] != '=' && !ft_isalnum(var[i]))
+		if (var[i] != '=' && !ft_isalnum(var[i]) && var[i] != '_')
 			return (0);
 	return (1);
 }

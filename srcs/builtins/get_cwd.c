@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:54:06 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:13:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
-{
-	t_cwd	*last_node;
-
-	last_node = *cwdd;
-	while (last_node->next && last_node->next->next)
-		last_node = last_node->next;
-	if (!ft_strcmp(new_dir, ".."))
-	{
-		if (last_node->dir[0] == '/' && last_node->next)
-			last_node->next = NULL;
-		else if (last_node->dir[0] != '/')
-			last_node->next = NULL;
-	}
-	else
-		add_node_cwd(cwdd, new_dir);
-}
 
 char	**split_cwd(char *cwd, int len)
 {
@@ -56,6 +38,28 @@ char	**split_cwd(char *cwd, int len)
 			i++;
 	}
 	return (cwd_dir);
+}
+
+void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
+{
+	t_cwd	*last_node;
+	char	**cwd_dir;
+	int		i;
+
+	i = -1;
+	last_node = *cwdd;
+	while (last_node->next && last_node->next->next)
+		last_node = last_node->next;
+	cwd_dir = split_cwd(new_dir, 0);
+	while (cwd_dir[++i] && !ft_strncmp(cwd_dir[i], "..", 2))
+	{
+		last_node->next = NULL;
+		last_node = *cwdd;
+		while (last_node->next && last_node->next->next)
+			last_node = last_node->next;
+	}
+	while (cwd_dir[i])
+		add_node_cwd(cwdd, cwd_dir[i++]);
 }
 
 void	update_cwd(t_cwd **cwdd, char *new_dir)

@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 10:05:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:39:04 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,38 @@ static t_bool	env_var_exists(t_env *env, t_string var);
 
 /**
  * 📋 Description: acts on environment variables depending on the demand.
- * 
+ *
  * @param env: the list of character strings relating to variables.
  * @param var: the targeted variable when calling the function.
  * @param action: the action to execute (INIT, ADD, UNSET, etc.).
  *
  * ⬅️ Return: NULL for most actions, or a result if applicable.
  */
+
+void	init_env(char *env[], t_env **env_head)
+{
+	int	i;
+
+	if (!env[0])
+	{
+		env = mem_manager(4 * sizeof(char *), 0, 0, 'A');
+		env[0] = ft_strjoin("PWD=", getcwd(NULL, 0));
+		env[1] = ft_strdup("SHLVL=1");
+		env[2] = ft_strjoin("PATH=/usr/local/sbin:/usr/local/bin",
+				":/usr/sbin:/usr/bin:/sbin:/bin");
+		env[3] = NULL;
+	}
+	i = 0;
+	while (env[i])
+		add_env_var(env_head, env[i++]);
+}
+
 void	*get_envv(t_string env[], const t_string var, const int action)
 {
-	int				i;
 	static t_env	*env_head = NULL;
 
-	if (action == INIT && env)
-	{
-		i = 0;
-		while (env[i])
-			add_env_var(&env_head, env[i++]);
-	}
+	if (action == INIT)
+		init_env(env, &env_head);
 	else if (action == ADD)
 	{
 		if (!env_var_exists(env_head, var) && env_format_check(var))
@@ -59,7 +73,7 @@ void	*get_envv(t_string env[], const t_string var, const int action)
 
 /**
  * 📋 Description: adds an environment variable to the linked list.
- * 
+ *
  * @param env_list: the address of the environment variable list.
  * @param var: the variable to add to the list.
  *
@@ -88,7 +102,7 @@ static void	add_env_var(t_env **env_list, const t_string var)
 
 /**
  * 📋 Description: searches for and modifies the targeted variable.
- * 
+ *
  * @param env: the first variable in the list.
  * @param var: the variable to search for and modify.
  *
@@ -118,7 +132,7 @@ static void	update_env_var(t_env *env, const t_string var)
 
 /**
  * 📋 Description: checks if a variable exists in the list.
- * 
+ *
  * @param env: the first variable in the list.
  * @param var: the variable to search for in the list.
  *
@@ -131,8 +145,8 @@ static t_bool	env_var_exists(t_env *env, t_string var)
 	if (!var)
 		return (FALSE);
 	if (ft_strchr(var, '='))
-		var = ft_substr(var, 0, ft_strlen(var)
-				- ft_strlen(ft_strchr(var, '=')));
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=')));
 	while (env)
 	{
 		if (ft_strchr(env->var, '='))
@@ -149,7 +163,7 @@ static t_bool	env_var_exists(t_env *env, t_string var)
 
 /**
  * 📋 Description: removes a variable from the list.
- * 
+ *
  * @param env_list: the address of the environment variable list.
  * @param var: the variable to remove from the list.
  *

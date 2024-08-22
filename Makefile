@@ -29,7 +29,7 @@ GREEN = \033[0;92m
 CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M")
 
 VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
-	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=/home/adesille/Desktop/minishell/minishell/valgrind.supp --quiet ./minishell
+	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -108,8 +108,8 @@ $(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory; \
 
 val :
-# @$(VALGRIND)
-	@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --trace-children=yes --suppressions=valgrind.supp --quiet ./minishell
+	@$(VALGRIND)
+#@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --trace-children=yes --suppressions=valgrind.supp --quiet ./minishell
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)

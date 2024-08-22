@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/21 10:38:33 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:33:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,20 @@ int	cd_utils(char **arr)
 		return (error("Permission denied", "cd", 1));
 	if (!ft_strcmp(arr[1], ".."))
 	{
+		exportt(0, ft_strjoin("OLDPWD=", get_cwdd(0, 0, GET)), ADD);
 		get_cwdd(0, arr[1], UPDATE);
 		arr[1] = get_cwdd(0, 0, GET);
-		if (chdir(arr[1]))
-			return (error("No such file or directory", ft_strjoin("cd: ",
-						arr[1]), 1));
+		exportt(0, ft_strjoin("PWD=", get_cwdd(0, 0, GET)), ADD);
 	}
-	else if (chdir(arr[1]))
-		return (error("No such file or directory", ft_strjoin("cd: ", arr[1]),
-				1));
-	get_cwdd(0, arr[1], UPDATE);
+	else
+	{
+		exportt(0, ft_strjoin("OLDPWD=", get_cwdd(0, 0, GET)), ADD);
+		get_cwdd(0, arr[1], UPDATE);
+		exportt(0, ft_strjoin("PWD=", get_cwdd(0, 0, GET)), ADD);
+	}
+	if (chdir(arr[1]))
+		return (error("No such file or directory", ft_strjoin("cd: ",
+					arr[1]), 1));
 	return (0);
 }
 

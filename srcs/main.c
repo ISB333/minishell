@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 10:39:23 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:34:28 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 void	init_utils(char *env[], char *cwd)
 {
 	get_envv(env, 0, INIT);
+	get_envv(0, "SHLVL=2", MODIF);
 	get_cwdd(cwd, 0, INIT);
 	free(cwd);
 	exportt(env, 0, INIT);
+	exportt(0, "SHLVL=2", ADD);
 }
 
 int	factory(char *rl)
@@ -85,17 +87,14 @@ int	factory(char *rl)
 }
 
 /*
-	TODO : no env == ENV Vars basic
-		PWD=/home/isb3/42_Projects/7_minishell
-		SHLVL=1
-		_=/usr/bin/env
-		PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 	TODO : shlevel management
 
 	TODO : signaux
 	TODO : last_cmd == 131 etc (?? need to ask to someone)
 
-	TODO : unset path -> cd (should not redirect to HOME)
+	TODO : env -i ./minishell -> cd (bash: cd: HOME not set)
+	TODO : unset PATH, cwd don't work anymore
+	TODO : define for memory_manager
 */
 
 int	main(int argc, char *argv[], char *env[])
