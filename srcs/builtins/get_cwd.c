@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 14:25:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/21 15:13:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,8 @@ void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
 		while (last_node->next && last_node->next->next)
 			last_node = last_node->next;
 	}
-	if (cwd_dir[i])
-	{
-		while (cwd_dir && cwd_dir[i])
-			add_node_cwd(cwdd, cwd_dir[i++]);
-	}
+	while (cwd_dir[i])
+		add_node_cwd(cwdd, cwd_dir[i++]);
 }
 
 void	update_cwd(t_cwd **cwdd, char *new_dir)
