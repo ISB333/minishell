@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 08:00:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 08:38:59 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
 static t_string	*split_cwd(t_string cwd);
-static void		update_cwd(t_cwd **cwd, const t_string new_dir);
+static void		update_cwd(t_cwd **current_dir, const t_string new_dir);
 static void		change_directory(t_cwd **current_dir, const t_string new_dir);
 
 /**
@@ -122,7 +122,7 @@ static void	change_directory(t_cwd **current_dir, const t_string new_dir)
  *
  * ⬅️ Return: nothing.
  */
-static void	update_cwd(t_cwd **current_dir, char *new_dir)
+static void	update_cwd(t_cwd **current_dir, const t_string new_dir)
 {
 	t_cwd	*last_node;
 	char	**cwd_dir;
