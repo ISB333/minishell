@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/22 09:44:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 17:49:40 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void		close_all_fds(t_memman *mem_list);
 int			error(char *msg, char *file, int return_code);
 char		*error_init(char *msg, char *file);
 
+size_t		get_list_length(const t_linked_list *list);
+void		*get_node_at(void *list, const int n);
+
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
 int			parser(t_ast **ast, char *s);
@@ -110,29 +113,25 @@ int			parser(t_ast **ast, char *s);
 
 int			call_builtins(t_ast *ast, int c, int token);
 void		exit_check(t_ast *ast);
-char		*get_cwdd(char *cwd, char *new_dir, int token);
+t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action);
 int			count_dir(char *cwd);
 void		*get_envv(t_string env[], const t_string var, const int action);
 void		echoo(char **arr);
 void		pwdd(void);
 int			cd(char **arr);
-void		exportt(char *env[], char *new_var, int token);
-void		init_export(char *env[], t_export **exp);
-void		print_export(t_export *exp);
-void		add_node_exp(t_export **exp, char *var);
-void		sort_export(t_export *exp);
-int			lst_len(t_export *exp);
+void		exportt(t_string env[], const t_string new_var, const int action);
+void		init_export(t_string env[], t_export **exp);
+void		add_node_exp(t_export **exp_list, const t_string var);
 int			quit(int token);
 char		*env_var_search(t_env *envv, char *to_find);
 void		*print_or_get_env(t_env *envv, int token, int len);
-int			modify_exp_var(t_export *exp, char *var);
 int			is_only_n(char *s);
 void		exit_check_utils(t_ast *ast);
-int			modify_exp_var(t_export *exp, char *var);
+void		modify_exp_var(t_export *export_list, const t_string var);
 int			is_only_n(char *s);
 int			env_format_check(char *var);
-int			check_if_exist_exp(t_export *exp, char *var);
 int			cd_utils(char **arr);
 void		add_node_cwd(t_cwd **cwdd, char *dirr);
+t_string	join_cwd(t_cwd *cwd);
 
 #endif

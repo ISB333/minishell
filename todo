@@ -1,0 +1,4 @@
+# export.c - export_utils.c (and potentially get_env.c):
+
+- Transform the Boolean function for checking a variable into a pointer return.
+- Pass the pointer into the modification function without having to go through each list again.

@@ -3,119 +3,161 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 08:07:39 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 17:35:19 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sort_export(t_export *exp)
-{
-	char		*temp;
-	int			len;
-	int			i;
-	int			j;
-	t_export	*origin;
+// 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
-	i = -1;
-	len = lst_len(exp);
-	origin = exp;
-	while (++i < len - 1)
+static t_bool	check_if_exist_exp(t_export *exp, const t_string var);
+static void		print_export(const t_export *exp_list);
+static void		sort_export(t_export *exp_list);
+static void		unset_export(t_export **exp_list, t_string var);
+
+/**
+ * 📋 Description: manages all actions related to the export command.
+ * 
+ * @param env: string array representing environment variables.
+ * @param var: target variable if requested.
+ * @param action: action to perform (INIT, ADD, PRINT, UNSET).
+ *
+ * ⬅️ Return: nothing.
+ */
+void	exportt(t_string env[], const t_string var, const int action)
+{
+	static t_export	*exp_list = NULL;
+
+	if (action == INIT)
+		init_export(env, &exp_list);
+	else if (action == ADD && var)
 	{
-		j = -1;
-		exp = origin;
-		while (++j < len - 1 - i)
+		if (!get_envv(NULL, var, ADD) && env_format_check(var)
+			&& !check_if_exist_exp(exp_list, var))
 		{
-			if (ft_strcmp(exp->var, exp->next->var) > 0)
-			{
-				temp = ft_strdup(exp->var);
-				exp->var = ft_strdup(exp->next->var);
-				exp->next->var = ft_strdup(temp);
-			}
-			exp = exp->next;
-		}
-	}
-}
-
-void	print_export(t_export *exp)
-{
-	while (exp)
-	{
-		printf("declare -x %s\n", exp->var);
-		exp = exp->next;
-	}
-}
-
-int	check_if_exist_exp(t_export *exp, char *var)
-{
-	char	*exp_var;
-
-	if (ft_strchr(var, '='))
-		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
-						'=')));
-	while (exp)
-	{
-		if (ft_strchr(exp->var, '='))
-			exp_var = ft_substr(exp->var, 0, ft_strlen(exp->var)
-					- ft_strlen(ft_strchr(exp->var, '=')));
-		else
-			exp_var = ft_strdup(exp->var);
-		if (!ft_strcmp(exp_var, var))
-			return (1);
-		exp = exp->next;
-	}
-	return (0);
-}
-
-void	unset_export(t_export **exp, char *var)
-{
-	t_export	*tmp;
-
-	if (!var)
-		return ;
-	tmp = *exp;
-	if (!ft_strncmp((*exp)->var, var, ft_strlen(var)))
-		*exp = (*exp)->next;
-	else
-	{
-		while (tmp)
-		{
-			if (tmp->next && !ft_strncmp(tmp->next->var, var, ft_strlen(var)))
-			{
-				tmp->next = tmp->next->next;
-				break ;
-			}
-			tmp = tmp->next;
-		}
-	}
-}
-
-void	exportt(char *env[], char *var, int token)
-{
-	static t_export	*exp;
-
-	if (token == INIT)
-		init_export(env, &exp);
-	if (token == ADD)
-	{
-		if (!var)
-			return ;
-		if (!get_envv(0, var, ADD) && env_format_check(var)
-			&& !check_if_exist_exp(exp, var))
-		{
-			add_node_exp(&exp, var);
-			sort_export(exp);
+			add_node_exp(&exp_list, var);
+			sort_export(exp_list);
 		}
 		else if (!env_format_check(var))
 			error("not a valid identifier", ft_strjoin("export: ", var), 1);
 		else
-			modify_exp_var(exp, var);
+			modify_exp_var(exp_list, var);
 	}
-	if (token == PRINT)
-		print_export(exp);
-	if (token == UNSET)
-		unset_export(&exp, var);
+	else if (action == PRINT)
+		print_export(exp_list);
+	else if (action == UNSET && var)
+		unset_export(&exp_list, var);
+}
+
+/**
+ * 📋 Description: checks if an export variable exists in the list.
+ * 
+ * @param exp: list of export variables.
+ * @param var: variable to check for existence.
+ *
+ * ⬅️ Return: t_bool, depending on whether the variable exists.
+ */
+static t_bool	check_if_exist_exp(t_export *exp, const t_string var)
+{
+	t_string	current_var;
+	t_string	var_to_check;
+
+	if (!exp || !var)
+		return (FALSE);
+	if (ft_strchr(var, '='))
+		var_to_check = ft_substr(var, 0, ft_strchr(var, '=') - var);
+	else
+		var_to_check = ft_strdup(var);
+	while (exp)
+	{
+		if (ft_strchr(exp->var, '='))
+			current_var = ft_substr(exp->var, 0, ft_strchr(exp->var, '=')
+					- exp->var);
+		else
+			current_var = ft_strdup(exp->var);
+		if (ft_strcmp(current_var, var_to_check) == EQUAL)
+			return (TRUE);
+		exp = exp->next;
+	}
+	return (FALSE);
+}
+
+/**
+ * 📋 Description: displays all export variables in the terminal.
+ * 
+ * @param exp: list of export variables.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	print_export(const t_export *exp_list)
+{
+	while (exp_list)
+	{
+		printf("export %s\n", exp_list->var);
+		exp_list = exp_list->next;
+	}
+}
+
+/**
+ * 📋 Description: sorts the list of export variables in ASCII order.
+ * 
+ * @param export_list: list of export variables.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	sort_export(t_export *export_list)
+{
+	t_string	tmp;
+	t_export	*outer;
+	t_export	*inner;
+
+	outer = export_list;
+	if (!outer)
+		return ;
+	while (outer->next)
+	{
+		inner = export_list;
+		while (inner && inner->next)
+		{
+			if (ft_strcmp(inner->var, inner->next->var) > 0)
+			{
+				tmp = inner->var;
+				inner->var = inner->next->var;
+				inner->next->var = tmp;
+			}
+			inner = inner->next;
+		}
+		outer = outer->next;
+	}
+}
+
+/**
+ * 📋 Description: removes an export variable from the list.
+ * 
+ * @param exp_list: pointer to the list of export variables.
+ * @param var: variable to remove.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	unset_export(t_export **exp_list, t_string var)
+{
+	t_export	*current;
+
+	if (!exp_list || !var || !*exp_list || ft_strchr(var, '='))
+		return ;
+	if (ft_strncmp((*exp_list)->var, var, ft_strlen(var)) == EQUAL)
+		*exp_list = (*exp_list)->next;
+	else
+	{
+		current = *exp_list;
+		while (current->next
+			&& ft_strncmp(current->next->var, var, ft_strlen(var)) != EQUAL)
+			current = current->next;
+		if (current->next)
+			current->next = current->next->next;
+	}
 }

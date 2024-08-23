@@ -3,43 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 15:13:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/21 17:52:30 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**split_cwd(char *cwd, int len)
-{
-	char	**cwd_dir;
-	int		i;
-	int		k;
-	int		j;
+// 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
-	i = 0;
-	k = 0;
-	j = -1;
-	len = count_dir(cwd);
-	cwd_dir = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
-	cwd_dir[len] = NULL;
-	while (cwd[i])
+static t_string	*split_cwd(t_string cwd);
+static void		update_cwd(t_cwd **cwd, const t_string new_dir);
+static void		change_directory(t_cwd **current_dir, const t_string new_dir);
+
+/**
+ * 📋 Description: manages the current working directory based on the action.
+ * 
+ * @param cwd: the string representing the initial cwd.
+ * @param new_dir: the directory to change to, if applicable.
+ * @param action: the action to perform (INIT, UPDATE, GET, HOME).
+ *
+ * ⬅️ Return: t_string, the cwd as a string if action is GET or HOME.
+ */
+t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
+{
+	static t_cwd	*current_cwd = NULL;
+	static t_string	home = NULL;
+	t_string		*dir_segments;
+
+	if (action == INIT && cwd)
 	{
-		if (cwd[i] == '/' && cwd[i + 1] == '/')
-			i++;
-		if (cwd[i] == '/' || !cwd[i + 1])
-		{
-			cwd_dir[++j] = ft_substr(cwd, k, i - k + 1);
-			k = ++i;
-		}
-		else
-			i++;
+		dir_segments = split_cwd(cwd);
+		if (dir_segments)
+			while (*dir_segments)
+				add_node_cwd(&current_cwd, *dir_segments++);
+		if (!home)
+			home = get_envv(0, "HOME", FIND);
 	}
-	return (cwd_dir);
+	else if (action == UPDATE)
+		change_directory(&current_cwd, new_dir);
+	else if (action == GET)
+		return (join_cwd(current_cwd));
+	else if (action == HOME)
+		return (home);
+	return (NULL);
 }
 
+/**
+ * 📋 Description: splits the cwd string into individual directory segments.
+ * 
+ * @param cwd: the string representing the current working directory.
+ *
+ * ⬅️ Return: t_string *, an array of directory segments.
+ */
+static t_string	*split_cwd(t_string cwd)
+char	**split_cwd(char *cwd, int len)
+{
+	t_string		*segments;
+	t_string		seg_start;
+	size_t			seg_index;
+	const size_t	seg_count = count_dir(cwd);
+
+	if (!cwd)
+		return (NULL);
+	segments = mem_manager((seg_count + 1) * sizeof(t_string), 0, 0, 'A');
+	segments[seg_count] = NULL;
+	seg_start = cwd;
+	seg_index = 0;
+	while (*cwd)
+	{
+		if (*cwd == '/' && *(cwd + 1) == '/')
+			++cwd;
+		else if (*cwd == '/' || !*(cwd + 1))
+		{
+			segments[seg_index++]
+				= ft_substr(seg_start, 0, cwd - seg_start + 1);
+			seg_start = ++cwd;
+		}
+		else
+			++cwd;
+	}
+	return (segments);
+}
+
+/**
+ * 📋 Description: changes the current directory based on the new directory.
+ * 
+ * @param current_dir: the pointer to the list representing the cwd.
+ * @param new_dir: the target directory to switch to.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	change_directory(t_cwd **current_dir, const t_string new_dir)
 void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
 {
 	t_cwd	*last_node;
@@ -64,75 +121,49 @@ void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
 
 void	update_cwd(t_cwd **cwdd, char *new_dir)
 {
-	if (!new_dir || !ft_strcmp(new_dir, "~"))
+	if (!current_dir || !new_dir || ft_strcmp(new_dir, "~") == EQUAL)
 	{
-		*cwdd = NULL;
+		if (current_dir)
+			*current_dir = NULL;
 		get_cwdd(get_cwdd(0, 0, HOME), 0, INIT);
 	}
-	else if (new_dir[0] == '/')
+	else if (*new_dir == '/')
 	{
-		*cwdd = NULL;
-		if (!ft_strcmp(new_dir, "/."))
-			get_cwdd("/", 0, INIT);
-		else if (!ft_strcmp(new_dir, "//"))
-			get_cwdd("//", 0, INIT);
-		else
-			get_cwdd(new_dir, 0, INIT);
+		*current_dir = NULL;
+		if (ft_strcmp(new_dir, "/.") == EQUAL)
+			new_dir[1] = '\0';
+		get_cwdd(new_dir, 0, INIT);
 	}
 	else
-		update_cwd_utils(cwdd, new_dir);
+		update_cwd(current_dir, new_dir);
 }
 
-char	*join_cwd(t_cwd *cwdd, int i, int k, int len)
+/**
+ * 📋 Description: updates the current directory by processing changes.
+ * 
+ * @param cwd: the pointer to the list representing the cwd.
+ * @param new_dir: the new directory or segment to apply.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	update_cwd(t_cwd **cwd, const t_string new_dir)
 {
-	t_cwd	*tmp;
-	char	*path;
+	t_cwd		*penultimate_node;
+	t_string	*dir_segments;
 
-	tmp = cwdd;
-	while (tmp)
+	if (!cwd || !*cwd || !new_dir)
+		return ;
+	dir_segments = split_cwd(new_dir);
+	if (!dir_segments)
+		return ;
+	penultimate_node = get_node_at(*cwd, PENULTIMATE);
+	while (*dir_segments && ft_strncmp(*dir_segments, "..", 2) == EQUAL
+		&& penultimate_node)
 	{
-		len += ft_strlen(tmp->dir);
-		if (!tmp->next && tmp->dir[ft_strlen(tmp->dir) - 1] == '/'
-			&& tmp->dir[0] != '/')
-			len--;
-		tmp = tmp->next;
+		penultimate_node->next = NULL;
+		penultimate_node = get_node_at(*cwd, PENULTIMATE);
+		++dir_segments;
 	}
-	path = mem_manager(len + 1, 0, 0, 'A');
-	while (cwdd)
-	{
-		i = 0;
-		while (cwdd->dir[i])
-		{
-			if (!cwdd->next && cwdd->dir[i] == '/' && cwdd->dir[0] != '/')
-				break ;
-			path[k++] = cwdd->dir[i++];
-		}
-		cwdd = cwdd->next;
-	}
-	return (path[k] = '\0', path);
-}
-
-char	*get_cwdd(char *cwd, char *new_dir, int token)
-{
-	static t_cwd	*cwdd = NULL;
-	static char		*home = NULL;
-	char			**cwd_dir;
-	int				i;
-
-	if (token == INIT)
-	{
-		cwd_dir = split_cwd(cwd, 0);
-		i = -1;
-		while (cwd_dir && cwd_dir[++i])
-			add_node_cwd(&cwdd, cwd_dir[i]);
-		if (!home)
-			home = get_envv(0, "HOME", FIND);
-	}
-	if (token == UPDATE)
-		update_cwd(&cwdd, new_dir);
-	if (token == GET)
-		return (join_cwd(cwdd, 0, 0, 0));
-	if (token == HOME)
-		return (home);
-	return (NULL);
+	while (*dir_segments)
+		add_node_cwd(cwd, *dir_segments++);
 }

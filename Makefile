@@ -63,11 +63,12 @@ EXECUTION = ./srcs/execution/execution.c
 BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 	$(B_DIR)/get_env.c $(B_DIR)/get_cwd.c \
 	$(B_DIR)/exit.c $(B_DIR)/env.c \
-	$(B_DIR)/export.c $(B_DIR)/export_utils.c
+	$(B_DIR)/export.c $(B_DIR)/export_utils.c \
+	$(B_DIR)/join_cwd.c
 
 UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \
-	$(U_DIR)/signals.c
+	$(U_DIR)/signals.c $(U_DIR)/get_node_at.c
 
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj

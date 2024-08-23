@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/22 09:39:04 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 14:47:35 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	*get_envv(t_string env[], const t_string var, const int action)
 static void	add_env_var(t_env **env_list, const t_string var)
 {
 	t_env	*new_node;
-	t_env	*last_node;
 
 	if (!ft_strchr(var, '=') || !env_list)
 		return ;
@@ -92,12 +91,7 @@ static void	add_env_var(t_env **env_list, const t_string var)
 	if (!*env_list)
 		*env_list = new_node;
 	else
-	{
-		last_node = *env_list;
-		while (last_node->next)
-			last_node = last_node->next;
-		last_node->next = new_node;
-	}
+		((t_env *)get_node_at(*env_list, LAST))->next = new_node;
 }
 
 /**
