@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:40:59 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/23 08:48:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 14:05:08 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,14 @@
 # define FREE 354
 # define CLEAR_MEMORY 355
 
-
 // 🔗 Symbolic values ------------------------------------------------------ 🔗 */
 
 # define LAST			-2
 # define PENULTIMATE	-1
 # define EQUAL			0
+
+# define NEGATIVE			-1
+# define POSTIVE			1
+# define CARRIAGE_RETURN	'\r'
 
 #endif

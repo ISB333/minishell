@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/23 12:57:31 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 17:34:05 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			lexer_utils(char ****array, char **tokens);
 // ✅ Condition Checks ----------------------------------------------------- ✅ */
 
 int			is_sh_ope(char *s, int i, char token);
-int			is_del(char c);
+t_bool		is_separator(const char c);
 int			is_quotes(char *s, int i, char token);
 int			is_pipe(char *s, int i, char token);
 int			is_redir(char *s, int i, char token);
@@ -83,7 +83,6 @@ t_ast		*return_tail(t_ast *ast);
 int			cmd_path_init(t_ast **ast, int i);
 int			check_if_directory(t_ast **ast);
 int			check_if_directory_utils(t_ast **ast);
-long long	ft_atoi_ll(const char *nptr);
 
 int			parse_redir(t_ast **ast, char **tokens, int i, int n);
 int			parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -93,7 +92,6 @@ int			parse_append(t_ast **ast, char **tokens, int *i);
 char		*quotes_destroyer(char *s, int i, int k, int token);
 int			strlen_minus_quotes(char *s, int token, int len, int i);
 int			cmdlen(char **tokens, int *i);
-int			format_check(char *s, long long *code);
 
 void		*mem_manager(size_t size, void *ptr, int fd, int token);
 void		ff(t_memman *mem_list, int i);
@@ -102,7 +100,6 @@ void		close_all_fds(t_memman *mem_list);
 int			error(char *msg, char *file, int return_code);
 char		*error_init(char *msg, char *file);
 
-size_t		get_list_length(const t_linked_list *list);
 void		*get_node_at(void *list, const int n);
 
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
@@ -126,7 +123,6 @@ int			quit(int token);
 char		*env_var_search(t_env *envv, char *to_find);
 void		*print_or_get_env(t_env *envv, int token, int len);
 int			is_only_n(char *s);
-void		exit_check_utils(t_ast *ast);
 int			is_only_n(char *s);
 int			env_format_check(char *var);
 int			cd_utils(char **arr);
@@ -134,5 +130,9 @@ void		add_node_cwd(t_cwd **cwdd, char *dirr);
 t_string	join_cwd(t_cwd *cwd);
 void		init_env(t_string env[], t_env **env_head);
 void		add_env_var(t_env **env_list, const t_string var);
+
+t_bool		is_whitespace(const char c);
+t_bool		is_numeric(const char c);
+t_bool		is_safe_operation(long long previous, long long current);
 
 #endif

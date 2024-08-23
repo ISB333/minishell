@@ -3,20 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   is_sh2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:04:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 06:52:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 14:23:37 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_del(char c)
+/**
+ * 📋 Description: checks if a character is a common separator.
+ * 
+ * @param c: 
+ *
+ * ⬅️ Return: t_bool, TRUE if the character is a separator, FALSE otherwise.
+ */
+t_bool	is_separator(const char c)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
+	return (c == SPACE || c == TAB || c == NEWLINE);
 }
 
 int	is_redir(char *s, int i, char token)
