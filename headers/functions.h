@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/22 17:49:40 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 12:57:31 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,11 +127,12 @@ char		*env_var_search(t_env *envv, char *to_find);
 void		*print_or_get_env(t_env *envv, int token, int len);
 int			is_only_n(char *s);
 void		exit_check_utils(t_ast *ast);
-void		modify_exp_var(t_export *export_list, const t_string var);
 int			is_only_n(char *s);
 int			env_format_check(char *var);
 int			cd_utils(char **arr);
 void		add_node_cwd(t_cwd **cwdd, char *dirr);
 t_string	join_cwd(t_cwd *cwd);
+void		init_env(t_string env[], t_env **env_head);
+void		add_env_var(t_env **env_list, const t_string var);
 
 #endif

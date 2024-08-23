@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/22 17:35:19 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 13:01:13 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
-static t_bool	check_if_exist_exp(t_export *exp, const t_string var);
+static t_export	*check_if_exist_exp(t_export *exp, const t_string var);
 static void		print_export(const t_export *exp_list);
 static void		sort_export(t_export *exp_list);
 static void		unset_export(t_export **exp_list, t_string var);
@@ -31,21 +31,23 @@ static void		unset_export(t_export **exp_list, t_string var);
 void	exportt(t_string env[], const t_string var, const int action)
 {
 	static t_export	*exp_list = NULL;
+	t_export		*existing_var;
 
 	if (action == INIT)
 		init_export(env, &exp_list);
 	else if (action == ADD && var)
 	{
+		existing_var = check_if_exist_exp(exp_list, var);
 		if (!get_envv(NULL, var, ADD) && env_format_check(var)
-			&& !check_if_exist_exp(exp_list, var))
+			&& !existing_var)
 		{
 			add_node_exp(&exp_list, var);
 			sort_export(exp_list);
 		}
 		else if (!env_format_check(var))
 			error("not a valid identifier", ft_strjoin("export: ", var), 1);
-		else
-			modify_exp_var(exp_list, var);
+		else if (existing_var)
+			existing_var->var = ft_strdup(var);
 	}
 	else if (action == PRINT)
 		print_export(exp_list);
@@ -59,15 +61,15 @@ void	exportt(t_string env[], const t_string var, const int action)
  * @param exp: list of export variables.
  * @param var: variable to check for existence.
  *
- * ⬅️ Return: t_bool, depending on whether the variable exists.
+ * ⬅️ Return: t_export *, a pointer to the variable if existing.
  */
-static t_bool	check_if_exist_exp(t_export *exp, const t_string var)
+static t_export	*check_if_exist_exp(t_export *exp, const t_string var)
 {
 	t_string	current_var;
 	t_string	var_to_check;
 
 	if (!exp || !var)
-		return (FALSE);
+		return (NULL);
 	if (ft_strchr(var, '='))
 		var_to_check = ft_substr(var, 0, ft_strchr(var, '=') - var);
 	else
@@ -80,10 +82,10 @@ static t_bool	check_if_exist_exp(t_export *exp, const t_string var)
 		else
 			current_var = ft_strdup(exp->var);
 		if (ft_strcmp(current_var, var_to_check) == EQUAL)
-			return (TRUE);
+			return (exp);
 		exp = exp->next;
 	}
-	return (FALSE);
+	return (NULL);
 }
 
 /**

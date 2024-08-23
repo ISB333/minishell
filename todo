@@ -1,6 +1,2 @@
-# export.c - export_utils.c (and potentially get_env.c):
-
-- [ ] Transform the Boolean function for checking a variable into a pointer return.
-- [ ] Pass the pointer into the modification function without having to go through each list again.
 - [ ] manage SHLVL variable for nested minishell
 - [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)

@@ -64,7 +64,7 @@ BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 	$(B_DIR)/get_env.c $(B_DIR)/get_cwd.c \
 	$(B_DIR)/exit.c $(B_DIR)/env.c \
 	$(B_DIR)/export.c $(B_DIR)/export_utils.c \
-	$(B_DIR)/join_cwd.c
+	$(B_DIR)/join_cwd.c $(B_DIR)/init_env.c
 
 UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \

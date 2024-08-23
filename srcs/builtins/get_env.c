@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 13:02:29 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 // 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
-static void		add_env_var(t_env **env_list, const t_string var);
 static void		update_env_var(t_env *env, const t_string var);
 static void		remove_env_var(t_env **env_list, const t_string var);
-static t_bool	env_var_exists(t_env *env, t_string var);
+static t_env	*env_var_exists(t_env *env, t_string var);
 
 /**
  * 📋 Description: acts on environment variables depending on the demand.
@@ -28,37 +27,20 @@ static t_bool	env_var_exists(t_env *env, t_string var);
  *
  * ⬅️ Return: NULL for most actions, or a result if applicable.
  */
-
-void	init_env(char *env[], t_env **env_head)
-{
-	int	i;
-
-	if (!env[0])
-	{
-		env = mem_manager(4 * sizeof(char *), 0, 0, ALLOCATE);
-		env[0] = ft_strjoin("PWD=", getcwd(NULL, 0));
-		env[1] = ft_strdup("SHLVL=1");
-		env[2] = ft_strjoin("PATH=/usr/local/sbin:/usr/local/bin",
-				":/usr/sbin:/usr/bin:/sbin:/bin");
-		env[3] = NULL;
-	}
-	i = 0;
-	while (env[i])
-		add_env_var(env_head, env[i++]);
-}
-
 void	*get_envv(t_string env[], const t_string var, const int action)
 {
 	static t_env	*env_head = NULL;
+	t_env			*existing_var;
 
 	if (action == INIT)
 		init_env(env, &env_head);
 	else if (action == ADD)
 	{
-		if (!env_var_exists(env_head, var) && env_format_check(var))
+		existing_var = env_var_exists(env_head, var);
+		if (!existing_var && env_format_check(var))
 			add_env_var(&env_head, var);
-		else if (env_format_check(var))
-			return (get_envv(0, var, MODIF), "EXIST");
+		else if (existing_var && env_format_check(var))
+			return (existing_var->var = ft_strdup(var), "EXIST");
 	}
 	else if (action == UNSET)
 		remove_env_var(&env_head, var);
@@ -79,7 +61,7 @@ void	*get_envv(t_string env[], const t_string var, const int action)
  *
  * ⬅️ Return: nothing.
  */
-static void	add_env_var(t_env **env_list, const t_string var)
+void	add_env_var(t_env **env_list, const t_string var)
 {
 	t_env	*new_node;
 
@@ -130,14 +112,14 @@ static void	update_env_var(t_env *env, const t_string var)
  * @param env: the first variable in the list.
  * @param var: the variable to search for in the list.
  *
- * ⬅️ Return: t_bool, indicating the existence of the variable.
+ * ⬅️ Return: t_env *, pointer to the variable, if eligible.
  */
-static t_bool	env_var_exists(t_env *env, t_string var)
+static t_env	*env_var_exists(t_env *env, t_string var)
 {
 	t_string	cur_key;
 
 	if (!var)
-		return (FALSE);
+		return (NULL);
 	if (ft_strchr(var, '='))
 		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
 						'=')));
@@ -149,10 +131,10 @@ static t_bool	env_var_exists(t_env *env, t_string var)
 		else
 			cur_key = ft_strdup(env->var);
 		if (ft_strcmp(cur_key, var) == EQUAL)
-			return (TRUE);
+			return (env);
 		env = env->next;
 	}
-	return (FALSE);
+	return (NULL);
 }
 
 /**
