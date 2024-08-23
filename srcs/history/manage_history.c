@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_history.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:05:26 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/13 09:34:27 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	add_previous_history(void)
 	history = open(path, O_RDWR | O_CREAT, 0644);
 	if (history == -1)
 		return (1);
-	mem_manager(0, 0, history, 'O');
+	mem_manager(0, 0, history, SAVE_FD);
 	while (1)
 	{
 		line = gnhell(history);
@@ -54,7 +54,7 @@ int	append_new_history(char *rl)
 	history = open(path, O_WRONLY | O_APPEND, 0644);
 	if (history == -1)
 		return (1);
-	mem_manager(0, 0, history, 'O');
+	mem_manager(0, 0, history, SAVE_FD);
 	ft_putstr_fd(rl, history);
 	ft_putstr_fd("\n", history);
 	return (0);

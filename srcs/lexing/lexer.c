@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/13 09:42:03 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 	int	j;
 
 	len = len_to_del(tokens, *i);
-	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
 	array[*k][len] = NULL;
 	j = 0;
 	while (tokens[*i] && tokens[*i][0] != '|' && !is_new_line(tokens, *i))
@@ -57,7 +57,7 @@ char	***split_array(char ***array, char **tokens, int i, int k)
 	int	len;
 
 	len = is_pipe_in_arr(tokens);
-	array = mem_manager((len + 2) * sizeof(char **), 0, 0, 'A');
+	array = mem_manager((len + 2) * sizeof(char **), 0, 0, ALLOCATE);
 	array[len + 1] = NULL;
 	while (tokens[i])
 	{
@@ -77,8 +77,8 @@ int	lexer_utils(char ****array, char **tokens)
 	int	i;
 
 	len = array_len(tokens);
-	*array = mem_manager(2 * sizeof(char **), 0, 0, 'A');
-	(*array)[0] = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	*array = mem_manager(2 * sizeof(char **), 0, 0, ALLOCATE);
+	(*array)[0] = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
 	(*array)[0][len] = NULL;
 	i = -1;
 	while (tokens[++i])
@@ -101,7 +101,7 @@ char	**lexer(char *s)
 		return (printf("Brother, I will smash ur face. Close me dat quote!\n"),
 			NULL);
 	len = count_rows(s, 0);
-	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+	tokens = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
 	tokens[len] = NULL;
 	tokens = splitter(tokens, s);
 	home_paths(0, INIT);

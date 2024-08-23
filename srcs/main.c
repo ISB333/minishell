@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/22 09:34:28 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:30:27 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 	{
 		*stdin_origin = dup(STDIN_FILENO);
 		*stdout_origin = dup(STDOUT_FILENO);
-		mem_manager(0, 0, *stdin_origin, 'O');
-		mem_manager(0, 0, *stdout_origin, 'O');
+		mem_manager(0, 0, *stdin_origin, SAVE_FD);
+		mem_manager(0, 0, *stdout_origin, SAVE_FD);
 	}
 	else
 	{
@@ -78,24 +78,13 @@ int	factory(char *rl)
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
 	if (parser(&ast, rl))
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_FAILURE), 1);
+		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
 	exit_check(ast);
 	if (warlord_executor(ast))
-		return (mem_manager(0, 0, 0, 'C'), 1);
+		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 	return (0);
 }
-
-/*
-	TODO : shlevel management
-
-	TODO : signaux
-	TODO : last_cmd == 131 etc (?? need to ask to someone)
-
-	TODO : env -i ./minishell -> cd (bash: cd: HOME not set)
-	TODO : unset PATH, cwd don't work anymore
-	TODO : define for memory_manager
-*/
 
 int	main(int argc, char *argv[], char *env[])
 {
@@ -116,6 +105,6 @@ int	main(int argc, char *argv[], char *env[])
 			if (factory(rl))
 				return (return_(0, GET));
 	}
-	mem_manager(0, 0, 0, 'C');
+	mem_manager(0, 0, 0, CLEAR_MEMORY);
 	return (return_(0, GET));
 }

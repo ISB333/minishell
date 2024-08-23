@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils3.c                                     :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/12 13:03:08 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:33:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*quotes_destroyer(char *s, int i, int k, int token)
 {
 	char	*new_s;
 
-	new_s = mem_manager(strlen_minus_quotes(s, 0, 0, 0) + 1, 0, 0, 'A');
+	new_s = mem_manager(strlen_minus_quotes(s, 0, 0, 0) + 1, 0, 0, ALLOCATE);
 	while (s[i])
 	{
 		if (s[i] == 34)

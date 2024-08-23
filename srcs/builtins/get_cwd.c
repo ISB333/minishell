@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 08:38:59 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static t_string	*split_cwd(t_string cwd)
 
 	if (!cwd)
 		return (NULL);
-	segments = mem_manager((seg_count + 1) * sizeof(t_string), 0, 0, 'A');
+	segments = mem_manager((seg_count + 1) * sizeof(t_string), 0, 0, ALLOCATE);
 	segments[seg_count] = NULL;
 	seg_start = cwd;
 	seg_index = 0;

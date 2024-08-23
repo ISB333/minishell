@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/22 09:39:51 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:32:47 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	add_node_hd(t_heredoc **hd, char *s)
 	t_heredoc	*new_node;
 	t_heredoc	*last_node;
 
-	new_node = mem_manager(sizeof(t_heredoc), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_heredoc), 0, 0, ALLOCATE);
 	new_node->s = ft_strdup(s);
 	new_node->next = NULL;
 	if (!*hd)
@@ -68,7 +68,7 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 	fd = open(path, O_RDWR | O_CREAT | O_TRUNC | O_APPEND, 0644);
 	if (fd == -1)
 		return (error(strerror(errno), path, 1));
-	mem_manager(sizeof(int), 0, fd, 'O');
+	mem_manager(sizeof(int), 0, fd, SAVE_FD);
 	while (hd)
 	{
 		ft_putstr_fd(hd->s, fd);
@@ -76,11 +76,11 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 		hd = hd->next;
 	}
 	if ((*ast)->fd_in)
-		mem_manager(0, 0, (*ast)->fd_in, 'N');
+		mem_manager(0, 0, (*ast)->fd_in, CLOSE_FD);
 	(*ast)->fd_in = open(path, O_RDONLY, 0644);
 	if ((*ast)->fd_in == -1)
 		return (error(strerror(errno), path, 1));
-	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_in, SAVE_FD);
 	return (0);
 }
 

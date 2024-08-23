@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/21 10:38:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*join_new_str(char *str, char *new_str, int var_len, int i)
 	if (!str)
 		return (NULL);
 	new_len = ft_strlen(str) - var_len + ft_strlen(new_str) + 1;
-	str_update = mem_manager(new_len, 0, 0, 'A');
+	str_update = mem_manager(new_len, 0, 0, ALLOCATE);
 	while (str[j] != '$')
 	{
 		str_update[i++] = str[j++];

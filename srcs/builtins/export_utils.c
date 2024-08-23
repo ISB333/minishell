@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/22 17:52:22 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	add_node_exp(t_export **exp_list, const t_string var)
 
 	if (!exp_list || !var)
 		return ;
-	new_node = mem_manager(sizeof(t_export), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_export), 0, 0, ALLOCATE);
 	new_node->var = ft_strdup(var);
 	new_node->next = NULL;
 	if (!*exp_list)

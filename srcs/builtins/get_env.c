@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/22 14:47:35 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_env(char *env[], t_env **env_head)
 
 	if (!env[0])
 	{
-		env = mem_manager(4 * sizeof(char *), 0, 0, 'A');
+		env = mem_manager(4 * sizeof(char *), 0, 0, ALLOCATE);
 		env[0] = ft_strjoin("PWD=", getcwd(NULL, 0));
 		env[1] = ft_strdup("SHLVL=1");
 		env[2] = ft_strjoin("PATH=/usr/local/sbin:/usr/local/bin",
@@ -85,7 +85,7 @@ static void	add_env_var(t_env **env_list, const t_string var)
 
 	if (!ft_strchr(var, '=') || !env_list)
 		return ;
-	new_node = mem_manager(sizeof(t_env), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_env), 0, 0, ALLOCATE);
 	new_node->var = ft_strdup(var);
 	new_node->next = NULL;
 	if (!*env_list)

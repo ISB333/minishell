@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 07:58:18 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:40:23 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	parse_cmd(t_ast **ast, char **tok, int *i, int j)
 	int	k;
 
 	k = *i;
-	(*ast)->cmd = mem_manager((cmdlen(tok, i) + 1) * sizeof(char *), 0, 0, 'A');
+	(*ast)->cmd = mem_manager((cmdlen(tok, i) + 1) * sizeof(char *), 0, 0, ALLOCATE);
 	if (!(*ast)->cmd)
 		return (1);
 	while (tok[k] && !is_pipe(tok[k], 0, 0) && !is_new_line(tok, k))

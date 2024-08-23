@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/22 09:19:30 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*print_or_get_env(t_env *envv, int token, int len)
 	}
 	if (token == GET)
 	{
-		env = mem_manager((len + 1) * sizeof(char *), 0, 0, 'A');
+		env = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
 		env[len] = NULL;
 		len = 0;
 		while (tmp)

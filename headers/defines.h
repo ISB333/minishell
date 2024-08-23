@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:40:59 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/21 14:01:38 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 08:48:50 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@
 # define GET			335
 # define UPDATE			336
 # define HOME			337
+
+// 🌐 Memory Manager ------------------------------------------------- 🌐 */
+
+# define ALLOCATE 350
+# define SAVE_FD 351
+# define CLOSE_FD 352
+# define KILL_ALL_FD 353
+# define FREE 354
+# define CLEAR_MEMORY 355
+
 
 // 🔗 Symbolic values ------------------------------------------------------ 🔗 */
 
