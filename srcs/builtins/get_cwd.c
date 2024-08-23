@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/21 17:52:30 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 08:00:12 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
  * ⬅️ Return: t_string *, an array of directory segments.
  */
 static t_string	*split_cwd(t_string cwd)
-char	**split_cwd(char *cwd, int len)
 {
 	t_string		*segments;
 	t_string		seg_start;
@@ -97,29 +96,6 @@ char	**split_cwd(char *cwd, int len)
  * ⬅️ Return: nothing.
  */
 static void	change_directory(t_cwd **current_dir, const t_string new_dir)
-void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
-{
-	t_cwd	*last_node;
-	char	**cwd_dir;
-	int		i;
-
-	i = -1;
-	last_node = *cwdd;
-	while (last_node->next && last_node->next->next)
-		last_node = last_node->next;
-	cwd_dir = split_cwd(new_dir, 0);
-	while (cwd_dir[++i] && !ft_strncmp(cwd_dir[i], "..", 2))
-	{
-		last_node->next = NULL;
-		last_node = *cwdd;
-		while (last_node->next && last_node->next->next)
-			last_node = last_node->next;
-	}
-	while (cwd_dir[i])
-		add_node_cwd(cwdd, cwd_dir[i++]);
-}
-
-void	update_cwd(t_cwd **cwdd, char *new_dir)
 {
 	if (!current_dir || !new_dir || ft_strcmp(new_dir, "~") == EQUAL)
 	{
@@ -146,24 +122,24 @@ void	update_cwd(t_cwd **cwdd, char *new_dir)
  *
  * ⬅️ Return: nothing.
  */
-static void	update_cwd(t_cwd **cwd, const t_string new_dir)
+static void	update_cwd(t_cwd **current_dir, char *new_dir)
 {
-	t_cwd		*penultimate_node;
-	t_string	*dir_segments;
+	t_cwd	*last_node;
+	char	**cwd_dir;
+	int		i;
 
-	if (!cwd || !*cwd || !new_dir)
-		return ;
-	dir_segments = split_cwd(new_dir);
-	if (!dir_segments)
-		return ;
-	penultimate_node = get_node_at(*cwd, PENULTIMATE);
-	while (*dir_segments && ft_strncmp(*dir_segments, "..", 2) == EQUAL
-		&& penultimate_node)
+	i = -1;
+	last_node = *current_dir;
+	while (last_node->next && last_node->next->next)
+		last_node = last_node->next;
+	cwd_dir = split_cwd(new_dir);
+	while (cwd_dir[++i] && !ft_strncmp(cwd_dir[i], "..", 2))
 	{
-		penultimate_node->next = NULL;
-		penultimate_node = get_node_at(*cwd, PENULTIMATE);
-		++dir_segments;
+		last_node->next = NULL;
+		last_node = *current_dir;
+		while (last_node->next && last_node->next->next)
+			last_node = last_node->next;
 	}
-	while (*dir_segments)
-		add_node_cwd(cwd, *dir_segments++);
+	while (cwd_dir[i])
+		add_node_cwd(current_dir, cwd_dir[i++]);
 }
