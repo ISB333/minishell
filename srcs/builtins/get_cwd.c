@@ -59,6 +59,7 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
  * ⬅️ Return: t_string *, an array of directory segments.
  */
 static t_string	*split_cwd(t_string cwd)
+char	**split_cwd(char *cwd, int len)
 {
 	t_string		*segments;
 	t_string		seg_start;
@@ -96,6 +97,29 @@ static t_string	*split_cwd(t_string cwd)
  * ⬅️ Return: nothing.
  */
 static void	change_directory(t_cwd **current_dir, const t_string new_dir)
+void	update_cwd_utils(t_cwd **cwdd, char *new_dir)
+{
+	t_cwd	*last_node;
+	char	**cwd_dir;
+	int		i;
+
+	i = -1;
+	last_node = *cwdd;
+	while (last_node->next && last_node->next->next)
+		last_node = last_node->next;
+	cwd_dir = split_cwd(new_dir, 0);
+	while (cwd_dir[++i] && !ft_strncmp(cwd_dir[i], "..", 2))
+	{
+		last_node->next = NULL;
+		last_node = *cwdd;
+		while (last_node->next && last_node->next->next)
+			last_node = last_node->next;
+	}
+	while (cwd_dir[i])
+		add_node_cwd(cwdd, cwd_dir[i++]);
+}
+
+void	update_cwd(t_cwd **cwdd, char *new_dir)
 {
 	if (!current_dir || !new_dir || ft_strcmp(new_dir, "~") == EQUAL)
 	{

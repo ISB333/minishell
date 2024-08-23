@@ -6,18 +6,16 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 07:55:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:39:51 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	get_dollar_hd(t_heredoc *hd)
+void	get_dollar_hd(t_heredoc *hd, int j, int k)
 {
 	char	*env_var;
 	char	*new_str;
-	int		k;
-	int		j;
 
 	while (hd)
 	{
@@ -25,8 +23,9 @@ void	get_dollar_hd(t_heredoc *hd)
 		{
 			k = is_dollar(hd->s, 0);
 			j = k;
-			while (!is_del(hd->s[j]) && hd->s[j] && hd->s[j] != 34
-				&& hd->s[j] != 39)
+			if (!hd->s[j + 1] || is_del(hd->s[j + 1]))
+				return ;
+			while (hd->s[j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
 				j++;
 			env_var = ft_substr(hd->s, k + 1, j - k - 1);
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
@@ -106,7 +105,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 			break ;
 		add_node_hd(&hd, ss);
 	}
-	get_dollar_hd(hd);
+	get_dollar_hd(hd, 0, 0);
 	add_to_ast(ast, hd, ++n);
 	*i += 2;
 	return (0);

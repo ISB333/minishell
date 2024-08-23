@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
 /*   Updated: 2024/08/22 17:49:40 by aheitz           ###   ########.fr       */
@@ -88,7 +88,6 @@ long long	ft_atoi_ll(const char *nptr);
 int			parse_redir(t_ast **ast, char **tokens, int i, int n);
 int			parse_cmd(t_ast **ast, char **tokens, int *i, int j);
 int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
-void		get_dollar_hd(t_heredoc *hd);
 int			parse_append(t_ast **ast, char **tokens, int *i);
 
 char		*quotes_destroyer(char *s, int i, int k, int token);
