@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:50:24 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 07:58:54 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:31:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	exit_check_utils(t_ast *ast)
 		if (ast->cmd[1])
 		{
 			if (format_check(ast->cmd[1], &code))
-				return (mem_manager(0, 0, 0, 'C'), exit(2));
-			return (mem_manager(0, 0, 0, 'C'), exit(code));
+				return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
+			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
 		}
-		return (mem_manager(0, 0, 0, 'C'), exit(EXIT_SUCCESS));
+		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_SUCCESS));
 	}
 }
 
@@ -111,14 +111,14 @@ void	exit_check(t_ast *ast)
 			{
 				code = ft_atoi_ll(ast->cmd[1]);
 				if (format_check(ast->cmd[1], &code))
-					return (mem_manager(0, 0, 0, 'C'), exit(2));
+					return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
 				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 0, 'C'), exit(code));
+					return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
 				else
 					error("too many arguments", "exit", 1);
 			}
 			else
-				return (mem_manager(0, 0, 0, 'C'), exit(return_(0, GET)));
+				return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(return_(0, GET)));
 		}
 	}
 	else

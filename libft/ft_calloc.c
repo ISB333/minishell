@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:58:27 by adesille          #+#    #+#             */
-/*   Updated: 2024/06/30 07:34:32 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:31:03 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	overflowpro;
 
 	if (!nmemb || !size)
-		return (mem_manager(0, 0, 0, 'A'));
+		return (mem_manager(0, 0, 0, ALLOCATE));
 	overflowpro = size * nmemb;
 	if (overflowpro / nmemb != size)
 		return (NULL);
-	arr = mem_manager(overflowpro, 0, 0, 'A');
+	arr = mem_manager(overflowpro, 0, 0, ALLOCATE);
 	if (arr == NULL)
 		return (NULL);
 	ft_memset(arr, 0, nmemb * size);

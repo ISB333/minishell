@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   gnhell.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:12:09 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/03 09:05:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*strchr_n_split(char *stock_buff)
 		;
 	if (stock_buff[i] == '\0')
 		return (ft_gnl_strdup(stock_buff));
-	line = mem_manager(i + 1, 0, 0, 'A');
+	line = mem_manager(i + 1, 0, 0, ALLOCATE);
 	i = 0;
 	while (stock_buff[i] != '\n' && stock_buff[i] != '\0')
 	{
@@ -67,7 +67,7 @@ char	*gnhell(int fd)
 	if (fd < 0)
 		return (NULL);
 	i = 0;
-	read_buff = mem_manager(BUFFER_SIZE + 1, 0, 0, 'A');
+	read_buff = mem_manager(BUFFER_SIZE + 1, 0, 0, ALLOCATE);
 	read_buff[0] = '\0';
 	stock_buff = get_line(fd, stock_buff, read_buff);
 	if (!stock_buff)

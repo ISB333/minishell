@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/22 09:33:41 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:20:13 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	add_node_cwd(t_cwd **cwdd, char *dirr)
 	t_cwd	*new_node;
 	t_cwd	*last_node;
 
-	new_node = mem_manager(sizeof(t_cwd), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_cwd), 0, 0, ALLOCATE);
 	new_node->dir = ft_strdup(dirr);
 	new_node->next = NULL;
 	if (!*cwdd)
@@ -71,12 +71,12 @@ int	quit(int token)
 {
 	if (token == EXIT_FAILURE)
 	{
-		mem_manager(0, 0, 0, 'C');
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(EXIT_FAILURE);
 	}
 	if (token == EXIT_SUCCESS)
 	{
-		mem_manager(0, 0, 0, 'C');
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(EXIT_SUCCESS);
 	}
 	return (0);

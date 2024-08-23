@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/16 08:15:15 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:32:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	*allocate(t_memman **mem_list, size_t size, int token)
 	ptr = malloc(size);
 	if (!ptr)
 	{
-		mem_manager(0, 0, 0, 'C');
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(t_memman));
 	if (!new_node)
 	{
 		free(ptr);
-		mem_manager(0, 0, 0, 'C');
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(EXIT_FAILURE);
 	}
 	init_node(new_node, mem_list, ptr, token);
@@ -112,21 +112,21 @@ void	*mem_manager(size_t size, void *ptr, int fd, int token)
 	static t_memman	*mem_list = NULL;
 	int				*fd_ptr;
 
-	if (token == 'A')
-		return (allocate(&mem_list, size, 'A'));
-	if (token == 'O')
+	if (token == ALLOCATE)
+		return (allocate(&mem_list, size, ALLOCATE));
+	if (token == SAVE_FD)
 	{
-		fd_ptr = allocate(&mem_list, sizeof(int), 'O');
+		fd_ptr = allocate(&mem_list, sizeof(int), SAVE_FD);
 		*fd_ptr = fd;
 		return (NULL);
 	}
-	if (token == 'N')
+	if (token == CLOSE_FD)
 		close_fd(mem_list, fd);
-	if (token == 'K')
+	if (token == KILL_ALL_FD)
 		close_all_fds(mem_list);
-	if (token == 'F')
+	if (token == FREE)
 		return (free_ptr(&mem_list, ptr));
-	if (token == 'C')
+	if (token == CLEAR_MEMORY)
 	{
 		ff(mem_list, -1);
 		mem_list = NULL;

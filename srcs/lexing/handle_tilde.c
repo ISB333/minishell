@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_tilde.c                                         :+:      :+:    :+:   */
+/*   handle_tilde.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/13 09:41:55 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	add_node_h(t_home **h, char *s)
 	t_home	*new_node;
 	t_home	*last_node;
 
-	new_node = mem_manager(sizeof(t_home), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_home), 0, 0, ALLOCATE);
 	new_node->next = NULL;
 	new_node->dir = ft_substr(s, 0, ft_strlen(s)
 			- ft_strlen(ft_strchr(s, ':')));

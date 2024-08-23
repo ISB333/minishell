@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join_cwd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:49:06 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/21 17:43:24 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_string	join_cwd(t_cwd *cwd)
 	t_string	result;
 	t_string	result_start;
 
-	result = mem_manager(get_cwd_length(cwd) + 1, 0, 0, 'A');
+	result = mem_manager(get_cwd_length(cwd) + 1, 0, 0, ALLOCATE);
 	result_start = result;
 	while (cwd)
 	{

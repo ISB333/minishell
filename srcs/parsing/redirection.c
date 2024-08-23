@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/20 07:56:45 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:33:30 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 		(*ast)->error_code = 1;
 		return (return_(1, ADD), 1);
 	}
-	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_out, SAVE_FD);
 	*i += 2;
 	return (0);
 }
@@ -41,7 +41,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
 	if ((*ast)->fd_out)
-		mem_manager(0, 0, (*ast)->fd_out, 'N');
+		mem_manager(0, 0, (*ast)->fd_out, CLOSE_FD);
 	(*ast)->fd_out = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 	{
@@ -49,7 +49,7 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 		(*ast)->error_code = 1;
 		return (return_(1, ADD), 1);
 	}
-	mem_manager(sizeof(int), 0, (*ast)->fd_out, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_out, SAVE_FD);
 	*i += 2;
 	return (0);
 }
@@ -63,7 +63,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	else
 		fd = ft_strdup(tokens[*i + 1]);
 	if ((*ast)->fd_in)
-		mem_manager(0, 0, (*ast)->fd_in, 'N');
+		mem_manager(0, 0, (*ast)->fd_in, CLOSE_FD);
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
 	{
@@ -71,7 +71,7 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 		(*ast)->error_code = 1;
 		return (return_(1, ADD), 1);
 	}
-	mem_manager(sizeof(int), 0, (*ast)->fd_in, 'O');
+	mem_manager(sizeof(int), 0, (*ast)->fd_in, SAVE_FD);
 	*i += 2;
 	return (0);
 }

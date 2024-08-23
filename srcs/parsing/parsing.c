@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/20 07:50:40 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	add_node(t_ast **ast, char **tokens)
 	t_ast		*new_node;
 	t_ast		*last_node;
 
-	new_node = mem_manager(sizeof(t_ast), 0, 0, 'A');
+	new_node = mem_manager(sizeof(t_ast), 0, 0, ALLOCATE);
 	new_node->next = NULL;
 	init_lst(&new_node);
 	if (!*ast)
