@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 08:17:12 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:33:00 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 10:42:00 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	cmdlen(char **tokens, int *i)
 	int	len;
 
 	len = 0;
-	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0) && !is_new_line(tokens, *i))
+	while (tokens[*i] && !is_pipe(tokens[*i], 0, 0))
 	{
 		if (is_redir(tokens[*i], 0, 0))
 			(*i) += 2;

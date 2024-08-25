@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:50:24 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 09:31:45 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 10:03:36 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,6 @@ long long	ft_atoi_ll(const char *nptr)
 	return (nbr * sign);
 }
 
-void	exit_check_utils(t_ast *ast)
-{
-	long long	code;
-
-	while (ast->next)
-		ast = ast->next;
-	if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit\0"))
-	{
-		code = ft_atoi_ll(ast->cmd[1]);
-		if (ast->cmd[1])
-		{
-			if (format_check(ast->cmd[1], &code))
-				return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
-			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
-		}
-		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_SUCCESS));
-	}
-}
-
 int	format_check_utils(char *s, long long *code)
 {
 	int	token;
@@ -64,11 +45,11 @@ int	format_check_utils(char *s, long long *code)
 		s++;
 	}
 	if (ft_strlen(s) > 19)
-		return (error("numeric argument required", s, 2));
+		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
 	if (!token && ft_strcmp(s, "9223372036854775807") > 0)
-		return (error("numeric argument required", s, 2));
+		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
 	else if (token && ft_strcmp(s, "9223372036854775808") > 0)
-		return (error("numeric argument required", s, 2));
+		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
 	if (*code > 255)
 		*code -= 256;
 	else if (*code < 0)
@@ -84,43 +65,35 @@ int	format_check(char *s, long long *code)
 	while (is_del(*s))
 		s++;
 	if (!ft_strlen(s))
-		return (error("numeric argument required", s, 2));
+		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
 	if ((s[i] == '-' || s[i] == '+') && s[i + 1])
 		i++;
 	while (s[i])
 	{
-		if ((s[i] >= '0' && s[i] <= '9') || is_del(s[i]))
+		if ((s[i] >= '0' && s[i] <= '9'))
 			i++;
 		else
-			return (error("numeric argument required", s, 2));
+			return (error("numeric argument required", ft_strjoin("exit: ", s),
+					2));
 	}
 	return (format_check_utils(s, code));
 }
 
-void	exit_check(t_ast *ast)
+void	exitt(char **cmd)
 {
 	long long	code;
 
-	if (!ast)
-		return ;
-	if (!ast->next)
+	printf("exit\n");
+	if (cmd[1])
 	{
-		if (ast->cmd && !ft_strcmp(ast->cmd[0], "exit"))
-		{
-			if (ast->cmd[1])
-			{
-				code = ft_atoi_ll(ast->cmd[1]);
-				if (format_check(ast->cmd[1], &code))
-					return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
-				if (!ast->cmd[2])
-					return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
-				else
-					error("too many arguments", "exit", 1);
-			}
-			else
-				return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(return_(0, GET)));
-		}
+		code = ft_atoi_ll(cmd[1]);
+		if (format_check(cmd[1], &code))
+			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
+		if (!cmd[2])
+			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
+		else
+			error("too many arguments", "exit", 1);
 	}
 	else
-		exit_check_utils(ast);
+		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(return_(0, GET)));
 }

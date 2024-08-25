@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:04:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/07/08 06:52:50 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 10:43:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,6 @@ int	is_there_quotes_in_da_shit(char *s)
 	i = -1;
 	while (s[++i])
 		if (s[i] == 34 || s[i] == 39)
-			return (1);
-	return (0);
-}
-
-int	is_new_line(char **tokens, int i)
-{
-	if (tokens && tokens[i])
-		if (tokens[i][0] == '\n' && tokens[i - 1][0] != '|')
-			return (1);
-	return (0);
-}
-
-int	is_path(char *s)
-{
-	int	i;
-
-	i = -1;
-	while (s[++i])
-		if (s[i] == 47)
 			return (1);
 	return (0);
 }

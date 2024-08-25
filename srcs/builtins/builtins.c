@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/22 09:20:18 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 09:56:15 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	cd(char **arr)
 	return (0);
 }
 
-int	call_builtins(t_ast *ast, int c, int token)
+int	call_builtins(t_ast *ast, int c)
 {
 	int	return_code;
 	int	i;
@@ -97,8 +97,8 @@ int	call_builtins(t_ast *ast, int c, int token)
 		exportt(0, ast->cmd[++i], UNSET);
 		get_envv(0, ast->cmd[i], UNSET);
 	}
-	if (token == EXIT)
-		quit(EXIT_SUCCESS);
+	if (c == EXIT)
+		exitt(ast->cmd);
 	return (return_code);
 }
 

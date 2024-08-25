@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:30:27 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 09:54:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	factory(char *rl)
 	history(rl);
 	if (parser(&ast, rl))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
-	exit_check(ast);
 	if (warlord_executor(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);

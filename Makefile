@@ -49,7 +49,7 @@ HISTORY = $(H_DIR)/gnhell.c $(H_DIR)/gnhell_utils.c \
 	
 LEXING = $(L_DIR)/lexer.c \
 	$(L_DIR)/is_functions/is_sh1.c $(L_DIR)/is_functions/is_sh2.c \
-	$(L_DIR)/is_functions/is_sh_in_arr1.c $(L_DIR)/is_functions/is_sh_in_arr2.c \
+	$(L_DIR)/is_functions/is_sh_in_arr.c \
 	$(L_DIR)/handle_dollar.c $(L_DIR)/handle_tilde.c \
 	$(L_DIR)/split.c $(L_DIR)/count_rows.c \
 	$(L_DIR)/add_space.c $(L_DIR)/utils.c
@@ -119,7 +119,6 @@ clean :
 
 fclean : clean
 	@rm -f $(NAME)
-# @$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
 
 re : fclean all
 
