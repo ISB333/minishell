@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 10:41:52 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	split_array_utils(char ***array, char **tokens, int *i, int *k)
 	array[*k] = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
 	array[*k][len] = NULL;
 	j = 0;
-	while (tokens[*i] && tokens[*i][0] != '|' && !is_new_line(tokens, *i))
+	while (tokens[*i] && tokens[*i][0] != '|')
 	{
 		array[*k][j] = ft_substr(tokens[*i], 0, ft_strlen(tokens[*i]));
 		j++;

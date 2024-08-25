@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:31:57 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/25 10:33:51 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int	executor(t_ast *ast)
 		if (child(ast) == -1)
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(1), 1);
 		if (is_builtin(ast))
-			call_builtins(ast, is_builtin(ast), EXIT);
+		{
+			call_builtins(ast, is_builtin(ast));
+			quit(EXIT_SUCCESS);
+		}
 		else if (ast->cmd_path)
 		{
 			mem_manager(0, 0, 0, KILL_ALL_FD);
@@ -118,7 +121,7 @@ int	warlord_executor(t_ast *ast)
 	wait = ast;
 	error = ast;
 	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
-		call_builtins(ast, is_builtin(ast), 0);
+		call_builtins(ast, is_builtin(ast));
 	else
 	{
 		while (ast)
