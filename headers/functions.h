@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/25 10:43:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/26 16:11:54 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,10 @@ void		close_all_fds(t_memman *mem_list);
 int			error(char *msg, char *file, int return_code);
 char		*error_init(char *msg, char *file);
 
-size_t		get_list_length(const t_linked_list *list);
 void		*get_node_at(void *list, const int n);
+t_bool		is_numeric(const char c);
+t_bool		is_safe_operation(long long previous, long long current);
+t_bool		is_whitespace(const char c);
 
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
@@ -110,7 +112,7 @@ int			parser(t_ast **ast, char *s);
 // 🚀 Builtins ------------------------------------------------------------- 🚀 */
 
 int			call_builtins(t_ast *ast, int c);
-void		exitt(char **cmd);
+void		exitt(const t_string *cmd);
 t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action);
 int			count_dir(char *cwd);
 void		*get_envv(t_string env[], const t_string var, const int action);
