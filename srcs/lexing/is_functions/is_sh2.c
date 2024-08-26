@@ -6,22 +6,17 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:04:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/26 16:26:43 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:57:14 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/**
- * 📋 Description: checks if a character is a common separator.
- * 
- * @param c: 
- *
- * ⬅️ Return: t_bool, TRUE if the character is a separator, FALSE otherwise.
- */
-t_bool	is_separator(const char c)
+int	is_del(char c)
 {
-	return (c == SPACE || c == TAB || c == NEWLINE);
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
 }
 
 int	is_redir(char *s, int i, char token)
