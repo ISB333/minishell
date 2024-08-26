@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:40:59 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/26 16:20:21 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/26 16:25:39 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@
 
 // 🎛️ Control characters ------------------------------------------------- 🎛️ */
 
+# define CARRIAGE_RETURN	'\r'
+
+# define NEGATIVE			-1
+# define POSTIVE			1
 # define CARRIAGE_RETURN	'\r'
 
 #endif
