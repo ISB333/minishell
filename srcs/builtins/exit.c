@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:50:24 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/25 10:03:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/26 12:10:21 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ int	format_check_utils(char *s, long long *code)
 		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
 	else if (token && ft_strcmp(s, "9223372036854775808") > 0)
 		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
-	if (*code > 255)
-		*code -= 256;
-	else if (*code < 0)
-		*code = 256 - -*code;
 	return (0);
 }
 
