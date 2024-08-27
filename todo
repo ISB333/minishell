@@ -1,2 +1,1 @@
-- [ ] manage SHLVL variable for nested minishell
 - [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)

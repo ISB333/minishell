@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/25 09:54:48 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/27 13:42:54 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,9 @@ int	stds_manager(int *stdin_origin, int *stdout_origin, int token)
 void	init_utils(char *env[], char *cwd)
 {
 	get_envv(env, 0, INIT);
-	get_envv(0, "SHLVL=2", MODIF);
 	get_cwdd(cwd, 0, INIT);
 	free(cwd);
 	exportt(env, 0, INIT);
-	exportt(0, "SHLVL=2", ADD);
 }
 
 int	factory(char *rl)

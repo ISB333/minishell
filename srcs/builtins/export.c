@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 13:01:13 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/26 18:00:40 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	exportt(t_string env[], const t_string var, const int action)
 	else if (action == ADD && var)
 	{
 		existing_var = check_if_exist_exp(exp_list, var);
-		if (!get_envv(NULL, var, ADD) && env_format_check(var)
+		if (!get_envv(NULL, var, ADD) && is_valid_env_var(var)
 			&& !existing_var)
 		{
 			add_node_exp(&exp_list, var);
 			sort_export(exp_list);
 		}
-		else if (!env_format_check(var))
+		else if (!is_valid_env_var(var))
 			error("not a valid identifier", ft_strjoin("export: ", var), 1);
 		else if (existing_var)
 			existing_var->var = ft_strdup(var);

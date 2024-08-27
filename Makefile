@@ -68,7 +68,9 @@ BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 
 UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \
-	$(U_DIR)/signals.c $(U_DIR)/get_node_at.c
+	$(U_DIR)/signals.c $(U_DIR)/get_node_at.c \
+	$(U_DIR)/is_numeric.c $(U_DIR)/is_whitespace.c \
+	$(U_DIR)/is_safe_operation.c
 
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj

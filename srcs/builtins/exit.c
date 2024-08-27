@@ -3,88 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:50:24 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/26 12:10:21 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/27 14:10:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-long long	ft_atoi_ll(const char *nptr)
-{
-	int			i;
-	int			sign;
-	long long	nbr;
+// 🔒 Static function prototypes for internal use -------------------------- 🔒 */
 
-	sign = 1;
-	i = 0;
-	nbr = 0;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == 43 || nptr[i] == 45)
-	{
-		if (nptr[i] == 45)
-			sign *= -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-		nbr = (nbr * 10) + ((nptr[i++]) - 48);
-	return (nbr * sign);
-}
+static int	str_to_ll(t_string str, long long *save);
 
-int	format_check_utils(char *s, long long *code)
-{
-	int	token;
-
-	token = 0;
-	while (*s == '-' || *s == '+' || *s == '0')
-	{
-		token = 1;
-		s++;
-	}
-	if (ft_strlen(s) > 19)
-		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
-	if (!token && ft_strcmp(s, "9223372036854775807") > 0)
-		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
-	else if (token && ft_strcmp(s, "9223372036854775808") > 0)
-		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
-	return (0);
-}
-
-int	format_check(char *s, long long *code)
-{
-	int	i;
-
-	i = 0;
-	while (is_del(*s))
-		s++;
-	if (!ft_strlen(s))
-		return (error("numeric argument required", ft_strjoin("exit: ", s), 2));
-	if ((s[i] == '-' || s[i] == '+') && s[i + 1])
-		i++;
-	while (s[i])
-	{
-		if ((s[i] >= '0' && s[i] <= '9'))
-			i++;
-		else
-			return (error("numeric argument required", ft_strjoin("exit: ", s),
-					2));
-	}
-	return (format_check_utils(s, code));
-}
-
-void	exitt(char **cmd)
+/**
+ * 📋 Description: exits the program according to the code provided.
+ * 
+ * @param cmd: the array of strings containing the exit command and arguments.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	exitt(const t_string *cmd)
 {
 	long long	code;
 
 	printf("exit\n");
 	if (cmd[1])
 	{
-		code = ft_atoi_ll(cmd[1]);
-		if (format_check(cmd[1], &code))
-			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2));
+		if (str_to_ll(cmd[1], &code) == EXIT_FAILURE)
+			return (error("numeric argument required",
+					ft_strjoin("exit: ", cmd[1]), 2),
+				mem_manager(0, NULL, 0, CLEAR_MEMORY), exit(2));
 		if (!cmd[2])
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(code));
 		else
@@ -92,4 +41,37 @@ void	exitt(char **cmd)
 	}
 	else
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(return_(0, GET)));
+}
+
+/**
+ * 📋 Description: converts a string to a long long and stores it by pointer.
+ * 
+ * @param str: the string to convert.
+ * @param save: the pointer to store the converted number.
+ *
+ * ⬅️ Return: int, EXIT_SUCCESS if successful, otherwise EXIT_FAILURE.
+ */
+static int	str_to_ll(t_string str, long long *save)
+{
+	long long	result;
+	int			sign;
+
+	result = 0;
+	sign = POSITIVE;
+	if (!str || !save)
+		return (EXIT_FAILURE);
+	while (is_whitespace(*str))
+		str++;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			sign = NEGATIVE;
+	if (*str)
+	{
+		while (is_numeric(*str)
+			&& is_safe_operation(result, result * 10 + (*str - '0')))
+			result = result * 10 + (*str++ - '0');
+		if (!*str)
+			return (*save = result * sign, EXIT_SUCCESS);
+	}
+	return (EXIT_FAILURE);
 }

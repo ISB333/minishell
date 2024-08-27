@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/25 10:43:52 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/27 13:43:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ t_ast		*return_tail(t_ast *ast);
 int			cmd_path_init(t_ast **ast, int i);
 int			check_if_directory(t_ast **ast);
 int			check_if_directory_utils(t_ast **ast);
-long long	ft_atoi_ll(const char *nptr);
 
 int			parse_redir(t_ast **ast, char **tokens, int i, int n);
 int			parse_cmd(t_ast **ast, char **tokens, int *i, int j);
@@ -91,7 +90,6 @@ int			parse_append(t_ast **ast, char **tokens, int *i);
 char		*quotes_destroyer(char *s, int i, int k, int token);
 int			strlen_minus_quotes(char *s, int token, int len, int i);
 int			cmdlen(char **tokens, int *i);
-int			format_check(char *s, long long *code);
 
 void		*mem_manager(size_t size, void *ptr, int fd, int token);
 void		ff(t_memman *mem_list, int i);
@@ -100,8 +98,10 @@ void		close_all_fds(t_memman *mem_list);
 int			error(char *msg, char *file, int return_code);
 char		*error_init(char *msg, char *file);
 
-size_t		get_list_length(const t_linked_list *list);
 void		*get_node_at(void *list, const int n);
+t_bool		is_numeric(const char c);
+t_bool		is_safe_operation(long long previous, long long current);
+t_bool		is_whitespace(const char c);
 
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
@@ -110,7 +110,7 @@ int			parser(t_ast **ast, char *s);
 // 🚀 Builtins ------------------------------------------------------------- 🚀 */
 
 int			call_builtins(t_ast *ast, int c);
-void		exitt(char **cmd);
+void		exitt(const t_string *cmd);
 t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action);
 int			count_dir(char *cwd);
 void		*get_envv(t_string env[], const t_string var, const int action);
@@ -121,15 +121,14 @@ void		exportt(t_string env[], const t_string new_var, const int action);
 void		init_export(t_string env[], t_export **exp);
 void		add_node_exp(t_export **exp_list, const t_string var);
 int			quit(int token);
-char		*env_var_search(t_env *envv, char *to_find);
-void		*print_or_get_env(t_env *envv, int token, int len);
 int			is_only_n(char *s);
-int			is_only_n(char *s);
-int			env_format_check(char *var);
 int			cd_utils(char **arr);
-void		add_node_cwd(t_cwd **cwdd, char *dirr);
 t_string	join_cwd(t_cwd *cwd);
 void		init_env(t_string env[], t_env **env_head);
 void		add_env_var(t_env **env_list, const t_string var);
+
+t_bool		is_valid_env_var(t_string var);
+t_string	find_env_var_value(t_env *env, const t_string to_find);
+t_string	*retrieve_or_display_env(t_env *env_list, const int action);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 13:02:29 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:59:06 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ void	*get_envv(t_string env[], const t_string var, const int action)
 	else if (action == ADD)
 	{
 		existing_var = env_var_exists(env_head, var);
-		if (!existing_var && env_format_check(var))
+		if (!existing_var && is_valid_env_var(var))
 			add_env_var(&env_head, var);
-		else if (existing_var && env_format_check(var))
+		else if (existing_var && is_valid_env_var(var))
 			return (existing_var->var = ft_strdup(var), "EXIST");
 	}
 	else if (action == UNSET)
 		remove_env_var(&env_head, var);
 	else if (action == FIND)
-		return (env_var_search(env_head, var));
+		return (find_env_var_value(env_head, var));
 	else if (action == MODIF)
 		update_env_var(env_head, var);
 	else if (action == PRINT || action == GET)
-		return (print_or_get_env(env_head, action, 0));
+		return (retrieve_or_display_env(env_head, action));
 	return (NULL);
 }
 
