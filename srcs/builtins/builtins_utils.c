@@ -3,101 +3,107 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 09:20:13 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/27 17:25:28 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_only_n(char *s)
+/**
+ * 📋 Description: checks if an argument consists entirely of 'n' characters.
+ * 
+ * @param arg: the argument passed to echo.
+ *
+ * ⬅️ Return: t_bool, TRUE if only 'n' characters, FALSE otherwise.
+ */
+t_bool	is_only_n(t_string arg)
 {
-	while (*++s == 'n')
-		;
-	return (!*s);
+	if (!arg)
+		return (FALSE);
+	while (*++arg == 'n')
+		continue ;
+	return (!*arg);
 }
 
-int	cd_utils(char **arr)
+/**
+ * 📋 Description: handles the cd command's action after initial checks.
+ * 
+ * @param args: the arguments passed to cd.
+ *
+ * ⬅️ Return: int, the error code or 0 on success.
+ */
+int	cd_utils(t_string *args)
 {
-	if (arr[1] && (!ft_strlen(arr[1]) || !ft_strcmp(arr[1], ".")))
+	if (args[1] && (!ft_strlen(args[1]) || ft_strcmp(args[1], ".")) == EQUAL)
 		return (0);
-	if (arr[1][0] == '~')
-		arr[1] = ft_strjoin(get_cwdd(0, 0, HOME), arr[1] + 1);
-	if (!access(arr[1], OK) && access(arr[1], X_OK))
+	if (*args[1] == '~')
+		args[1] = ft_strjoin(get_cwdd(NULL, NULL, HOME), args[1] + 1);
+	if (access(args[1], OK) == EXIT_SUCCESS
+		&& access(args[1], X_OK) != EXIT_SUCCESS)
 		return (error("Permission denied", "cd", 1));
-	if (!ft_strcmp(arr[1], ".."))
+	if (ft_strcmp(args[1], "..") == EQUAL)
 	{
-		exportt(0, ft_strjoin("OLDPWD=", get_cwdd(0, 0, GET)), ADD);
-		get_cwdd(0, arr[1], UPDATE);
-		arr[1] = get_cwdd(0, 0, GET);
-		exportt(0, ft_strjoin("PWD=", get_cwdd(0, 0, GET)), ADD);
+		exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		get_cwdd(NULL, args[1], UPDATE);
+		args[1] = get_cwdd(NULL, NULL, GET);
+		exportt(NULL, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
 	}
 	else
 	{
-		exportt(0, ft_strjoin("OLDPWD=", get_cwdd(0, 0, GET)), ADD);
-		get_cwdd(0, arr[1], UPDATE);
-		exportt(0, ft_strjoin("PWD=", get_cwdd(0, 0, GET)), ADD);
+		exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		get_cwdd(NULL, args[1], UPDATE);
+		exportt(NULL, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
 	}
-	if (chdir(arr[1]))
+	if (chdir(args[1]))
 		return (error("No such file or directory", ft_strjoin("cd: ",
-					arr[1]), 1));
+					args[1]), 1));
 	return (0);
 }
 
-void	add_node_cwd(t_cwd **cwdd, char *dirr)
+/**
+ * 📋 Description: cleans up and exits minishell with the given status code.
+ * 
+ * @param status: the exit status code.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	quit(int status)
 {
-	t_cwd	*new_node;
-	t_cwd	*last_node;
-
-	new_node = mem_manager(sizeof(t_cwd), 0, 0, ALLOCATE);
-	new_node->dir = ft_strdup(dirr);
-	new_node->next = NULL;
-	if (!*cwdd)
-		*cwdd = new_node;
-	else
-	{
-		last_node = *cwdd;
-		while (last_node->next)
-			last_node = last_node->next;
-		if (last_node->dir[ft_strlen(last_node->dir) - 1] != '/')
-			last_node->dir = ft_strjoin(last_node->dir, "/");
-		last_node->next = new_node;
-	}
+	if (status < 0)
+		status = EXIT_FAILURE;
+	mem_manager(0, NULL, 0, CLEAR_MEMORY);
+	exit(status);
 }
 
-int	quit(int token)
+/**
+ * 📋 Description: counts the number of directories in the given path.
+ * 
+ * @param path: the path to analyze.
+ *
+ * ⬅️ Return: size_t, the number of directories in the path.
+ */
+size_t	count_dir(t_string path)
 {
-	if (token == EXIT_FAILURE)
-	{
-		mem_manager(0, 0, 0, CLEAR_MEMORY);
-		exit(EXIT_FAILURE);
-	}
-	if (token == EXIT_SUCCESS)
-	{
-		mem_manager(0, 0, 0, CLEAR_MEMORY);
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
+	size_t	count;
 
-int	count_dir(char *cwd)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	if (!cwd)
-		return (0);
-	while (cwd[i])
+	count = 0;
+	if (path)
 	{
-		if (cwd[i] == '/' && cwd[i + 1] == '/')
-			i++;
-		if (cwd[i] == '/' || !cwd[i + 1])
-			len++;
-		i++;
+		while (*path)
+		{
+			if (*path == '/')
+			{
+				while (*path == '/')
+					++path;
+				++count;
+			}
+			else
+				++path;
+		}
+		++count;
 	}
-	return (len);
+	return (count);
 }

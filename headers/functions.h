@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/26 17:57:33 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/27 17:16:27 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,21 +109,20 @@ int			parser(t_ast **ast, char *s);
 
 // 🚀 Builtins ------------------------------------------------------------- 🚀 */
 
-int			call_builtins(t_ast *ast, int c);
+void		call_builtins(t_ast *cmd_node, const int builtin_command);
 void		exitt(const t_string *cmd);
 t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action);
-int			count_dir(char *cwd);
+size_t		count_dir(t_string path);
 void		*get_envv(t_string env[], const t_string var, const int action);
-void		echoo(char **arr);
+void		echoo(t_string *args);
 void		pwdd(void);
-int			cd(char **arr);
+int			cd(t_string *args);
 void		exportt(t_string env[], const t_string new_var, const int action);
 void		init_export(t_string env[], t_export **exp);
 void		add_node_exp(t_export **exp_list, const t_string var);
-int			quit(int token);
-int			is_only_n(char *s);
-int			cd_utils(char **arr);
-void		add_node_cwd(t_cwd **cwdd, char *dirr);
+void		quit(int status);
+t_bool		is_only_n(t_string arg);
+int			cd_utils(t_string *args);
 t_string	join_cwd(t_cwd *cwd);
 void		init_env(t_string env[], t_env **env_head);
 void		add_env_var(t_env **env_list, const t_string var);
