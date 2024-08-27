@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/26 17:57:33 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/27 13:43:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ void		add_node_exp(t_export **exp_list, const t_string var);
 int			quit(int token);
 int			is_only_n(char *s);
 int			cd_utils(char **arr);
-void		add_node_cwd(t_cwd **cwdd, char *dirr);
 t_string	join_cwd(t_cwd *cwd);
 void		init_env(t_string env[], t_env **env_head);
 void		add_env_var(t_env **env_list, const t_string var);
@@ -131,6 +130,5 @@ void		add_env_var(t_env **env_list, const t_string var);
 t_bool		is_valid_env_var(t_string var);
 t_string	find_env_var_value(t_env *env, const t_string to_find);
 t_string	*retrieve_or_display_env(t_env *env_list, const int action);
-
 
 #endif

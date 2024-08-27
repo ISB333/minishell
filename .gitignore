@@ -2,3 +2,4 @@
 minishell
 libft/*.o
 libft/libft.a
+mpanic/
