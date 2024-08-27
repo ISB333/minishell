@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/27 17:16:27 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/27 17:30:19 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,5 @@ void		add_env_var(t_env **env_list, const t_string var);
 t_bool		is_valid_env_var(t_string var);
 t_string	find_env_var_value(t_env *env, const t_string to_find);
 t_string	*retrieve_or_display_env(t_env *env_list, const int action);
-
 
 #endif

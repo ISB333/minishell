@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/27 13:56:42 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 static t_string	*split_cwd(t_string cwd);
 static void		update_cwd(t_cwd **current_dir, const t_string new_dir);
 static void		change_directory(t_cwd **current_dir, const t_string new_dir);
+static void		add_node_cwd(t_cwd **cwdd, char *dirr);
 
 /**
  * 📋 Description: manages the current working directory based on the action.
- * 
+ *
  * @param cwd: the string representing the initial cwd.
  * @param new_dir: the directory to change to, if applicable.
  * @param action: the action to perform (INIT, UPDATE, GET, HOME).
@@ -33,7 +34,7 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
 	static t_string	home = NULL;
 	t_string		*dir_segments;
 
-	if (action == INIT && cwd)
+	if (action == INIT)
 	{
 		dir_segments = split_cwd(cwd);
 		if (dir_segments)
@@ -53,7 +54,7 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
 
 /**
  * 📋 Description: splits the cwd string into individual directory segments.
- * 
+ *
  * @param cwd: the string representing the current working directory.
  *
  * ⬅️ Return: t_string *, an array of directory segments.
@@ -73,12 +74,12 @@ static t_string	*split_cwd(t_string cwd)
 	seg_index = 0;
 	while (*cwd)
 	{
-		if (*cwd == '/' && *(cwd + 1) == '/')
+		if (*cwd == '/' && seg_start != cwd && *(cwd + 1) == '/')
 			++cwd;
-		else if (*cwd == '/' || !*(cwd + 1))
+		if (*cwd == '/' || !*(cwd + 1))
 		{
-			segments[seg_index++]
-				= ft_substr(seg_start, 0, cwd - seg_start + 1);
+			segments[seg_index++] = ft_substr(seg_start, 0, cwd - seg_start
+					+ 1);
 			seg_start = ++cwd;
 		}
 		else
@@ -89,7 +90,7 @@ static t_string	*split_cwd(t_string cwd)
 
 /**
  * 📋 Description: changes the current directory based on the new directory.
- * 
+ *
  * @param current_dir: the pointer to the list representing the cwd.
  * @param new_dir: the target directory to switch to.
  *
@@ -106,9 +107,12 @@ static void	change_directory(t_cwd **current_dir, const t_string new_dir)
 	else if (*new_dir == '/')
 	{
 		*current_dir = NULL;
-		if (ft_strcmp(new_dir, "/.") == EQUAL)
-			new_dir[1] = '\0';
-		get_cwdd(new_dir, 0, INIT);
+		if (!ft_strcmp(new_dir, "/."))
+			get_cwdd("/", 0, INIT);
+		else if (!ft_strcmp(new_dir, "//"))
+			get_cwdd("//", 0, INIT);
+		else
+			get_cwdd(new_dir, 0, INIT);
 	}
 	else
 		update_cwd(current_dir, new_dir);
@@ -116,7 +120,7 @@ static void	change_directory(t_cwd **current_dir, const t_string new_dir)
 
 /**
  * 📋 Description: updates the current directory by processing changes.
- * 
+ *
  * @param cwd: the pointer to the list representing the cwd.
  * @param new_dir: the new directory or segment to apply.
  *
@@ -142,4 +146,25 @@ static void	update_cwd(t_cwd **current_dir, const t_string new_dir)
 	}
 	while (cwd_dir[i])
 		add_node_cwd(current_dir, cwd_dir[i++]);
+}
+
+static void	add_node_cwd(t_cwd **cwdd, char *dirr)
+{
+	t_cwd	*new_node;
+	t_cwd	*last_node;
+
+	new_node = mem_manager(sizeof(t_cwd), 0, 0, ALLOCATE);
+	new_node->dir = ft_strdup(dirr);
+	new_node->next = NULL;
+	if (!*cwdd)
+		*cwdd = new_node;
+	else
+	{
+		last_node = *cwdd;
+		while (last_node->next)
+			last_node = last_node->next;
+		if (last_node->dir[ft_strlen(last_node->dir) - 1] != '/')
+			last_node->dir = ft_strjoin(last_node->dir, "/");
+		last_node->next = new_node;
+	}
 }
