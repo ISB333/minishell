@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/27 16:15:05 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/28 11:35:39 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * 📋 Description: executes the echo command, printing to terminal output.
- * 
+ *
  * @param args: the arguments passed with the echo command.
  *
  * ⬅️ Return: nothing.
@@ -58,7 +58,7 @@ void	pwdd(void)
 
 /**
  * 📋 Description: changes the current directory based on the provided path.
- * 
+ *
  * @param args: the arguments passed with the cd command.
  *
  * ⬅️ Return: int, an integer code indicating success or error.
@@ -68,6 +68,7 @@ int	cd(t_string *args)
 	struct stat	path_stat;
 	t_string	directory;
 
+	directory = NULL;
 	if ((args[1] && args[2]))
 		return (error("too many arguments", "cd", 1));
 	if (args[1] && ft_strchr(args[1], '/'))
@@ -75,7 +76,8 @@ int	cd(t_string *args)
 				- ft_strlen(ft_strchr(args[1], '/')));
 	else if (args[1])
 		directory = ft_strdup(args[1]);
-	if (!stat(directory, &path_stat) && !S_ISDIR(path_stat.st_mode))
+	if (directory && !stat(directory, &path_stat)
+		&& !S_ISDIR(path_stat.st_mode))
 		return (error("Not a directory", ft_strjoin("cd: ", args[1]), 1));
 	if (!args[1] || ft_strcmp(args[1], "~") == EQUAL)
 	{
@@ -92,7 +94,7 @@ int	cd(t_string *args)
 
 /**
  * 📋 Description: directs the command to the appropriate builtin function.
- * 
+ *
  * @param cmd_node: the command structure containing the command and arguments.
  * @param builtin_command: the command identifier indicating function to call.
  *
@@ -129,17 +131,17 @@ void	call_builtins(t_ast *cmd_node, const int builtin_command)
 
 /**
  * 📋 Description: determines if a command is a shell builtin.
- * 
+ *
  * @param ast: the command structure to check.
  *
  * ⬅️ Return: int, the command identifier if it's a builtin, otherwise 0.
  */
 int	is_builtin(t_ast *ast)
 {
-	static const t_string	builtins[]
-		= {"cd", "pwd", "export", "unset", "env", "echo", "exit"};
-	static const int		builtin_commands[]
-		= {CD, PWD, EXPORT, UNSET, ENV, ECH, EXIT};
+	static const t_string	builtins[] = {"cd", "pwd", "export", "unset", "env",
+		"echo", "exit"};
+	static const int		builtin_commands[] = {CD, PWD, EXPORT, UNSET, ENV,
+		ECH, EXIT};
 	size_t					i;
 
 	if (ast && ast->cmd && *ast->cmd)

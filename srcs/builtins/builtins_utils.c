@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/27 17:30:06 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/28 15:47:59 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * 📋 Description: checks if an argument consists entirely of 'n' characters.
- * 
+ *
  * @param arg: the argument passed to echo.
  *
  * ⬅️ Return: t_bool, TRUE if only 'n' characters, FALSE otherwise.
@@ -30,42 +30,43 @@ t_bool	is_only_n(t_string arg)
 
 /**
  * 📋 Description: handles the cd command's action after initial checks.
- * 
+ *
  * @param args: the arguments passed to cd.
  *
  * ⬅️ Return: int, the error code or 0 on success.
  */
 int	cd_utils(t_string *args)
 {
-	if (args[1] && (!ft_strlen(args[1]) || ft_strcmp(args[1], ".")) == EQUAL)
+	if (ft_strlen(args[1]) >= 256)
+		return (error("File name too long", "cd", 1));
+	if (args[1] && (!ft_strlen(args[1]) || ft_strcmp(args[1], ".") == EQUAL))
 		return (0);
 	if (*args[1] == '~')
 		args[1] = ft_strjoin(get_cwdd(NULL, NULL, HOME), args[1] + 1);
-	if (access(args[1], OK) == EXIT_SUCCESS
-		&& access(args[1], X_OK) != EXIT_SUCCESS)
+	if (access(args[1], OK) && !access(args[1], X_OK))
 		return (error("Permission denied", "cd", 1));
+	exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
 	if (ft_strcmp(args[1], "..") == EQUAL)
 	{
-		exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
 		get_cwdd(NULL, args[1], UPDATE);
 		args[1] = get_cwdd(NULL, NULL, GET);
-		exportt(NULL, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		if (chdir(args[1]))
+			return (error("No such file or directory", ft_strjoin("cd: ",
+						args[1]), 1));
 	}
 	else
 	{
-		exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		if (chdir(args[1]))
+			return (error("No such file or directory", ft_strjoin("cd: ",
+						args[1]), 1));
 		get_cwdd(NULL, args[1], UPDATE);
-		exportt(NULL, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
 	}
-	if (chdir(args[1]))
-		return (error("No such file or directory", ft_strjoin("cd: ",
-					args[1]), 1));
-	return (0);
+	return (exportt(0, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD), 0);
 }
 
 /**
  * 📋 Description: cleans up and exits minishell with the given status code.
- * 
+ *
  * @param status: the exit status code.
  *
  * ⬅️ Return: nothing.
@@ -80,30 +81,27 @@ void	quit(int status)
 
 /**
  * 📋 Description: counts the number of directories in the given path.
- * 
+ *
  * @param path: the path to analyze.
  *
  * ⬅️ Return: size_t, the number of directories in the path.
  */
-size_t	count_dir(t_string path)
+size_t	count_dir(char *cwd)
 {
-	size_t	count;
+	int		i;
+	size_t	len;
 
-	count = 0;
-	if (path)
+	i = 0;
+	len = 0;
+	if (!cwd)
+		return (0);
+	while (cwd[i])
 	{
-		while (*path)
-		{
-			if (*path == '/')
-			{
-				while (*path == '/')
-					++path;
-				++count;
-			}
-			else
-				++path;
-		}
-		++count;
+		if (cwd[i] == '/' && cwd[i + 1] == '/')
+			i++;
+		if (cwd[i] == '/' || !cwd[i + 1])
+			len++;
+		i++;
 	}
-	return (count);
+	return (len);
 }

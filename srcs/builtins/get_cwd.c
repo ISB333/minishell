@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/28 13:03:23 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/28 15:29:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
 
 	if (action == INIT)
 	{
+		current_cwd = NULL;
 		dir_segments = split_cwd(cwd);
 		if (dir_segments)
 			while (*dir_segments)
@@ -74,7 +75,7 @@ static t_string	*split_cwd(t_string cwd)
 	seg_index = 0;
 	while (*cwd)
 	{
-		if (*cwd == '/' && seg_start != cwd && *(cwd + 1) == '/')
+		if (*cwd == '/' && *(cwd + 1) == '/')
 			++cwd;
 		if (*cwd == '/' || !*(cwd + 1))
 		{

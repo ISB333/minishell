@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 09:32:40 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/28 11:09:32 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_node(t_memman *new_node, t_memman **mem_list, void *ptr, int token)
 	t_memman	*last_node;
 
 	new_node->ptr = ptr;
-	if (token == 'O')
+	if (token == SAVE_FD)
 		new_node->type = FD;
 	else
 		new_node->type = NONE;
@@ -128,6 +128,7 @@ void	*mem_manager(size_t size, void *ptr, int fd, int token)
 		return (free_ptr(&mem_list, ptr));
 	if (token == CLEAR_MEMORY)
 	{
+		mem_manager(0, 0, 0, KILL_ALL_FD);
 		ff(mem_list, -1);
 		mem_list = NULL;
 		return (NULL);
