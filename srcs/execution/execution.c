@@ -3,67 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/25 10:33:51 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/28 16:41:21 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	child(t_ast *ast)
+// 🔒 Static function prototypes for internal use -------------------------- 🔒 */
+
+static int	fork_and_execute(t_ast *ast);
+static int	execute_child_process(t_ast *ast);
+static int	execute_parent_process(t_ast *ast);
+
+/**
+ * 📋 Description: main function responsible for executing commands in pipeline.
+ * 
+ * @param ast: the abstract syntax tree (AST) representing the list of commands.
+ *
+ * ⬅️ Return: int, SUCCESS if the execution is successful, otherwise FAILURE.
+ */
+int	execute(t_ast *ast)
 {
-	if (close(ast->pipe_fd[0]))
-		return (close(ast->pipe_fd[1]), -1);
-	if (ast->fd_in && ast->fd_in != -1)
+	if (!ast)
+		return (SUCCESS);
+	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
+		call_builtins(ast, is_builtin(ast));
+	else
 	{
-		if (dup2(ast->fd_in, STDIN_FILENO) == -1)
-			return (close(ast->fd_in), -1);
-		if (close(ast->fd_in))
-			return (1);
+		while (ast)
+		{
+			if (!fork_and_execute(ast))
+				return (FAILURE);
+			ast = ast->next;
+		}
+		wait_for_children(ast);
+		display_errors(ast);
 	}
-	if (ast->fd_out && ast->fd_out != -1)
-	{
-		if (dup2(ast->fd_out, STDOUT_FILENO) == -1)
-			return (close(ast->fd_out), -1);
-		if (close(ast->fd_out))
-			return (-1);
-	}
-	else if (ast->next)
-	{
-		if (dup2(ast->pipe_fd[1], STDOUT_FILENO) == -1)
-			return (close(ast->pipe_fd[1]), -1);
-	}
-	if (close(ast->pipe_fd[1]))
-		return (-1);
-	return (0);
+	return (SUCCESS);
 }
 
-int	parent(t_ast *ast)
+/**
+ * 📋 Description: forks a new process and executes the command.
+ * 
+ * @param ast: the abstract syntax tree (AST) node representing the command.
+ *
+ * ⬅️ Return: int, SUCCESS if the command is successfully, otherwise FAILURE.
+ */
+static int	fork_and_execute(t_ast *ast)
 {
-	if (ast->cmd && ast->cmd[0] && !ft_strncmp(ast->cmd[0], "./", 2))
-		waitpid(ast->pid, NULL, 0);
-	if (close(ast->pipe_fd[1]))
-		return (close(ast->pipe_fd[0]), 1);
-	if (dup2(ast->pipe_fd[0], STDIN_FILENO) == -1)
-		return (close(ast->pipe_fd[0]), 1);
-	if (close(ast->pipe_fd[0]))
-		return (1);
-	return (0);
-}
-
-int	executor(t_ast *ast)
-{
-	if (pipe(ast->pipe_fd) == -1)
-		return (write(2, strerror(errno), strlen(strerror(errno))), errno);
+	if (!set_pipe(&ast->pipe_fd))
+		return (write(STDERR_FILENO, strerror(errno), strlen(strerror(errno))),
+			FAILURE);
 	ast->pid = fork();
-	if (ast->pid == -1)
-		return (errno);
-	if (ast->pid == 0)
+	if (ast->pid == INVALID)
+		return (FAILURE);
+	if (ast->pid == CHILD)
 	{
-		if (child(ast) == -1)
-			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(1), 1);
+		if (!execute_child_process(ast))
+			return (mem_manager(0, NULL, 0, CLEAR_MEMORY), exit(1), 1);
 		if (is_builtin(ast))
 		{
 			call_builtins(ast, is_builtin(ast));
@@ -71,66 +71,69 @@ int	executor(t_ast *ast)
 		}
 		else if (ast->cmd_path)
 		{
-			mem_manager(0, 0, 0, KILL_ALL_FD);
-			execve(ast->cmd_path, ast->cmd, get_envv(0, 0, GET));
+			mem_manager(0, NULL, 0, KILL_ALL_FD);
+			execve(ast->cmd_path, ast->cmd, get_envv(NULL, NULL, GET));
 		}
 		quit(EXIT_FAILURE);
 	}
-	else
-		if (parent(ast))
-			return (1);
-	return (0);
+	else if (execute_parent_process(ast))
+		return (SUCCESS);
+	return (FAILURE);
 }
 
-void	wait_and_print_error(t_ast *wait, t_ast *error, int exit_status)
+/**
+ * 📋 Description: sets up and executes the command in the child process.
+ * 
+ * @param ast: the abstract syntax tree (AST) node representing the command.
+ *
+ * ⬅️ Return: int, SUCCESS if process is set up and executed, otherwise FAILURE.
+ */
+static int	execute_child_process(t_ast *ast)
 {
-	int	status;
-
-	while (wait)
+	if (!close_file_descriptor(ast->pipe_fd[READ]))
+		return (close_file_descriptor(ast->pipe_fd[WRITE]), FAILURE);
+	if (ast->fd_in && ast->fd_in != INVALID)
 	{
-		if (wait->cmd && wait->cmd[0] && ft_strncmp(wait->cmd[0], "./", 2))
-		{
-			exit_status = 0;
-			waitpid(wait->pid, &status, 0);
-			if (WIFEXITED(status))
-			{
-				exit_status = WEXITSTATUS(status);
-				if (!wait->next && !wait->error_code)
-					return_(exit_status, ADD);
-				else if (!wait->next && wait->error_code)
-					return_(wait->error_code, ADD);
-			}
-		}
-		wait = wait->next;
+		if (!duplicate_fd(ast->fd_in, STDIN_FILENO))
+			return (close(ast->fd_in), FAILURE);
+		if (!close_file_descriptor(ast->fd_in))
+			return (FAILURE);
 	}
-	while (error)
+	if (ast->fd_out && ast->fd_out != INVALID)
 	{
-		if (error->error)
-			write(2, error->error, ft_strlen(error->error));
-		error = error->next;
+		if (!duplicate_fd(ast->fd_out, STDOUT_FILENO))
+			return (close_file_descriptor(ast->fd_out), FAILURE);
+		if (!close_file_descriptor(ast->fd_out))
+			return (FAILURE);
 	}
+	else if (ast->next)
+	{
+		if (!duplicate_fd(ast->pipe_fd[WRITE], STDOUT_FILENO))
+			return (close_file_descriptor(ast->pipe_fd[WRITE]), FAILURE);
+	}
+	if (!close_file_descriptor(ast->pipe_fd[WRITE]))
+		return (FAILURE);
+	return (SUCCESS);
 }
 
-int	warlord_executor(t_ast *ast)
+/**
+ * 📋 Description: manages parent process to handle pipes and wait for children.
+ * 
+ * @param ast: the abstract syntax tree (AST) node representing the command.
+ *
+ * ⬅️ Return: int, SUCCESS if process is managed correctly, otherwise FAILURE.
+ */
+static int	execute_parent_process(t_ast *ast)
 {
-	t_ast	*wait;
-	t_ast	*error;
-
-	if (!ast)
-		return (0);
-	wait = ast;
-	error = ast;
-	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
-		call_builtins(ast, is_builtin(ast));
-	else
+	if (ast->cmd && *ast->cmd && ft_strncmp(*ast->cmd, "./", 2) == EQUAL)
+		waitpid(ast->pid, NULL, 0);
+	if (close_file_descriptor(ast->pipe_fd[WRITE])
+		&& duplicate_fd(ast->pipe_fd[READ], STDIN_FILENO))
 	{
-		while (ast)
-		{
-			if (executor(ast))
-				return (1);
-			ast = ast->next;
-		}
-		wait_and_print_error(wait, error, 0);
+		if (close_file_descriptor(ast->pipe_fd[READ]))
+			return (SUCCESS);
 	}
-	return (0);
+	else
+		close_file_descriptor(ast->pipe_fd[READ]);
+	return (FAILURE);
 }
