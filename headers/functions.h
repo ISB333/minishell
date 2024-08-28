@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/27 17:30:19 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/28 16:41:30 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // 🌟 General Function Prototypes ------------------------------------------ 🌟 */
 
 char		*get_prompt(void);
-int			warlord_executor(t_ast *ast);
+int			execute(t_ast *ast);
 void		signals_handler(void);
 int			return_(int code, int token);
 
@@ -103,6 +103,10 @@ t_bool		is_numeric(const char c);
 t_bool		is_safe_operation(long long previous, long long current);
 t_bool		is_whitespace(const char c);
 
+int			close_file_descriptor(const t_fd fd);
+int			duplicate_fd(const t_fd fd, const int std);
+int			set_pipe(t_pipe_fd *fd);
+
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
 int			parser(t_ast **ast, char *s);
@@ -130,5 +134,8 @@ void		add_env_var(t_env **env_list, const t_string var);
 t_bool		is_valid_env_var(t_string var);
 t_string	find_env_var_value(t_env *env, const t_string to_find);
 t_string	*retrieve_or_display_env(t_env *env_list, const int action);
+
+void		wait_for_children(t_ast *cmd);
+void		display_errors(t_ast *cmd);
 
 #endif

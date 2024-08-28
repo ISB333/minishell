@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:40:59 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/26 16:25:39 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/28 16:32:20 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,20 @@
 
 // 🔗 Symbolic values ------------------------------------------------------ 🔗 */
 
+# define CHILD				0
 # define LAST				-2
-# define PENULTIMATE		-1
+# define INVALID			-1
 # define NEGATIVE			-1
+# define PENULTIMATE		-1
 # define EQUAL				0
+# define FAILURE			0
+# define READ				0
+# define SUCCESS			1
 # define POSITIVE			1
+# define WRITE				1
 
 // 🎛️ Control characters ------------------------------------------------- 🎛️ */
 
-# define CARRIAGE_RETURN	'\r'
-
-# define NEGATIVE			-1
-# define POSTIVE			1
 # define CARRIAGE_RETURN	'\r'
 
 #endif

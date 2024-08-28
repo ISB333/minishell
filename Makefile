@@ -58,7 +58,7 @@ PARSING = $(P_DIR)/parsing.c $(P_DIR)/commands.c \
 	$(P_DIR)/redirection.c $(P_DIR)/heredoc.c \
 	$(P_DIR)/parse_utils.c
 
-EXECUTION = ./srcs/execution/execution.c
+EXECUTION = ./srcs/execution/execution.c ./srcs/execution/wait_and_print.c
 
 BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 	$(B_DIR)/get_env.c $(B_DIR)/get_cwd.c \
@@ -70,7 +70,7 @@ UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \
 	$(U_DIR)/signals.c $(U_DIR)/get_node_at.c \
 	$(U_DIR)/is_numeric.c $(U_DIR)/is_whitespace.c \
-	$(U_DIR)/is_safe_operation.c
+	$(U_DIR)/is_safe_operation.c $(U_DIR)/fd.c
 
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj

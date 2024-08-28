@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/27 13:42:54 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:26:01 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	factory(char *rl)
 	history(rl);
 	if (parser(&ast, rl))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
-	if (warlord_executor(ast))
+	if (!execute(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
 	return (0);
