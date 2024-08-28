@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/25 10:33:51 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/28 14:13:25 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	executor(t_ast *ast)
 	{
 		if (child(ast) == -1)
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(1), 1);
+		mem_manager(0, 0, 0, KILL_ALL_FD);
 		if (is_builtin(ast))
 		{
 			call_builtins(ast, is_builtin(ast));
@@ -71,7 +72,6 @@ int	executor(t_ast *ast)
 		}
 		else if (ast->cmd_path)
 		{
-			mem_manager(0, 0, 0, KILL_ALL_FD);
 			execve(ast->cmd_path, ast->cmd, get_envv(0, 0, GET));
 		}
 		quit(EXIT_FAILURE);

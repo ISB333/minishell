@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/27 13:56:42 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:29:11 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_string	get_cwdd(const t_string cwd, t_string new_dir, const int action)
 
 	if (action == INIT)
 	{
+		current_cwd = NULL;
 		dir_segments = split_cwd(cwd);
 		if (dir_segments)
 			while (*dir_segments)
@@ -74,7 +75,7 @@ static t_string	*split_cwd(t_string cwd)
 	seg_index = 0;
 	while (*cwd)
 	{
-		if (*cwd == '/' && seg_start != cwd && *(cwd + 1) == '/')
+		if (*cwd == '/' && *(cwd + 1) == '/')
 			++cwd;
 		if (*cwd == '/' || !*(cwd + 1))
 		{
@@ -87,6 +88,34 @@ static t_string	*split_cwd(t_string cwd)
 	}
 	return (segments);
 }
+// static t_string	*split_cwd(char *cwd)
+// {
+// 	char	**cwd_dir;
+// 	int		i;
+// 	int		k;
+// 	int		j;
+// 	size_t  len;
+
+// 	i = 0;
+// 	k = 0;
+// 	j = -1;
+// 	len = count_dir(cwd);
+// 	cwd_dir = mem_manager((len + 1) * sizeof(char *), 0, 0, ALLOCATE);
+// 	cwd_dir[len] = NULL;
+// 	while (cwd[i])
+// 	{
+// 		if (cwd[i] == '/' && cwd[i + 1] == '/')
+// 			i++;
+// 		if (cwd[i] == '/' || !cwd[i + 1])
+// 		{
+// 			cwd_dir[++j] = ft_substr(cwd, k, i - k + 1);
+// 			k = ++i;
+// 		}
+// 		else
+// 			i++;
+// 	}
+// 	return (cwd_dir);
+// }
 
 /**
  * 📋 Description: changes the current directory based on the new directory.

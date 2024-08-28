@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_tilde.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/28 15:27:25 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	is_tilde_in_arr(char **arr, int i)
 	{
 		if (arr[i][0] == '~' && arr[i][1])
 		{
-			if (home_paths(&arr[i][1], FIND))
+			if (home_paths(&arr[i][1], FIND) || arr[i][1] == '/')
 				return (1);
 		}
 		else if (arr[i][0] == '~' && !arr[i][1])
@@ -102,13 +102,13 @@ void	get_tilde(char **arr)
 	{
 		if (arr[i][0] == '~' && arr[i][1])
 		{
-			if (home_paths(&arr[i][1], FIND))
+			if (home_paths(&arr[i][1], FIND) || arr[i][1] == '/')
 				break ;
 		}
 		else if (arr[i][0] == '~' && !arr[i][1])
 			break ;
 	}
-	if (arr[i][1] && home_paths(&arr[i][1], FIND))
+	if (arr[i] && arr[i][1] && home_paths(&arr[i][1], FIND))
 		arr[i] = home_paths(&arr[i][1], FIND);
 	else
 		arr[i] = ft_strjoin(get_cwdd(0, 0, HOME), &arr[i][1]);
