@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/27 13:56:42 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:03:23 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static t_string	*split_cwd(t_string cwd)
 			++cwd;
 		if (*cwd == '/' || !*(cwd + 1))
 		{
-			segments[seg_index++] = ft_substr(seg_start, 0, cwd - seg_start
-					+ 1);
+			segments[seg_index++]
+				= ft_substr(seg_start, 0, cwd - seg_start + 1);
 			seg_start = ++cwd;
 		}
 		else
@@ -148,22 +148,30 @@ static void	update_cwd(t_cwd **current_dir, const t_string new_dir)
 		add_node_cwd(current_dir, cwd_dir[i++]);
 }
 
-static void	add_node_cwd(t_cwd **cwdd, char *dirr)
+/**
+ * 📋 Description: adds new directory node to the current working directory list.
+ *
+ * @param cwd: the address of the list where the new node will be added.
+ * @param dir: the directory string to be added.
+ *
+ * ⬅️ Return: nothing.
+ */
+static void	add_node_cwd(t_cwd **cwd, t_string dir)
 {
 	t_cwd	*new_node;
 	t_cwd	*last_node;
 
-	new_node = mem_manager(sizeof(t_cwd), 0, 0, ALLOCATE);
-	new_node->dir = ft_strdup(dirr);
+	if (!cwd || !dir)
+		return ;
+	new_node = mem_manager(sizeof(t_cwd), NULL, 0, ALLOCATE);
+	new_node->dir = ft_strdup(dir);
 	new_node->next = NULL;
-	if (!*cwdd)
-		*cwdd = new_node;
+	if (!*cwd)
+		*cwd = new_node;
 	else
 	{
-		last_node = *cwdd;
-		while (last_node->next)
-			last_node = last_node->next;
-		if (last_node->dir[ft_strlen(last_node->dir) - 1] != '/')
+		last_node = get_node_at(*cwd, LAST);
+		if (last_node && last_node->dir[ft_strlen(last_node->dir) - 1] != '/')
 			last_node->dir = ft_strjoin(last_node->dir, "/");
 		last_node->next = new_node;
 	}
