@@ -1,17 +1,12 @@
 - [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)
 
-ERRORS:
-- if export A_h= then export A_h the '=' is deleted instead staying "initialized"
-
-
--> ???
-adesille@k1r2p10:~/Desktop/minishell/minishell$ echo $$
-$
-adesille@k1r2p10:~/Desktop/minishell/minishell$ echo $$$$$$$
-$
-
-- cd maxpathlen + 1 == Wrong error msg
-
 - if quotes inside an ENV VAR, I delete them
 
--> + a lot of few issues with echo $
+-> special cmd to delete history.txt etc.. at End Of Program?
+
+------------------------------------------
+mpanic:
+- export OK
+- exit OK except => exit -18446744073709551617
+- cd OK
+- else mostly OK 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/26 18:00:40 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 11:42:00 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,21 @@ static void		unset_export(t_export **exp_list, t_string var);
 void	exportt(t_string env[], const t_string var, const int action)
 {
 	static t_export	*exp_list = NULL;
-	t_export		*existing_var;
 
 	if (action == INIT)
 		init_export(env, &exp_list);
 	else if (action == ADD && var)
 	{
-		existing_var = check_if_exist_exp(exp_list, var);
 		if (!get_envv(NULL, var, ADD) && is_valid_env_var(var)
-			&& !existing_var)
+			&& !check_if_exist_exp(exp_list, var))
 		{
 			add_node_exp(&exp_list, var);
 			sort_export(exp_list);
 		}
 		else if (!is_valid_env_var(var))
 			error("not a valid identifier", ft_strjoin("export: ", var), 1);
-		else if (existing_var)
-			existing_var->var = ft_strdup(var);
+		else
+			modify_exp_var(exp_list, var);
 	}
 	else if (action == PRINT)
 		print_export(exp_list);

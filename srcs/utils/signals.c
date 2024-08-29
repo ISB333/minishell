@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 07:39:30 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/13 05:32:12 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/29 14:29:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	handle_sig_c(int signal)
 {
 	if (signal == SIGINT)
 	{
-		printf(BLUE "\n%s" DEF, get_prompt());
-		fflush(stdout);
+		printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/28 16:49:16 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 13:53:45 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ static int	execute_parent_process(t_ast *ast);
  */
 int	execute(t_ast *ast)
 {
+	t_ast	*cmd;
+
 	if (!ast)
 		return (SUCCESS);
 	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
 		call_builtins(ast, is_builtin(ast));
 	else
 	{
-		while (ast)
+		cmd = ast;
+		while (cmd)
 		{
-			if (!fork_and_execute(ast))
+			if (!fork_and_execute(cmd))
 				return (FAILURE);
-			ast = ast->next;
+			cmd = cmd->next;
 		}
 		wait_for_children(ast);
 		display_errors(ast);
@@ -95,7 +98,7 @@ static int	execute_child_process(t_ast *ast)
 	if (ast->fd_in && ast->fd_in != INVALID)
 	{
 		if (!duplicate_fd(ast->fd_in, STDIN_FILENO))
-			return (close(ast->fd_in), FAILURE);
+			return (close_file_descriptor(ast->fd_in), FAILURE);
 		if (!close_file_descriptor(ast->fd_in))
 			return (FAILURE);
 	}
@@ -125,8 +128,21 @@ static int	execute_child_process(t_ast *ast)
  */
 static int	execute_parent_process(t_ast *ast)
 {
+	int status;
+	int exit_code;
+
 	if (ast->cmd && *ast->cmd && ft_strncmp(*ast->cmd, "./", 2) == EQUAL)
-		waitpid(ast->pid, NULL, 0);
+	{
+		waitpid(ast->pid, &status, 0);
+		if (WIFEXITED(status))
+		{
+			exit_code = WEXITSTATUS(status);
+			if (!ast->error_code)
+				return_(exit_code, ADD);
+			else if (ast->error_code)
+				return_(ast->error_code, ADD);
+		}
+	}
 	if (close_file_descriptor(ast->pipe_fd[WRITE])
 		&& duplicate_fd(ast->pipe_fd[READ], STDIN_FILENO))
 	{

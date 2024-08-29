@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 12:38:42 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 11:41:16 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+/**
+ * 📋 Description: modifies the value of an existing export variable.
+ * 
+ * @param export_list: the list of all export variables.
+ * @param var: the variable to replace.
+ *
+ * ⬅️ Return: nothing.
+ */
+void	modify_exp_var(t_export *export_list, const t_string var)
+{
+	t_string		exp_var;
+	const t_string	var_to_modif = ft_substr(var, 0, ft_strchr(var, '=') - var);
+
+	if (!var_to_modif || !ft_strchr(var, '='))
+		return ;
+	while (export_list)
+	{
+		if (ft_strchr(export_list->var, '='))
+			exp_var = ft_substr(export_list->var, 0,
+					ft_strchr(export_list->var, '=') - export_list->var);
+		else
+			exp_var = ft_strdup(export_list->var);
+		if (ft_strcmp(exp_var, var_to_modif) == EQUAL)
+			export_list->var = ft_strdup(var);
+		export_list = export_list->next;
+	}
+}
 
 /**
  * 📋 Description: sorts and stores environment variables as exports.

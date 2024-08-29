@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/28 16:26:01 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 14:06:50 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	prompt(char **rl)
 	prompt = get_prompt();
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
-	full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
-	s = readline(full_prompt);
+	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
+	// s = readline(full_prompt);
+	s = readline(prompt);
 	if (!s)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic

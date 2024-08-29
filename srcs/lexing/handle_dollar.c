@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_dollar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/29 13:50:38 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 			k = -1;
 			while (arr[i][++k])
 			{
-				if (arr[i][k] == '$' && (is_del(arr[i][k + 1]) || !arr[i][k
-						+ 1]))
+				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1])
+					|| !arr[i][k + 1] || arr[i][k + 1] == '/')))
 					k++;
 				if (arr[i][k] == '$')
 					if (is_dollar_in_double_quotes(arr[i], k, k))
@@ -112,7 +112,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 	k = is_dollar_in_arr(arr, -1, 'p', 'k');
 	if (k && !is_dollar_in_double_quotes(arr[i], k, k))
 		return ;
-	if (!arr[i][k + 1] || is_del(arr[i][k + 1]))
+	if (!arr[i][k + 1] || is_del(arr[i][k + 1]) || arr[i][k + 1] == '/')
 		return ;
 	j = k;
 	while (arr[i][++j] && !is_del(arr[i][j]) && !is_dollar_del(arr[i][j]))

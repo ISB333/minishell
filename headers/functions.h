@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/28 16:41:30 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 13:46:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,9 @@ int			is_dollar_utils(char **arr, int i, int k, int pos);
 int			is_dollar_in_double_quotes(char *s, int k, int i);
 int			is_tilde_in_arr(char **arr, int i);
 int			is_pipe_in_arr(char **array);
-int			is_new_line_in_arr(char **array);
 int			is_redir_in_arr(char **array);
-int			is_append_in_arr(char **array);
-int			is_heredoc_in_arr(char **array);
-int			is_open_pipe_in_arr_arr(char ***array);
 int			is_open_pipe_in_arr(char **array);
+int			is_only_dollar(char *s);
 int			is_builtin(t_ast *ast);
 int			is_only_del(char *s);
 int			is_there_quotes_in_da_shit(char *s);
@@ -135,6 +132,7 @@ t_bool		is_valid_env_var(t_string var);
 t_string	find_env_var_value(t_env *env, const t_string to_find);
 t_string	*retrieve_or_display_env(t_env *env_list, const int action);
 
+void		modify_exp_var(t_export *export_list, const t_string var);
 void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
 

@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:59:09 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/28 16:37:40 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 12:54:21 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	close_file_descriptor(const t_fd fd)
  */
 int	duplicate_fd(const t_fd fd, const int std)
 {
-	return (dup2(fd, std) == 0);
+	return (dup2(fd, std) != -1);
 }
 
 /**
