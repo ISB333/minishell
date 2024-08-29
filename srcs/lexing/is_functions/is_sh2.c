@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sh2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:04:28 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/26 17:57:14 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/29 13:48:43 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_there_quotes_in_da_shit(char *s)
 
 	i = -1;
 	while (s[++i])
-		if (s[i] == 34 || s[i] == 39)
+		if ((s[i] == 34 || s[i] == 39) && !open_quotes(s))
 			return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/28 15:47:59 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:04:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	quit(int status)
  *
  * ⬅️ Return: size_t, the number of directories in the path.
  */
-size_t	count_dir(char *cwd)
+size_t	count_dir(t_string cwd)
 {
 	int		i;
 	size_t	len;

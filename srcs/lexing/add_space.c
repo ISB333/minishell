@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_space.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:06:52 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/29 11:26:07 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	strlen_space(char *s)
 	int	token;
 
 	len = 0;
-	i = -1;
+	i = 0;
 	while (s[len])
 		len++;
-	while (s[++i])
+	while (s[i])
 	{
 		if (s[i] == 34 || s[i] == 39)
 		{
@@ -33,6 +33,8 @@ int	strlen_space(char *s)
 		if (is_sh_ope(s, i, 0))
 			len += 2;
 		if (is_sh_ope(s, i, 0) == 2)
+			i++;
+		else if (s[i])
 			i++;
 	}
 	return (len + 1);
@@ -65,7 +67,7 @@ int	add_space(char **s, int i, int k, int token)
 		}
 		if (is_sh_ope(*s, i, 0))
 			add_space_utils(s, str, &i, &k);
-		else
+		else if ((*s)[i])
 			str[k++] = (*s)[i++];
 	}
 	return (str[k] = '\0', *s = str, 0);
