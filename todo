@@ -4,6 +4,10 @@
 
 -> special cmd to delete history.txt etc.. at End Of Program?
 
+- adesille@k1r2p10:~/Desktop/minishell/minishell$ unset LOGNAME
+- @k1r2p10:~/home/adesille/Desktop/minishell/minishell$ ls
+
+
 ------------------------------------------
 mpanic:
 - export OK
