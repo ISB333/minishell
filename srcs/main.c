@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 14:06:50 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:51:11 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	prompt(char **rl)
 {
 	char	*prompt;
 	char	*s;
-	char	*full_prompt;
 
 	s = NULL;
 	prompt = NULL;
@@ -28,7 +27,9 @@ int	prompt(char **rl)
 		return (printf("prompt error\n"), 1);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	// s = readline(full_prompt);
+	handle_sig_c(0);
 	s = readline(prompt);
+	handle_sig_c(0);
 	if (!s)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic
@@ -69,6 +70,7 @@ void	init_utils(char *env[], char *cwd)
 
 int	factory(char *rl)
 {
+	int		parsing;
 	int		stdin_origin;
 	int		stdout_origin;
 	t_ast	*ast;
@@ -76,7 +78,10 @@ int	factory(char *rl)
 	ast = NULL;
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
-	if (parser(&ast, rl))
+	parsing = parser(&ast, rl);
+	if (parsing == -1)
+		return (0);
+	else if (parsing)
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
 	if (!execute(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);

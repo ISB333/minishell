@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 12:15:25 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:52:52 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	lst_parse(t_ast **ast, char **tokens, int i, int n)
 {
 	if (is_redir_in_arr(tokens))
 		if (parse_redir(ast, tokens, 0, n))
-			return (1);
+			return (-1);
 	while (tokens[i])
 	{
 		if (is_redir(tokens[i], 0, 0))
@@ -49,7 +49,8 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	lst_parse(&new_node, tokens, 0, n);
+	if (lst_parse(&new_node, tokens, 0, n))
+		return (-1);
 	cmd_path_init(&new_node, -1);
 	return (0);
 }
@@ -103,7 +104,7 @@ int	parser(t_ast **ast, char *s)
 			lexer_utils(&array, tokens);
 		while (array[++i])
 			if (add_node(ast, array[i]))
-				return (1);
+				return (-1);
 		if (is_open_pipe_in_arr(tokens))
 			s = open_pipe_manager();
 		else
