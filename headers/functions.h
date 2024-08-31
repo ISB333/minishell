@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/30 07:12:11 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/30 17:12:40 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,9 @@ void		modify_exp_var(t_export *export_list, const t_string var);
 void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
 
-void		handle_sig_c(int signal);
-t_bool	in_heredoc(const t_bool change);
-t_bool	sig_in_heredoc(const t_bool change);
+t_bool		is_in_execution(const t_action action);
+t_bool		is_in_heredoc(const t_action action);
 
-void	mute_sigquit(void);
-void	unmute_sigquit(void);
+void		set_signals(void);
 
 #endif

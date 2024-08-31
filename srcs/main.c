@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 16:51:11 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/30 18:05:21 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int	prompt(char **rl)
 		return (printf("prompt error\n"), 1);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	// s = readline(full_prompt);
-	handle_sig_c(0);
+	is_in_execution(RESET);
+	signal(SIGQUIT, SIG_IGN);
 	s = readline(prompt);
-	handle_sig_c(0);
+	is_in_execution(SET);
+	set_signals();
 	if (!s)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic
@@ -94,10 +96,10 @@ int	main(int argc, char *argv[], char *env[])
 	char	*rl;
 	int		is_eof;
 
-	(void)argc;
-	(void)argv;
+	(void)argc,
+	(void)argv,
 	init_utils(env, getcwd(NULL, 0));
-	signals_handler();
+	set_signals();
 	while (1)
 	{
 		rl = NULL;

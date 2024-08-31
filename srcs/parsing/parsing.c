@@ -6,7 +6,7 @@
 /*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 16:52:52 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/30 17:38:53 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	if (lst_parse(&new_node, tokens, 0, n))
+	lst_parse(&new_node, tokens, 0, n);
+	if (is_in_heredoc(CHECK_SIG))
 		return (-1);
 	cmd_path_init(&new_node, -1);
 	return (0);
