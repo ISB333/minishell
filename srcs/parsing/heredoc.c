@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/28 14:29:43 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/30 18:21:05 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,23 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		del = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+	is_in_heredoc(ENTRANCE);
+	set_signals();
+	signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 		s = readline("> ");
+		if (is_in_heredoc(CHECK_SIG))
+			break ;
+		if (!s)
+			break ;
 		ss = ft_strdup(s);
 		free(s);
 		if (!ft_strcmp(ss, del))
 			break ;
 		add_node_hd(&hd, ss);
 	}
+	set_signals();
 	get_dollar_hd(hd, 0, 0);
 	add_to_ast(ast, hd, ++n);
 	*i += 2;

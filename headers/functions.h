@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/29 13:46:19 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:12:40 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,10 @@ t_string	*retrieve_or_display_env(t_env *env_list, const int action);
 void		modify_exp_var(t_export *export_list, const t_string var);
 void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
+
+t_bool		is_in_execution(const t_action action);
+t_bool		is_in_heredoc(const t_action action);
+
+void		set_signals(void);
 
 #endif

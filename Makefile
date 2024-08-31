@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
+#    By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/08/29 13:06:22 by adesille         ###   ########.fr        #
+#    Updated: 2024/08/30 17:05:28 by aheitz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/is_numeric.c $(U_DIR)/is_whitespace.c \
 	$(U_DIR)/is_safe_operation.c $(U_DIR)/fd.c
 
+SIG	= srcs/signals/handling.c
+
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj
 DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
@@ -80,7 +82,8 @@ DEPFILES = $(SRCS:%.c=$(OBJ_DIR)/%.o.d) \
 		$(PARSING:%.c=$(OBJ_DIR)/%.o.d) \
 		$(EXECUTION:%.c=$(OBJ_DIR)/%.o.d) \
 		$(BUILTINS:%.c=$(OBJ_DIR)/%.o.d) \
-		$(UTILS:%.c=$(OBJ_DIR)/%.o.d)
+		$(UTILS:%.c=$(OBJ_DIR)/%.o.d) \
+		$(SIG:%.c=$(OBJ_DIR)/%.o.d)
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) \
 		$(HISTORY:%.c=$(OBJ_DIR)/%.o) \
@@ -88,7 +91,8 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) \
 		$(PARSING:%.c=$(OBJ_DIR)/%.o) \
 		$(EXECUTION:%.c=$(OBJ_DIR)/%.o) \
 		$(BUILTINS:%.c=$(OBJ_DIR)/%.o) \
-		$(UTILS:%.c=$(OBJ_DIR)/%.o)
+		$(UTILS:%.c=$(OBJ_DIR)/%.o) \
+		$(SIG:%.c=$(OBJ_DIR)/%.o)
 
 ######################## RULES ########################
 

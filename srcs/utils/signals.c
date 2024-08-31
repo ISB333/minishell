@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 07:39:30 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 14:29:46 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:25:46 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,4 @@ int	return_(int code, int token)
 	if (token == GET)
 		return (exit_code);
 	return (0);
-}
-
-void	handle_sig_c(int signal)
-{
-	if (signal == SIGINT)
-	{
-		printf("\n");
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-}
-
-void	handle_sig_q(int signal)
-{
-	(void)signal;
-	return ;
-}
-
-void	signals_handler(void)
-{
-	struct sigaction	sa_c;
-	struct sigaction	sa_q;
-
-	sa_c.sa_handler = &handle_sig_c;
-	sa_c.sa_flags = SA_RESTART;
-	sigemptyset(&sa_c.sa_mask);
-	if (sigaction(SIGINT, &sa_c, NULL))
-		perror("sigaction");
-	sa_q.sa_handler = &handle_sig_q;
-	sa_q.sa_flags = SA_RESTART;
-	sigemptyset(&sa_q.sa_mask);
-	if (sigaction(SIGQUIT, &sa_q, NULL))
-		perror("sigaction");
 }
