@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 11:41:16 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/31 14:38:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * 📋 Description: modifies the value of an existing export variable.
- * 
+ *
  * @param export_list: the list of all export variables.
  * @param var: the variable to replace.
  *
@@ -30,19 +30,22 @@ void	modify_exp_var(t_export *export_list, const t_string var)
 	while (export_list)
 	{
 		if (ft_strchr(export_list->var, '='))
-			exp_var = ft_substr(export_list->var, 0,
-					ft_strchr(export_list->var, '=') - export_list->var);
+			exp_var = ft_substr(export_list->var, 0, ft_strchr(export_list->var,
+						'=') - export_list->var);
 		else
 			exp_var = ft_strdup(export_list->var);
 		if (ft_strcmp(exp_var, var_to_modif) == EQUAL)
-			export_list->var = ft_strdup(var);
+			export_list->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
+						- ft_strlen(ft_strchr(var, '=')) + 1),
+					ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1),
+							"\""));
 		export_list = export_list->next;
 	}
 }
 
 /**
  * 📋 Description: sorts and stores environment variables as exports.
- * 
+ *
  * @param env: the list of all environment variables.
  * @param export_list: the address of the list where to store the variables.
  *
@@ -78,7 +81,7 @@ void	init_export(t_string env[], t_export **export_list)
 
 /**
  * 📋 Description: adds a variable to the export list and sorts it.
- * 
+ *
  * @param exp_list: the list of all export variables.
  * @param var: the variable to add.
  *
@@ -91,7 +94,9 @@ void	add_node_exp(t_export **exp_list, const t_string var)
 	if (!exp_list || !var)
 		return ;
 	new_node = mem_manager(sizeof(t_export), 0, 0, ALLOCATE);
-	new_node->var = ft_strdup(var);
+	new_node->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
+				- ft_strlen(ft_strchr(var, '=')) + 1),
+			ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1), "\""));
 	new_node->next = NULL;
 	if (!*exp_list)
 		*exp_list = new_node;

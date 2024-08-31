@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/30 17:12:40 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:08:18 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // 🌟 General Function Prototypes ------------------------------------------ 🌟 */
 
-char		*get_prompt(void);
+char		*get_prompt(char *env[]);
 int			execute(t_ast *ast);
 void		signals_handler(void);
 int			return_(int code, int token);
@@ -118,7 +118,7 @@ void		*get_envv(t_string env[], const t_string var, const int action);
 void		echoo(t_string *args);
 void		pwdd(void);
 int			cd(t_string *args);
-void		exportt(t_string env[], const t_string new_var, const int action);
+void		exportt(const t_string new_var, const int action);
 void		init_export(t_string env[], t_export **exp);
 void		add_node_exp(t_export **exp_list, const t_string var);
 void		quit(int status);

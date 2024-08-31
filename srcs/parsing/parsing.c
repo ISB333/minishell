@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/30 17:38:53 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/31 15:51:00 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int	parser(t_ast **ast, char *s)
 
 	if (is_only_del(s))
 		return (0);
-	i = -1;
 	while (1)
 	{
+		i = -1;
 		tokens = lexer(s);
 		if (syntax_checker(tokens, -1))
 			return (0);

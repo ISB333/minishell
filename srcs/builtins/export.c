@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 11:42:00 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:28:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static void		unset_export(t_export **exp_list, t_string var);
  *
  * ⬅️ Return: nothing.
  */
-void	exportt(t_string env[], const t_string var, const int action)
+void	exportt(const t_string var, const int action)
 {
 	static t_export	*exp_list = NULL;
 
 	if (action == INIT)
-		init_export(env, &exp_list);
+		init_export(get_envv(NULL, NULL, GET), &exp_list);
 	else if (action == ADD && var)
 	{
 		if (!get_envv(NULL, var, ADD) && is_valid_env_var(var)

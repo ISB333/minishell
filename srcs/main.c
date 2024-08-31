@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/30 18:05:21 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:08:23 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // ! TODO : Add -Werror
 
-int	prompt(char **rl)
+int	prompt(char **rl, char *env[])
 {
 	char	*prompt;
 	char	*s;
@@ -22,7 +22,7 @@ int	prompt(char **rl)
 	s = NULL;
 	prompt = NULL;
 	add_previous_history();
-	prompt = get_prompt();
+	prompt = get_prompt(env);
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
@@ -36,6 +36,7 @@ int	prompt(char **rl)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic
 			write(2, "exit\n", 6);
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(return_(0, GET));
 	}
 	if (!ft_strlen(s))
@@ -67,7 +68,7 @@ void	init_utils(char *env[], char *cwd)
 	get_envv(env, 0, INIT);
 	get_cwdd(cwd, 0, INIT);
 	free(cwd);
-	exportt(env, 0, INIT);
+	exportt(0, INIT);
 }
 
 int	factory(char *rl)
@@ -103,7 +104,7 @@ int	main(int argc, char *argv[], char *env[])
 	while (1)
 	{
 		rl = NULL;
-		is_eof = prompt(&rl);
+		is_eof = prompt(&rl, env);
 		if (is_eof == -1)
 			break ;
 		if (!is_eof)

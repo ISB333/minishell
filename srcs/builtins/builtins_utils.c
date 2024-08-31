@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 11:04:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:40:27 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ t_bool	is_only_n(t_string arg)
  */
 int	cd_utils(t_string *args)
 {
+	t_string	oldpwd;
+	t_string	prevpwd;
+	t_string	pwd;
+
 	if (ft_strlen(args[1]) >= 256)
 		return (error("File name too long", "cd", 1));
 	if (args[1] && (!ft_strlen(args[1]) || ft_strcmp(args[1], ".") == EQUAL))
@@ -45,14 +49,16 @@ int	cd_utils(t_string *args)
 		args[1] = ft_strjoin(get_cwdd(NULL, NULL, HOME), args[1] + 1);
 	if (access(args[1], OK) && !access(args[1], X_OK))
 		return (error("Permission denied", "cd", 1));
-	exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+	oldpwd = get_cwdd(NULL, NULL, GET);
 	if (ft_strcmp(args[1], "..") == EQUAL)
 	{
-		get_cwdd(NULL, args[1], UPDATE);
-		args[1] = get_cwdd(NULL, NULL, GET);
-		if (chdir(args[1]))
+		pwd = get_cwdd(NULL, NULL, GET);
+		prevpwd = ft_substr(pwd, 0, ft_strlen(pwd) - ft_strlen(ft_strrchr(pwd,
+						'/')));
+		if (chdir(prevpwd))
 			return (error("No such file or directory", ft_strjoin("cd: ",
 						args[1]), 1));
+		get_cwdd(NULL, args[1], UPDATE);
 	}
 	else
 	{
@@ -61,7 +67,8 @@ int	cd_utils(t_string *args)
 						args[1]), 1));
 		get_cwdd(NULL, args[1], UPDATE);
 	}
-	return (exportt(0, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD), 0);
+	exportt(ft_strjoin("OLDPWD=", oldpwd), ADD);
+	return (exportt(ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD), 0);
 }
 
 /**

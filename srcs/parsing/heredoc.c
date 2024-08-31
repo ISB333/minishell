@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/30 18:21:05 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/08/31 15:25:09 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	get_dollar_hd(t_heredoc *hd, int j, int k)
 		{
 			k = is_dollar(hd->s, 0);
 			j = k;
-			if (!hd->s[j + 1] || is_del(hd->s[j + 1]))
+			if (!hd->s[j + 1] || is_del(hd->s[j + 1]) || hd->s[j + 1] == '/')
 				return ;
-			while (hd->s[j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
-				j++;
+			while (hd->s[++j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
+				;
 			env_var = ft_substr(hd->s, k + 1, j - k - 1);
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
 				new_str = ft_itoa(return_(0, GET));

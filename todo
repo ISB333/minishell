@@ -1,16 +1,20 @@
 - [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)
 
-- if quotes inside an ENV VAR, I delete them
-
--> special cmd to delete history.txt etc.. at End Of Program?
-
 - adesille@k1r2p10:~/Desktop/minishell/minishell$ unset LOGNAME
-- @k1r2p10:~/home/adesille/Desktop/minishell/minishell$ ls
+- @k1r2p10:~/home/adesille/Desktop/minishell/minishell$ 
+-> If no LOGNAME no '@'
+-> If no LOGNAME & no SESSION_MANAGER/NAME = no '@' && no :
+
+
+- adesille@k1r2p10:~/Desktop/minishell/minishell$ <<d
+- > 
+- bash: warning: here-document at line 1 delimited by end-of-file (wanted `d')
+-> ctrl+D in here doc
 
 
 ------------------------------------------
 mpanic:
 - export OK
-- exit OK except => exit -18446744073709551617
+- exit OK
 - cd OK
 - else mostly OK 

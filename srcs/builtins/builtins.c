@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 07:41:47 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/28 11:35:39 by adesille         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:29:20 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	cd(t_string *args)
 	{
 		if (chdir(get_cwdd(NULL, NULL, HOME)))
 			return (-1);
-		exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		exportt(ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
 		get_cwdd(NULL, args[1], UPDATE);
-		exportt(NULL, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
+		exportt(ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD);
 	}
 	else
 		return (cd_utils(args));
@@ -113,10 +113,10 @@ void	call_builtins(t_ast *cmd_node, const int builtin_command)
 	else if (builtin_command == EXPORT)
 	{
 		if (!cmd_node->cmd[1])
-			exportt(NULL, NULL, PRINT);
+			exportt(NULL, PRINT);
 		else
 			while (*cmd_node->cmd)
-				exportt(NULL, *++cmd_node->cmd, ADD);
+				exportt(*++cmd_node->cmd, ADD);
 	}
 	else if (builtin_command == ENV)
 		get_envv(NULL, NULL, PRINT);
@@ -124,7 +124,7 @@ void	call_builtins(t_ast *cmd_node, const int builtin_command)
 		exitt(cmd_node->cmd);
 	while (builtin_command == UNSET && *cmd_node->cmd)
 	{
-		exportt(NULL, *++cmd_node->cmd, UNSET);
+		exportt(*++cmd_node->cmd, UNSET);
 		get_envv(NULL, *cmd_node->cmd, UNSET);
 	}
 }

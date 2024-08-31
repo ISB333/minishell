@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/23 09:00:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/08/31 16:13:49 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 			ft_strlen(data->curr_dir));
 	if (data->root_dir)
 	{
+		printf("%s\n%s\n", data->curr_dir, data->root_dir);
 		start = ft_strlen(data->curr_dir) - ft_strlen(data->root_dir)
 			+ ft_strlen(data->name);
 		len = ft_strlen(data->root_dir) - ft_strlen(data->name);
@@ -100,11 +101,13 @@ int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 	return (0);
 }
 
-char	*get_prompt(void)
+char	*get_prompt(char *env[])
 {
 	t_prompt	*data;
 	char		*prompt;
 
+	if (!*env)
+		return (ft_strjoin(get_cwdd(0, 0, GET), "$ "));
 	data = mem_manager(sizeof(t_prompt), 0, 0, ALLOCATE);
 	if (!data)
 		return (NULL);
