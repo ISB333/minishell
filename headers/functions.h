@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/31 16:08:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/01 11:34:55 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
 
 t_bool		is_in_execution(const t_action action);
-t_bool		is_in_heredoc(const t_action action);
+int			is_in_heredoc(const t_action action);
 
 void		set_signals(void);
 

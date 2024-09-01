@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handling.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:15:10 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/30 18:28:48 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/01 11:49:03 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void	handle_sigint(const int sig)
 	{
 		is_in_heredoc(INTERRUPTION);
 		rl_done = TRUE;
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
+		// rl_replace_line("", 0);
+		// rl_on_new_line();
+		// rl_redisplay();
 		write(STDOUT_FILENO, "\n", 1);
 		return ;
 	}
@@ -72,22 +72,15 @@ t_bool	is_in_execution(const t_action action)
 	return (status);
 }
 
-t_bool	is_in_heredoc(const t_action action)
+int	is_in_heredoc(const t_action action)
 {
-	static t_bool	in = FALSE;
-	static t_bool	sig = FALSE;
-	const t_bool	status = sig;
+	static int 	in = FALSE;
 
 	if (action == ENTRANCE)
 		in = TRUE;
 	else if (action == EXITING)
-	{
 		in = FALSE;
-		sig = FALSE;
-	}
 	else if (action == INTERRUPTION)
-		sig = TRUE;
-	if (action == CHECK_STATUS)
-		return (in);
-	return (status);
+		in = INTERRUPTION;
+	return (in);
 }

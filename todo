@@ -1,9 +1,5 @@
 - [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)
-
-- adesille@k1r2p10:~/Desktop/minishell/minishell$ unset LOGNAME
-- @k1r2p10:~/home/adesille/Desktop/minishell/minishell$ 
--> If no LOGNAME no '@'
--> If no LOGNAME & no SESSION_MANAGER/NAME = no '@' && no :
+- WIFSIGNAL to manage ctrl+/ in last child
 
 
 - adesille@k1r2p10:~/Desktop/minishell/minishell$ <<d
@@ -11,6 +7,8 @@
 - bash: warning: here-document at line 1 delimited by end-of-file (wanted `d')
 -> ctrl+D in here doc
 
+
+- export +=
 
 ------------------------------------------
 mpanic:

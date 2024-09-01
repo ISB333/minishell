@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/31 15:25:09 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/01 11:48:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 	char		*s;
 	char		*del;
 	t_heredoc	*hd;
+	int			line;
 	char		*ss;
 
 	hd = NULL;
@@ -99,22 +100,31 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 	is_in_heredoc(ENTRANCE);
 	set_signals();
 	signal(SIGQUIT, SIG_IGN);
+	line = 1;
 	while (1)
 	{
 		s = readline("> ");
-		if (is_in_heredoc(CHECK_SIG))
+		if (is_in_heredoc(CHECK_SIG) == INTERRUPTION)
 			break ;
 		if (!s)
+		{
+			error(ft_strjoin(ft_strjoin("warning: here-document at line ",
+						ft_itoa(line)),
+					ft_strjoin(ft_strjoin(" delimited by end-of-file (wanted '",
+							del), "')")), 0, 0);
 			break ;
+		}
 		ss = ft_strdup(s);
 		free(s);
 		if (!ft_strcmp(ss, del))
 			break ;
 		add_node_hd(&hd, ss);
+		line++;
 	}
 	set_signals();
 	get_dollar_hd(hd, 0, 0);
 	add_to_ast(ast, hd, ++n);
+	is_in_heredoc(FALSE);
 	*i += 2;
 	return (0);
 }
