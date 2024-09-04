@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/01 11:34:55 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:03:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,6 @@ void		display_errors(t_ast *cmd);
 t_bool		is_in_execution(const t_action action);
 int			is_in_heredoc(const t_action action);
 
-void		set_signals(void);
+void		set_signals(int use_restart);
 
 #endif

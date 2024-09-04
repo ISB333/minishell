@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/31 16:08:23 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:09:37 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,14 @@ int	prompt(char **rl, char *env[])
 
 	s = NULL;
 	prompt = NULL;
+	set_signals(TRUE);
 	add_previous_history();
 	prompt = get_prompt(env);
 	if (!prompt)
 		return (printf("prompt error\n"), 1);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	// s = readline(full_prompt);
-	is_in_execution(RESET);
-	signal(SIGQUIT, SIG_IGN);
 	s = readline(prompt);
-	is_in_execution(SET);
-	set_signals();
 	if (!s)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic
@@ -100,7 +97,6 @@ int	main(int argc, char *argv[], char *env[])
 	(void)argc,
 	(void)argv,
 	init_utils(env, getcwd(NULL, 0));
-	set_signals();
 	while (1)
 	{
 		rl = NULL;

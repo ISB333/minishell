@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:10:45 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/01 11:06:38 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/01 18:17:06 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,14 @@ char	*get_prompt(char *env[])
 	data = mem_manager(sizeof(t_prompt), 0, 0, ALLOCATE);
 	if (!position)
 	{
-		position = ft_strchr(get_envv(0, "SESSION_MANAGER", FIND), '/') + 1;
-		position = ft_substr(position, 0, ft_strlen(position) - ft_strlen(ft_strchr(position, '.')));
+		position = get_envv(0, "SESSION_MANAGER", FIND);
+		if (position)
+		{
+			position = ft_strchr(position, '/') + 1;
+			position = ft_substr(position, 0, ft_strlen(position) - ft_strlen(ft_strchr(position, '.')));
+		}
+		else
+			position = ft_strdup("\0");
 	}
 	data->curr_dir = NULL;
 	data->root_dir = NULL;

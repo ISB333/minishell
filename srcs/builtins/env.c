@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/26 18:00:20 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/01 20:44:10 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	is_valid_env_var(t_string var)
 	{
 		while (*var && (ft_isalnum(*var) || *var == '_'))
 			++var;
-		if (!*var || *var == '=')
+		if (!*var || *var == '=' || (*var == '+' && *(var + 1) == '='))
 			return (TRUE);
 	}
 	return (FALSE);

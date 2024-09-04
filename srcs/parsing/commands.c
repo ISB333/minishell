@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 12:52:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:49:40 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ int	cmd_path_init(t_ast **ast, int i)
 		if (!access(test_path, R_OK))
 		{
 			(*ast)->cmd_path = test_path;
-			return (return_(0, ADD), 0);
+			if (is_in_heredoc(CHECK_STATUS) != INTERRUPTION)
+				return(printf("bitch"),return_(0, ADD), 0);
+			return (0);
 		}
 	}
 	return (check_if_directory(ast));

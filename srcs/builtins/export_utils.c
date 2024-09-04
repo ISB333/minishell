@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:07:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/31 14:38:52 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/01 20:49:21y isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@
  */
 void	modify_exp_var(t_export *export_list, const t_string var)
 {
-	t_string		exp_var;
-	const t_string	var_to_modif = ft_substr(var, 0, ft_strchr(var, '=') - var);
+	t_string	exp_var;
+	t_string	var_to_modif;
 
+	if (ft_strchr(var, '+'))
+		var_to_modif = ft_substr(var, 0, ft_strchr(var, '+') - var);
+	else
+		var_to_modif = ft_substr(var, 0, ft_strchr(var, '=') - var);
 	if (!var_to_modif || !ft_strchr(var, '='))
 		return ;
 	while (export_list)
@@ -35,10 +39,21 @@ void	modify_exp_var(t_export *export_list, const t_string var)
 		else
 			exp_var = ft_strdup(export_list->var);
 		if (ft_strcmp(exp_var, var_to_modif) == EQUAL)
-			export_list->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
-						- ft_strlen(ft_strchr(var, '=')) + 1),
-					ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1),
-							"\""));
+		{
+			if (ft_strchr(var, '+'))
+				export_list->var = ft_strjoin(ft_strjoin(ft_strjoin(var_to_modif,
+								ft_substr(export_list->var,
+									ft_strlen(export_list->var)
+									- ft_strlen(ft_strchr(export_list->var,
+											'=')),
+									ft_strlen(ft_strchr(export_list->var, '=')
+										+ 1))), ft_strchr(var, '=') + 1), "\"");
+			else
+				export_list->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
+							- ft_strlen(ft_strchr(var, '=')) + 1),
+						ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1),
+								"\""));
+		}
 		export_list = export_list->next;
 	}
 }

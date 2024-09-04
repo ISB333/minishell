@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handling.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:15:10 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/01 11:49:03 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:13:18 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 static void	handle_sigquit(const int sig);
 static void	handle_sigint(const int sig);
 
-void	set_signals(void)
+void	set_signals(int use_restart)
 {
 	struct sigaction	sa_sigint;
 	struct sigaction	sa_sigquit;
 
 	sa_sigint.sa_handler = &handle_sigint;
-	sa_sigint.sa_flags = SA_RESTART;
+	if (use_restart)
+		sa_sigint.sa_flags = SA_RESTART;
+	else
+		sa_sigint.sa_flags = 0;
 	sigemptyset(&sa_sigint.sa_mask);
 	if (sigaction(SIGINT, &sa_sigint, NULL))
 		perror("sigaction");
@@ -40,23 +43,20 @@ static void	handle_sigquit(const int sig)
 
 static void	handle_sigint(const int sig)
 {
-	write(STDOUT_FILENO, "\n", 1);
+	printf("YEAH 1\n");
 	if (is_in_heredoc(CHECK_STATUS))
 	{
-		is_in_heredoc(INTERRUPTION);
-		rl_done = TRUE;
-		// rl_replace_line("", 0);
-		// rl_on_new_line();
-		// rl_redisplay();
-		write(STDOUT_FILENO, "\n", 1);
-		return ;
+		printf("YEAH 2\n");
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
+		exit(128+sig);
 	}
-	if (sig && !is_in_execution(CHECK))
-	{
+	// else
+	// {
+		write(STDOUT_FILENO, "\n", 1);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-	}
+	// }
 	return_(128 + sig, ADD);
 }
 

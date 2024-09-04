@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/01 11:48:22 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:22:54 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,45 +86,139 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 {
-	char		*s;
+	char		*line;
+	int			pipefd[2];
+	pid_t		pid;
 	char		*del;
 	t_heredoc	*hd;
-	int			line;
-	char		*ss;
+	int			status;
+	char		*buffer;
 
 	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
-		del = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	is_in_heredoc(ENTRANCE);
-	set_signals();
+		del = ft_strdup(tokens[*i + 1]);
 	signal(SIGQUIT, SIG_IGN);
-	line = 1;
-	while (1)
+	signal(SIGINT, SIG_IGN);
+	is_in_heredoc(ENTRANCE);
+	if (pipe(pipefd) == -1)
 	{
-		s = readline("> ");
-		if (is_in_heredoc(CHECK_SIG) == INTERRUPTION)
-			break ;
-		if (!s)
-		{
-			error(ft_strjoin(ft_strjoin("warning: here-document at line ",
-						ft_itoa(line)),
-					ft_strjoin(ft_strjoin(" delimited by end-of-file (wanted '",
-							del), "')")), 0, 0);
-			break ;
-		}
-		ss = ft_strdup(s);
-		free(s);
-		if (!ft_strcmp(ss, del))
-			break ;
-		add_node_hd(&hd, ss);
-		line++;
+		perror("pipe");
+		return (0);
 	}
-	set_signals();
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("fork");
+		return (0);
+	}
+	else if (pid == 0)
+	{
+		set_signals(1);
+		// is_in_heredoc(ENTRANCE);
+		close(pipefd[0]);
+		mem_manager(0, 0, pipefd[1], SAVE_FD);
+		while (1)
+		{
+			line = readline("> ");
+			if (!line)
+			{
+				printf("Warning: here-document at line 1 delimited by end-of-file (wanted `%s`)\n",
+					del);
+				mem_manager(0, 0, 0, CLEAR_MEMORY);
+				exit(0);
+			}
+			if (strcmp(line, del) == 0)
+			{
+				// printf("aaaaaaaaaaa\n");
+				free(line);
+				mem_manager(0, 0, 0, CLEAR_MEMORY);
+				printf("shiiiiiit\n");
+				exit(0);
+			}
+			write(pipefd[1], line, strlen(line));
+			write(pipefd[1], "\n", 1);
+			free(line);
+		}
+		close(pipefd[1]);
+		// printf("yeah\n");
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
+		printf("shit\n");
+		exit(0);
+	}
+	is_in_heredoc(FALSE);
+	close(pipefd[1]);
+	waitpid(pid, &status, 0);
+	if (WEXITSTATUS(status) == 130)
+	{
+		printf("\n");
+		printf("lol\n");
+		is_in_heredoc(INTERRUPTION);
+		close(pipefd[0]);
+		return_(130, ADD);
+		// return(return_(130, ADD), 0);
+	}
+	else
+	{
+		buffer = gnhell(pipefd[0]);
+		while (buffer)
+		{
+			buffer[ft_strlen(buffer) - 1] = '\0';
+			add_node_hd(&hd, buffer);
+			buffer = gnhell(pipefd[0]);
+		}
+		return_(0, ADD);
+	}
+	close(pipefd[0]);
+	*i += 2;
+	// set_signals(TRUE);
 	get_dollar_hd(hd, 0, 0);
 	add_to_ast(ast, hd, ++n);
-	is_in_heredoc(FALSE);
-	*i += 2;
+	signal(SIGINT, SIG_DFL);
 	return (0);
 }
+
+// int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
+// {
+// 	char *s;
+// 	char *del;
+// 	t_heredoc *hd;
+// 	int line;
+
+// 	hd = NULL;
+// 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
+// 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
+// 	else
+// 		del = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
+// 	is_in_heredoc(ENTRANCE);
+// 	set_signals(FALSE);
+// 	signal(SIGQUIT, SIG_IGN);
+// 	while (1)
+// 	{
+// 		s = readline("> ");
+// 		if (is_in_heredoc(CHECK_SIG) == INTERRUPTION)
+// 		{
+// 			(*ast)->error_code = return_(0, GET);
+// 			break ;
+// 		}
+// 		if (!s)
+// 		{
+// 			error(ft_strjoin(ft_strjoin("warning: here-document at line ",
+// 						ft_itoa(line)),
+// 					ft_strjoin(ft_strjoin(" delimited by end-of-file (wanted '",
+// 							del), "')")), 0, 0);
+// 			break ;
+// 		}
+// 		if (!ft_strcmp(s, del))
+// 			break ;
+// 		add_node_hd(&hd, s);
+// 		line++;
+// 	}
+// 	*i += 2;
+// 	set_signals(TRUE);
+// 	is_in_heredoc(EXITING);
+// 	get_dollar_hd(hd, 0, 0);
+// 	add_to_ast(ast, hd, ++n);
+// 	return (0);
+// }
