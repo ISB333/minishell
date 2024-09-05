@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 16:51:53 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:33:41 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 		else if (is_heredoc(tokens[i], 0, 0))
 		{
 			if (parse_heredoc(ast, tokens, &i, n))
-				return (-1);
+				return (INTERRUPTION);
 		}
 		else
 			i++;

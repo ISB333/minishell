@@ -1,17 +1,3 @@
-- [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)
-- WIFSIGNAL to manage ctrl+/ in last child
+- Signals in Open Pipe
 
-
-- adesille@k1r2p10:~/Desktop/minishell/minishell$ <<d
-- > 
-- bash: warning: here-document at line 1 delimited by end-of-file (wanted `d')
--> ctrl+D in here doc
-===> USE GNL
-
-
-------------------------------------------
-mpanic:
-- export OK
-- exit OK
-- cd OK
-- else mostly OK 
+- Modif printf to print to stderr

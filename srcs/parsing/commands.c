@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/04 14:49:40 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/05 13:35:47 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	cmd_path_init(t_ast **ast, int i)
 		{
 			(*ast)->cmd_path = test_path;
 			if (is_in_heredoc(CHECK_STATUS) != INTERRUPTION)
-				return(printf("bitch"),return_(0, ADD), 0);
+				return(return_(0, ADD), 0);
 			return (0);
 		}
 	}

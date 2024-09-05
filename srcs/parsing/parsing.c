@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:03:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/04 14:48:19 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/05 13:34:56 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ int	add_node(t_ast **ast, char **tokens)
 		last_node = return_tail(*ast);
 		last_node->next = new_node;
 	}
-	lst_parse(&new_node, tokens, 0, n);
-	// if (is_in_heredoc(CHECK_SIG) == INTERRUPTION)
-	// 	return (0);
+	if (lst_parse(&new_node, tokens, 0, n))
+		return (0);
 	cmd_path_init(&new_node, -1);
 	return (0);
 }
@@ -107,7 +106,10 @@ int	parser(t_ast **ast, char *s)
 			if (add_node(ast, array[i]))
 				return (-1);
 		if (is_open_pipe_in_arr(tokens))
-			s = open_pipe_manager();
+		{
+			if (!open_pipe_manager(&s))
+				return (*ast = NULL, 0);
+		}
 		else
 			break ;
 	}

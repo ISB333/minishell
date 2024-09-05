@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/02 11:09:37 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/04 16:46:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	prompt(char **rl, char *env[])
 
 	s = NULL;
 	prompt = NULL;
+	is_in_heredoc(FALSE);
 	set_signals(TRUE);
 	add_previous_history();
 	prompt = get_prompt(env);

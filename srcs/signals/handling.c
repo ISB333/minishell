@@ -6,7 +6,7 @@
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:15:10 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/04 16:13:18 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/05 13:28:15 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,20 @@ static void	handle_sigquit(const int sig)
 
 static void	handle_sigint(const int sig)
 {
-	printf("YEAH 1\n");
-	if (is_in_heredoc(CHECK_STATUS))
+	if (is_in_heredoc(CHECK_STATUS) || is_in_open_pipe(CHECK_STATUS))
 	{
-		printf("YEAH 2\n");
 		mem_manager(0, 0, 0, CLEAR_MEMORY);
-		exit(128+sig);
+		is_in_heredoc(FALSE);
+		is_in_open_pipe(FALSE);
+		exit(128 + sig);
 	}
-	// else
-	// {
+	else
+	{
 		write(STDOUT_FILENO, "\n", 1);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-	// }
+	}
 	return_(128 + sig, ADD);
 }
 
@@ -74,7 +74,7 @@ t_bool	is_in_execution(const t_action action)
 
 int	is_in_heredoc(const t_action action)
 {
-	static int 	in = FALSE;
+	static int	in = FALSE;
 
 	if (action == ENTRANCE)
 		in = TRUE;
@@ -83,4 +83,23 @@ int	is_in_heredoc(const t_action action)
 	else if (action == INTERRUPTION)
 		in = INTERRUPTION;
 	return (in);
+}
+
+int	is_in_open_pipe(const t_action action)
+{
+	static int	in = FALSE;
+
+	if (action == ENTRANCE)
+		in = TRUE;
+	else if (action == EXITING)
+		in = FALSE;
+	else if (action == INTERRUPTION)
+		in = INTERRUPTION;
+	return (in);
+}
+
+void	ignore_signals(void)
+{
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
 }

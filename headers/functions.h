@@ -19,7 +19,6 @@
 
 char		*get_prompt(char *env[]);
 int			execute(t_ast *ast);
-void		signals_handler(void);
 int			return_(int code, int token);
 
 // 📜 History Module ------------------------------------------------------- 📜 */
@@ -56,7 +55,7 @@ int			is_tilde_in_arr(char **arr, int i);
 int			is_pipe_in_arr(char **array);
 int			is_redir_in_arr(char **array);
 int			is_open_pipe_in_arr(char **array);
-int			is_only_dollar(char *s);
+// int			is_only_dollar(char *s);
 int			is_builtin(t_ast *ast);
 int			is_only_del(char *s);
 int			is_there_quotes_in_da_shit(char *s);
@@ -70,7 +69,7 @@ int			split_utils_char(t_split *i, char *s, char **array);
 int			split_utils_quotes(t_split *i, char *s, char **array);
 int			open_quotes(char *s);
 int			array_len(char **tokens);
-char		*open_pipe_manager(void);
+int			open_pipe_manager(char **s);
 char		*join_new_str(char *str, char *new_str, int len, int i);
 
 void		init_lst(t_ast **ast);
@@ -140,5 +139,10 @@ t_bool		is_in_execution(const t_action action);
 int			is_in_heredoc(const t_action action);
 
 void		set_signals(int use_restart);
+
+
+/* FUNCTIONS */
+int	is_in_open_pipe(const t_action action);
+void	ignore_signals(void);
 
 #endif
