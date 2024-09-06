@@ -95,8 +95,6 @@ int	cmd_path_init(t_ast **ast, int i)
 		if (!access(test_path, R_OK))
 		{
 			(*ast)->cmd_path = test_path;
-			if (is_in_heredoc(CHECK_STATUS) != INTERRUPTION)
-				return(return_(0, ADD), 0);
 			return (0);
 		}
 	}

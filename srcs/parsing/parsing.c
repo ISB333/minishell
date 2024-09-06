@@ -84,34 +84,31 @@ int	syntax_checker(char **tokens, int i)
 	return (0);
 }
 
-int	parser(t_ast **ast, char *s)
+void	parser(t_ast **ast, char *s, int i)
 {
 	char	**tokens;
 	char	***array;
-	int		i;
 
 	if (is_only_del(s))
-		return (0);
+		return ;
 	while (1)
 	{
 		i = -1;
 		tokens = lexer(s);
 		if (syntax_checker(tokens, -1))
-			return (0);
+			return ;
 		if (is_pipe_in_arr(tokens))
 			array = split_array(array, tokens, 0, 0);
 		else
 			lexer_utils(&array, tokens);
 		while (array[++i])
-			if (add_node(ast, array[i]))
-				return (-1);
+			add_node(ast, array[i]);
 		if (is_open_pipe_in_arr(tokens))
 		{
 			if (!open_pipe_manager(&s))
-				return (*ast = NULL, 0);
+				return (*ast = NULL, (void)0);
 		}
 		else
 			break ;
 	}
-	return (0);
 }

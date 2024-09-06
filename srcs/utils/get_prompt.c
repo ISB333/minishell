@@ -34,8 +34,8 @@ char	*join_prompt(char *logname, char *position, char *curr_dir)
 
 	i = -1;
 	k = -1;
-	full_size = ft_strlen(logname) + ft_strlen(position)
-		+ ft_strlen(curr_dir) + 5;
+	full_size = ft_strlen(logname) + ft_strlen(position) + ft_strlen(curr_dir)
+		+ 5;
 	prompt = mem_manager(full_size, 0, 0, ALLOCATE);
 	if (!prompt)
 		return (NULL);
@@ -70,8 +70,6 @@ int	init_prompt_data(t_prompt *data, int start, int len, char *dir)
 			+ ft_strlen(data->name);
 		len = ft_strlen(data->root_dir) - ft_strlen(data->name);
 		data->root_dir = ft_substr(data->curr_dir, start, len);
-		if (!data->root_dir)
-			return (1);
 		data->curr_dir = ft_strjoin("~", data->root_dir);
 	}
 	return (0);
@@ -81,7 +79,7 @@ char	*get_prompt(char *env[])
 {
 	t_prompt	*data;
 	char		*prompt;
-	static char *position = NULL;
+	static char	*position = NULL;
 
 	if (!*env)
 		return (ft_strjoin(get_cwdd(0, 0, GET), "$ "));
@@ -92,7 +90,8 @@ char	*get_prompt(char *env[])
 		if (position)
 		{
 			position = ft_strchr(position, '/') + 1;
-			position = ft_substr(position, 0, ft_strlen(position) - ft_strlen(ft_strchr(position, '.')));
+			position = ft_substr(position, 0, ft_strlen(position)
+					- ft_strlen(ft_strchr(position, '.')));
 		}
 		else
 			position = ft_strdup("\0");
@@ -100,10 +99,7 @@ char	*get_prompt(char *env[])
 	data->curr_dir = NULL;
 	data->root_dir = NULL;
 	data->pos = position;
-	if (init_prompt_data(data, 0, 0, get_cwdd(0, 0, GET)))
-		return (NULL);
+	init_prompt_data(data, 0, 0, get_cwdd(0, 0, GET));
 	prompt = join_prompt(data->name, data->pos, data->curr_dir);
-	if (!prompt)
-		return (NULL);
 	return (prompt);
 }

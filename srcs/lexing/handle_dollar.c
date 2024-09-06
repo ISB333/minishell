@@ -89,8 +89,8 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 			k = -1;
 			while (arr[i][++k])
 			{
-				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1]) || !arr[i][k
-							+ 1] || arr[i][k + 1] == '/')))
+				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1])
+					|| !arr[i][k + 1] || arr[i][k + 1] == '/')))
 					k++;
 				if (arr[i][k] == '$')
 					if (is_dollar_in_double_quotes(arr[i], k, k))

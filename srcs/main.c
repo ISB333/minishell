@@ -25,8 +25,6 @@ int	prompt(char **rl, char *env[])
 	set_signals(TRUE);
 	add_previous_history();
 	prompt = get_prompt(env);
-	if (!prompt)
-		return (printf("prompt error\n"), 1);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	// s = readline(full_prompt);
 	s = readline(prompt);
@@ -71,7 +69,6 @@ void	init_utils(char *env[], char *cwd)
 
 int	factory(char *rl)
 {
-	int		parsing;
 	int		stdin_origin;
 	int		stdout_origin;
 	t_ast	*ast;
@@ -79,11 +76,11 @@ int	factory(char *rl)
 	ast = NULL;
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
-	parsing = parser(&ast, rl);
-	if (parsing == -1)
-		return (0);
-	else if (parsing)
-		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
+	parser(&ast, rl, -1);
+	// if (parsing == -1)
+	// 	return (0);
+	// else if (parsing)
+	// 	return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
 	if (!execute(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);

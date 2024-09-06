@@ -56,7 +56,8 @@ LEXING = $(L_DIR)/lexer.c \
 	
 PARSING = $(P_DIR)/parsing.c $(P_DIR)/commands.c \
 	$(P_DIR)/redirection.c $(P_DIR)/heredoc.c \
-	$(P_DIR)/open_pipe.c $(P_DIR)/parse_utils.c
+	$(P_DIR)/heredoc_fork.c $(P_DIR)/open_pipe.c \
+	$(P_DIR)/parse_utils.c
 
 EXECUTION = ./srcs/execution/execution.c ./srcs/execution/wait_and_print.c
 
@@ -72,7 +73,7 @@ UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/is_numeric.c $(U_DIR)/is_whitespace.c \
 	$(U_DIR)/is_safe_operation.c $(U_DIR)/fd.c
 
-SIG	= srcs/signals/handling.c
+SIG	= srcs/signals/handling.c ./srcs/signals/signals_utils.c
 
 OFLAGS += -Wall -Wextra -g3 -I./headers -I/usr/include/readline
 OBJ_DIR = .obj

@@ -76,20 +76,27 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 	return (0);
 }
 
+int	select_redir(t_ast **ast, char **tokens, int *i, int redir)
+{
+	if (redir == 1)
+	{
+		if (parse_redir_utils1(ast, tokens, i))
+			return (1);
+	}
+	else if (redir == 2)
+	{
+		if (parse_redir_utils2(ast, tokens, i))
+			return (1);
+	}
+	return (0);
+}
+
 int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 {
 	while (tokens[i])
 	{
-		if (is_redir(tokens[i], 0, 0) == 1)
-		{
-			if (parse_redir_utils1(ast, tokens, &i))
-				return (1);
-		}
-		else if (is_redir(tokens[i], 0, 0) == 2)
-		{
-			if (parse_redir_utils2(ast, tokens, &i))
-				return (1);
-		}
+		if (is_redir(tokens[i], 0, 0))
+			select_redir(ast, tokens, &i, is_redir(tokens[i], 0, 0));
 		else if (is_append(tokens[i], 0, 0))
 		{
 			if (parse_append(ast, tokens, &i))

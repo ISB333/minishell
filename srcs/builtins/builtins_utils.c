@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/31 15:40:27 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:43:04 by isb3             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ t_bool	is_only_n(t_string arg)
 	return (!*arg);
 }
 
+void	cd_get_back(t_string *args)
+{
+	t_string	prev;
+	t_string	cwd;
+
+	cwd = get_cwdd(NULL, NULL, GET);
+	prev = ft_substr(cwd, 0, ft_strlen(cwd) - ft_strlen(ft_strrchr(cwd, '/')));
+	if (chdir(prev))
+		return ((void)error("No such file or directory", ft_strjoin("cd: ",
+					args[1]), 1));
+	get_cwdd(NULL, args[1], UPDATE);
+}
+
 /**
  * 📋 Description: handles the cd command's action after initial checks.
  *
@@ -38,8 +51,6 @@ t_bool	is_only_n(t_string arg)
 int	cd_utils(t_string *args)
 {
 	t_string	oldpwd;
-	t_string	prevpwd;
-	t_string	pwd;
 
 	if (ft_strlen(args[1]) >= 256)
 		return (error("File name too long", "cd", 1));
@@ -51,15 +62,7 @@ int	cd_utils(t_string *args)
 		return (error("Permission denied", "cd", 1));
 	oldpwd = get_cwdd(NULL, NULL, GET);
 	if (ft_strcmp(args[1], "..") == EQUAL)
-	{
-		pwd = get_cwdd(NULL, NULL, GET);
-		prevpwd = ft_substr(pwd, 0, ft_strlen(pwd) - ft_strlen(ft_strrchr(pwd,
-						'/')));
-		if (chdir(prevpwd))
-			return (error("No such file or directory", ft_strjoin("cd: ",
-						args[1]), 1));
-		get_cwdd(NULL, args[1], UPDATE);
-	}
+		cd_get_back(args);
 	else
 	{
 		if (chdir(args[1]))

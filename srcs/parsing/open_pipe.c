@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   open_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:38:55 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/05 15:37:30 by isb3             ###   ########.fr       */
+/*   Created: 2024/09/06 14:16:50 by isb3              #+#    #+#             */
+/*   Updated: 2024/09/06 14:16:53 by isb3             ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -31,10 +31,10 @@ void	add_node_op(t_pipe **op, char *s)
 	}
 }
 
-void join_op(t_pipe *op, char **s)
+void	join_op(t_pipe *op, char **s)
 {
-	int len;
-	t_pipe *tmp;
+	int		len;
+	t_pipe	*tmp;
 
 	tmp = op;
 	while (tmp)
@@ -69,14 +69,15 @@ void	open_pipe_child(int pipe_fd[2])
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), (void)exit(2));
 		}
 		write(pipe_fd[1], s, ft_strlen(s));
-		if (!is_pipe(s, 0, '?'))
+		if (!is_pipe(s, 0, '?') && ft_strlen(s))
 			return (free(s), mem_manager(0, 0, 0, CLEAR_MEMORY), (void)exit(0));
 		free(s);
 	}
-	return (close(pipe_fd[1]), mem_manager(0, 0, 0, CLEAR_MEMORY), (void)exit(0));
+	return (close(pipe_fd[1]), mem_manager(0, 0, 0, CLEAR_MEMORY),
+		(void)exit(0));
 }
 
-char *open_pipe_parent(int pipe_fd[2], pid_t pid, t_pipe *op, char **s)
+char	*open_pipe_parent(int pipe_fd[2], pid_t pid, t_pipe *op, char **s)
 {
 	int		status;
 	char	*buffer;
@@ -118,8 +119,7 @@ int	open_pipe_manager(char **s)
 		return (perror("pipe"), FAILURE);
 	else if (pid == 0)
 		open_pipe_child(pipe_fd);
-	else
-		if (!open_pipe_parent(pipe_fd, pid, op, s))
-			return (FAILURE);
+	else if (!open_pipe_parent(pipe_fd, pid, op, s))
+		return (FAILURE);
 	return (0);
 }

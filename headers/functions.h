@@ -80,8 +80,12 @@ int			check_if_directory_utils(t_ast **ast);
 
 int			parse_redir(t_ast **ast, char **tokens, int i, int n);
 int			parse_cmd(t_ast **ast, char **tokens, int *i, int j);
-int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
 int			parse_append(t_ast **ast, char **tokens, int *i);
+int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
+void		get_dollar_hd(t_heredoc *hd, int j, int k);
+void		add_node_hd(t_heredoc **hd, char *s);
+int			heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc *hd);
+void		heredoc_child(int pipe_fd[2], char *s, char *del);
 
 char		*quotes_destroyer(char *s, int i, int k, int token);
 int			strlen_minus_quotes(char *s, int token, int len, int i);
@@ -105,7 +109,7 @@ int			set_pipe(t_pipe_fd *fd);
 
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
-int			parser(t_ast **ast, char *s);
+void		parser(t_ast **ast, char *s, int i);
 
 // 🚀 Builtins ------------------------------------------------------------- 🚀 */
 
@@ -139,10 +143,8 @@ t_bool		is_in_execution(const t_action action);
 int			is_in_heredoc(const t_action action);
 
 void		set_signals(int use_restart);
-
-
-/* FUNCTIONS */
-int	is_in_open_pipe(const t_action action);
-void	ignore_signals(void);
+void		ignore_signals(void);
+int			is_in_open_pipe(const t_action action);
+int			is_in_heredoc(const t_action action);
 
 #endif
