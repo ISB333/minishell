@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 11:42:00 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/01 21:03:36 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static void		unset_export(t_export **exp_list, t_string var);
  *
  * ⬅️ Return: nothing.
  */
-void	exportt(t_string env[], const t_string var, const int action)
+void	exportt(const t_string var, const int action)
 {
 	static t_export	*exp_list = NULL;
 
 	if (action == INIT)
-		init_export(env, &exp_list);
+		init_export(get_envv(NULL, NULL, GET), &exp_list);
 	else if (action == ADD && var)
 	{
 		if (!get_envv(NULL, var, ADD) && is_valid_env_var(var)
@@ -68,7 +68,9 @@ static t_export	*check_if_exist_exp(t_export *exp, const t_string var)
 
 	if (!exp || !var)
 		return (NULL);
-	if (ft_strchr(var, '='))
+	if (ft_strchr(var, '+'))
+		var_to_check = ft_substr(var, 0, ft_strchr(var, '+') - var);
+	else if (ft_strchr(var, '='))
 		var_to_check = ft_substr(var, 0, ft_strchr(var, '=') - var);
 	else
 		var_to_check = ft_strdup(var);

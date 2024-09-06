@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:13:37 by isb3              #+#    #+#             */
-/*   Updated: 2024/07/03 09:05:18 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:01:48 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "minishell.h"
+# include "../../headers/minishell.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_and_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 14:29:29 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/29 12:49:59 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/05 13:36:07 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * 📋 Description: waits for each child process to complete its execution.
- * 
+ *
  * @param cmd: pointer to the list of commands.
  *
  * ⬅️ Return: nothing.
@@ -34,7 +34,8 @@ void	wait_for_children(t_ast *cmd)
 				exit_code = WEXITSTATUS(status);
 				if (!cmd->next)
 				{
-					if (!cmd->error_code)
+					if (!cmd->error_code
+						&& is_in_heredoc(CHECK_STATUS) != INTERRUPTION)
 						return_(exit_code, ADD);
 					else if (cmd->error_code)
 						return_(cmd->error_code, ADD);
@@ -47,7 +48,7 @@ void	wait_for_children(t_ast *cmd)
 
 /**
  * 📋 Description: prints all errors encountered during command execution.
- * 
+ *
  * @param cmd: pointer to the list of commands.
  *
  * ⬅️ Return: nothing.

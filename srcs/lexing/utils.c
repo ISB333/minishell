@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:13:17 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 12:59:28 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:39:01 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	open_quotes(char *s)
 
 int	is_dollar_del(char c)
 {
-	if (c == '$' || c == '/' || c == '|' || c == 34 || c == 39)
+	if (c == '$' || c == '/' || c == '|' || c == 34 || c == 39 || c == '=')
 		return (1);
 	return (0);
 }
@@ -50,20 +50,4 @@ int	array_len(char **tokens)
 	while (tokens && tokens[i])
 		i++;
 	return (i);
-}
-
-char	*open_pipe_manager(void)
-{
-	char	*s;
-	char	*str;
-
-	while (1)
-	{
-		s = readline("> ");
-		str = ft_strdup(s);
-		free(s);
-		if (str)
-			return (str);
-	}
-	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:58:14 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/21 17:35:30 by aheitz           ###   ########.fr       */
+/*   Created: 2024/09/06 14:24:24 by isb3              #+#    #+#             */
+/*   Updated: 2024/09/06 14:24:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ typedef struct s_heredoc
 	struct s_heredoc		*next;
 	t_string				s;
 }							t_heredoc;
+
+typedef struct s_pipe
+{
+	struct s_pipe			*next;
+	t_string				s;
+}							t_pipe;
 
 // 🏠 Home Directory ------------------------------------------------------- 🏠 */
 

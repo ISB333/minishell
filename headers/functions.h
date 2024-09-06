@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/30 17:12:40 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:03:53 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 // 🌟 General Function Prototypes ------------------------------------------ 🌟 */
 
-char		*get_prompt(void);
+char		*get_prompt(char *env[]);
 int			execute(t_ast *ast);
-void		signals_handler(void);
 int			return_(int code, int token);
 
 // 📜 History Module ------------------------------------------------------- 📜 */
@@ -56,7 +55,7 @@ int			is_tilde_in_arr(char **arr, int i);
 int			is_pipe_in_arr(char **array);
 int			is_redir_in_arr(char **array);
 int			is_open_pipe_in_arr(char **array);
-int			is_only_dollar(char *s);
+// int			is_only_dollar(char *s);
 int			is_builtin(t_ast *ast);
 int			is_only_del(char *s);
 int			is_there_quotes_in_da_shit(char *s);
@@ -70,7 +69,7 @@ int			split_utils_char(t_split *i, char *s, char **array);
 int			split_utils_quotes(t_split *i, char *s, char **array);
 int			open_quotes(char *s);
 int			array_len(char **tokens);
-char		*open_pipe_manager(void);
+int			open_pipe_manager(char **s);
 char		*join_new_str(char *str, char *new_str, int len, int i);
 
 void		init_lst(t_ast **ast);
@@ -81,8 +80,12 @@ int			check_if_directory_utils(t_ast **ast);
 
 int			parse_redir(t_ast **ast, char **tokens, int i, int n);
 int			parse_cmd(t_ast **ast, char **tokens, int *i, int j);
-int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
 int			parse_append(t_ast **ast, char **tokens, int *i);
+int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
+void		get_dollar_hd(t_heredoc *hd, int j, int k);
+void		add_node_hd(t_heredoc **hd, char *s);
+int			heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc *hd);
+void		heredoc_child(int pipe_fd[2], char *s, char *del);
 
 char		*quotes_destroyer(char *s, int i, int k, int token);
 int			strlen_minus_quotes(char *s, int token, int len, int i);
@@ -106,7 +109,7 @@ int			set_pipe(t_pipe_fd *fd);
 
 // ⚙️ Parsing Module ----------------------------------------------------- ⚙️ */
 
-int			parser(t_ast **ast, char *s);
+void		parser(t_ast **ast, char *s, int i);
 
 // 🚀 Builtins ------------------------------------------------------------- 🚀 */
 
@@ -118,7 +121,7 @@ void		*get_envv(t_string env[], const t_string var, const int action);
 void		echoo(t_string *args);
 void		pwdd(void);
 int			cd(t_string *args);
-void		exportt(t_string env[], const t_string new_var, const int action);
+void		exportt(const t_string new_var, const int action);
 void		init_export(t_string env[], t_export **exp);
 void		add_node_exp(t_export **exp_list, const t_string var);
 void		quit(int status);
@@ -137,8 +140,11 @@ void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
 
 t_bool		is_in_execution(const t_action action);
-t_bool		is_in_heredoc(const t_action action);
+int			is_in_heredoc(const t_action action);
 
-void		set_signals(void);
+void		set_signals(int use_restart);
+void		ignore_signals(void);
+int			is_in_open_pipe(const t_action action);
+int			is_in_heredoc(const t_action action);
 
 #endif

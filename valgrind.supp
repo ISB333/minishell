@@ -1,8 +1,6 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    ...
    obj:/usr/bin/ls
    fun:(below main)
@@ -10,49 +8,6 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   ...
-   obj:/usr/bin/ls
-   fun:(below main)
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   ...
-   fun:readline
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   ...
-   fun:add_history
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
-   ...
-   fun:readline
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   ...
-   fun:readline
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    ...
    obj:/usr/bin/cat
    fun:(below main)
@@ -60,40 +15,19 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:realloc
    ...
    fun:add_history
 }
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   ...
-   fun:add_history
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
    ...
    fun:readline
 }
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
    ...
-   fun:readline
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   ...
-   fun:readline
+   obj:/usr/bin/grep
+   fun:(below main)
 }

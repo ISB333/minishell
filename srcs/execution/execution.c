@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/29 13:53:45 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:41:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	execute_parent_process(t_ast *ast);
 
 /**
  * 📋 Description: main function responsible for executing commands in pipeline.
- * 
+ *
  * @param ast: the abstract syntax tree (AST) representing the list of commands.
  *
  * ⬅️ Return: int, SUCCESS if the execution is successful, otherwise FAILURE.
@@ -50,7 +50,7 @@ int	execute(t_ast *ast)
 
 /**
  * 📋 Description: forks a new process and executes the command.
- * 
+ *
  * @param ast: the abstract syntax tree (AST) node representing the command.
  *
  * ⬅️ Return: int, SUCCESS if the command is successfully, otherwise FAILURE.
@@ -86,7 +86,7 @@ static int	fork_and_execute(t_ast *ast)
 
 /**
  * 📋 Description: sets up and executes the command in the child process.
- * 
+ *
  * @param ast: the abstract syntax tree (AST) node representing the command.
  *
  * ⬅️ Return: int, SUCCESS if process is set up and executed, otherwise FAILURE.
@@ -121,15 +121,15 @@ static int	execute_child_process(t_ast *ast)
 
 /**
  * 📋 Description: manages parent process to handle pipes and wait for children.
- * 
+ *
  * @param ast: the abstract syntax tree (AST) node representing the command.
  *
  * ⬅️ Return: int, SUCCESS if process is managed correctly, otherwise FAILURE.
  */
 static int	execute_parent_process(t_ast *ast)
 {
-	int status;
-	int exit_code;
+	int	status;
+	int	exit_code;
 
 	if (ast->cmd && *ast->cmd && ft_strncmp(*ast->cmd, "./", 2) == EQUAL)
 	{

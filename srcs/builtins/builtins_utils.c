@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/29 11:04:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:43:04 by isb3             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ t_bool	is_only_n(t_string arg)
 	return (!*arg);
 }
 
+void	cd_get_back(t_string *args)
+{
+	t_string	prev;
+	t_string	cwd;
+
+	cwd = get_cwdd(NULL, NULL, GET);
+	prev = ft_substr(cwd, 0, ft_strlen(cwd) - ft_strlen(ft_strrchr(cwd, '/')));
+	if (chdir(prev))
+		return ((void)error("No such file or directory", ft_strjoin("cd: ",
+					args[1]), 1));
+	get_cwdd(NULL, args[1], UPDATE);
+}
+
 /**
  * 📋 Description: handles the cd command's action after initial checks.
  *
@@ -37,6 +50,8 @@ t_bool	is_only_n(t_string arg)
  */
 int	cd_utils(t_string *args)
 {
+	t_string	oldpwd;
+
 	if (ft_strlen(args[1]) >= 256)
 		return (error("File name too long", "cd", 1));
 	if (args[1] && (!ft_strlen(args[1]) || ft_strcmp(args[1], ".") == EQUAL))
@@ -45,15 +60,9 @@ int	cd_utils(t_string *args)
 		args[1] = ft_strjoin(get_cwdd(NULL, NULL, HOME), args[1] + 1);
 	if (access(args[1], OK) && !access(args[1], X_OK))
 		return (error("Permission denied", "cd", 1));
-	exportt(NULL, ft_strjoin("OLDPWD=", get_cwdd(NULL, NULL, GET)), ADD);
+	oldpwd = get_cwdd(NULL, NULL, GET);
 	if (ft_strcmp(args[1], "..") == EQUAL)
-	{
-		get_cwdd(NULL, args[1], UPDATE);
-		args[1] = get_cwdd(NULL, NULL, GET);
-		if (chdir(args[1]))
-			return (error("No such file or directory", ft_strjoin("cd: ",
-						args[1]), 1));
-	}
+		cd_get_back(args);
 	else
 	{
 		if (chdir(args[1]))
@@ -61,7 +70,8 @@ int	cd_utils(t_string *args)
 						args[1]), 1));
 		get_cwdd(NULL, args[1], UPDATE);
 	}
-	return (exportt(0, ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD), 0);
+	exportt(ft_strjoin("OLDPWD=", oldpwd), ADD);
+	return (exportt(ft_strjoin("PWD=", get_cwdd(NULL, NULL, GET)), ADD), 0);
 }
 
 /**

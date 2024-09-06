@@ -1,16 +1,3 @@
-- [ ] Correct signals (ctr+c don't return correct code and during a cmd like cat create 2 prompt, ctrl+\ not working correctly too if I remember right)
+- Modif printf to print to stderr
 
-- if quotes inside an ENV VAR, I delete them
-
--> special cmd to delete history.txt etc.. at End Of Program?
-
-- adesille@k1r2p10:~/Desktop/minishell/minishell$ unset LOGNAME
-- @k1r2p10:~/home/adesille/Desktop/minishell/minishell$ ls
-
-
-------------------------------------------
-mpanic:
-- export OK
-- exit OK except => exit -18446744073709551617
-- cd OK
-- else mostly OK 
+- manage: path/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/30 18:05:21 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/04 16:46:45 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 // ! TODO : Add -Werror
 
-int	prompt(char **rl)
+int	prompt(char **rl, char *env[])
 {
 	char	*prompt;
 	char	*s;
 
 	s = NULL;
 	prompt = NULL;
+	is_in_heredoc(FALSE);
+	set_signals(TRUE);
 	add_previous_history();
-	prompt = get_prompt();
-	if (!prompt)
-		return (printf("prompt error\n"), 1);
+	prompt = get_prompt(env);
 	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
 	// s = readline(full_prompt);
-	is_in_execution(RESET);
-	signal(SIGQUIT, SIG_IGN);
 	s = readline(prompt);
-	is_in_execution(SET);
-	set_signals();
 	if (!s)
 	{
 		if (isatty(STDIN_FILENO)) // ! to use mpanic
 			write(2, "exit\n", 6);
+		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(return_(0, GET));
 	}
 	if (!ft_strlen(s))
@@ -67,12 +64,11 @@ void	init_utils(char *env[], char *cwd)
 	get_envv(env, 0, INIT);
 	get_cwdd(cwd, 0, INIT);
 	free(cwd);
-	exportt(env, 0, INIT);
+	exportt(0, INIT);
 }
 
 int	factory(char *rl)
 {
-	int		parsing;
 	int		stdin_origin;
 	int		stdout_origin;
 	t_ast	*ast;
@@ -80,11 +76,11 @@ int	factory(char *rl)
 	ast = NULL;
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
-	parsing = parser(&ast, rl);
-	if (parsing == -1)
-		return (0);
-	else if (parsing)
-		return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
+	parser(&ast, rl, -1);
+	// if (parsing == -1)
+	// 	return (0);
+	// else if (parsing)
+	// 	return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
 	if (!execute(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
@@ -99,11 +95,10 @@ int	main(int argc, char *argv[], char *env[])
 	(void)argc,
 	(void)argv,
 	init_utils(env, getcwd(NULL, 0));
-	set_signals();
 	while (1)
 	{
 		rl = NULL;
-		is_eof = prompt(&rl);
+		is_eof = prompt(&rl, env);
 		if (is_eof == -1)
 			break ;
 		if (!is_eof)

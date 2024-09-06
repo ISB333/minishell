@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   heredoc_fork.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/30 18:21:05 by aheitz           ###   ########.fr       */
+/*   Created: 2024/09/06 13:52:25 by isb3              #+#    #+#             */
+/*   Updated: 2024/09/06 13:52:26 by isb3             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	get_dollar_hd(t_heredoc *hd, int j, int k)
 		{
 			k = is_dollar(hd->s, 0);
 			j = k;
-			if (!hd->s[j + 1] || is_del(hd->s[j + 1]))
+			if (!hd->s[j + 1] || is_del(hd->s[j + 1]) || hd->s[j + 1] == '/')
 				return ;
-			while (hd->s[j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
-				j++;
+			while (hd->s[++j] && !is_del(hd->s[j]) && !is_dollar_del(hd->s[j]))
+				;
 			env_var = ft_substr(hd->s, k + 1, j - k - 1);
 			if (!ft_strncmp(&hd->s[k], "$?", 2))
 				new_str = ft_itoa(return_(0, GET));
@@ -86,35 +86,26 @@ int	add_to_ast(t_ast **ast, t_heredoc *hd, int n)
 
 int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 {
-	char		*s;
+	int			pipe_fd[2];
+	pid_t		pid;
 	char		*del;
 	t_heredoc	*hd;
-	char		*ss;
 
 	hd = NULL;
 	if (is_there_quotes_in_da_shit(tokens[*i + 1]))
 		del = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
-		del = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	is_in_heredoc(ENTRANCE);
-	set_signals();
-	signal(SIGQUIT, SIG_IGN);
-	while (1)
-	{
-		s = readline("> ");
-		if (is_in_heredoc(CHECK_SIG))
-			break ;
-		if (!s)
-			break ;
-		ss = ft_strdup(s);
-		free(s);
-		if (!ft_strcmp(ss, del))
-			break ;
-		add_node_hd(&hd, ss);
-	}
-	set_signals();
-	get_dollar_hd(hd, 0, 0);
+		del = ft_strdup(tokens[*i + 1]);
+	ignore_signals();
+	if (pipe(pipe_fd) == -1)
+		return (perror("pipe"), 0);
+	pid = fork();
+	if (pid == -1)
+		return (perror("pipe"), 0);
+	else if (pid == 0)
+		heredoc_child(pipe_fd, NULL, del);
+	else if (heredoc_parent(pipe_fd, pid, hd))
+		return (INTERRUPTION);
 	add_to_ast(ast, hd, ++n);
-	*i += 2;
-	return (0);
+	return (*i += 2, 0);
 }
