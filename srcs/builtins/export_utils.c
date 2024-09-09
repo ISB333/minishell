@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:40:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 13:41:10 by isb3             ###   ########lyon.fr   */
+/*   Updated: 2024/09/09 09:13:06 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/**
+ * 📋 Description: adds to the value of an existing export variable.
+ *
+ * @param export_list: the list of all export variables.
+ * @param var: the value to add.
+ * @param var_to_modif: the variable to replace.
+ *
+ * ⬅️ Return: nothing.
+ */
 void	add_to_exp_var(t_export *export_list, const t_string var,
 		t_string var_to_modif)
 {
