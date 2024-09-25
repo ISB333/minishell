@@ -12,12 +12,21 @@
 
 #include "minishell.h"
 
+void	heredoc_error(char *line, char *del)
+{
+	write(2, "Warning: here-document at line, ", 33);
+	write(2, line, ft_strlen(line));
+	write(2, "delimited by end-of-file (wanted `", 35);
+	write(2, del, ft_strlen(del));
+	write(2, "`)\n", 4);
+}
+
 void	heredoc_child(int pipe_fd[2], char *s, char *del)
 {
-	int	line_nbr;
+	int	line;
 
 	is_in_heredoc(ENTRANCE);
-	line_nbr = 1;
+	line = 1;
 	set_signals(TRUE);
 	close(pipe_fd[0]);
 	mem_manager(0, 0, pipe_fd[1], SAVE_FD);
@@ -26,13 +35,13 @@ void	heredoc_child(int pipe_fd[2], char *s, char *del)
 		s = readline("> ");
 		if (!s)
 		{
-			printf("Warning: here-document at line %d delimited by end-of-file (wanted `%s`)\n", line_nbr, del);
+			heredoc_error(ft_itoa(line), del);
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), (void)exit(0));
 		}
 		if (!ft_strcmp(s, del))
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), free(s), (void)exit(0));
 		write(pipe_fd[1], ft_strjoin(s, "\n"), ft_strlen(s + 1));
-		line_nbr++;
+		line++;
 		free(s);
 	}
 	return (close(pipe_fd[1]), mem_manager(0, 0, 0, CLEAR_MEMORY),

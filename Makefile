@@ -13,7 +13,7 @@
 ######################## ARGUMENTS ########################
 
 NAME = minishell
-CFLAGS += -Wall -Wextra -MP -MD -g3 -I./headers
+CFLAGS += -Wall -Wextra -Werror -MP -MD -g3 -I./headers
 CC = cc 
 
 DEFAULT = \033[0;39m
@@ -24,9 +24,6 @@ WHITE = \033[0;37m
 YELLOW = \033[0;33m
 
 ######################## UTILS ########################
-
-GREEN = \033[0;92m
-CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M")
 
 VALGRIND = valgrind -s --leak-check=full --track-origins=yes --track-fds=yes \
 	--show-leak-kinds=all --trace-children=yes --gen-suppressions=all --suppressions=valgrind.supp --quiet ./minishell
@@ -117,7 +114,6 @@ $(LIBFT) :
 
 val :
 	@$(VALGRIND)
-#@valgrind -s --leak-check=full --track-origins=yes --track-fds=yes --show-leak-kinds=all --trace-children=yes --suppressions=valgrind.supp --quiet ./minishell
 
 clean :
 	@rm -rf $(OBJ_DIR) $(DEPFILES)
@@ -128,12 +124,6 @@ fclean : clean
 	@rm -f $(NAME)
 
 re : fclean all
-
-git:
-	@git add . > /dev/null 2>&1
-	@git commit -m "$(CURRENT_DATE)" > /dev/null 2>&1
-	@git push > /dev/null 2>&1
-	@echo "$(GREEN)┌(メ▼▼)┘ GIT UPDATE └(▼▼メ)┐ $(DEF_COLOR)"
 
 -include $(DEPFILES)
 

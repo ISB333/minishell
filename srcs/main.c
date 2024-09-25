@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-// ! TODO : Add -Werror
-
 int	prompt(char **rl, char *env[])
 {
 	char	*prompt;
@@ -30,8 +28,6 @@ int	prompt(char **rl, char *env[])
 	s = readline(prompt);
 	if (!s)
 	{
-		if (isatty(STDIN_FILENO)) // ! to use mpanic
-			write(2, "exit\n", 6);
 		mem_manager(0, 0, 0, CLEAR_MEMORY);
 		exit(return_(0, GET));
 	}
@@ -77,10 +73,6 @@ int	factory(char *rl)
 	stds_manager(&stdin_origin, &stdout_origin, DUP_STD);
 	history(rl);
 	parser(&ast, rl, -1);
-	// if (parsing == -1)
-	// 	return (0);
-	// else if (parsing)
-	// 	return (mem_manager(0, 0, 0, CLEAR_MEMORY), exit(EXIT_FAILURE), 1);
 	if (!execute(ast))
 		return (mem_manager(0, 0, 0, CLEAR_MEMORY), 1);
 	stds_manager(&stdin_origin, &stdout_origin, CLOSE_STD);
