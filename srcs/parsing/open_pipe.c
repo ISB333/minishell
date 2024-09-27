@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:16:50 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 14:16:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:21:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	join_op(t_pipe *op, char **s)
 	int		len;
 	t_pipe	*tmp;
 
+	len = 0;
 	tmp = op;
 	while (tmp)
 	{
@@ -86,7 +87,7 @@ char	*open_pipe_parent(int pipe_fd[2], pid_t pid, t_pipe *op, char **s)
 	close(pipe_fd[1]);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 2)
-		return (close(pipe_fd[0]), exit(2), NULL);
+		return (close(pipe_fd[0]), mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2), NULL);
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 130)
 		return (close(pipe_fd[0]), printf("\n"), return_(130, ADD), NULL);
 	else if (WIFEXITED(status))

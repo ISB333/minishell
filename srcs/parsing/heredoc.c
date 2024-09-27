@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_fork.c                                     :+:      :+:    :+:   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:52:25 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 13:52:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:42:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	parse_heredoc(t_ast **ast, char **tokens, int *i, int n)
 		return (perror("pipe"), 0);
 	else if (pid == 0)
 		heredoc_child(pipe_fd, NULL, del);
-	else if (heredoc_parent(pipe_fd, pid, hd))
+	else if (heredoc_parent(pipe_fd, pid, &hd))
 		return (INTERRUPTION);
 	add_to_ast(ast, hd, ++n);
 	return (*i += 2, 0);

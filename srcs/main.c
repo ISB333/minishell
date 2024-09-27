@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/04 16:46:45 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/26 11:28:10 by aheitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	prompt(char **rl, char *env[])
 	set_signals(TRUE);
 	add_previous_history();
 	prompt = get_prompt(env);
-	// full_prompt = ft_strjoin(ft_strjoin(BLUE, prompt), DEF);
-	// s = readline(full_prompt);
+	handle_sigint(0);
 	s = readline(prompt);
+	handle_sigint(0);
 	if (!s)
 	{
 		mem_manager(0, 0, 0, CLEAR_MEMORY);

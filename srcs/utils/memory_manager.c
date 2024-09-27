@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:28:31 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/28 11:09:32 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/27 10:37:55 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void	close_fd(t_memman *mem_list, int fd)
 	prev = NULL;
 	while (mem_temp)
 	{
-		if (*(int *)mem_temp->ptr == fd)
+		if (mem_temp->ptr && *(int *)mem_temp->ptr == fd)
 		{
 			close(*(int *)mem_temp->ptr);
 			free(mem_temp->ptr);
+			mem_temp->ptr = NULL;
 			if (prev)
 				prev->next = mem_temp->next;
 			else

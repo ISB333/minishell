@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/02 11:03:53 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:42:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int			parse_append(t_ast **ast, char **tokens, int *i);
 int			parse_heredoc(t_ast **ast, char **t, int *i, int n);
 void		get_dollar_hd(t_heredoc *hd, int j, int k);
 void		add_node_hd(t_heredoc **hd, char *s);
-int			heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc *hd);
+int			heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc **hd);
 void		heredoc_child(int pipe_fd[2], char *s, char *del);
 
 char		*quotes_destroyer(char *s, int i, int k, int token);
@@ -139,12 +139,14 @@ void		modify_exp_var(t_export *export_list, const t_string var);
 void		wait_for_children(t_ast *cmd);
 void		display_errors(t_ast *cmd);
 
-t_bool		is_in_execution(const t_action action);
 int			is_in_heredoc(const t_action action);
 
 void		set_signals(int use_restart);
 void		ignore_signals(void);
 int			is_in_open_pipe(const t_action action);
+int			is_in_execution(const t_action action);
 int			is_in_heredoc(const t_action action);
+
+void		handle_sigint(const int sig);
 
 #endif

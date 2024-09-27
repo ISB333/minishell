@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:40:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/09 09:13:06 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/27 10:23:01 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,14 @@ void	add_node_exp(t_export **exp_list, const t_string var)
 	if (!exp_list || !var)
 		return ;
 	new_node = mem_manager(sizeof(t_export), 0, 0, ALLOCATE);
-	new_node->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
-				- ft_strlen(ft_strchr(var, '=')) + 1),
-			ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1), "\""));
+	if (!ft_strchr(var, '='))
+		new_node->var = ft_strdup(var);
+	else
+	{
+		new_node->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
+					- ft_strlen(ft_strchr(var, '=')) + 1),
+				ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1), "\""));
+	}
 	new_node->next = NULL;
 	if (!*exp_list)
 		*exp_list = new_node;

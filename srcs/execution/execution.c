@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/04 14:41:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/26 11:38:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	execute(t_ast *ast)
 static int	fork_and_execute(t_ast *ast)
 {
 	if (!set_pipe(&ast->pipe_fd))
-		return (write(STDERR_FILENO, strerror(errno), strlen(strerror(errno))),
-			FAILURE);
+		return (write(STDERR_FILENO, strerror(errno),
+				ft_strlen(strerror(errno))), FAILURE);
 	ast->pid = fork();
 	if (ast->pid == INVALID)
 		return (FAILURE);
@@ -128,21 +128,6 @@ static int	execute_child_process(t_ast *ast)
  */
 static int	execute_parent_process(t_ast *ast)
 {
-	int	status;
-	int	exit_code;
-
-	if (ast->cmd && *ast->cmd && ft_strncmp(*ast->cmd, "./", 2) == EQUAL)
-	{
-		waitpid(ast->pid, &status, 0);
-		if (WIFEXITED(status))
-		{
-			exit_code = WEXITSTATUS(status);
-			if (!ast->error_code)
-				return_(exit_code, ADD);
-			else if (ast->error_code)
-				return_(ast->error_code, ADD);
-		}
-	}
 	if (close_file_descriptor(ast->pipe_fd[WRITE])
 		&& duplicate_fd(ast->pipe_fd[READ], STDIN_FILENO))
 	{

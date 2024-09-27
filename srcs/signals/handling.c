@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   handling.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:15:10 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/05 13:28:15 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/26 11:36:04 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	handle_sigquit(const int sig);
-static void	handle_sigint(const int sig);
+void		handle_sigint(const int sig);
 
 void	set_signals(int use_restart)
 {
@@ -41,13 +41,19 @@ static void	handle_sigquit(const int sig)
 	return_(128 + sig, ADD);
 }
 
-static void	handle_sigint(const int sig)
+void	handle_sigint(const int sig)
 {
-	if (is_in_heredoc(CHECK_STATUS) || is_in_open_pipe(CHECK_STATUS))
+	static int	in_prompt = FALSE;
+
+	if (!sig)
+	{
+		in_prompt = !in_prompt;
+		return ;
+	}
+	if (is_in_heredoc(CHECK_STATUS) || is_in_open_pipe(CHECK_STATUS)
+		|| is_in_execution(CHECK_STATUS))
 	{
 		mem_manager(0, 0, 0, CLEAR_MEMORY);
-		is_in_heredoc(FALSE);
-		is_in_open_pipe(FALSE);
 		exit(128 + sig);
 	}
 	else
@@ -55,7 +61,8 @@ static void	handle_sigint(const int sig)
 		write(STDOUT_FILENO, "\n", 1);
 		rl_replace_line("", 0);
 		rl_on_new_line();
-		rl_redisplay();
+		if (in_prompt)
+			rl_redisplay();
 	}
 	return_(128 + sig, ADD);
 }

@@ -3,16 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   signals_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:29:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 13:29:13 by isb3             ###   ########lyon.fr   */
+/*   Updated: 2024/09/26 10:34:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	is_in_heredoc(const t_action action)
+{
+	static int	in = FALSE;
+
+	if (action == ENTRANCE)
+		in = TRUE;
+	else if (action == EXITING)
+		in = FALSE;
+	else if (action == INTERRUPTION)
+		in = INTERRUPTION;
+	return (in);
+}
+
+int	is_in_execution(const t_action action)
 {
 	static int	in = FALSE;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_fork.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:52:25 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 13:52:26 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:51:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	heredoc_error(char *line, char *del)
 {
 	write(2, "Warning: here-document at line, ", 33);
 	write(2, line, ft_strlen(line));
-	write(2, "delimited by end-of-file (wanted `", 35);
+	write(2, " delimited by end-of-file (wanted `", 35);
 	write(2, del, ft_strlen(del));
 	write(2, "`)\n", 4);
 }
@@ -40,7 +40,7 @@ void	heredoc_child(int pipe_fd[2], char *s, char *del)
 		}
 		if (!ft_strcmp(s, del))
 			return (mem_manager(0, 0, 0, CLEAR_MEMORY), free(s), (void)exit(0));
-		write(pipe_fd[1], ft_strjoin(s, "\n"), ft_strlen(s + 1));
+		write(pipe_fd[1], ft_strjoin(s, "\n"), ft_strlen(s) + 1);
 		line++;
 		free(s);
 	}
@@ -48,7 +48,7 @@ void	heredoc_child(int pipe_fd[2], char *s, char *del)
 		(void)exit(0));
 }
 
-int	heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc *hd)
+int	heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc **hd)
 {
 	int		status;
 	char	*buffer;
@@ -67,11 +67,12 @@ int	heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc *hd)
 		while (buffer)
 		{
 			buffer[ft_strlen(buffer) - 1] = '\0';
-			add_node_hd(&hd, buffer);
+			add_node_hd(hd, buffer);
 			buffer = gnhell(pipe_fd[0]);
 		}
 		return_(0, ADD);
 	}
 	close(pipe_fd[0]);
-	return (get_dollar_hd(hd, 0, 0), 0);
+	return (get_dollar_hd(*hd, 0, 0), 0);
+	// return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/05 13:35:47 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/26 10:41:42 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int	check_if_directory(t_ast **ast)
 		(*ast)->error_code = 127;
 		return (return_(127, ADD), 127);
 	}
-	if ((!ft_strncmp((*ast)->cmd[0], "/", 1) || !ft_strncmp((*ast)->cmd[0],
-				"./", 2)) && S_ISDIR(path_stat.st_mode))
+	if ((!ft_strncmp((*ast)->cmd[0], "/", 1)
+			|| !ft_strncmp((*ast)->cmd[0], "./", 2)
+			|| !ft_strncmp(&(*ast)->cmd[0][ft_strlen((*ast)->cmd[0]) - 1], "/",
+			1)) && S_ISDIR(path_stat.st_mode))
 	{
 		(*ast)->error = error_init("Is a directory", (*ast)->cmd[0]);
 		(*ast)->error_code = 126;
@@ -80,14 +82,12 @@ int	cmd_path_init(t_ast **ast, int i)
 
 	if ((*ast)->cmd == NULL || (*ast)->cmd[0] == NULL || is_builtin(*ast))
 		return (0);
-	if (!ft_strlen((*ast)->cmd[0]))
+	if (!ft_strcmp((*ast)->cmd[0], "/") || !ft_strcmp((*ast)->cmd[0], "/."))
 		return (check_if_directory(ast));
 	path = extract_path();
 	if (!path)
-	{
-		(*ast)->error = error_init("No such file or directory", (*ast)->cmd[0]);
-		return ((*ast)->cmd = NULL, return_(127, ADD), 127);
-	}
+		return ((*ast)->error = error_init("No such file or directory",
+				(*ast)->cmd[0]), ((*ast)->cmd = NULL, return_(127, ADD), 127));
 	cmd = ft_strjoin("/", (*ast)->cmd[0]);
 	while (path[++i])
 	{
