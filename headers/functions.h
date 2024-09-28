@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/27 10:42:41 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:48:42 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void		display_errors(t_ast *cmd);
 
 int			is_in_heredoc(const t_action action);
 
-void		set_signals(int use_restart);
+void		set_signals(void);
 void		ignore_signals(void);
 int			is_in_open_pipe(const t_action action);
 int			is_in_execution(const t_action action);

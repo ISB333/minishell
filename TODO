@@ -1,0 +1,5 @@
+adesille@k1r4p12:~/Desktop/minishell/minishell$ cat
+^\adesille@k1r4p12:~/Desktop/minishell/minishell$ cat
+^\^\Quit
+
+-> Should write "Quit" at the first ctrl+\

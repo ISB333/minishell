@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:52:25 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/27 10:51:14 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:49:10 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	heredoc_child(int pipe_fd[2], char *s, char *del)
 
 	is_in_heredoc(ENTRANCE);
 	line = 1;
-	set_signals(TRUE);
+	set_signals();
+	signal(SIGQUIT, SIG_IGN);
 	close(pipe_fd[0]);
 	mem_manager(0, 0, pipe_fd[1], SAVE_FD);
 	while (1)
@@ -70,9 +71,7 @@ int	heredoc_parent(int pipe_fd[2], pid_t pid, t_heredoc **hd)
 			add_node_hd(hd, buffer);
 			buffer = gnhell(pipe_fd[0]);
 		}
-		return_(0, ADD);
 	}
 	close(pipe_fd[0]);
 	return (get_dollar_hd(*hd, 0, 0), 0);
-	// return (0);
 }

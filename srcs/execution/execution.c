@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/26 11:38:08 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:31:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	execute(t_ast *ast)
 		cmd = ast;
 		while (cmd)
 		{
+			set_signals();
+			if (ast->cmd && !ft_strcmp(ast->cmd[0], "./minishell"))
+				ignore_signals();
 			if (!fork_and_execute(cmd))
 				return (FAILURE);
 			cmd = cmd->next;
@@ -128,6 +131,21 @@ static int	execute_child_process(t_ast *ast)
  */
 static int	execute_parent_process(t_ast *ast)
 {
+	int	status;
+	int	exit_code;
+
+	if (ast->cmd && *ast->cmd && ft_strncmp(*ast->cmd, "./", 2) == EQUAL)
+	{
+		waitpid(ast->pid, &status, 0);
+		if (WIFEXITED(status))
+		{
+			exit_code = WEXITSTATUS(status);
+			if (!ast->error_code)
+				return_(exit_code, ADD);
+			else if (ast->error_code)
+				return_(ast->error_code, ADD);
+		}
+	}
 	if (close_file_descriptor(ast->pipe_fd[WRITE])
 		&& duplicate_fd(ast->pipe_fd[READ], STDIN_FILENO))
 	{

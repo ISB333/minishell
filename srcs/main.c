@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 09:55:21 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/26 11:28:10 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/28 11:49:14 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	prompt(char **rl, char *env[])
 	s = NULL;
 	prompt = NULL;
 	is_in_heredoc(FALSE);
-	set_signals(TRUE);
+	set_signals();
 	add_previous_history();
 	prompt = get_prompt(env);
+	signal(SIGQUIT, SIG_IGN);
 	handle_sigint(0);
 	s = readline(prompt);
 	handle_sigint(0);

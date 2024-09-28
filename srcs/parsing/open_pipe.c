@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:16:50 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/27 10:21:31 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:51:48 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	open_pipe_child(int pipe_fd[2])
 
 	is_in_open_pipe(ENTRANCE);
 	close(pipe_fd[0]);
-	set_signals(TRUE);
+	set_signals();
 	mem_manager(0, 0, pipe_fd[1], SAVE_FD);
 	while (1)
 	{
@@ -87,7 +87,8 @@ char	*open_pipe_parent(int pipe_fd[2], pid_t pid, t_pipe *op, char **s)
 	close(pipe_fd[1]);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 2)
-		return (close(pipe_fd[0]), mem_manager(0, 0, 0, CLEAR_MEMORY), exit(2), NULL);
+		return (close(pipe_fd[0]), mem_manager(0, 0, 0, CLEAR_MEMORY),
+			exit(2), NULL);
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 130)
 		return (close(pipe_fd[0]), printf("\n"), return_(130, ADD), NULL);
 	else if (WIFEXITED(status))

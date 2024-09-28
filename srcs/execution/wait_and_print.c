@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_and_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 14:29:29 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/05 13:36:07 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/28 11:05:20 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	wait_for_children(t_ast *cmd)
 				exit_code = WEXITSTATUS(status);
 				if (!cmd->next)
 				{
-					if (!cmd->error_code
-						&& is_in_heredoc(CHECK_STATUS) != INTERRUPTION)
+					if (!cmd->error_code)
 						return_(exit_code, ADD);
 					else if (cmd->error_code)
 						return_(cmd->error_code, ADD);

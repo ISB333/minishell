@@ -6,30 +6,26 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 15:15:10 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/26 11:36:04 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:56:15 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	handle_sigquit(const int sig);
-void		handle_sigint(const int sig);
 
-void	set_signals(int use_restart)
+void	set_signals(void)
 {
 	struct sigaction	sa_sigint;
 	struct sigaction	sa_sigquit;
 
 	sa_sigint.sa_handler = &handle_sigint;
-	if (use_restart)
-		sa_sigint.sa_flags = SA_RESTART;
-	else
-		sa_sigint.sa_flags = 0;
+	sa_sigint.sa_flags = 0;
 	sigemptyset(&sa_sigint.sa_mask);
 	if (sigaction(SIGINT, &sa_sigint, NULL))
 		perror("sigaction");
 	sa_sigquit.sa_handler = &handle_sigquit;
-	sa_sigquit.sa_flags = SA_RESTART;
+	sa_sigquit.sa_flags = 0;
 	sigemptyset(&sa_sigquit.sa_mask);
 	if (sigaction(SIGQUIT, &sa_sigquit, NULL))
 		perror("sigaction");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/05 13:33:41 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/28 12:31:41 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,10 @@ int	parse_redir(t_ast **ast, char **tokens, int i, int n)
 	while (tokens[i])
 	{
 		if (is_redir(tokens[i], 0, 0))
-			select_redir(ast, tokens, &i, is_redir(tokens[i], 0, 0));
+		{
+			if (select_redir(ast, tokens, &i, is_redir(tokens[i], 0, 0)))
+				return (1);
+		}
 		else if (is_append(tokens[i], 0, 0))
 		{
 			if (parse_append(ast, tokens, &i))
