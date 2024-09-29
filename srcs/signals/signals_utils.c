@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:29:06 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/26 10:34:31 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:56:36 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ void	ignore_signals(void)
 {
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, SIG_IGN);
+}
+
+int	return_(int code, int token)
+{
+	static int	exit_code = 0;
+
+	if (token == ADD)
+		exit_code = code;
+	if (token == GET)
+		return (exit_code);
+	return (0);
 }

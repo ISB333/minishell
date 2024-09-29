@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/31 15:07:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 13:13:08 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 		while (arr[++i])
 		{
 			k = -1;
-			while (arr[i][++k])
+			while (arr[i] && arr[i][++k])
 			{
 				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1])
 					|| !arr[i][k + 1] || arr[i][k + 1] == '/')))

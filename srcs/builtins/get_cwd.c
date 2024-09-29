@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:32:54 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/28 15:29:11 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:37:19 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,10 @@ static void	update_cwd(t_cwd **current_dir, const t_string new_dir)
 		while (last_node->next && last_node->next->next)
 			last_node = last_node->next;
 	}
-	while (cwd_dir[i])
+	while (cwd_dir[i] && ft_strncmp(cwd_dir[i], "..", 2))
 		add_node_cwd(current_dir, cwd_dir[i++]);
+	if (cwd_dir[i] && !ft_strncmp(cwd_dir[i], "..", 2))
+		update_cwd(current_dir, multi_strjoin(&cwd_dir[i]));
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 15:49:06 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/28 15:28:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:37:13 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,33 @@ static size_t	get_cwd_length(t_cwd *cwd)
 		tmp = tmp->next;
 	}
 	return (len);
+}
+
+t_string	multi_strjoin(t_string *s)
+{
+	int			i;
+	int			k;
+	int			len;
+	t_string	new_s;
+
+	i = -1;
+	k = -1;
+	len = 0;
+	while (s[++i])
+	{
+		k = -1;
+		while (s[i][++k])
+			len++;
+	}
+	new_s = mem_manager((len + 1) * sizeof(t_string), 0, 0, ALLOCATE);
+	i = -1;
+	len = 0;
+	while (s[++i])
+	{
+		k = -1;
+		while (s[i][++k])
+			new_s[len++] = s[i][k];
+	}
+	new_s[len] = '\0';
+	return (new_s);
 }

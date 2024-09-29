@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:16:50 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/28 11:51:48 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:47:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,8 @@ void	add_node_op(t_pipe **op, char *s)
 
 void	join_op(t_pipe *op, char **s)
 {
-	int		len;
-	t_pipe	*tmp;
-
-	len = 0;
-	tmp = op;
-	while (tmp)
-	{
-		len += ft_strlen(tmp->s);
-		tmp = tmp->next;
-	}
-	*s = mem_manager(len + 1, 0, 0, ALLOCATE);
-	*s = ft_strdup(op->s);
+	*s = ft_strjoin(*s, op->s);
+	printf("%s\n", *s);
 	op = op->next;
 	while (op)
 	{
@@ -60,6 +50,7 @@ void	open_pipe_child(int pipe_fd[2])
 	is_in_open_pipe(ENTRANCE);
 	close(pipe_fd[0]);
 	set_signals();
+	signal(SIGQUIT, SIG_IGN);
 	mem_manager(0, 0, pipe_fd[1], SAVE_FD);
 	while (1)
 	{
@@ -123,5 +114,5 @@ int	open_pipe_manager(char **s)
 		open_pipe_child(pipe_fd);
 	else if (!open_pipe_parent(pipe_fd, pid, op, s))
 		return (FAILURE);
-	return (0);
+	return (1);
 }

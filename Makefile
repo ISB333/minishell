@@ -6,7 +6,7 @@
 #    By: adesille <adesille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/22 11:33:14 by adesille          #+#    #+#              #
-#    Updated: 2024/09/26 11:39:29 by adesille         ###   ########.fr        #
+#    Updated: 2024/09/29 13:01:39 by adesille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,8 @@ BUILTINS = $(B_DIR)/builtins.c $(B_DIR)/builtins_utils.c \
 
 UTILS = $(U_DIR)/get_prompt.c \
 	$(U_DIR)/memory_manager.c $(U_DIR)/memory_manager_utils.c \
-	$(U_DIR)/signals.c $(U_DIR)/get_node_at.c \
-	$(U_DIR)/is_numeric.c $(U_DIR)/is_whitespace.c \
-	$(U_DIR)/is_safe_operation.c $(U_DIR)/fd.c
+	$(U_DIR)/get_node_at.c $(U_DIR)/is_numeric.c \
+	$(U_DIR)/is_whitespace.c $(U_DIR)/is_safe_operation.c $(U_DIR)/fd.c
 
 SIG	= srcs/signals/handling.c ./srcs/signals/signals_utils.c
 

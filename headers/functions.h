@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:22:02 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/28 11:48:42 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 12:36:56 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void		quit(int status);
 t_bool		is_only_n(t_string arg);
 int			cd_utils(t_string *args);
 t_string	join_cwd(t_cwd *cwd);
+t_string	multi_strjoin(t_string *s);
 void		init_env(t_string env[], t_env **env_head);
 void		add_env_var(t_env **env_list, const t_string var);
 

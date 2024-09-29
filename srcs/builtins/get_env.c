@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aheitz <aheitz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:31:58 by adesille          #+#    #+#             */
-/*   Updated: 2024/08/26 17:59:06 by aheitz           ###   ########.fr       */
+/*   Updated: 2024/09/29 11:56:45 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	*get_envv(t_string env[], const t_string var, const int action)
 		existing_var = env_var_exists(env_head, var);
 		if (!existing_var && is_valid_env_var(var))
 			add_env_var(&env_head, var);
+		else if (existing_var && is_valid_env_var(var) && ft_strchr(var, '+'))
+			return (update_env_var(env_head, var), "MODIF");
 		else if (existing_var && is_valid_env_var(var))
 			return (existing_var->var = ft_strdup(var), "EXIST");
 	}
@@ -68,7 +70,11 @@ void	add_env_var(t_env **env_list, const t_string var)
 	if (!ft_strchr(var, '=') || !env_list)
 		return ;
 	new_node = mem_manager(sizeof(t_env), 0, 0, ALLOCATE);
-	new_node->var = ft_strdup(var);
+	if (ft_strchr(var, '+'))
+		new_node->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
+					- ft_strlen(ft_strrchr(var, '+'))), ft_strchr(var, '='));
+	else
+		new_node->var = ft_strdup(var);
 	new_node->next = NULL;
 	if (!*env_list)
 		*env_list = new_node;
@@ -86,20 +92,27 @@ void	add_env_var(t_env **env_list, const t_string var)
  */
 static void	update_env_var(t_env *env, const t_string var)
 {
-	t_string		cur_key;
-	const t_string	target_key = ft_substr(var, 0, ft_strlen(var)
-			- ft_strlen(ft_strchr(var, '=')));
+	t_string	cur_key;
+	t_string	target_key;
 
+	if (ft_strchr(var, '+'))
+		target_key = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=') - 1));
+	else
+		target_key = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'=')));
 	if (!target_key)
 		return ;
 	while (env)
 	{
 		cur_key = ft_substr(env->var, 0, ft_strlen(env->var)
 				- ft_strlen(ft_strchr(env->var, '=')));
-		if (ft_strcmp(cur_key, target_key) == EQUAL)
+		if (ft_strcmp(cur_key, target_key) == EQUAL && ft_strchr(var, '+'))
+			return (env->var = ft_strjoin(env->var, ft_strchr(var, '=') + 1),
+				(void)0);
+		else if (ft_strcmp(cur_key, target_key) == EQUAL)
 		{
-			if (ft_strrchr(var, '='))
-				env->var = ft_strdup(var);
+			env->var = ft_strdup(var);
 			return ;
 		}
 		env = env->next;
@@ -120,7 +133,10 @@ static t_env	*env_var_exists(t_env *env, t_string var)
 
 	if (!var)
 		return (NULL);
-	if (ft_strchr(var, '='))
+	if (ft_strchr(var, '+'))
+		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
+						'+')));
+	else if (ft_strchr(var, '='))
 		var = ft_substr(var, 0, ft_strlen(var) - ft_strlen(ft_strchr(var,
 						'=')));
 	while (env)
