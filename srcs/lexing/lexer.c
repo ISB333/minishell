@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:52:35 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/29 13:04:44 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:37:01 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ char	**lexer(char *s)
 	while (is_tilde_in_arr(tokens, -1))
 		get_tilde(tokens);
 	while (is_dollar_in_arr(tokens, -1, '?', 0))
+	{
 		get_dollar(tokens, 0, 0, 0);
+	}
 	return (tokens);
 }

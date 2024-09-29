@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/29 15:11:49 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:11:24 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,27 @@ char	*join_new_str(char *str, char *new_str, int var_len, int i)
 
 int	is_dollar_in_double_quotes(char *s, int k, int i)
 {
-	int	token;
-
-	token = 0;
 	i = -1;
 	while (s[++i])
 	{
 		if (s[i] == 39)
-			token = !token;
-		if (i == k && token)
-			return (0);
-		if (i == k && !token)
-			return (1);
+		{
+			while (s[i] && s[++i] != 39)
+			{
+				if (i == k)
+					return (0);
+			}
+		}
+		if (s[i] == 34)
+		{
+			while (s[i] && s[++i] != 34)
+			{
+				if (i == k)
+					return (1);
+			}
+		}
 	}
-	return (0);
+	return (1);
 }
 
 int	is_dollar_in_arr(char **arr, int i, char token, char pos)
@@ -92,11 +99,8 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1])
 					|| !arr[i][k + 1] || arr[i][k + 1] == '/')))
 					k++;
-				else if (arr[i][k] == '$')
-				{
-					if (is_dollar_in_double_quotes(arr[i], k, k))
+				else if (arr[i][k] == '$' && is_dollar_in_double_quotes(arr[i], k, k))
 						return (1);
-				}
 				else
 					k++;
 			}
@@ -111,7 +115,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 {
 	char	*env_var;
 	char	*new_str;
-
+	
 	i = is_dollar_in_arr(arr, -1, 'p', 'i');
 	k = is_dollar_in_arr(arr, -1, 'p', 'k');
 	if (k && !is_dollar_in_double_quotes(arr[i], k, k))
@@ -125,7 +129,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 	if (!ft_strncmp(&arr[i][k], "$?", 2))
 	{
 		return (arr[i] = ft_strjoin(ft_strjoin(ft_substr(arr[i], 0,
-						ft_strlen(arr[i]) - ft_strlen(ft_strchr(arr[i], '$'))),
+						ft_strlen(arr[i]) - ft_strlen(ft_strrchr(arr[i], '$'))),
 					ft_itoa(return_(0, GET))), &arr[i][k + 2]), (void)0);
 	}
 	else

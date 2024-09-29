@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:43:50 by aheitz            #+#    #+#             */
-/*   Updated: 2024/08/27 13:56:47 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:00:57 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,17 @@
  */
 void	init_env(t_string env[], t_env **env_head)
 {
+	t_string cwd;
+
 	if (!env_head || !env)
 		return ;
 	if (!*env)
 	{
 		env = mem_manager(4 * sizeof(t_string), NULL, 0, ALLOCATE);
-		env[0] = ft_strjoin("PWD=", getcwd(NULL, 0));
-		env[1] = ft_strdup("SHLVL=2");
+		cwd = getcwd(NULL, 0);
+		env[0] = ft_strjoin("PWD=", cwd);
+		free(cwd);
+		env[1] = ft_strdup("SHLVL=1");
 		env[2] = ft_strjoin("PATH=/usr/local/sbin:/usr/local/bin",
 				":/usr/sbin:/usr/bin:/sbin:/bin");
 		env[3] = NULL;
