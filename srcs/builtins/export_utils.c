@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:40:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/27 10:23:01 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 09:50:52 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ void	add_to_exp_var(t_export *export_list, const t_string var,
 {
 	t_string	exp_var;
 
-	export_list->var = ft_strjoin(ft_strjoin(ft_strjoin(var_to_modif,
-					ft_substr(export_list->var, ft_strlen(export_list->var)
-						- ft_strlen(ft_strchr(export_list->var, '=')),
-						ft_strlen(ft_strchr(export_list->var, '=') + 1))),
-				ft_strchr(var, '=') + 1), "\"");
 	if (!var_to_modif || !ft_strchr(var, '='))
 		return ;
 	while (export_list)
@@ -42,10 +37,12 @@ void	add_to_exp_var(t_export *export_list, const t_string var,
 			exp_var = ft_strdup(export_list->var);
 		if (ft_strcmp(exp_var, var_to_modif) == EQUAL)
 		{
-			export_list->var = ft_strjoin(ft_substr(var, 0, ft_strlen(var)
-						- ft_strlen(ft_strchr(var, '=')) + 1),
-					ft_strjoin(ft_strjoin("\"", ft_strchr(var, '=') + 1),
-						"\""));
+			export_list->var = ft_strjoin(ft_strjoin(ft_strjoin(var_to_modif,
+							ft_substr(export_list->var,
+								ft_strlen(export_list->var)
+								- ft_strlen(ft_strchr(export_list->var, '=')),
+								ft_strlen(ft_strchr(export_list->var, '=')
+									+ 1))), ft_strchr(var, '=') + 1), "\"");
 		}
 		export_list = export_list->next;
 	}
@@ -66,7 +63,7 @@ void	modify_exp_var(t_export *export_list, const t_string var)
 
 	if (ft_strchr(var, '+'))
 		return ((void)add_to_exp_var(export_list, var, ft_substr(var, 0,
-					ft_strchr(var, '=') - var)));
+					ft_strchr(var, '=') - var - 1)));
 	var_to_modif = ft_substr(var, 0, ft_strchr(var, '=') - var);
 	if (!var_to_modif || !ft_strchr(var, '='))
 		return ;

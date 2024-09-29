@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 08:02:33 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/01 21:03:36 by isb3             ###   ########.fr       */
+/*   Updated: 2024/09/29 09:13:46 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void	print_export(const t_export *exp_list)
 {
 	while (exp_list)
 	{
-		printf("export %s\n", exp_list->var);
+		printf("declare -x %s\n", exp_list->var);
 		exp_list = exp_list->next;
 	}
 }

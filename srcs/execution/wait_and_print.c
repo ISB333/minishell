@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 14:29:29 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/28 11:05:20 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 09:11:20 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	wait_for_children(t_ast *cmd)
 	int	exit_code;
 	int	status;
 
+	status = 0;
 	while (cmd)
 	{
 		if (cmd->cmd && *cmd->cmd && ft_strncmp(*cmd->cmd, "./", 2) != EQUAL)
