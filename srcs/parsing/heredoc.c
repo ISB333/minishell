@@ -6,11 +6,36 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:52:25 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/27 10:42:31 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:10:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*join_new_str_hd(char *str, char *new_str, int var_len, int i)
+{
+	char	*str_update;
+	int		new_len;
+	int		k;
+	int		j;
+
+	j = 0;
+	if (!str)
+		return (NULL);
+	new_len = ft_strlen(str) - var_len + ft_strlen(new_str) + 1;
+	str_update = mem_manager(new_len, 0, 0, ALLOCATE);
+	while (str[j] != '$')
+		str_update[i++] = str[j++];
+	k = 0;
+	while (new_str[k])
+		str_update[i++] = new_str[k++];
+	while (str[++j] && !is_del(str[j]) && !is_dollar_del(str[j]))
+		;
+	while (str[j])
+		str_update[i++] = str[j++];
+	str_update[i] = '\0';
+	return (str_update);
+}
 
 void	get_dollar_hd(t_heredoc *hd, int j, int k)
 {
@@ -34,7 +59,7 @@ void	get_dollar_hd(t_heredoc *hd, int j, int k)
 				new_str = get_envv(0, env_var, FIND);
 			if (!new_str)
 				new_str = ft_strdup("\0");
-			hd->s = join_new_str(hd->s, new_str, j - k, 0);
+			hd->s = join_new_str_hd(hd->s, new_str, j - k, 0);
 		}
 		hd = hd->next;
 	}
