@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 06:23:29 by isb3              #+#    #+#             */
-/*   Updated: 2024/08/31 15:51:53 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:18:20 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	is_pipe_in_arr(char **array)
 		k = -1;
 		while (array[i][++k])
 		{
-			if (array[i][k] == '|' && array[i + 1])
+			if (array[i][k] == '|' && array[i + 1]
+				&& !is_there_quotes_in_da_shit(array[i]))
 				n++;
 		}
 	}

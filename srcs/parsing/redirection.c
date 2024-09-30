@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 07:54:09 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/29 16:28:12 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:18:31 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	parse_append(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	// if ((*ast)->fd_out)
-	// 	mem_manager(0, 0, (*ast)->fd_out, CLOSE_FD);
 	(*ast)->fd_out = open(fd, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if ((*ast)->fd_out == -1)
 	{
@@ -42,8 +40,6 @@ int	parse_redir_utils2(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_substr(tokens[*i + 1], 0, ft_strlen(tokens[*i + 1]));
-	// if ((*ast)->fd_out)
-	// 	mem_manager(0, 0, (*ast)->fd_out, CLOSE_FD);
 	(*ast)->fd_out = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if ((*ast)->fd_out == -1)
 	{
@@ -64,8 +60,6 @@ int	parse_redir_utils1(t_ast **ast, char **tokens, int *i)
 		fd = quotes_destroyer(tokens[*i + 1], 0, 0, 0);
 	else
 		fd = ft_strdup(tokens[*i + 1]);
-	// if ((*ast)->fd_in)
-	// 	mem_manager(0, 0, (*ast)->fd_in, CLOSE_FD);
 	(*ast)->fd_in = open(fd, O_RDONLY);
 	if ((*ast)->fd_in == -1)
 	{

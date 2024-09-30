@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 09:57:15 by adesille          #+#    #+#             */
-/*   Updated: 2024/09/29 16:33:30 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:17:53 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	execute(t_ast *ast)
 
 	if (!ast)
 		return (SUCCESS);
-	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH)
+	if (!ast->next && is_builtin(ast) && is_builtin(ast) != ECH
+		&& is_builtin(ast) != ENV)
 		call_builtins(ast, is_builtin(ast));
 	else
 	{

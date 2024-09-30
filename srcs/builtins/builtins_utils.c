@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isb3 <isb3@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 09:20:22 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/06 13:43:04 by isb3             ###   ########lyon.fr   */
+/*   Updated: 2024/09/30 15:18:15 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	cd_get_back(t_string *args)
 	t_string	cwd;
 
 	cwd = get_cwdd(NULL, NULL, GET);
-	prev = ft_substr(cwd, 0, ft_strlen(cwd) - ft_strlen(ft_strrchr(cwd, '/')));
+	prev = ft_substr(cwd, 0, ft_strlen(cwd) - ft_strlen(ft_strrchr(cwd, '/'))
+			+ 1);
 	if (chdir(prev))
 		return ((void)error("No such file or directory", ft_strjoin("cd: ",
 					args[1]), 1));
