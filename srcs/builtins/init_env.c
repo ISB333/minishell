@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:43:50 by aheitz            #+#    #+#             */
-/*   Updated: 2024/09/29 16:00:57 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/30 09:12:22 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  */
 void	init_env(t_string env[], t_env **env_head)
 {
-	t_string cwd;
+	t_string	cwd;
 
 	if (!env_head || !env)
 		return ;

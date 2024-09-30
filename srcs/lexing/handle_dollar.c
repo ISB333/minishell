@@ -6,7 +6,7 @@
 /*   By: adesille <adesille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 08:00:47 by isb3              #+#    #+#             */
-/*   Updated: 2024/09/29 16:11:24 by adesille         ###   ########.fr       */
+/*   Updated: 2024/09/30 09:13:27 by adesille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ int	is_dollar_in_arr(char **arr, int i, char token, char pos)
 				if ((arr[i][k] == '$' && (is_del(arr[i][k + 1])
 					|| !arr[i][k + 1] || arr[i][k + 1] == '/')))
 					k++;
-				else if (arr[i][k] == '$' && is_dollar_in_double_quotes(arr[i], k, k))
-						return (1);
+				else if (arr[i][k] == '$'
+				&& is_dollar_in_double_quotes(arr[i], k, k))
+					return (1);
 				else
 					k++;
 			}
@@ -115,7 +116,7 @@ void	get_dollar(char **arr, int i, int k, int j)
 {
 	char	*env_var;
 	char	*new_str;
-	
+
 	i = is_dollar_in_arr(arr, -1, 'p', 'i');
 	k = is_dollar_in_arr(arr, -1, 'p', 'k');
 	if (k && !is_dollar_in_double_quotes(arr[i], k, k))
